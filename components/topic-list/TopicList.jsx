@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil } from "lucide-react";
+import RemoveBtn from "../removebtn/RemoveBtn";
 
 const getTopics = async () => {
   try {
@@ -34,9 +35,7 @@ const TopicList = async () => {
                   <Pencil className="w-4" />
                 </Button>
               </Link>
-              <Button variant="outline" size="icon">
-                <Trash2 className="w-4 text-red-500" />
-              </Button>
+              <RemoveBtn id={topic._id} />
             </div>
           </div>
         );
