@@ -6,7 +6,7 @@ const Header = () => {
     <nav className="flex justify-between items-center py-3 rounded">
       <Link href={`/`}>
         <h1 className="font-bold text-2xl">
-          Hawt <span className="text-orange-500">CRUD</span>
+          Dedx<span className="text-orange-500">CRUD</span>
         </h1>
       </Link>
       <Link href={`/add-topic`}>

@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
 
 @layer base {
   :root {
@@ -50,7 +49,6 @@
   }
 }
 
- 
 @layer base {
   * {
     @apply border-border;
@@ -59,23 +57,26 @@
     @apply bg-background text-foreground;
   }
 }
-::selection{
+::selection {
   color: yellow;
 }
 
 @font-face {
-  font-family: 'Gilroy';
-  src: url('../public/fonts/Gilroy-Regular.ttf')format('truetype');
+  font-family: "Gilroy";
+  src: url("../public/fonts/Gilroy-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Gilroy';
-  src: url('../public/fonts/Gilroy-Bold.ttf')format('truetype');
+  font-family: "Gilroy";
+  src: url("../public/fonts/Gilroy-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
 
-body{
-  font-family: 'Gilroy', sans-serif;
+body {
+  font-family: "Gilroy", sans-serif;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
