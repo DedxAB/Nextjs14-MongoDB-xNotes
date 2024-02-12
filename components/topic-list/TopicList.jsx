@@ -9,7 +9,7 @@ const getTopics = async () => {
       cache: "no-store",
     });
     if (!res.ok) throw new Error("Error fetching topics");
-    return res.json();
+    return await res.json();
   } catch (error) {
     console.log(error.message);
   }
@@ -17,7 +17,6 @@ const getTopics = async () => {
 
 const TopicList = async () => {
   const { topics } = await getTopics();
-  // console.log(topics);
   return (
     <>
       {topics.map((topic, index) => {
