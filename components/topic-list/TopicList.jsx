@@ -2,10 +2,11 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { Pencil } from "lucide-react";
 import RemoveBtn from "../removebtn/RemoveBtn";
+import { BASE_URL } from "@/utils/constants";
 
 const getTopics = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/topics", {
+    const res = await fetch(`${BASE_URL}/api/topics`, {
       cache: "no-store",
     });
     if (!res.ok) throw new Error("Error fetching topics");
