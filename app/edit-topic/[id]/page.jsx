@@ -12,7 +12,7 @@ const getTopicById = async (id) => {
     if (!res.ok) {
       throw new Error("Failed to get topic");
     }
-    return await res.json();
+    return res.json();
   } catch (error) {
     console.log(error.message);
   }
@@ -21,6 +21,7 @@ const getTopicById = async (id) => {
 const EditTopicPage = async ({ params }) => {
   const { id } = params;
   const { topic } = await getTopicById(id);
+  console.log(topic);
   const { title, description } = topic;
   return (
     <>

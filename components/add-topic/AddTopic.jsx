@@ -11,7 +11,7 @@ const AddTopic = () => {
 
   const handelSubmit = async (e) => {
     e.preventDefault();
-    if (!topic || !description) {
+    if (!title || !description) {
       alert("Please fill all the fields");
       return;
     }
