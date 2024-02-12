@@ -10,7 +10,7 @@ const Header = () => {
         </h1>
       </Link>
       <Link href={`/add-topic`}>
-        <Button className="font-bold">Add Topic</Button>
+        <Button className="font-bold rounded">Add Topic</Button>
       </Link>
     </nav>
   );

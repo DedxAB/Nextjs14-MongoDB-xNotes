@@ -1,7 +1,7 @@
 import EditTopic from "@/components/edit-topic/EditTopic";
 
 export const metadata = {
-  title: "Edit Topic | HawtCRUD",
+  title: "Edit Topic | DedxCRUD",
 };
 
 const getTopicById = async (id) => {

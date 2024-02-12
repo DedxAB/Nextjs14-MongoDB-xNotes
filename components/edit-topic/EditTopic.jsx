@@ -38,7 +38,7 @@ const EditTopic = ({ id, title, description }) => {
         name="topic"
         id="topic"
         placeholder="Topic name"
-        className="border border-slate-600 outline-none w-full p-4 text-lg rounded"
+        className="border shadow outline-none w-full p-4 text-lg rounded"
       />
       <input
         onChange={(e) => setNewDescription(e.target.value)}
@@ -47,9 +47,9 @@ const EditTopic = ({ id, title, description }) => {
         name="desc"
         id="desc"
         placeholder="Description"
-        className="border border-slate-600 outline-none w-full p-4 text-lg rounded"
+        className="border shadow outline-none w-full p-4 text-lg rounded"
       />
-      <Button type={`submit`} variant="outline" className="text-lg font-bold w-fit">
+      <Button type={`submit`} variant="outline" className="text-lg font-bold w-[105px] rounded">
         Edit topic
       </Button>
     </form>

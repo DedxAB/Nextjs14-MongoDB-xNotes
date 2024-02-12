@@ -46,7 +46,7 @@ const AddTopic = () => {
         name="topic"
         id="topic"
         placeholder="Topic name"
-        className="border border-slate-600 outline-none w-full p-4 text-lg rounded"
+        className="border shadow outline-none w-full p-4 text-lg rounded"
       />
       <input
         onChange={(e) => {
@@ -57,12 +57,12 @@ const AddTopic = () => {
         name="desc"
         id="desc"
         placeholder="Description"
-        className="border border-slate-600 outline-none w-full p-4 text-lg rounded"
+        className="border shadow outline-none w-full p-4 text-lg rounded"
       />
       <Button
         type={`submit`}
         variant="outline"
-        className="text-lg font-bold w-fit"
+        className="text-lg font-bold w-[109px] rounded"
       >
         Save Topic
       </Button>
