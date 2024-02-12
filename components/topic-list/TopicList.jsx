@@ -22,7 +22,7 @@ const TopicList = async () => {
       {topics.map((topic, index) => {
         return (
           <div
-            className="border border-slate-600 px-2 flex justify-between gap-3 mb-2 py-5 rounded"
+            className="border border-slate-600 flex justify-between gap-3 mb-2 rounded px-4 py-2"
             key={index}
           >
             <div>
