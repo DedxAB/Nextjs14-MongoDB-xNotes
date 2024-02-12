@@ -32,7 +32,7 @@ const TopicList = async () => {
             <div className="flex justify-between items-center">
               <Link href={`/edit-topic/${topic._id}`}>
                 <Button variant="outline" size="icon" className="mr-2">
-                  <Pencil className="w-4" />
+                  <Pencil className="w-4 text-orange-500" />
                 </Button>
               </Link>
               <RemoveBtn id={topic._id} />
