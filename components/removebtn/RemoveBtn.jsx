@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 const RemoveBtn = ({ id }) => {
   const router = useRouter();
+
   const removeTopic = async () => {
     const conformationMessage = confirm(
       "Are you sure you want to delete this topic?"
