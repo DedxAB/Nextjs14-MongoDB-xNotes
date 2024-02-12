@@ -29,6 +29,7 @@ const AddTopic = () => {
       }
       alert("Topic saved successfully");
       router.push("/");
+      router.refresh();
     } catch (error) {
       console.log(error.message);
     }
