@@ -17,7 +17,7 @@ const getTopics = async () => {
 
 const TopicList = async () => {
   const { topics } = await getTopics();
-  console.log(topics);
+  // console.log(topics);
   return (
     <>
       {topics.map((topic, index) => {
