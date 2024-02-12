@@ -1,4 +1,5 @@
 import EditTopic from "@/components/edit-topic/EditTopic";
+import { BASE_URL } from "@/utils/constants";
 
 export const metadata = {
   title: "Edit Topic | DedxCRUD",
@@ -6,7 +7,7 @@ export const metadata = {
 
 const getTopicById = async (id) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
+    const res = await fetch(`${BASE_URL}/api/topics/${id}`, {
       cache: "no-store",
     });
     if (!res.ok) {
@@ -21,7 +22,7 @@ const getTopicById = async (id) => {
 const EditTopicPage = async ({ params }) => {
   const { id } = params;
   const { topic } = await getTopicById(id);
-  console.log(topic);
+  // console.log(topic);
   const { title, description } = topic;
   return (
     <>
