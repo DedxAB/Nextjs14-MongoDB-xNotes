@@ -2,6 +2,7 @@
 import { Trash2 } from "lucide-react";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const RemoveBtn = ({ id }) => {
   const router = useRouter();
@@ -16,8 +17,10 @@ const RemoveBtn = ({ id }) => {
           method: "DELETE",
         });
         if (!res.ok) throw new Error("Error deleting topic");
+        toast.success("Topic deleted successfully");
         router.refresh();
       } catch (e) {
+        toast.error("Failed to delete topic");
         console.log(e.message);
       }
     }
