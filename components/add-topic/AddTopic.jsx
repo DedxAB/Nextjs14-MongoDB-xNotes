@@ -61,10 +61,10 @@ const AddTopic = () => {
         />
         <Button
           type={`submit`}
-          variant="outline"
-          className="text-lg font-bold w-[109px] rounded"
+          variant={`outline`}
+          className="font-bold w-fit rounded"
         >
-          Save Topic
+          Add Topic 
         </Button>
       </form>
     </>

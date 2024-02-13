@@ -49,8 +49,8 @@ const EditTopic = ({ id, title, description }) => {
         placeholder="Description"
         className="border shadow outline-none w-full p-4 text-lg rounded"
       />
-      <Button type={`submit`} variant="outline" className="text-lg font-bold w-[105px] rounded">
-        Edit topic
+      <Button type={`submit`} variant="outline" className="font-bold w-fit rounded">
+        Save  
       </Button>
     </form>
   );
