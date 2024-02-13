@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <div className="max-w-3xl mx-auto p-4">
-          <Toaster richColors/>
+          <Toaster richColors position="top-right"/>
           <Header />
           <main className="mt-5">{children}</main>
           {/* footer  */}
