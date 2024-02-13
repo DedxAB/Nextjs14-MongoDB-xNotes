@@ -2,8 +2,10 @@
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const EditTopic = ({ id, title, description }) => {
+  // const { toast } = useToast();
   const route = useRouter();
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
@@ -21,7 +23,7 @@ const EditTopic = ({ id, title, description }) => {
       if (!res.ok) {
         throw new Error("Failed to Edit topic");
       }
-      alert("Updated successfully");
+      toast.success("Topic updated successfully");
       route.push("/");
       route.refresh();
     } catch (error) {
@@ -49,8 +51,12 @@ const EditTopic = ({ id, title, description }) => {
         placeholder="Description"
         className="border shadow outline-none w-full p-4 text-lg rounded"
       />
-      <Button type={`submit`} variant="outline" className="font-bold w-fit rounded">
-        Save  
+      <Button
+        type={`submit`}
+        variant="outline"
+        className="font-bold w-fit rounded"
+      >
+        Save
       </Button>
     </form>
   );

@@ -2,10 +2,9 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "../ui/button";
-import { useToast } from "../ui/use-toast";
+import { toast } from "sonner";
 
 const AddTopic = () => {
-  const { toast } = useToast();
   const router = useRouter();
 
   const [title, setTitle] = useState("");
@@ -14,7 +13,7 @@ const AddTopic = () => {
   const handelSubmit = async (e) => {
     e.preventDefault();
     if (!title || !description) {
-      alert("Please fill all the fields");
+      toast.warning("Please fill all the fields")
       return;
     }
     try {
@@ -29,8 +28,7 @@ const AddTopic = () => {
       if (!res.ok) {
         throw new Error("Failed to save topic");
       }
-      // alert("Topic saved successfully");
-      toast({ description: "Topic saved successfully" });
+      toast.success("Topic added successfully");
       router.push("/");
       router.refresh();
     } catch (error) {

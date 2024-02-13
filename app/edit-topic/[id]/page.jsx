@@ -22,8 +22,8 @@ const getTopicById = async (id) => {
 const EditTopicPage = async ({ params }) => {
   const { id } = params;
   const { topic } = await getTopicById(id);
-  // console.log(topic);
   const { title, description } = topic;
+
   return (
     <>
       <EditTopic id={id} title={title} description={description} />
