@@ -2,8 +2,10 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "../ui/button";
+import { useToast } from "../ui/use-toast";
 
 const AddTopic = () => {
+  const { toast } = useToast();
   const router = useRouter();
 
   const [title, setTitle] = useState("");
@@ -27,7 +29,8 @@ const AddTopic = () => {
       if (!res.ok) {
         throw new Error("Failed to save topic");
       }
-      alert("Topic saved successfully");
+      // alert("Topic saved successfully");
+      toast({ description: "Topic saved successfully" });
       router.push("/");
       router.refresh();
     } catch (error) {

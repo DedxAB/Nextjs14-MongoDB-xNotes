@@ -1,5 +1,6 @@
 import Header from "@/components/header/Header";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata = {
   title: "Home | DedxCRUD",
@@ -12,7 +13,8 @@ export default function RootLayout({ children }) {
       <body>
         <div className="max-w-3xl mx-auto p-4">
           <Header />
-          <div className="mt-5">{children}</div>
+          <main className="mt-5">{children}</main>
+          <Toaster />
           {/* footer  */}
         </div>
       </body>
