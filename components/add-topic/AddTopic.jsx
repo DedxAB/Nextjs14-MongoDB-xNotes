@@ -64,7 +64,7 @@ const AddTopic = () => {
           variant={`outline`}
           className="font-bold w-fit rounded"
         >
-          Add Topic 
+          Add Topic
         </Button>
       </form>
     </>
