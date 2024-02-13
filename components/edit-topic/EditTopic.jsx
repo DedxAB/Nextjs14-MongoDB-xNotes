@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { Input } from "../ui/input";
 
 const EditTopic = ({ id, title, description }) => {
   // const { toast } = useToast();
@@ -33,23 +34,23 @@ const EditTopic = ({ id, title, description }) => {
 
   return (
     <form onSubmit={handelOnSubmit} className="flex flex-col gap-3">
-      <input
+      <Input
         onChange={(e) => setNewTitle(e.target.value)}
         value={newTitle}
         type="text"
         name="topic"
         id="topic"
         placeholder="Topic name"
-        className="border shadow outline-none w-full p-4 text-lg rounded"
+        className="border shadow w-full px-4 py-6 text-lg font-bold rounded"
       />
-      <input
+      <Input
         onChange={(e) => setNewDescription(e.target.value)}
         value={newDescription}
         type="text"
         name="desc"
         id="desc"
         placeholder="Description"
-        className="border shadow outline-none w-full p-4 text-lg rounded"
+        className="border shadow w-full px-4 py-6 font-bold rounded"
       />
       <Button
         type={`submit`}

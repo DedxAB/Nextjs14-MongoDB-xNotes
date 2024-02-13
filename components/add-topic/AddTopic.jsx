@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
+import { Input } from "../ui/input";
 
 const AddTopic = () => {
   const router = useRouter();
@@ -38,7 +39,7 @@ const AddTopic = () => {
   return (
     <>
       <form onSubmit={handelSubmit} className="flex flex-col gap-3">
-        <input
+        <Input
           onChange={(e) => {
             setTitle(e.target.value);
           }}
@@ -47,9 +48,9 @@ const AddTopic = () => {
           name="topic"
           id="topic"
           placeholder="Topic name"
-          className="border shadow outline-none w-full p-4 text-lg rounded"
+          className="border shadow outline-none w-full px-4 py-6 text-lg font-bold rounded"
         />
-        <input
+        <Input
           onChange={(e) => {
             setDescription(e.target.value);
           }}
@@ -58,7 +59,7 @@ const AddTopic = () => {
           name="desc"
           id="desc"
           placeholder="Description"
-          className="border shadow outline-none w-full p-4 text-lg rounded"
+          className="border shadow outline-none w-full px-4 py-6 font-bold rounded"
         />
         <Button
           type={`submit`}
