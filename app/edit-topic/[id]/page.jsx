@@ -13,7 +13,7 @@ const getTopicById = async (id) => {
     if (!res.ok) {
       throw new Error("Failed to get topic");
     }
-    return res.json();
+    return await res.json();
   } catch (error) {
     console.log(error.message);
   }
