@@ -54,15 +54,15 @@ const RemoveBtn = ({ id }) => {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-            <AlertDialogDescription>
+            <AlertDialogDescription className={`font-bold`}>
               This action cannot be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel onClick={() => setConformationMessage(false)}>
+            <AlertDialogCancel className={`font-bold`} onClick={() => setConformationMessage(false)}>
               Cancel
             </AlertDialogCancel>
-            <AlertDialogAction onClick={async () => await removeTopic()}>
+            <AlertDialogAction className={`font-bold`} onClick={async () => await removeTopic()}>
               Continue
             </AlertDialogAction>
           </AlertDialogFooter>
