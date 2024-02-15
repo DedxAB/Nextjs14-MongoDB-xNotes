@@ -6,7 +6,6 @@ import { toast } from "sonner";
 import { Input } from "../ui/input";
 
 const EditTopic = ({ id, title, description }) => {
-  // const { toast } = useToast();
   const route = useRouter();
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
