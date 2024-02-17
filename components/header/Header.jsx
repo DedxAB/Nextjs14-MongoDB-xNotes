@@ -4,7 +4,7 @@ import { ThemeToggle } from "../ThemeToggle";
 
 const Header = () => {
   return (
-    <nav className="flex justify-between items-center py-3 rounded">
+    <nav className="flex justify-between items-center py-3">
       <Link href={`/`}>
         <h1 className="font-bold text-2xl">
           Dedx<span className="text-orange-500">Notes</span>
