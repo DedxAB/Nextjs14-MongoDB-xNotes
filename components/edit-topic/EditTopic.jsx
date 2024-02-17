@@ -23,7 +23,7 @@ const EditTopic = ({ id, title, description }) => {
       if (!res.ok) {
         throw new Error("Failed to Edit topic");
       }
-      toast.success("Topic updated successfully");
+      toast.success("Topic Updated Successfully.");
       route.push("/");
       route.refresh();
     } catch (error) {

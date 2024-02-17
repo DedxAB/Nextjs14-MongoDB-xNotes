@@ -29,14 +29,14 @@ const RemoveBtn = ({ id }) => {
         });
 
         if (!res.ok) throw new Error("Error deleting topic");
-        toast.success("Topic deleted successfully");
+        toast.success("Topic Deleted Successfully.");
         router.refresh();
       } catch (e) {
-        toast.error("Failed to delete topic");
+        toast.error("Failed to Delete Topic.");
         console.log(e.message);
       }
+      setConformationMessage(false);
     }
-    setConformationMessage(false);
   };
 
   return (
@@ -59,10 +59,13 @@ const RemoveBtn = ({ id }) => {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className={`font-bold`} onClick={() => setConformationMessage(false)}>
+            <AlertDialogCancel
+              className={`font-bold`}
+              onClick={() => setConformationMessage(false)}
+            >
               Cancel
             </AlertDialogCancel>
-            <AlertDialogAction className={`font-bold`} onClick={async () => await removeTopic()}>
+            <AlertDialogAction className={`font-bold`} onClick={removeTopic}>
               Continue
             </AlertDialogAction>
           </AlertDialogFooter>

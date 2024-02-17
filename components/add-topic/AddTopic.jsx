@@ -29,7 +29,7 @@ const AddTopic = () => {
       if (!res.ok) {
         throw new Error("Failed to save topic");
       }
-      toast.success("Topic added successfully");
+      toast.success("Topic Added Successfully.");
       router.push("/");
       router.refresh();
     } catch (error) {
