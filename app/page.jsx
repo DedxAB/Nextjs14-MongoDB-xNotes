@@ -1,4 +1,4 @@
-import TopicList from "@/components/Topic-List/TopicList";
+import TopicList from "@/components/topic-list/TopicList";
 
 const Home = () => {
   return (
