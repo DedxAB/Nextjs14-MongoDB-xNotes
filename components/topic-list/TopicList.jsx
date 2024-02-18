@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Pencil } from "lucide-react";
-import RemoveBtn from "../removebtn/RemoveBtn";
+import RemoveBtn from "../Remove-Button/RemoveBtn";
 import { BASE_URL } from "@/utils/constants";
 
 const getTopics = async () => {
