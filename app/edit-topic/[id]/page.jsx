@@ -1,4 +1,4 @@
-import EditTopic from "@/components/edit-topic/EditTopic";
+import EditTopic from "@/components/edit-topic/EditTopicComp";
 import { BASE_URL } from "@/utils/constants";
 
 export const metadata = {

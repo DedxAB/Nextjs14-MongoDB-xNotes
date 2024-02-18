@@ -1,4 +1,4 @@
-import Header from "@/components/navbar/Header";
+import Header from "@/components/navbar/NavbarComp";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";

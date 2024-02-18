@@ -14,7 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 
-const Header = () => {
+const NavbarComp = () => {
   const { status, data: session } = useSession();
   // console.log(status, session?.user);
   const name = session?.user?.name;
@@ -75,4 +75,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default NavbarComp;

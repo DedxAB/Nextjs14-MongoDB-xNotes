@@ -1,4 +1,4 @@
-import AddTopic from "@/components/add-topic/AddTopic";
+import AddTopic from "@/components/add-topic/AddTopicComp";
 
 export const metadata = {
   title: "Add Topic | DedxNotes",
