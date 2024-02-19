@@ -33,13 +33,10 @@ const NavbarComp = () => {
       </Link>
       <div className="flex items-center justify-between gap-4">
         <ThemeToggle />
-        {status === "authenticated" && (
-          <>
-            <Link href={`/add-topic`}>
-              <Button className="font-bold rounded">Add Topic</Button>
-            </Link>
-          </>
-        )}
+
+        <Link href={`/add-topic`}>
+          <Button className="font-bold rounded">Add Topic</Button>
+        </Link>
 
         {status === "authenticated" ? (
           <DropdownMenu>

@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 
 const Signin = () => {
   return (
-    <>
+    <div className="flex items-center justify-center m-auto h-[80vh]">
       <Button
         variant={`outline`}
         className={`font-bold`}
@@ -12,7 +12,7 @@ const Signin = () => {
       >
         Signin using Google
       </Button>
-    </>
+    </div>
   );
 };
 
