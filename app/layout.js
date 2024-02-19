@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
             <div className="max-w-3xl mx-auto p-4">
               <Header />
               <main className="mt-5">{children}</main>
-              <Toaster richColors position="bottom-right" />
+              <Toaster richColors position="top-right" />
               {/* footer  */}
             </div>
           </ThemeProvider>
