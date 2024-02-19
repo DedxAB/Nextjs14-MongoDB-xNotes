@@ -16,7 +16,6 @@ import {
 
 const NavbarComp = () => {
   const { status, data: session } = useSession();
-  // console.log(status, session?.user);
   const name = session?.user?.name;
   const email = session?.user?.email;
 
@@ -66,7 +65,7 @@ const NavbarComp = () => {
         ) : (
           <Link href={`/signin`}>
             <Button variant={`outline`} className="font-bold rounded">
-              Signin
+              Sign In
             </Button>
           </Link>
         )}
