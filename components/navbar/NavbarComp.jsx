@@ -13,6 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import { PlusCircle } from "lucide-react";
 
 const NavbarComp = () => {
   const { status, data: session } = useSession();
@@ -35,7 +36,10 @@ const NavbarComp = () => {
         <ThemeToggle />
 
         <Link href={`/add-topic`}>
-          <Button className="font-bold rounded">Add Topic</Button>
+          <Button className="hidden md:block md:font-bold md:rounded">Add Topic</Button>
+          <Button variant={`outline`} className="font-bold md:hidden" size="icon">
+          <PlusCircle className="w-4"/>
+          </Button>
         </Link>
 
         {status === "authenticated" ? (
