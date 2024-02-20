@@ -3,14 +3,15 @@ import { Button } from "../ui/button";
 import { Pencil } from "lucide-react";
 import RemoveBtn from "../remove-button/RemoveBtnComp";
 import { BASE_URL } from "@/utils/constants";
+import { getServerSession } from "next-auth";
 
 const getTopics = async () => {
   try {
     const res = await fetch(`${BASE_URL}/api/topics`, {
-      cache: "no-store",
+      cache: "no-store", // Disable cache
     });
     if (!res.ok) throw new Error("Error fetching topics");
-    return await res.json();
+    return res.json();
   } catch (error) {
     console.log(error.message);
   }
@@ -18,9 +19,12 @@ const getTopics = async () => {
 
 const TopicList = async () => {
   const { topics } = await getTopics();
+  const session = await getServerSession();
+  const user = session?.user;
 
   return (
     <>
+      {/* Map through the topics and display them */}
       {topics?.map((topic, index) => {
         return (
           <div
@@ -32,12 +36,15 @@ const TopicList = async () => {
               <h2 className="font-bold mt-2">{topic?.description}</h2>
             </div>
             <div className="flex justify-between items-center">
+              {/* Add the edit button */}
               <Link href={`/edit-topic/${topic?._id}`}>
                 <Button variant="outline" size="icon" className="mr-2">
                   <Pencil className="w-4" />
                 </Button>
               </Link>
-              <RemoveBtn id={topic?._id} />
+
+              {/* Add the RemoveBtn component here based on the user session */}
+              {user && <RemoveBtn id={topic?._id} />}
             </div>
           </div>
         );
