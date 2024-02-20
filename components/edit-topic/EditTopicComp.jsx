@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Input } from "../ui/input";
 
-const EditTopic = ({ id, title, description }) => {
+const EditTopicComp = ({ id, title, description }) => {
   const route = useRouter();
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
@@ -62,4 +62,4 @@ const EditTopic = ({ id, title, description }) => {
   );
 };
 
-export default EditTopic;
+export default EditTopicComp;

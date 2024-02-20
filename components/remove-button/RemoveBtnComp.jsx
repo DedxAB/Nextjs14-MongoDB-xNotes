@@ -17,7 +17,7 @@ import {
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
 
-const RemoveBtn = ({ id }) => {
+const RemoveButtonComp = ({ id }) => {
   const router = useRouter();
   const [conformationMessage, setConformationMessage] = useState(false);
 
@@ -75,4 +75,4 @@ const RemoveBtn = ({ id }) => {
   );
 };
 
-export default RemoveBtn;
+export default RemoveButtonComp;

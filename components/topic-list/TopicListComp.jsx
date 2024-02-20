@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Pencil } from "lucide-react";
-import RemoveBtn from "../remove-button/RemoveBtnComp";
 import { BASE_URL } from "@/utils/constants";
 import { getServerSession } from "next-auth";
+import RemoveButtonComp from "../remove-button/RemoveBtnComp";
 
 const getTopics = async () => {
   try {
@@ -44,7 +44,7 @@ const TopicList = async () => {
               </Link>
 
               {/* Add the RemoveBtn component here based on the user session */}
-              {user && <RemoveBtn id={topic?._id} />}
+              {user && <RemoveButtonComp id={topic?._id} />}
             </div>
           </div>
         );
