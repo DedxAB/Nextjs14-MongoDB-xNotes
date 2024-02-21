@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { PlusCircle } from "lucide-react";
+import { LogOut, PlusCircle } from "lucide-react";
 
 const NavbarComp = () => {
   const { status, data: session } = useSession();
@@ -65,7 +65,7 @@ const NavbarComp = () => {
                 className={`cursor-pointer`}
                 onClick={() => signOut()}
               >
-                Sign out
+                <LogOut className="w-4 mr-1" /><span className="font-bold">Sign out</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
