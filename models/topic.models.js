@@ -8,7 +8,6 @@ const topicSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-
 const Topic = mongoose.models.Topic || mongoose.model("Topic", topicSchema);
 
 export default Topic;
