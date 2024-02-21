@@ -33,6 +33,7 @@ const NavbarComp = () => {
         </h1>
       </Link>
       <div className="flex items-center justify-between gap-4">
+        {/* Theme changing component  */}
         <ThemeToggle />
 
         <Link href={`/add-topic`}>
@@ -44,7 +45,7 @@ const NavbarComp = () => {
             className="font-bold md:hidden"
             size="icon"
           >
-            <PlusCircle className="w-4" />
+            <PlusCircle className="w-[1.2rem]" />
           </Button>
         </Link>
 
@@ -65,7 +66,8 @@ const NavbarComp = () => {
                 className={`cursor-pointer`}
                 onClick={() => signOut()}
               >
-                <LogOut className="w-4 mr-1" /><span className="font-bold">Sign out</span>
+                <LogOut className="w-4 mr-1" />
+                <span className="font-bold">Sign out</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
