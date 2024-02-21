@@ -1,4 +1,4 @@
-const { default: connectDB } = require("@/libs/mongodb");
+const { default: connectDB } = require("@/helper/mongodb");
 const { default: Topic } = require("@/models/topic.models");
 
 export async function POST(req) {

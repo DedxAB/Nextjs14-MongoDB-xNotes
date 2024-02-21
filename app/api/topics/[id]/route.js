@@ -1,4 +1,4 @@
-import connectDB from "@/libs/mongodb";
+import connectDB from "@/helper/mongodb";
 import Topic from "@/models/topic.models";
 
 export async function PATCH(req, { params }) {
