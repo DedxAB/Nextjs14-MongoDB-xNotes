@@ -36,9 +36,15 @@ const NavbarComp = () => {
         <ThemeToggle />
 
         <Link href={`/add-topic`}>
-          <Button className="hidden md:block md:font-bold md:rounded">Add Topic</Button>
-          <Button variant={`outline`} className="font-bold md:hidden" size="icon">
-          <PlusCircle className="w-4"/>
+          <Button className="hidden md:block md:font-bold md:rounded">
+            Add Topic
+          </Button>
+          <Button
+            variant={`outline`}
+            className="font-bold md:hidden"
+            size="icon"
+          >
+            <PlusCircle className="w-4" />
           </Button>
         </Link>
 
