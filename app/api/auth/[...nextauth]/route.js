@@ -20,7 +20,7 @@ const authOptions = {
         const { email, name } = user;
         try {
           await connectDB();
-          const existUser = await User.findOne({ email });
+          const existUser = await User.findOne({ email: email });
           if (!existUser) {
             const res = await fetch(`${BASE_URL}/api/user`, {
               method: "POST",
@@ -37,6 +37,9 @@ const authOptions = {
       }
       return user;
     },
+  },
+  pages: {
+    signIn: "/signin",
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
