@@ -17,7 +17,7 @@ const authOptions = {
       // console.log("profile:", profile);
       // console.log("account:", account);
       if (account.provider === "google") {
-        const { email, name } = user;
+        const { email, name, image } = user;
         try {
           await connectDB();
           const existUser = await User.findOne({ email: email });
@@ -27,7 +27,7 @@ const authOptions = {
               headers: {
                 "content-type": "application/json",
               },
-              body: JSON.stringify({ email, name }),
+              body: JSON.stringify({ email, name, image }),
             });
             if (!res) throw new Error("Failed to register user");
           }
