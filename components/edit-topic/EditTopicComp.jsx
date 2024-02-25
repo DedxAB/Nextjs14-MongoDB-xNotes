@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
 
 const EditTopicComp = ({ id, title, description }) => {
   const route = useRouter();
@@ -42,7 +43,7 @@ const EditTopicComp = ({ id, title, description }) => {
         placeholder="Topic name"
         className="border shadow w-full px-4 py-6 text-lg font-bold rounded"
       />
-      <Input
+      {/* <Input
         onChange={(e) => setNewDescription(e.target.value)}
         value={newDescription}
         type="text"
@@ -50,7 +51,14 @@ const EditTopicComp = ({ id, title, description }) => {
         id="desc"
         placeholder="Description"
         className="border shadow w-full px-4 py-6 font-bold rounded"
+      /> */}
+      <Textarea
+        onChange={(e) => setNewDescription(e.target.value)}
+        value={newDescription}
+        placeholder={`Please fill the Details about the topic`}
+        className={`border shadow w-full px-4 py-3 font-bold rounded`}
       />
+
       <Button
         type={`submit`}
         variant="outline"

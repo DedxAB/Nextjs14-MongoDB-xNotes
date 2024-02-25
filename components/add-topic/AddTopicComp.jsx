@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
 import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
 
 const AddTopic = () => {
   const router = useRouter();
@@ -14,7 +15,7 @@ const AddTopic = () => {
   const handelSubmit = async (e) => {
     e.preventDefault();
     if (!title || !description) {
-      toast.warning("Please fill all the fields")
+      toast.warning("Please fill all the fields");
       return;
     }
     try {
@@ -50,7 +51,7 @@ const AddTopic = () => {
           placeholder="Topic name"
           className="border shadow outline-none w-full px-4 py-6 text-lg font-bold rounded"
         />
-        <Input
+        {/* <Input
           onChange={(e) => {
             setDescription(e.target.value);
           }}
@@ -60,6 +61,12 @@ const AddTopic = () => {
           id="desc"
           placeholder="Description"
           className="border shadow outline-none w-full px-4 py-6 font-bold rounded"
+        /> */}
+        <Textarea
+          onChange={(e) => setDescription(e.target.value)}
+          value={description}
+          placeholder={`Please fill the Details about the topic`}
+          className={`border shadow w-full px-4 py-3 font-bold rounded`}
         />
         <Button
           type={`submit`}
