@@ -34,16 +34,18 @@ const TopicList = async () => {
             <div className="flex justify-between items-start gap-1">
               <h2 className="text-lg font-bold underline">{topic?.title}</h2>
               {/* Add the edit button */}
-              <div className="min-w-20">
-                <Link href={`/edit-topic/${topic?._id}`}>
-                  <Button variant="outline" size="icon" className="mr-2">
-                    <Pencil className="w-4" />
-                  </Button>
-                </Link>
+              {user && (
+                <div className="min-w-20">
+                  <Link href={`/edit-topic/${topic?._id}`}>
+                    <Button variant="outline" size="icon" className="mr-2">
+                      <Pencil className="w-4" />
+                    </Button>
+                  </Link>
 
-                {/* Add the RemoveBtn component here based on the user session */}
-                {user && <RemoveButtonComp id={topic?._id} />}
-              </div>
+                  {/* Add the RemoveBtn component here based on the user session */}
+                  <RemoveButtonComp id={topic?._id} />
+                </div>
+              )}
             </div>
             <div className="flex justify-between items-center">
               <h2 className="font-bold mt-2">{topic?.description}</h2>
