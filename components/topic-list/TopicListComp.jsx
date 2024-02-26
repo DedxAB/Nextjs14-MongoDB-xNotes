@@ -28,23 +28,25 @@ const TopicList = async () => {
       {topics?.map((topic, index) => {
         return (
           <div
-            className="border flex justify-between gap-3 mb-3 rounded px-4 py-2 shadow cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out"
+            className="border flex flex-col justify-between gap-1 mb-3 rounded px-4 py-2 shadow cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out"
             key={index}
           >
-            <div>
+            <div className="flex justify-between items-start gap-1">
               <h2 className="text-lg font-bold underline">{topic?.title}</h2>
-              <h2 className="font-bold mt-2">{topic?.description}</h2>
+              {/* Add the edit button */}
+              <div className="min-w-20">
+                <Link href={`/edit-topic/${topic?._id}`}>
+                  <Button variant="outline" size="icon" className="mr-2">
+                    <Pencil className="w-4" />
+                  </Button>
+                </Link>
+
+                {/* Add the RemoveBtn component here based on the user session */}
+                {user && <RemoveButtonComp id={topic?._id} />}
+              </div>
             </div>
             <div className="flex justify-between items-center">
-              {/* Add the edit button */}
-              <Link href={`/edit-topic/${topic?._id}`}>
-                <Button variant="outline" size="icon" className="mr-2">
-                  <Pencil className="w-4" />
-                </Button>
-              </Link>
-
-              {/* Add the RemoveBtn component here based on the user session */}
-              {user && <RemoveButtonComp id={topic?._id} />}
+              <h2 className="font-bold mt-2">{topic?.description}</h2>
             </div>
           </div>
         );
