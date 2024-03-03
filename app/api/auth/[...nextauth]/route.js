@@ -12,12 +12,22 @@ const authOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ user, profile, account }) {
-      // console.log("user:", user);
-      // console.log("profile:", profile);
-      // console.log("account:", account);
+    async session({ session }) {
+      try {
+        await connectDB();
+        const user = await User.findOne({ email: session.user.email });
+        // console.log(user);
+        session.user.id = user._id.toString();
+        // console.log(session);
+        return session;
+      } catch (error) {
+        return new Error("Failed to get session");
+      }
+    },
+    async signIn({ profile, account }) {
+      // checks if the user is signing in with google
       if (account.provider === "google") {
-        const { email, name, image } = user;
+        const { email, name, image } = profile;
         try {
           await connectDB();
           const existUser = await User.findOne({ email: email });

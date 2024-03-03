@@ -14,6 +14,20 @@ const userShema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    // username: {
+    //   type: String,
+    //   require: true,
+    //   mach: [
+
+    //   ]
+    // }
+    // ,
+    topic: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Topic",
+      },
+    ],
   },
   { timestamps: true }
 );

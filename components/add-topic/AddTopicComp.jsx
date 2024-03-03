@@ -51,17 +51,6 @@ const AddTopic = () => {
           placeholder="Topic name"
           className="border shadow outline-none w-full px-4 py-6 text-lg font-bold rounded"
         />
-        {/* <Input
-          onChange={(e) => {
-            setDescription(e.target.value);
-          }}
-          value={description}
-          type="text"
-          name="desc"
-          id="desc"
-          placeholder="Description"
-          className="border shadow outline-none w-full px-4 py-6 font-bold rounded"
-        /> */}
         <Textarea
           onChange={(e) => setDescription(e.target.value)}
           value={description}

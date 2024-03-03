@@ -4,7 +4,12 @@ const { default: Topic } = require("@/models/topic.models");
 export async function POST(req) {
   await connectDB();
   const { title, description } = await req.json();
-  await Topic.create({ title, description });
+  // await Topic.create({ title, description });
+  const newTopic = new Topic({
+    title: title,
+    description: description,
+  });
+  await newTopic.save();
   return Response.json({ message: "topic created" }, { status: 201 });
 }
 
