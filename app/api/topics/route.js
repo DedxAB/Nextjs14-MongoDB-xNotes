@@ -15,7 +15,7 @@ export async function POST(req) {
 
 export async function GET(_req) {
   await connectDB();
-  const topics = await Topic.find();
+  const topics = await Topic.find().sort({ createdAt: -1 });
   return Response.json({ topics });
 }
 

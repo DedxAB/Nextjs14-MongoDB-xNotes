@@ -32,7 +32,13 @@ const TopicList = async () => {
             key={index}
           >
             <div className="flex justify-between items-start gap-1">
-              <h2 className="text-lg font-bold underline">{topic?.title}</h2>
+              <div>
+                <h2 className="text-lg font-bold underline">{topic?.title}</h2>
+                <h2 className="text-xs ">
+                  {new Date(topic?.createdAt).toLocaleString()}
+                </h2>
+              </div>
+
               {/* Show Edit and remove button based on user */}
               {user && (
                 <div className="min-w-20">

@@ -12,6 +12,7 @@ const authOptions = {
     }),
   ],
   callbacks: {
+    /*
     async session({ session }) {
       try {
         await connectDB();
@@ -24,6 +25,7 @@ const authOptions = {
         return new Error("Failed to get session");
       }
     },
+    */
     async signIn({ profile, account }) {
       // checks if the user is signing in with google
       if (account.provider === "google") {
