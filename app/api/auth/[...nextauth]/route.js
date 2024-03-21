@@ -47,7 +47,7 @@ const authOptions = {
           console.log(error);
         }
       }
-      return user;
+      return profile;
     },
   },
   pages: {
