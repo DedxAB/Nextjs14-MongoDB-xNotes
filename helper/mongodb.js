@@ -18,7 +18,7 @@ const connectDB = async () => {
   if (connectionState === 1) {
     console.log("Already connected");
     return;
-  }
+  } 
   if (connectionState === 2) {
     console.log("Connecting...");
     return;
