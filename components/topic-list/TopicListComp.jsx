@@ -32,12 +32,13 @@ const TopicList = async () => {
             key={index}
           >
             <div className="flex justify-between items-start gap-1">
-
               {/* Show the title and date */}
               <div>
                 <h2 className="text-lg font-bold underline">{topic?.title}</h2>
                 <h2 className="text-xs ">
-                  {new Date(topic?.createdAt).toLocaleString()}
+                  {new Date(topic?.createdAt).toLocaleString("en-US", {
+                    timeZone: "Asia/Kolkata",
+                  })}
                 </h2>
               </div>
 
