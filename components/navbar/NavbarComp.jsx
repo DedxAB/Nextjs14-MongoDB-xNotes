@@ -38,7 +38,10 @@ const NavbarComp = () => {
         <ThemeToggle />
 
         <Link href={`/add-topic`}>
-          <Button className="hidden md:block md:font-bold md:rounded">
+          <Button
+            variant={`outline`}
+            className="hidden md:block md:font-bold md:rounded"
+          >
             Add Topic
           </Button>
           <Button
@@ -61,8 +64,8 @@ const NavbarComp = () => {
             <DropdownMenuContent>
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <p className="px-2 py-1">{name}</p>
-              <p className="px-2 py-1">{email}</p>
+              <p className="px-2 py-1 text-xs font-bold">{name}</p>
+              <p className="px-2 py-1 text-xs font-bold">{email}</p>
               <DropdownMenuItem
                 className={`cursor-pointer`}
                 onClick={() => signOut()}
