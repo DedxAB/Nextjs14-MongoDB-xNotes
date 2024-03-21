@@ -9,6 +9,11 @@ const connectDB = async () => {
     throw new Error("MongoDB connection failed");
   }
   */
+
+  /*
+   Best practice is to check the connection state before connecting to the database. This will prevent multiple connections to the database if the connection is already established or in progress. 
+  */
+
   const connectionState = mongoose.connection.readyState;
   if (connectionState === 1) {
     console.log("Already connected");
