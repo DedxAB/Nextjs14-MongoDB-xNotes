@@ -36,6 +36,7 @@ const TopicList = async () => {
               <div>
                 <h2 className="text-lg font-bold underline">{topic?.title}</h2>
                 <h2 className="text-xs ">
+                  {/* IST:{" "} */}
                   {new Date(topic?.createdAt).toLocaleString("en-US", {
                     timeZone: "Asia/Kolkata",
                   })}
