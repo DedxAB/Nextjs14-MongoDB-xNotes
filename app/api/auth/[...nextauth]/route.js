@@ -26,14 +26,16 @@ const authOptions = {
     async signIn({ user, account }) {
       if (account.provider === "google") {
         const { email, name, image } = user;
-        try {
+        const username = email.split("@")[0];
+        console.log(username);
+        try { 
           await connectDB();
           const res = await fetch(`${BASE_URL}/api/user`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
             },
-            body: JSON.stringify({ email, name, image }),
+            body: JSON.stringify({ email, name, image, username }),
           });
           if (!res) throw new Error("Failed to register user");
         } catch (error) {

@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 
 const SigninPage = async () => {
   const session = await getServerSession();
+  console.log(session);
   /*
   console.log(session);
   Output:

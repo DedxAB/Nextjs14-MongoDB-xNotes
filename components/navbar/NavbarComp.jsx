@@ -19,7 +19,7 @@ const NavbarComp = () => {
   const { status, data: session } = useSession();
   const name = session?.user?.name;
   const email = session?.user?.email;
-  // console.log(status);
+  console.log(status);
 
   let shortName = name
     ?.split(" ")
