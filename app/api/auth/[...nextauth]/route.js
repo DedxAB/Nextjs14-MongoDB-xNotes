@@ -37,11 +37,13 @@ const authOptions = {
             body: JSON.stringify({ email, name, image, username }),
           });
           if (!res) throw new Error("Failed to register user");
+          return true;
         } catch (error) {
           console.log(error);
+          return false;
         }
       }
-      return user;
+      // return user;
     },
   },
   pages: {
