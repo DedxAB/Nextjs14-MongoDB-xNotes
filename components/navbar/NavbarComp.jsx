@@ -13,9 +13,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { LogOut, PlusCircle } from "lucide-react";
+import { CircleUserRound, LogOut, PlusCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const NavbarComp = () => {
+  const router = useRouter();
   const { status, data: session } = useSession();
   const name = session?.user?.name;
   const email = session?.user?.email;
@@ -40,10 +42,7 @@ const NavbarComp = () => {
         <ThemeToggle />
 
         <Link href={`/add-topic`}>
-          <Button
-            variant={`outline`}
-            className="hidden md:block md:font-bold"
-          >
+          <Button variant={`outline`} className="hidden md:block md:font-bold">
             Add Topic
           </Button>
           <Button
@@ -66,13 +65,20 @@ const NavbarComp = () => {
             <DropdownMenuContent>
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <p className="px-2 py-1 text-xs font-bold">{name}</p>
-              <p className="px-2 py-1 text-xs font-bold">{email}</p>
+              {/* <p className="px-2 py-1 text-xs font-bold">{name}</p>
+              <p className="px-2 py-1 text-xs font-bold">{email}</p> */}
+              <DropdownMenuItem
+                className={`cursor-pointer`}
+                onClick={() => router.push(`/profile`)}
+              >
+                <CircleUserRound className="w-4 mr-2" />
+                <span className="font-bold">Profile</span>
+              </DropdownMenuItem>
               <DropdownMenuItem
                 className={`cursor-pointer`}
                 onClick={() => signOut()}
               >
-                <LogOut className="w-4 mr-1" />
+                <LogOut className="w-4 mr-2" />
                 <span className="font-bold">Sign out</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
