@@ -77,8 +77,8 @@ const NavbarComp = () => {
           </DropdownMenu>
         ) : (
           <Link href={`/signin`}>
-            <Button variant={`outline`} className="font-bold rounded">
-              Sign In
+            <Button variant={`outline`} className="font-bold text-base">
+              Sign in
             </Button>
           </Link>
         )}
