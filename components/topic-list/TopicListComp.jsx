@@ -53,7 +53,7 @@ const TopicList = async () => {
                 {/* Show the title and date */}
                 <div>
                   {/* title  */}
-                  <h2 className="text-sm md:text-lg font-bold underline">
+                  <h2 className="text-base md:text-lg font-bold underline">
                     {topic?.title}
                   </h2>
 
@@ -82,7 +82,7 @@ const TopicList = async () => {
 
               {/* Show the description */}
               <div className="flex justify-between items-center">
-                <h2 className="text-sm font-bold md:font-bold mt-2">
+                <h2 className="text-sm font-bold mt-2">
                   {topic?.description}
                 </h2>
               </div>
