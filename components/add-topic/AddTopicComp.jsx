@@ -59,11 +59,7 @@ const AddTopic = () => {
           placeholder={`Please fill the Details about the topic`}
           className={`border shadow w-full px-4 py-3 font-bold rounded`}
         />
-        <Button
-          type={`submit`}
-          variant={`outline`}
-          className="font-bold w-fit rounded"
-        >
+        <Button type={`submit`} variant={`outline`} className="font-bold w-fit">
           Add Topic
         </Button>
       </form>

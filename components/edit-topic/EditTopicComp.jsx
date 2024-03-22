@@ -62,7 +62,7 @@ const EditTopicComp = ({ id, title, description }) => {
       <Button
         type={`submit`}
         variant="outline"
-        className="font-bold w-fit rounded"
+        className="font-bold w-fit"
       >
         Save Topic
       </Button>

@@ -7,7 +7,7 @@ const Signin = () => {
     <div className="flex items-center justify-center m-auto h-[80vh]">
       <Button
         variant={`outline`}
-        className={`font-bold`}
+        className={`font-bold h-10`}
         onClick={() => signIn("google")}
       >
         {/* Google svg  */}
@@ -37,7 +37,7 @@ const Signin = () => {
             d="M43.611,20.083L43.595,20L42,20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
           ></path>
         </svg>
-        <span>Signin using Google</span>
+        <span>Signin with Google</span>
       </Button>
     </div>
   );

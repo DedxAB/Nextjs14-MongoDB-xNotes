@@ -19,7 +19,6 @@ const NavbarComp = () => {
   const { status, data: session } = useSession();
   const name = session?.user?.name;
   const email = session?.user?.email;
-  // console.log(status);
 
   let shortName = name
     ?.split(" ")
@@ -30,7 +29,10 @@ const NavbarComp = () => {
     <nav className="flex justify-between items-center py-3">
       <Link href={`/`}>
         <h1 className="font-bold text-2xl">
-          Dedx<span className="text-orange-500">Notes</span>
+          Dedx
+          <span className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
+            Notes
+          </span>
         </h1>
       </Link>
       <div className="flex items-center justify-between gap-4">
@@ -40,7 +42,7 @@ const NavbarComp = () => {
         <Link href={`/add-topic`}>
           <Button
             variant={`outline`}
-            className="hidden md:block md:font-bold md:rounded"
+            className="hidden md:block md:font-bold"
           >
             Add Topic
           </Button>

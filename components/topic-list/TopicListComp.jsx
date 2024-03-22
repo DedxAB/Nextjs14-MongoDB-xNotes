@@ -30,24 +30,26 @@ const TopicList = async () => {
       {/* Show the user name if logged in */}
       {session ? (
         <>
-          <div className="font-bold text-gray-800 mb-8 mt-3">
+          <div className="font-bold text-[#444746] mb-8 mt-3">
             <h1 className="text-4xl md:text-5xl bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent">
               Hello, {session?.user?.name.split(" ")[0]}
             </h1>
-            <h1 className="text-3xl md:text-4xl">Welcome to xNotes</h1>
+            <h1 className="text-3xl md:text-4xl my-2">Welcome to xNotes</h1>
           </div>
         </>
       ) : (
         <>
-          <div className="font-bold text-gray-800 mb-8 mt-3">
+          <div className="font-bold text-[#444746] mb-8 mt-3">
             <h1 className="text-4xl md:text-5xl bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent">
               Hello, Guest
             </h1>
-            <h1 className="text-3xl md:text-4xl">Wants to create notes?</h1>
+            <h1 className="text-3xl md:text-4xl my-2">
+              Wants to create notes?
+            </h1>
             <Link href={`/signin`}>
               <Button
                 variant={`outline`}
-                className={`text-base font-bold mt-2`}
+                className={`text-base font-bold mt-1`}
               >
                 Sign in
               </Button>
