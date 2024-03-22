@@ -43,15 +43,6 @@ const EditTopicComp = ({ id, title, description }) => {
         placeholder="Topic name"
         className="border shadow w-full px-4 py-6 text-lg font-bold rounded"
       />
-      {/* <Input
-        onChange={(e) => setNewDescription(e.target.value)}
-        value={newDescription}
-        type="text"
-        name="desc"
-        id="desc"
-        placeholder="Description"
-        className="border shadow w-full px-4 py-6 font-bold rounded"
-      /> */}
       <Textarea
         onChange={(e) => setNewDescription(e.target.value)}
         value={newDescription}

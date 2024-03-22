@@ -43,7 +43,6 @@ const authOptions = {
           return false;
         }
       }
-      // return user;
     },
   },
   pages: {

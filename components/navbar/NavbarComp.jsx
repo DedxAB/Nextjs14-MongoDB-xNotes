@@ -20,7 +20,6 @@ const NavbarComp = () => {
   const router = useRouter();
   const { status, data: session } = useSession();
   const name = session?.user?.name;
-  const email = session?.user?.email;
 
   let shortName = name
     ?.split(" ")
@@ -65,8 +64,6 @@ const NavbarComp = () => {
             <DropdownMenuContent>
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              {/* <p className="px-2 py-1 text-xs font-bold">{name}</p>
-              <p className="px-2 py-1 text-xs font-bold">{email}</p> */}
               <DropdownMenuItem
                 className={`cursor-pointer`}
                 onClick={() => router.push(`/profile`)}
