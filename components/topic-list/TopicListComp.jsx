@@ -45,15 +45,13 @@ const TopicList = async () => {
                 <h2 className="font-bold">{topic?.author?.name}</h2>
 
                 {/* username */}
-                <span className="text-gray-600">
-                  @{topic?.author?.username}
-                </span>
+                <span className="text-gray-500">@{topic?.author?.username}</span>
               </div>
               <div className="flex justify-between items-start gap-1">
                 {/* Show the title and date */}
                 <div>
                   {/* title  */}
-                  <h2 className="text-lg font-bold underline">
+                  <h2 className="text-sm md:text-lg font-bold underline">
                     {topic?.title}
                   </h2>
 
@@ -82,7 +80,9 @@ const TopicList = async () => {
 
               {/* Show the description */}
               <div className="flex justify-between items-center">
-                <h2 className="font-bold mt-2">{topic?.description}</h2>
+                <h2 className="text-sm font-bold md:font-bold mt-2">
+                  {topic?.description}
+                </h2>
               </div>
             </div>
           </div>
