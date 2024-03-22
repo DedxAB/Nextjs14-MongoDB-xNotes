@@ -29,11 +29,11 @@ const TopicList = async () => {
       {topics?.map((topic, index) => {
         return (
           <div
-            className="border flex justify-start gap-1 mb-3 rounded px-4 py-3 shadow cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out"
+            className="border flex justify-start gap-1 mb-3 rounded px-3 md:px-4 py-3 shadow cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out"
             key={index}
           >
             {/* Show the author image */}
-            <div className="my-1 mr-3">
+            <div className="my-1 mr-2">
               <Avatar>
                 <AvatarImage src={`${topic?.author?.image}`} />
               </Avatar>
@@ -45,7 +45,9 @@ const TopicList = async () => {
                 <h2 className="font-bold">{topic?.author?.name}</h2>
 
                 {/* username */}
-                <span className="text-gray-500">@{topic?.author?.username}</span>
+                <span className="text-gray-500">
+                  @{topic?.author?.username}
+                </span>
               </div>
               <div className="flex justify-between items-start gap-1">
                 {/* Show the title and date */}
