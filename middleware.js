@@ -10,6 +10,7 @@ export const config = {
      * - favicon.ico (favicon file)
      */
     "/add-topic",
+    "/profile",
     "/edit-topic/:path*",
     // "/((?!api|_next/static|_next/image|favicon.ico).*)",
   ],
