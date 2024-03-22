@@ -30,7 +30,7 @@ const TopicList = async () => {
       {/* Show the user name if logged in */}
       {session ? (
         <>
-          <div className="font-bold text-gray-800 mb-9 mt-3">
+          <div className="font-bold text-gray-800 mb-8 mt-3">
             <h1 className="text-4xl md:text-5xl bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent">
               Hello, {session?.user?.name.split(" ")[0]}
             </h1>
@@ -39,7 +39,7 @@ const TopicList = async () => {
         </>
       ) : (
         <>
-          <div className="font-bold text-gray-800 mb-9 mt-3">
+          <div className="font-bold text-gray-800 mb-8 mt-3">
             <h1 className="text-4xl md:text-5xl bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent">
               Hello, Guest
             </h1>
@@ -60,7 +60,7 @@ const TopicList = async () => {
       {topics?.map((topic, index) => {
         return (
           <div
-            className="border flex justify-start gap-1 mb-3 rounded px-3 md:px-4 py-3 shadow cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out"
+            className="border flex justify-start gap-1 mb-4 rounded px-3 md:px-4 py-3 shadow cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out"
             key={index}
           >
             {/* Show the author image */}
