@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { Pencil } from "lucide-react";
+import { FilePenLine, Pencil } from "lucide-react";
 import { BASE_URL } from "@/utils/constants";
 import { getServerSession } from "next-auth";
 import RemoveButtonComp from "../remove-button/RemoveBtnComp";
@@ -91,11 +91,21 @@ const TopicList = async () => {
                   </h2>
 
                   {/* date */}
-                  <span className="text-xs">
-                    {new Date(topic?.createdAt).toLocaleString("en-US", {
-                      timeZone: "Asia/Kolkata",
-                    })}
-                  </span>
+                  <div className="flex justify-start items-center gap-2 text-[#6b6e6e]">
+                    <div className="text-xs">
+                      {new Date(topic?.createdAt).toLocaleString("en-US", {
+                        timeZone: "Asia/Kolkata",
+                      })}
+                    </div>
+
+                    {/* Show the edited date if updated */}
+                    {topic?.updatedAt !== topic?.createdAt && (
+                      <div className="flex items-center gap-1">
+                        <FilePenLine className="w-3" />
+                        <div className="text-xs">edited</div>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 {/* Show Edit and remove button based on user */}
