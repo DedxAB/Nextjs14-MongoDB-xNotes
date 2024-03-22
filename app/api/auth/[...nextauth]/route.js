@@ -27,7 +27,6 @@ const authOptions = {
       if (account.provider === "google") {
         const { email, name, image } = user;
         const username = email.split("@")[0];
-        console.log(username);
         try { 
           await connectDB();
           const res = await fetch(`${BASE_URL}/api/user`, {
