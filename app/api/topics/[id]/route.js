@@ -1,5 +1,5 @@
 import connectDB from "@/helper/mongodb";
-import Topic from "@/models/topic.models";
+import Topic from "@/models/topic.model";
 
 export async function PATCH(req, { params }) {
   const { id } = params;

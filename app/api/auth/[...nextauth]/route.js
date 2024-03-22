@@ -1,5 +1,5 @@
 import connectDB from "@/helper/mongodb";
-import User from "@/models/user.models";
+import User from "@/models/user.model";
 import { BASE_URL } from "@/utils/constants";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
@@ -12,42 +12,35 @@ const authOptions = {
     }),
   ],
   callbacks: {
-    /*
     async session({ session }) {
       try {
         await connectDB();
         const user = await User.findOne({ email: session.user.email });
-        // console.log(user);
         session.user.id = user._id.toString();
-        // console.log(session);
         return session;
       } catch (error) {
         return new Error("Failed to get session");
       }
     },
-    */
-    async signIn({ profile, account }) {
-      // checks if the user is signing in with google
+
+    async signIn({ user, account }) {
       if (account.provider === "google") {
-        const { email, name, image } = profile;
+        const { email, name, image } = user;
         try {
           await connectDB();
-          const existUser = await User.findOne({ email: email });
-          if (!existUser) {
-            const res = await fetch(`${BASE_URL}/api/user`, {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify({ email, name, image }),
-            });
-            if (!res) throw new Error("Failed to register user");
-          }
+          const res = await fetch(`${BASE_URL}/api/user`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({ email, name, image }),
+          });
+          if (!res) throw new Error("Failed to register user");
         } catch (error) {
           console.log(error);
         }
       }
-      return profile;
+      return user;
     },
   },
   pages: {

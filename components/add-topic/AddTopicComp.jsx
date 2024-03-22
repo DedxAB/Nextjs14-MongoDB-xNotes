@@ -5,9 +5,11 @@ import { Button } from "../ui/button";
 import { toast } from "sonner";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import { useSession } from "next-auth/react";
 
 const AddTopic = () => {
   const router = useRouter();
+  const { data: session } = useSession();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -24,7 +26,7 @@ const AddTopic = () => {
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify({ title, description }),
+        body: JSON.stringify({ title, description, author: session.user.id }),
       });
 
       if (!res.ok) {
