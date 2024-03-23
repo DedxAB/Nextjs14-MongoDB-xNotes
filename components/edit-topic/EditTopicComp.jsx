@@ -55,7 +55,7 @@ const EditTopicComp = ({ id, title, description }) => {
         variant="outline"
         className="font-bold w-fit"
       >
-        Save Topic
+        Save Note
       </Button>
     </form>
   );

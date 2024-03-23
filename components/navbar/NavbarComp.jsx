@@ -42,7 +42,7 @@ const NavbarComp = () => {
 
         <Link href={`/add-topic`}>
           <Button variant={`outline`} className="hidden md:block md:font-bold">
-            Add Topic
+            Create
           </Button>
           <Button
             variant={`outline`}

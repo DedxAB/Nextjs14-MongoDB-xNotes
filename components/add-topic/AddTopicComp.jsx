@@ -26,7 +26,7 @@ const AddTopic = () => {
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify({ title, description, author: session.user.id }),
+        body: JSON.stringify({ title, description, author: session?.user?.id }),
       });
 
       if (!res.ok) {
@@ -60,7 +60,7 @@ const AddTopic = () => {
           className={`border shadow w-full px-4 py-3 font-bold rounded`}
         />
         <Button type={`submit`} variant={`outline`} className="font-bold w-fit">
-          Add Topic
+          Add Note
         </Button>
       </form>
     </>
