@@ -6,7 +6,7 @@ import NavbarComp from "@/components/navbar/NavbarComp";
 
 export const metadata = {
   title: "Home | DedxNotes",
-  description: "Created by DedxAB, this is a simple note-taking app.",
+  description: "Created by DedxAB, This is a note-taking app.",
 };
 
 export default function RootLayout({ children }) {
