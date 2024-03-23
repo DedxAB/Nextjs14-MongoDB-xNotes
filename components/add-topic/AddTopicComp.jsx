@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { useSession } from "next-auth/react";
+import { ArrowUpToLine } from "lucide-react";
 
 const AddTopic = () => {
   const router = useRouter();
@@ -30,9 +31,9 @@ const AddTopic = () => {
       });
 
       if (!res.ok) {
-        throw new Error("Failed to save topic");
+        throw new Error("Failed to save Note");
       }
-      toast.success("Topic Added Successfully.");
+      toast.success("Note Added Successfully.");
       router.push("/");
       router.refresh();
     } catch (error) {
@@ -60,7 +61,8 @@ const AddTopic = () => {
           className={`border shadow w-full px-4 py-3 font-bold rounded`}
         />
         <Button type={`submit`} variant={`outline`} className="font-bold w-fit">
-          Add Note
+          <ArrowUpToLine className="w-4 mr-1" />
+          Publish
         </Button>
       </form>
     </>

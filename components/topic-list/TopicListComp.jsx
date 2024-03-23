@@ -91,8 +91,8 @@ const TopicList = async () => {
                   </h2>
 
                   {/* date */}
-                  <div className="flex justify-start items-center gap-2 text-[#6b6e6e]">
-                    <div className="text-xs">
+                  <div className="flex flex-wrap justify-start items-center text-[#6b6e6e]">
+                    <div className="text-xs mr-2">
                       {new Date(topic?.createdAt).toLocaleString("en-US", {
                         timeZone: "Asia/Kolkata",
                       })}

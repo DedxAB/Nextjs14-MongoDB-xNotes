@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { CircleUserRound, LogOut, PlusCircle } from "lucide-react";
+import { CircleUserRound, LogOut, NotebookPen, PlusCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const NavbarComp = () => {
@@ -41,15 +41,19 @@ const NavbarComp = () => {
         <ThemeToggle />
 
         <Link href={`/add-topic`}>
-          <Button variant={`outline`} className="hidden md:block md:font-bold">
-            Create
+          <Button
+            variant={`outline`}
+            className="hidden md:font-bold md:flex md:gap-1"
+          >
+            <NotebookPen className="w-[1.2rem]" />
+            <span>Write</span>
           </Button>
           <Button
             variant={`outline`}
             className="font-bold md:hidden"
             size="icon"
           >
-            <PlusCircle className="w-[1.2rem]" />
+            <NotebookPen className="w-[1.2rem]" />
           </Button>
         </Link>
 
