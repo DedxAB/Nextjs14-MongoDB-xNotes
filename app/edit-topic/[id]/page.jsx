@@ -2,7 +2,7 @@ import EditTopicComp from "@/components/edit-topic/EditTopicComp";
 import { BASE_URL } from "@/utils/constants";
 
 export const metadata = {
-  title: "Edit Topic | DedxNotes",
+  title: "Edit Note | DedxNotes",
 };
 
 const getTopicById = async (id) => {
