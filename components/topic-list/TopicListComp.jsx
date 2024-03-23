@@ -73,9 +73,9 @@ const TopicList = async () => {
             </div>
             <div className="w-full">
               {/* Show the author name, username */}
-              <div className="flex gap-1 text-xs pb-1">
+              <div className="flex flex-wrap text-xs mb-1">
                 {/* name  */}
-                <h2 className="font-bold">{topic?.author?.name}</h2>
+                <h2 className="font-bold mr-1">{topic?.author?.name}</h2>
 
                 {/* username */}
                 <span className="text-gray-500">
