@@ -26,7 +26,7 @@ const TopicList = async () => {
   const session = await getServerSession();
   const user = session?.user;
   // console.log(topics);
-  console.log(user);
+  // console.log(user);
   return (
     <>
       {/* Map through the topics and display them */}
