@@ -26,7 +26,7 @@ const TopicList = async () => {
   const session = await getServerSession();
   const user = session?.user;
   // console.log(topics);
-  // console.log(session);
+  console.log(user);
   return (
     <>
       {/* Map through the topics and display them */}
@@ -79,8 +79,8 @@ const TopicList = async () => {
                   </div>
                 </div>
 
-                {/* Show Edit and remove button based on user */}
-                {user && (
+                {/* Show Edit and remove button based on user who created this note */}
+                {user && user?.email === topic?.author?.email && (
                   <div className="min-w-20">
                     {/* Add the edit button */}
                     <Link href={`/edit-topic/${topic?._id}`}>
