@@ -18,10 +18,8 @@ export async function POST(req) {
 }
 
 // Get all users
-const GET = async (_req, _res) => {
+export const GET = async (_req, _res) => {
   await connectDB();
   const users = await User.find();
   return NextResponse.json({ users });
 };
-
-export { GET };

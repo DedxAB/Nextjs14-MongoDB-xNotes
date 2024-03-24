@@ -54,7 +54,7 @@ const EditTopicComp = ({ id, title, description }) => {
           name="topic"
           id="topic"
           placeholder="Topic name"
-          className="border shadow w-full px-4 py-6 mb-3 text-lg font-bold rounded"
+          className="border shadow w-full px-4 py-6 text-lg font-bold rounded"
         />
 
         {/* Description text area */}
@@ -62,7 +62,7 @@ const EditTopicComp = ({ id, title, description }) => {
           onChange={(e) => setNewDescription(e.target.value)}
           value={newDescription}
           placeholder={`Please fill the Details about the topic`}
-          className={`border shadow w-full px-4 py-3 mb-3 font-bold rounded`}
+          className={`border shadow w-full px-4 py-3 font-bold rounded`}
         />
 
         {/* Tags text area */}
@@ -74,8 +74,8 @@ const EditTopicComp = ({ id, title, description }) => {
           type="text"
           name="tags"
           id="tags"
-          placeholder="Tags (comma separated) - #tag1, #tag2, #tag3"
-          className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded mb-3"
+          placeholder="#tag - #nextjs14"
+          className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
         />
 
         {/* Buttons */}

@@ -33,7 +33,7 @@ const TopicList = async () => {
       {topics?.map((topic, index) => {
         return (
           <div
-            className="border flex justify-start gap-1 mb-4 rounded px-3 md:px-4 py-3 shadow cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out"
+            className="border flex justify-start gap-1 mb-3 rounded px-3 md:px-4 py-3 shadow cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out"
             key={index}
           >
             {/* Show the author image */}

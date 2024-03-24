@@ -65,7 +65,7 @@ const AddTopic = () => {
           name="topic"
           id="topic"
           placeholder="Topic name"
-          className="border shadow outline-none w-full px-4 py-6 text-lg font-bold rounded mb-3"
+          className="border shadow outline-none w-full px-4 py-6 text-lg font-bold rounded"
         />
 
         {/* Description text area */}
@@ -73,7 +73,7 @@ const AddTopic = () => {
           onChange={(e) => setDescription(e.target.value)}
           value={description}
           placeholder={`Please fill the Details about the topic`}
-          className={`border shadow w-full px-4 py-3 font-bold rounded mb-3`}
+          className={`border shadow w-full px-4 py-3 font-bold rounded`}
         />
 
         {/* Tags text area */}
@@ -85,8 +85,8 @@ const AddTopic = () => {
           type="text"
           name="tags"
           id="tags"
-          placeholder="Tags (comma separated) - #tag1, #tag2, #tag3"
-          className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded mb-3"
+          placeholder="#tag - #nextjs14"
+          className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
         />
 
         {/* Buttons */}
