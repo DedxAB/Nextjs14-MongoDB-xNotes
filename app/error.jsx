@@ -7,7 +7,7 @@ const Error = () => {
     <div className="p-4 rounded flex items-center justify-center gap-3 text-lg font-bold">
       <p>Something went wrong!</p>
       <Button variant={`outline`} onClick={() => window.location.reload(false)} className={`text-lg font-bold`}>
-        Reload again
+        Retry
       </Button>
     </div>
   );
