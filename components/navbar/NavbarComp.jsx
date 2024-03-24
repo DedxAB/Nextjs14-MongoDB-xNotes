@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { CircleUserRound, LogOut, NotebookPen, PlusCircle } from "lucide-react";
+import { CircleUserRound, LogOut, NotebookPen } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const NavbarComp = () => {
@@ -45,7 +45,7 @@ const NavbarComp = () => {
             variant={`outline`}
             className="hidden md:font-bold md:flex md:gap-1"
           >
-            <NotebookPen className="w-[1.2rem]" />
+            <NotebookPen className="w-4" />
             <span>Write</span>
           </Button>
           <Button
@@ -53,7 +53,7 @@ const NavbarComp = () => {
             className="font-bold md:hidden"
             size="icon"
           >
-            <NotebookPen className="w-[1.2rem]" />
+            <NotebookPen className="w-4" />
           </Button>
         </Link>
 

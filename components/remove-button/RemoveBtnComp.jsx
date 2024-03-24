@@ -28,11 +28,11 @@ const RemoveButtonComp = ({ id }) => {
           method: "DELETE",
         });
 
-        if (!res.ok) throw new Error("Error deleting topic");
-        toast.success("Topic Deleted Successfully.");
+        if (!res.ok) throw new Error("Error deleting note");
+        toast.success("Note Deleted Successfully.");
         router.refresh();
       } catch (e) {
-        toast.error("Failed to Delete Topic.");
+        toast.error("Failed to Delete Note.");
         console.log(e.message);
       }
       setConformationMessage(false);
