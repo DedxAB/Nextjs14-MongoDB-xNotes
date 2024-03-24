@@ -42,6 +42,17 @@ const AddTopic = () => {
   };
   return (
     <>
+      {/* Create Note banner  */}
+      <div className="font-bold text-[#444746] mb-6 mt-8">
+        <h1 className="text-4xl md:text-5xl bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent">
+          Write Note
+        </h1>
+        <h1 className="text-xl md:text-2xl my-2">
+          Write and share your notes with us.
+        </h1>
+      </div>
+
+      {/* Form to add the Note */}
       <form onSubmit={handelSubmit} className="flex flex-col gap-3">
         <Input
           onChange={(e) => {
