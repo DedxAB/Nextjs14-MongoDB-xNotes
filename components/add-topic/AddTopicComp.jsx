@@ -6,7 +6,8 @@ import { toast } from "sonner";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { useSession } from "next-auth/react";
-import { ArrowUpToLine } from "lucide-react";
+import { ArrowUpToLine, MessageSquareX } from "lucide-react";
+import Link from "next/link";
 
 const AddTopic = () => {
   const router = useRouter();
@@ -44,7 +45,7 @@ const AddTopic = () => {
     <>
       {/* Create Note banner  */}
       <div className="font-bold text-[#444746] mb-6 mt-8">
-        <h1 className="text-4xl md:text-5xl bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-5xl py-1 bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent">
           Write Note
         </h1>
         <h1 className="text-xl md:text-2xl my-2">
@@ -54,6 +55,7 @@ const AddTopic = () => {
 
       {/* Form to add the Note */}
       <form onSubmit={handelSubmit} className="flex flex-col gap-3">
+        {/* Title input field */}
         <Input
           onChange={(e) => {
             setTitle(e.target.value);
@@ -63,18 +65,49 @@ const AddTopic = () => {
           name="topic"
           id="topic"
           placeholder="Topic name"
-          className="border shadow outline-none w-full px-4 py-6 text-lg font-bold rounded"
+          className="border shadow outline-none w-full px-4 py-6 text-lg font-bold rounded mb-3"
         />
+
+        {/* Description text area */}
         <Textarea
           onChange={(e) => setDescription(e.target.value)}
           value={description}
           placeholder={`Please fill the Details about the topic`}
-          className={`border shadow w-full px-4 py-3 font-bold rounded`}
+          className={`border shadow w-full px-4 py-3 font-bold rounded mb-3`}
         />
-        <Button type={`submit`} variant={`outline`} className="font-bold w-fit">
-          <ArrowUpToLine className="w-4 mr-1" />
-          Publish
-        </Button>
+
+        {/* Tags text area */}
+        <Textarea
+          // onChange={(e) => setDescription(e.target.value)}
+          // value={description}
+          placeholder={`Add Tags about the topic - #tag1, #tag2, #tag3`}
+          className={`border shadow w-full h-auto px-4 py-3 font-bold rounded mb-3`}
+        />
+
+        {/* Buttons */}
+        <div className="ml-auto">
+          {/* Cancel Button */}
+          <Link href={`/`}>
+            <Button
+              variant={`outline`}
+              className="font-bold w-fit mr-3"
+            >
+              <MessageSquareX className="w-4 mr-1" />
+              {/* <X className="w-4 mr-1" /> */}
+              Cancel
+            </Button>
+          </Link>
+
+          {/* Publish Button */}
+          <Button
+            type={`submit`}
+            variant={`outline`}
+            className="font-bold w-fit"
+          >
+            <ArrowUpToLine className="w-4 mr-1" />
+            Publish
+          </Button>
+        </div>
       </form>
     </>
   );

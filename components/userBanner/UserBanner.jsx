@@ -12,7 +12,7 @@ const UserBanner = async () => {
       {session ? (
         <>
           <div className="font-bold text-[#444746] mb-6 mt-3">
-            <h1 className="text-4xl md:text-5xl bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl py-1 bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent">
               Hello, {session?.user?.name.split(" ")[0]}
             </h1>
             <h1 className="text-3xl md:text-4xl my-2">Welcome to xNotes</h1>
