@@ -77,21 +77,23 @@ const AddTopic = () => {
         />
 
         {/* Tags text area */}
-        <Textarea
-          // onChange={(e) => setDescription(e.target.value)}
-          // value={description}
-          placeholder={`Add Tags about the topic - #tag1, #tag2, #tag3`}
-          className={`border shadow w-full h-auto px-4 py-3 font-bold rounded mb-3`}
+        <Input
+          // onChange={(e) => {
+          //   setTitle(e.target.value);
+          // }}
+          // value={title}
+          type="text"
+          name="tags"
+          id="tags"
+          placeholder="Tags (comma separated) - #tag1, #tag2, #tag3"
+          className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded mb-3"
         />
 
         {/* Buttons */}
         <div className="ml-auto">
           {/* Cancel Button */}
           <Link href={`/`}>
-            <Button
-              variant={`outline`}
-              className="font-bold w-fit mr-3"
-            >
+            <Button variant={`outline`} className="font-bold w-fit mr-3">
               <MessageSquareX className="w-4 mr-1" />
               {/* <X className="w-4 mr-1" /> */}
               Cancel
