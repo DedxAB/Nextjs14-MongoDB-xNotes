@@ -8,7 +8,7 @@ import { Textarea } from "../ui/textarea";
 import Link from "next/link";
 import { MessageSquareX, Save } from "lucide-react";
 
-const EditTopicComp = ({ id, title, description }) => {
+const EditTopicComp = ({ id, title, description, authorId }) => {
   const route = useRouter();
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
@@ -81,7 +81,7 @@ const EditTopicComp = ({ id, title, description }) => {
         {/* Buttons */}
         <div className="ml-auto">
           {/* Cancel Button */}
-          <Link href={`/profile`}>
+          <Link href={`/profile/${authorId}`}>
             <Button variant={`outline`} className="font-bold w-fit mr-3">
               <MessageSquareX className="w-4 mr-1" />
               {/* <X className="w-4 mr-1" /> */}

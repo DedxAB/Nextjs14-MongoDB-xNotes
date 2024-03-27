@@ -22,11 +22,17 @@ const getTopicById = async (id) => {
 const EditTopicPage = async ({ params }) => {
   const { id } = params;
   const { topic } = await getTopicById(id);
-  const { title, description } = topic;
+  // console.log(topic);
+  const { title, description, author } = topic;
 
   return (
     <>
-      <EditTopicComp id={id} title={title} description={description} />
+      <EditTopicComp
+        id={id}
+        title={title}
+        description={description}
+        authorId={author}
+      />
     </>
   );
 };
