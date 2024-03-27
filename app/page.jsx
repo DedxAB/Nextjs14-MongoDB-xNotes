@@ -1,12 +1,11 @@
 import NotesFeed from "@/components/NotesFeed/NotesFeed";
 import UserBanner from "@/components/User-Banner/UserBanner";
 
-const Home = async () => {
+const Home = () => {
   return (
     <div className="overflow-y-scroll h-[83vh]" id="customScrollBar">
       {/* UserBanner Welcome */}
       <UserBanner />
-
       {/* Notes Feed */}
       <NotesFeed />
     </div>
