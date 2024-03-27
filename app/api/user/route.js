@@ -20,6 +20,6 @@ export async function POST(req) {
 // Get all users
 export const GET = async (_req, _res) => {
   await connectDB();
-  const users = await User.find();
+  const users = await User.find().populate("notes");
   return NextResponse.json({ users });
 };

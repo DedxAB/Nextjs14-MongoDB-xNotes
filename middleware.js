@@ -9,9 +9,10 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    "/add-topic",
-    "/profile",
-    "/edit-topic/:path*",
+    "/add-note",
+    "/profile/:path*",
+    "/edit-note/:path*",
+    // "/api/:path*",
     // "/((?!api|_next/static|_next/image|favicon.ico).*)",
   ],
 };

@@ -40,22 +40,24 @@ const NavbarComp = () => {
         {/* Theme changing component  */}
         <ThemeToggle />
 
-        <Link href={`/add-topic`}>
-          <Button
-            variant={`outline`}
-            className="hidden md:font-bold md:flex md:gap-1"
-          >
-            <NotebookPen className="w-4" />
-            <span>Write</span>
-          </Button>
-          <Button
-            variant={`outline`}
-            className="font-bold md:hidden"
-            size="icon"
-          >
-            <NotebookPen className="w-4" />
-          </Button>
-        </Link>
+        {status === "authenticated" && (
+          <Link href={`/add-note`}>
+            <Button
+              variant={`outline`}
+              className="hidden md:font-bold md:flex md:gap-1"
+            >
+              <NotebookPen className="w-4" />
+              <span>Write</span>
+            </Button>
+            <Button
+              variant={`outline`}
+              className="font-bold md:hidden"
+              size="icon"
+            >
+              <NotebookPen className="w-4" />
+            </Button>
+          </Link>
+        )}
 
         {status === "authenticated" ? (
           <DropdownMenu>
@@ -70,7 +72,7 @@ const NavbarComp = () => {
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 className={`cursor-pointer`}
-                onClick={() => router.push(`/profile`)}
+                onClick={() => router.push(`/profile/${session?.user?.id}`)}
               >
                 <CircleUserRound className="w-4 mr-2" />
                 <span className="font-bold">Profile</span>

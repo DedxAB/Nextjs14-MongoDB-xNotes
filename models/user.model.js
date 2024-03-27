@@ -19,6 +19,12 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: [true, "Username already exists"],
     },
+    notes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Topic",
+      },
+    ],
   },
   { timestamps: true }
 );
