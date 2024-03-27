@@ -59,16 +59,15 @@ const Profile = async ({ params }) => {
   let user = {};
   try {
     const response = await fetchUser(id);
-    // console.log(user);
     user = response.user;
+    // console.log(user);
   } catch (error) {
     console.log(error.message);
   }
-
   return (
     <>
       <ProfileComponent name={user?.name} username={user?.username} />
-      <UserFeed notes={user.notes} user={user} />
+      <UserFeed notes={user?.notes} user={user} />
     </>
   );
 };

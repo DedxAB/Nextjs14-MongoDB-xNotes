@@ -34,7 +34,7 @@ const NoteCard = ({ key, note, user }) => {
       ]
     }
   */
-  
+
   return (
     <>
       <div
