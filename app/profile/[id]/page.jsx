@@ -46,27 +46,24 @@ const UserFeed = ({ notes, user }) => {
           <h1 className="font-bold text-lg">No Notes</h1>
         </section>
       ) : (
-        notes?.map((note) => (
-          <NoteCard key={note._id} note={note} user={user} />
-        ))
+        notes?.map((note) => {
+          return <NoteCard key={note?._id} note={note} user={user} />;
+        })
       )}
-
-      {/* <NotesFeed /> */}
     </>
   );
 };
 
 const Profile = async ({ params }) => {
-  // console.log(session);
   const { id } = params;
-  const { user } = await fetchUser(id);
-  console.log(user);
-
-  // if (!user && !session) {
-  //   redirect("/");
-  //   return;
-  // }
-  // console.log(user);
+  let user = {};
+  try {
+    const response = await fetchUser(id);
+    // console.log(user);
+    user = response.user;
+  } catch (error) {
+    console.log(error.message);
+  }
 
   return (
     <>

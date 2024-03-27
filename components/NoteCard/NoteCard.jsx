@@ -10,8 +10,9 @@ import { usePathname } from "next/navigation";
 const NoteCard = ({ key, note, user }) => {
   const { data: session } = useSession();
   const pathName = usePathname();
+  // console.log(key, note, user);
 
-  /* Destructure the note object 
+  /* Destructure the user  
     {
   _id: '65fda3f22f7ede6787e9f5af',
   email: 'arnab.iguniverse@gmail.com',
@@ -48,13 +49,16 @@ const NoteCard = ({ key, note, user }) => {
         </Link>
         <div className="w-full">
           {/* Show the author name, username */}
-          <div className="flex flex-wrap text-xs mb-1">
+          <Link
+            href={`/profile/${user?._id}`}
+            className="flex flex-wrap text-xs mb-1"
+          >
             {/* name  */}
             <h2 className="font-bold mr-1">{user?.name}</h2>
 
             {/* username */}
             <span className="text-gray-500">@{user?.username}</span>
-          </div>
+          </Link>
           <div className="flex justify-between items-start gap-1">
             {/* Show the title and date */}
             <div>
@@ -97,7 +101,7 @@ const NoteCard = ({ key, note, user }) => {
                 </div>
               )}
           </div>
- 
+
           {/* Show the description */}
           <div className="flex justify-between items-center">
             <h2 className="text-sm font-bold mt-2">{note?.description}</h2>
