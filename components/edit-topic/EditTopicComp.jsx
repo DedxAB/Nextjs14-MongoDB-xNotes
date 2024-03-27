@@ -81,7 +81,7 @@ const EditTopicComp = ({ id, title, description }) => {
         {/* Buttons */}
         <div className="ml-auto">
           {/* Cancel Button */}
-          <Link href={`/`}>
+          <Link href={`/profile`}>
             <Button variant={`outline`} className="font-bold w-fit mr-3">
               <MessageSquareX className="w-4 mr-1" />
               {/* <X className="w-4 mr-1" /> */}

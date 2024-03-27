@@ -1,6 +1,5 @@
+import NoteCard from "@/components/NoteCard/NoteCard";
 import { BASE_URL } from "@/utils/constants";
-import { getServerSession } from "next-auth";
-// import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "Profile | DedxNotes",
@@ -35,32 +34,44 @@ const ProfileComponent = ({ name, username }) => {
   );
 };
 
-const Feed = () => {
+const UserFeed = ({ notes, user }) => {
+  // console.log(notes);
   return (
     <>
       <section>
-        <h1 className="font-bold text-lg">All Notes</h1>
+        <h1 className="font-bold text-lg mb-3">All Notes</h1>
       </section>
+      {notes?.length === 0 ? (
+        <section>
+          <h1 className="font-bold text-lg">No Notes</h1>
+        </section>
+      ) : (
+        notes?.map((note) => (
+          <NoteCard key={note._id} note={note} user={user} />
+        ))
+      )}
+
       {/* <NotesFeed /> */}
     </>
   );
 };
 
 const Profile = async ({ params }) => {
-  const session = await getServerSession();
-  console.log(session);
+  // console.log(session);
   const { id } = params;
   const { user } = await fetchUser(id);
+  console.log(user);
 
   // if (!user && !session) {
   //   redirect("/");
   //   return;
   // }
   // console.log(user);
+
   return (
     <>
       <ProfileComponent name={user?.name} username={user?.username} />
-      <Feed />
+      <UserFeed notes={user.notes} user={user} />
     </>
   );
 };
