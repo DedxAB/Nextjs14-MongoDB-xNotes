@@ -10,31 +10,31 @@ import { usePathname } from "next/navigation";
 const NoteCard = ({ key, note, user }) => {
   const { data: session } = useSession();
   const pathName = usePathname();
-  // console.log(key, note, user);
 
   /* Destructure the user  
     {
-  _id: '65fda3f22f7ede6787e9f5af',
-  email: 'arnab.iguniverse@gmail.com',
-  name: 'Arnab Bhoumik',
-  image: 'https://lh3.googleusercontent.com/a/ACg8ocI1XTigSLw4VGEwGPKzRgn7G0h94GUPOupylNyMa9nBrA=s96-c',
-  username: 'arnab.iguniverse',
-  createdAt: '2024-03-22T15:29:54.498Z',
-  updatedAt: '2024-03-27T10:04:57.356Z',
-  __v: 0,
-  notes: [
-    {
-      _id: '6603ef492123d9a648fbd1f1',
-      title: 'Topic profile  note',
-      description: 'profile description',
-      author: '65fda3f22f7ede6787e9f5af',
-      createdAt: '2024-03-27T10:04:57.267Z',
-      updatedAt: '2024-03-27T10:04:57.267Z',
-      __v: 0
+      _id: '65fda3f22f7ede6787e9f5af',
+      email: 'arnab.iguniverse@gmail.com',
+      name: 'Arnab Bhoumik',
+      image: 'https://lh3.googleusercontent.com/a/ACg8ocI1XTigSLw4VGEwGPKzRgn7G0h94GUPOupylNyMa9nBrA=s96-c',
+      username: 'arnab.iguniverse',
+      createdAt: '2024-03-22T15:29:54.498Z',
+      updatedAt: '2024-03-27T10:04:57.356Z',
+      __v: 0,
+      notes: [
+        {
+          _id: '6603ef492123d9a648fbd1f1',
+          title: 'Topic profile  note',
+          description: 'profile description',
+          author: '65fda3f22f7ede6787e9f5af',
+          createdAt: '2024-03-27T10:04:57.267Z',
+          updatedAt: '2024-03-27T10:04:57.267Z',
+          __v: 0
+        }
+      ]
     }
-  ]
-}
-    */
+  */
+  
   return (
     <>
       <div
