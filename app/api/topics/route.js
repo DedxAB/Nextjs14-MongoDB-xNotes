@@ -11,7 +11,7 @@ export async function POST(req) {
     const existingTopic = await Topic.findOne({ title });
     if (existingTopic) {
       return Response.json(
-        { message: "Title already exists! Please try another title" },
+        { message: "Title already exists! Please try another Title" },
         { status: 400 }
       );
     }
