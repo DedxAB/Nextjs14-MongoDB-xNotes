@@ -16,7 +16,7 @@ import {
 import { CircleUserRound, LogOut, NotebookPen } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-const NavbarComp = () => {
+const Navbar = () => {
   const router = useRouter();
   const { status, data: session } = useSession();
   const name = session?.user?.name;
@@ -98,4 +98,4 @@ const NavbarComp = () => {
   );
 };
 
-export default NavbarComp;
+export default Navbar;

@@ -1,8 +1,8 @@
 import "./globals.css";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
-import NavbarComp from "@/components/Navbar/NavbarComp";
 import { NextAuthProviders } from "./Providers";
+import Navbar from "@/components/Navbar/Navbar";
 
 export const metadata = {
   title: "Home | DedxNotes",
@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
             disableTransitionOnChange
           >
             <div className="max-w-3xl mx-auto p-4">
-              <NavbarComp />
+              <Navbar />
               <main className="mt-5">{children}</main>
               <Toaster richColors position="bottom-right" />
               {/* footer  */}
