@@ -51,7 +51,14 @@ const NotesFeed = async () => {
       {/* Show the topic card */}
       {topics?.map((topic) => {
         // console.log(topic);
-        return <NoteCard key={topic?._id} note={topic} user={topic?.author} />;
+        return (
+          <NoteCard
+            key={topic?._id}
+            id={topic?._id}
+            note={topic}
+            user={topic?.author}
+          />
+        );
       })}
     </>
   );

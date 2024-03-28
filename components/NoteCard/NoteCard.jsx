@@ -6,10 +6,15 @@ import { Button } from "../ui/button";
 import RemoveButtonComp from "../Remove-Button/RemoveBtnComp";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+import MyImage from "../MyImage/MyImage";
 
-const NoteCard = ({ key, note, user }) => {
+const NoteCard = ({ id, note, user }) => {
   const { data: session } = useSession();
   const pathName = usePathname();
+  // console.log("note", note._id);
+  // console.log(key);
+  // console.log(session);
 
   /* Destructure the user  
     {
@@ -39,13 +44,14 @@ const NoteCard = ({ key, note, user }) => {
     <>
       <div
         className="border flex justify-start gap-1 mb-3 rounded px-3 md:px-4 py-3 shadow cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out"
-        key={key}
+        key={id}
       >
         {/* Show the author image */}
         <Link href={`/profile/${user?._id}`} className="my-1 mr-2">
           <Avatar>
-            <AvatarImage src={user?.image} />
+            <AvatarImage src={user?.image} referrerPolicy="no-referrer" />
           </Avatar>
+          {/* <MyImage src={user?.image} /> */}
         </Link>
         <div className="w-full">
           {/* Show the author name, username */}

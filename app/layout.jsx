@@ -1,8 +1,8 @@
 import "./globals.css";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
-import { NextAuthProviders } from "./Providers";
 import NavbarComp from "@/components/Navbar/NavbarComp";
+import { NextAuthProviders } from "./Providers";
 
 export const metadata = {
   title: "Home | DedxNotes",
