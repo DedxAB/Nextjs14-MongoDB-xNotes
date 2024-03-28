@@ -31,13 +31,19 @@ const AddTopic = () => {
         body: JSON.stringify({ title, description, author: session?.user?.id }),
       });
 
+      // Check if the response is ok
       if (!res.ok) {
-        throw new Error("Failed to save Note");
+        // Get the error message from the response
+        const errorData = await res.json();
+        throw new Error(errorData.message || "Failed to save Note");
       }
+
       toast.success("Note Added Successfully.");
       router.push("/");
       router.refresh();
     } catch (error) {
+      // Display the error message
+      toast.error(error.message);
       console.log(error.message);
     }
   };

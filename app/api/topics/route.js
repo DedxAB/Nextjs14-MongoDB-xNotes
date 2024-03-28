@@ -6,6 +6,16 @@ export async function POST(req) {
   const { title, description, author } = await req.json();
   try {
     await connectDB();
+
+    // Check if a topic with the same title already exists
+    const existingTopic = await Topic.findOne({ title });
+    if (existingTopic) {
+      return Response.json(
+        { message: "Title already exists! Please try another title" },
+        { status: 400 }
+      );
+    }
+
     const newTopic = await Topic.create({ title, description, author });
 
     // Find the user by id and add the new topic to their notes array
@@ -23,9 +33,7 @@ export async function POST(req) {
 
 export async function GET(_req) {
   await connectDB();
-  const topics = await Topic.find()
-    .populate("author")
-    .sort({ createdAt: -1 });
+  const topics = await Topic.find().populate("author").sort({ createdAt: -1 });
   return Response.json({ topics });
 }
 
