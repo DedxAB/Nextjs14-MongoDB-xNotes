@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import RemoveButton from "../RemoveButton/RemoveButton";
+import dayjs from "dayjs";
 // import Image from "next/image";
 // import MyImage from "../MyImage/MyImage";
 
@@ -86,9 +87,12 @@ const NoteCard = ({ id, note, user }) => {
               {/* date */}
               <div className="flex flex-wrap justify-start items-center text-[#6b6e6e]">
                 <div className="text-xs mr-2">
-                  {new Date(note?.createdAt).toLocaleString("en-US", {
+                  {/* {new Date(note?.createdAt).toLocaleString("en-US", {
                     timeZone: "Asia/Kolkata",
-                  })}
+                  })} */}
+                  {
+                    dayjs(note?.createdAt).format("MMM D, YYYY") // Mar 27, 2024
+                  }
                 </div>
               </div>
             </div>
