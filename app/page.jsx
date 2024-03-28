@@ -3,7 +3,7 @@ import UserBanner from "@/components/UserBanner/UserBanner";
 
 const Home = () => {
   return (
-    <div className="overflow-y-scroll h-[83vh]" id="customScrollBar">
+    <div className="min-h-screen" id="customScrollBar">
       {/* UserBanner Welcome */}
       <UserBanner />
       {/* Notes Feed */}

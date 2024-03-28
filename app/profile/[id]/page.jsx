@@ -65,10 +65,10 @@ const Profile = async ({ params }) => {
     console.log(error.message);
   }
   return (
-    <>
+    <div className="min-h-screen">
       <ProfileComponent name={user?.name} username={user?.username} />
       <UserFeed notes={user?.notes} user={user} />
-    </>
+    </div>
   );
 };
 

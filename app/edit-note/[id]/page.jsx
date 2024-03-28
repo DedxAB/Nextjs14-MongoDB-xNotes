@@ -26,14 +26,14 @@ const EditTopicPage = async ({ params }) => {
   const { title, description, author } = topic;
 
   return (
-    <>
+    <div className="min-h-screen">
       <EditTopic
         id={id}
         title={title}
         description={description}
         authorId={author}
       />
-    </>
+    </div>
   );
 };
 

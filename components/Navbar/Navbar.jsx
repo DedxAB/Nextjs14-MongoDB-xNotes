@@ -27,7 +27,7 @@ const Navbar = () => {
     .join("");
 
   return (
-    <nav className="flex justify-between items-center py-3">
+    <nav className="max-w-3xl mx-auto px-4 flex justify-between items-center py-3">
       <Link href={`/`}>
         <h1 className="font-bold text-2xl">
           Dedx

@@ -7,9 +7,9 @@ export const metadata = {
 
 const AddTopicPage = () => {
   return (
-    <>
+    <div className="min-h-screen">
       <AddTopic />
-    </>
+    </div>
   );
 };
 
