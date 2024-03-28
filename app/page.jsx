@@ -1,5 +1,5 @@
 import NotesFeed from "@/components/NotesFeed/NotesFeed";
-import UserBanner from "@/components/User-Banner/UserBanner";
+import UserBanner from "@/components/UserBanner/UserBanner";
 
 const Home = () => {
   return (

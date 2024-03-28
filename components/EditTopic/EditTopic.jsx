@@ -8,7 +8,7 @@ import { Textarea } from "../ui/textarea";
 import Link from "next/link";
 import { MessageSquareX, Save } from "lucide-react";
 
-const EditTopicComp = ({ id, title, description, authorId }) => {
+const EditTopic = ({ id, title, description, authorId }) => {
   const route = useRouter();
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
@@ -104,4 +104,4 @@ const EditTopicComp = ({ id, title, description, authorId }) => {
   );
 };
 
-export default EditTopicComp;
+export default EditTopic;

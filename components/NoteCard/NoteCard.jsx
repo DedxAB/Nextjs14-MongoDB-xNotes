@@ -3,11 +3,11 @@ import { FilePenLine, Pencil } from "lucide-react";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import RemoveButtonComp from "../Remove-Button/RemoveBtnComp";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
-import MyImage from "../MyImage/MyImage";
+import RemoveButton from "../RemoveButton/RemoveButton";
+// import Image from "next/image";
+// import MyImage from "../MyImage/MyImage";
 
 const NoteCard = ({ id, note, user }) => {
   const { data: session } = useSession();
@@ -103,7 +103,7 @@ const NoteCard = ({ id, note, user }) => {
                     </Button>
                   </Link>
                   {/* Add the remove button */}
-                  <RemoveButtonComp id={note?._id} />
+                  <RemoveButton id={note?._id} />
                 </div>
               )}
           </div>

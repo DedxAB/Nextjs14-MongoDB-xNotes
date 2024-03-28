@@ -1,4 +1,4 @@
-import EditTopicComp from "@/components/Edit-Topic/EditTopicComp";
+import EditTopic from "@/components/EditTopic/EditTopic";
 import { BASE_URL } from "@/utils/constants";
 
 export const metadata = {
@@ -27,7 +27,7 @@ const EditTopicPage = async ({ params }) => {
 
   return (
     <>
-      <EditTopicComp
+      <EditTopic
         id={id}
         title={title}
         description={description}
