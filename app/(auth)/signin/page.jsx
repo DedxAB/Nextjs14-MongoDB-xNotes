@@ -1,4 +1,4 @@
-import Signin from "@/components/Signin/SigninComp";
+import Signin from "@/components/Signin/Signin";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
