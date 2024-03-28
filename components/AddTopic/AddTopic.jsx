@@ -38,7 +38,7 @@ const AddTopic = () => {
         throw new Error(errorData.message || "Failed to save Note");
       }
 
-      toast.success("Note Added Successfully.");
+      toast.success("Note Published Sucessfully.");
       router.push("/");
       router.refresh();
     } catch (error) {

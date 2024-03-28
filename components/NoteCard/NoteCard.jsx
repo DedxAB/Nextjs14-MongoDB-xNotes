@@ -1,5 +1,5 @@
 "use client";
-import { FilePenLine, Pencil } from "lucide-react";
+import { FilePenLine, Pencil, PencilLine } from "lucide-react";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -55,16 +55,26 @@ const NoteCard = ({ id, note, user }) => {
         </Link>
         <div className="w-full">
           {/* Show the author name, username */}
-          <Link
-            href={`/profile/${user?._id}`}
-            className="flex flex-wrap text-xs mb-1"
-          >
-            {/* name  */}
-            <h2 className="font-bold mr-1">{user?.name}</h2>
+          <div className="flex flex-wrap items-center text-xs mb-1">
+            <Link
+              href={`/profile/${user?._id}`}
+              className="flex flex-wrap  items-center mr-2"
+            >
+              {/* name  */}
+              <p className="font-bold mr-1">{user?.name}</p>
 
-            {/* username */}
-            <span className="text-gray-500">@{user?.username}</span>
-          </Link>
+              {/* username */}
+              <p className="text-gray-500">@{user?.username}</p>
+            </Link>
+            {/* Show the edited date if updated */}
+            {note?.updatedAt !== note?.createdAt && (
+              <div className="flex items-center text-gray-500 justify-between">
+                {/* <FilePenLine className="w-3 mr-1" /> */}
+                <PencilLine className="w-3 mr-1" />
+                <p>edited</p>
+              </div>
+            )}
+          </div>
           <div className="flex justify-between items-start gap-1">
             {/* Show the title and date */}
             <div>
@@ -80,14 +90,6 @@ const NoteCard = ({ id, note, user }) => {
                     timeZone: "Asia/Kolkata",
                   })}
                 </div>
-
-                {/* Show the edited date if updated */}
-                {note?.updatedAt !== note?.createdAt && (
-                  <div className="flex items-center gap-1">
-                    <FilePenLine className="w-3" />
-                    <div className="text-xs">edited</div>
-                  </div>
-                )}
               </div>
             </div>
 
