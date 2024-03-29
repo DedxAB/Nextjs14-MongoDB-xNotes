@@ -21,6 +21,7 @@ const Footer = () => {
           <Link
             href="https://github.com/DedxAB"
             className="hover:text-pink-500"
+            target="_blank"
           >
             <svg
               className="w-4 h-4"
@@ -41,6 +42,7 @@ const Footer = () => {
           <Link
             href="https://twitter.com/sumit_x09"
             className="hover:text-pink-500 ms-5"
+            target="_blank"
           >
             <svg
               className="w-4 h-4"
@@ -60,6 +62,7 @@ const Footer = () => {
           <Link
             href="https://www.instagram.com/sumit_ig09"
             className="hover:text-pink-500 ms-5"
+            target="_blank"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
