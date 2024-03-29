@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
             <main className="max-w-3xl mx-auto px-4 mt-5">{children}</main>
             <Toaster richColors position="bottom-right" />
             {/* footer  */}
-            <div className="w-full border-t mt-5">
+            <div className="w-full border-t mt-8">
               <Footer />
             </div>
           </ThemeProvider>

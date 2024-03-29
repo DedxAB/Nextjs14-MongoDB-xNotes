@@ -56,7 +56,7 @@ const NoteCard = ({ id, note, user }) => {
         </Link>
         <div className="w-full">
           {/* Show the author name, username */}
-          <div className="flex flex-wrap items-center text-xs mb-1">
+          <div className="flex flex-wrap items-center text-xs">
             <Link
               href={`/profile/${user?._id}`}
               className="flex flex-wrap  items-center mr-2"

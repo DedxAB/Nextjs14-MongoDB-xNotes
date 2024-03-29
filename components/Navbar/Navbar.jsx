@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <nav className="max-w-3xl mx-auto px-4 flex justify-between items-center py-3">
       <Link href={`/`}>
-        <h1 className="font-bold text-2xl">
+        <h1 className="font-bold text-2xl md:text-3xl">
           Dedx
           <span className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
             Notes

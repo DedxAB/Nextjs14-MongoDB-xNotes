@@ -5,8 +5,8 @@ import { RotateCcw } from "lucide-react";
 
 const Error = () => {
   return (
-    <div className="flex h-[60vh] items-center justify-center">
-      <div className="mt-auto flex flex-wrap items-center justify-center gap-3 text-lg md:text-2xl font-bold">
+    <div className="flex h-[95vh] items-center justify-center">
+      <div className="my-auto flex flex-wrap items-center justify-center gap-3 text-lg md:text-2xl font-bold">
         <p>
           <span className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent mr-2">
             Opps!
