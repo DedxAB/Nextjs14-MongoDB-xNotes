@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 
 const Signin = () => { 
   return (
-    <div className="flex items-center justify-center m-auto h-[80vh]">
+    <div className="flex items-center justify-center m-auto h-screen">
       <Button
         variant={`outline`}
         className={`font-bold h-10`}
