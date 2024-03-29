@@ -15,3 +15,15 @@ export const GET = async (_req, { params }) => {
     return NextResponse.json({ error: error.message }, { status: 400 });
   }
 };
+
+export const PATCH = async (req, { params }) => {
+  await connectDB();
+  const { id } = params;
+  const { bio } = await req.json();
+  try {
+    await User.findByIdAndUpdate(id, { bio });
+    return NextResponse.json({ message: "Bio updated" }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error: error.message }, { status: 400 });
+  }
+};

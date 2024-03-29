@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema(
         ref: "Topic",
       },
     ],
+    bio: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );

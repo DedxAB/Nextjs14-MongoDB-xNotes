@@ -5,12 +5,38 @@ import { Button } from "../ui/button";
 import { MessageSquareX, Save } from "lucide-react";
 import { Textarea } from "../ui/textarea";
 import { useState } from "react";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const EditProfileForm = ({ authorId, bio, socialLinks }) => {
+  const route = useRouter();
   const [newBio, setNewBio] = useState(bio);
   const [socialLink, setSocialLink] = useState({});
 
-  const handelOnSubmit = () => {};
+  const handelOnSubmit = async (e) => {
+    e.preventDefault();
+    if (!newBio) {
+      toast.warning("Bio is required");
+      return;
+    }
+    try {
+      const res = await fetch(`/api/user/${authorId}`, {
+        method: "PATCH",
+        body: JSON.stringify({ bio: newBio }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!res.ok) {
+        throw new Error("Failed to update bio");
+      }
+      toast.success("Bio updated successfully");
+      route.back();
+      route.refresh();
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
   return (
     <>
       <section className="font-bold text-[#444746] mb-6 mt-8">

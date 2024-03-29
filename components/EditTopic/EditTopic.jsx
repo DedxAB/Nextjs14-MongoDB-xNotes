@@ -15,6 +15,10 @@ const EditTopic = ({ id, title, description, authorId }) => {
 
   const handelOnSubmit = async (e) => {
     e.preventDefault();
+    if (!newTitle || !newDescription) {
+      toast.warning("Please fill all the fields");
+      return;
+    }
     try {
       const res = await fetch(`/api/topics/${id}`, {
         method: "PATCH",

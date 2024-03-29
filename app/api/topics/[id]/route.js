@@ -6,7 +6,7 @@ export async function PATCH(req, { params }) {
   const { newTitle: title, newDescription: description } = await req.json();
   await connectDB();
   await Topic.findByIdAndUpdate(id, { title, description });
-  return Response.json({ message: "topic updated" }, { status: 200 });
+  return Response.json({ message: "Note updated" }, { status: 200 });
 }
 
 export async function GET(_req, { params }) {

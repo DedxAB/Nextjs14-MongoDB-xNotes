@@ -28,6 +28,7 @@ const ProfileEditPage = async ({ params }) => {
     console.log(error.message);
   }
   const { bio, socailLinks, _id: userId } = user;
+  // console.log(bio);
   return (
     <div className="min-h-screen">
       <EditProfileForm authorId={userId} bio={bio} socailLinks={socailLinks} />

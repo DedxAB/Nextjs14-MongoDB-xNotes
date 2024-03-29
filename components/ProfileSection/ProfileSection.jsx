@@ -52,9 +52,7 @@ const ProfileSection = ({ user }) => {
         {/* User Bio */}
         <div>
           <p className="font-bold">
-            Love to travel and explore new places. I am a full-stack developer
-            and love to code. I am a foodie and love to eat different types of
-            food. I am a fitness freak and love to workout.
+            {user?.bio ? user?.bio : "No bio available"}
           </p>
         </div>
 
