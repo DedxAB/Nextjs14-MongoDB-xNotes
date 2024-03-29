@@ -39,7 +39,7 @@ const AddTopic = () => {
       }
 
       toast.success("Note Published Sucessfully.");
-      router.push("/");
+      router.back();
       router.refresh();
     } catch (error) {
       // Display the error message

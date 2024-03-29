@@ -27,7 +27,7 @@ const EditTopic = ({ id, title, description, authorId }) => {
         throw new Error("Failed to Edit topic");
       }
       toast.success("Note Updated Successfully.");
-      route.push("/");
+      route.back();
       route.refresh();
     } catch (error) {
       console.log(error.message);
