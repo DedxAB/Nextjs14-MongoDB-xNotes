@@ -76,7 +76,7 @@ const NoteCard = ({ id, note, user }) => {
               </div>
             )}
           </div>
-          <div className="flex justify-between items-start gap-1">
+          <div className="flex justify-between items-center gap-1">
             {/* Show the title and date */}
             <div>
               {/* title  */}
@@ -115,9 +115,10 @@ const NoteCard = ({ id, note, user }) => {
           </div>
 
           {/* Show the description */}
-          <div className="flex justify-between items-center">
-            <h2 className="text-sm font-bold mt-2">{note?.description}</h2>
+          <div className="flex justify-between items-cente mt-2">
+            <h2 className="text-sm font-bold py-1">{note?.description}</h2>
           </div>
+          <div></div>
         </div>
       </div>
     </>
