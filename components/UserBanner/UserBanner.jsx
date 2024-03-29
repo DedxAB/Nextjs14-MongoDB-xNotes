@@ -11,7 +11,7 @@ const UserBanner = async () => {
       {/* Show the user name if logged in */}
       {session ? (
         <>
-          <div className="font-bold text-[#444746] mb-6 mt-3">
+          <div className="font-bold text-[#444746] mb-6 mt-8">
             <h1 className="text-4xl md:text-5xl py-1 bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent">
               Hello, {session?.user?.name.split(" ")[0]}
             </h1>

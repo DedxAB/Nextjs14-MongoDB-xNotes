@@ -38,7 +38,7 @@ const EditProfileForm = ({ authorId, bio, socialLinks }) => {
           <Textarea
             onChange={(e) => setNewBio(e.target.value)}
             value={newBio}
-            placeholder={`Please fill Bio about yourself`}
+            placeholder={`Tell us about yourself...`}
             className={`border shadow w-full px-4 py-3 font-bold rounded`}
           />
 
