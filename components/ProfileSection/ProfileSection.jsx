@@ -28,7 +28,7 @@ const ProfileSection = ({ user }) => {
           <div>
             {/* User name and username */}
             <div className="flex items-center flex-wrap font-bold">
-              <p className="text-lg md:text-2xl mr-2">{user?.name}</p>
+              <p className="text-lg md:text-2xl mr-[.35rem]">{user?.name}</p>
               <p className="text-base md:text-xl text-gray-500">
                 @{user?.username}
               </p>
