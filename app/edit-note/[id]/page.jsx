@@ -11,7 +11,7 @@ const getTopicById = async (id) => {
       cache: "no-store",
     });
     if (!res.ok) {
-      throw new Error("Failed to get topic");
+      throw new Error("Failed to get Note");
     }
     return await res.json();
   } catch (error) {
