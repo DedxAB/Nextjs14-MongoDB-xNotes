@@ -1,5 +1,5 @@
 "use client";
-import { FilePenLine, Pencil, PencilLine } from "lucide-react";
+import { Pencil, PencilLine } from "lucide-react";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -7,15 +7,13 @@ import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
-// import Image from "next/image";
-// import MyImage from "../MyImage/MyImage";
 
-const NoteCard = ({ id, note, user }) => {
+const NoteCard = ({ noteId, note, user }) => {
+  // console.log("noteId", noteId);
+  // console.log("note", note);
+  // console.log("user", user);
   const { data: session } = useSession();
   const pathName = usePathname();
-  // console.log("note", note._id);
-  // console.log(key);
-  // console.log(session);
 
   /* Destructure the user  
     {
@@ -45,7 +43,7 @@ const NoteCard = ({ id, note, user }) => {
     <>
       <div
         className="border flex justify-start gap-1 mb-3 rounded px-3 md:px-4 py-3 shadow cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out"
-        key={id}
+        key={noteId}
       >
         {/* Show the author image */}
         <Link href={`/profile/${user?._id}`} className="my-1 mr-2">
@@ -78,7 +76,7 @@ const NoteCard = ({ id, note, user }) => {
           </div>
           <div className="flex justify-between items-center gap-1">
             {/* Show the title and date */}
-            <div>
+            <Link href={`/note/${note?._id}/detail`}>
               {/* title  */}
               <h2 className="text-base md:text-lg font-bold underline">
                 {note?.title}
@@ -95,7 +93,7 @@ const NoteCard = ({ id, note, user }) => {
                   }
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Show Edit and remove button based on user who created this note */}
             {/* {alert(session?.user?.id)} */}

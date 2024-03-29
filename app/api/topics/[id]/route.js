@@ -13,6 +13,6 @@ export async function GET(_req, { params }) {
   const { id } = params;
   await connectDB();
   //   const topic = await Topic.findOne({ _id: id });
-  const topic = await Topic.findById(id);
+  const topic = await Topic.findById(id).populate("author");
   return Response.json({ topic }, { status: 200 });
 }
