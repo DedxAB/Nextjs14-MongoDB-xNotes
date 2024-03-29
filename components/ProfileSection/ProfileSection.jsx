@@ -1,9 +1,12 @@
+"use client";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
+import { useSession } from "next-auth/react";
 
 const ProfileSection = ({ user }) => {
+  const { data: session } = useSession();
   let shortName = user?.name
     ?.split(" ")
     .map((n) => n[0])
@@ -63,11 +66,15 @@ const ProfileSection = ({ user }) => {
           <p className="text-sm font-bold text-gray-500">
             Joined on {dayjs(user?.createdAt).format("DD MMM YYYY")}
           </p>
-          <Link href={`/profile/${user?._id}/edit`}>
-            <Button variant={`outline`} className={`font-bold`}>
-              Edit Profile
-            </Button>
-          </Link>
+
+          {/* Edit Profile Button of current user*/}
+          {session?.user?.id === user?._id && (
+            <Link href={`/profile/${user?._id}/edit`}>
+              <Button variant={`outline`} className={`font-bold`}>
+                Edit Profile
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
     </section>
