@@ -30,7 +30,7 @@ const EditProfileForm = ({ authorId, bio, socialLinks }) => {
       if (!res.ok) {
         throw new Error("Failed to update bio");
       }
-      toast.success("Bio updated successfully");
+      toast.success("Bio Updated Successfully");
       route.back();
       route.refresh();
     } catch (error) {
