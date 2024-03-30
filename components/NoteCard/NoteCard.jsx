@@ -9,39 +9,28 @@ import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
 
 const NoteCard = ({ note, user }) => {
-  // console.log("noteId", noteId);
-  // console.log("note", note);
-  // console.log("user", user);
   const { data: session } = useSession();
   const pathName = usePathname();
 
-  /* Destructure the user  
-    {
-      _id: '65fda3f22f7ede6787e9f5af',
-      email: 'arnab.iguniverse@gmail.com',
-      name: 'Arnab Bhoumik',
-      image: 'https://lh3.googleusercontent.com/a/ACg8ocI1XTigSLw4VGEwGPKzRgn7G0h94GUPOupylNyMa9nBrA=s96-c',
-      username: 'arnab.iguniverse',
-      createdAt: '2024-03-22T15:29:54.498Z',
-      updatedAt: '2024-03-27T10:04:57.356Z',
-      __v: 0,
-      notes: [
-        {
-          _id: '6603ef492123d9a648fbd1f1',
-          title: 'Topic profile  note',
-          description: 'profile description',
-          author: '65fda3f22f7ede6787e9f5af',
-          createdAt: '2024-03-27T10:04:57.267Z',
-          updatedAt: '2024-03-27T10:04:57.267Z',
-          __v: 0
-        }
-      ]
-    }
-  */
+  const truncateString = (str, num) => {
+    return (
+      <>
+        {str?.length > num ? str.slice(0, num) : str}
+        {str?.length > num && (
+          <>
+            <span>... </span>
+            <span className="bg-gradient-to-r from-blue-500 via-red-500 to-pink-300 bg-clip-text text-transparent cursor-pointer hover:underline">
+              Show more
+            </span>
+          </>
+        )}
+      </>
+    );
+  };
 
   return (
     <>
-      <div className="border flex justify-start gap-1 mb-3 rounded px-3 md:px-4 py-3 shadow cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out">
+      <div className="border flex justify-start gap-1 mb-3 rounded px-3 md:px-4 py-3 shadow hover:shadow-lg transition-all duration-300 ease-in-out">
         {/* Show the author image */}
         <Link href={`/profile/${user?._id}`} className="my-1 mr-2">
           <Avatar>
@@ -110,13 +99,18 @@ const NoteCard = ({ note, user }) => {
           </div>
 
           {/* Show the description */}
-          <div className="flex justify-between items-cente mt-1">
-            <h2 className="text-sm font-bold py-1">{note?.description}</h2>
-          </div>
-
+          <Link href={`/note/${note?._id}/details`}>
+            <div className="flex justify-between items-cente mt-1">
+              <h2 className="text-sm font-bold py-1">
+                {pathName === "/"
+                  ? truncateString(note?.description, 177)
+                  : note?.description}
+              </h2>
+            </div>
+          </Link>
           {/* Show the tags */}
           <div>
-            <span className="text-sm hover:underline">#nextjs</span>
+            <span className="text-sm hover:underline cursor-pointer">#nextjs</span>
           </div>
 
           {/* Show the likes and comments */}
@@ -129,7 +123,7 @@ const NoteCard = ({ note, user }) => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-5 h-5"
+                className="w-5 h-5 cursor-pointer"
               >
                 <path
                   strokeLinecap="round"
@@ -148,7 +142,7 @@ const NoteCard = ({ note, user }) => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-5 h-5"
+                className="w-5 h-5 cursor-pointer"
               >
                 <path
                   strokeLinecap="round"

@@ -3,8 +3,6 @@ import NoteCommentCard from "../NoteCommentCard/NoteCommentCard";
 import NoteCommentForm from "../NoteCommentForm/NoteCommentForm";
 
 const NoteDetailsById = ({ note }) => {
-  // console.log(note);
-  const noteId = note._id;
   const user = note.author;
   return (
     <>
@@ -14,10 +12,10 @@ const NoteDetailsById = ({ note }) => {
           Note Details
         </h1>
         <h1 className="text-xl md:text-2xl my-2">
-          Here is the details of the Note. Feel free to comment.
+          Feel free to comment.
         </h1>
       </div>
-      <NoteCard noteId={noteId} note={note} user={user} />
+      <NoteCard note={note} user={user} />
       <NoteCommentForm />
       <NoteCommentCard />
     </>
