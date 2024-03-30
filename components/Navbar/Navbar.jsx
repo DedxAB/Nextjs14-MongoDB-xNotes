@@ -15,6 +15,9 @@ import {
 } from "../ui/dropdown-menu";
 import { CircleUserRound, LogOut, NotebookPen } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({ subsets: ["latin"] });
 
 const Navbar = () => {
   const router = useRouter();
@@ -29,7 +32,7 @@ const Navbar = () => {
   return (
     <nav className="max-w-3xl mx-auto px-4 flex justify-between items-center py-3">
       <Link href={`/`}>
-        <h1 className="font-bold text-2xl md:text-3xl">
+        <h1 className={`font-bold text-2xl md:text-3xl ${playfair.className}`}>
           Dedx
           <span className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
             Notes

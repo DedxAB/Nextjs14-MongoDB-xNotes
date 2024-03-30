@@ -7,11 +7,12 @@ import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
-import { Playfair_Display } from "next/font/google";
+import { Playfair_Display, Lato } from "next/font/google";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
 });
+const lato = Lato({ subsets: ["latin"], weight: ["100", "300", "400", "700"] });
 
 const NoteCard = ({ note, user }) => {
   const { data: session } = useSession();
@@ -51,17 +52,21 @@ const NoteCard = ({ note, user }) => {
               className="flex flex-wrap  items-center mr-2"
             >
               {/* name  */}
-              <p className="font-bold mr-1">{user?.name}</p>
+              <p className={`${playfair.className}font-bold mr-1`}>
+                {user?.name}
+              </p>
 
               {/* username */}
-              <p className="text-gray-500">@{user?.username}</p>
+              <p className={`text-gray-500 ${lato.className}`}>
+                @{user?.username}
+              </p>
             </Link>
             {/* Show the edited date if updated */}
             {note?.updatedAt !== note?.createdAt && (
               <div className="flex items-center text-gray-500 justify-between">
                 {/* <FilePenLine className="w-3 mr-1" /> */}
                 <PencilLine className="w-3 mr-1" />
-                <p>edited</p>
+                <p className={playfair.className}>edited</p>
               </div>
             )}
           </div>
