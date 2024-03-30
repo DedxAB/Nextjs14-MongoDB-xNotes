@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
 
-const NoteCard = ({ noteId, note, user }) => {
+const NoteCard = ({ note, user }) => {
   // console.log("noteId", noteId);
   // console.log("note", note);
   // console.log("user", user);
@@ -41,10 +41,7 @@ const NoteCard = ({ noteId, note, user }) => {
 
   return (
     <>
-      <div
-        className="border flex justify-start gap-1 mb-3 rounded px-3 md:px-4 py-3 shadow cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out"
-        key={noteId}
-      >
+      <div className="border flex justify-start gap-1 mb-3 rounded px-3 md:px-4 py-3 shadow cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out">
         {/* Show the author image */}
         <Link href={`/profile/${user?._id}`} className="my-1 mr-2">
           <Avatar>
@@ -76,7 +73,7 @@ const NoteCard = ({ noteId, note, user }) => {
           </div>
           <div className="flex justify-between items-center gap-1">
             {/* Show the title and date */}
-            <Link href={`/note/${note?._id}/detail`}>
+            <Link href={`/note/${note?._id}/details`}>
               {/* title  */}
               <h2 className="text-base md:text-lg font-bold underline">
                 {note?.title}
@@ -113,7 +110,7 @@ const NoteCard = ({ noteId, note, user }) => {
           </div>
 
           {/* Show the description */}
-          <div className="flex justify-between items-cente mt-2">
+          <div className="flex justify-between items-cente mt-1">
             <h2 className="text-sm font-bold py-1">{note?.description}</h2>
           </div>
 
@@ -123,7 +120,7 @@ const NoteCard = ({ noteId, note, user }) => {
           </div>
 
           {/* Show the likes and comments */}
-          <div className="flex gap-5 mt-3">
+          <div className="flex gap-5 mt-1 py-1">
             {/* Likes  */}
             <div className="flex gap-1 items-center">
               <svg

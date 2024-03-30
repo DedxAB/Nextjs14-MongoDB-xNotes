@@ -9,7 +9,10 @@ export const GET = async (_req, { params }) => {
   // Destructure the user id from the params object and find the user by id
   const { id } = params;
   try {
-    const user = await User.findById(id).populate("notes");
+    const user = await User.findById(id).populate({
+      path: "notes",
+      options: { sort: { createdAt: -1 } },
+    });
     return NextResponse.json({ user }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 400 });

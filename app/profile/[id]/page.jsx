@@ -45,7 +45,6 @@ const Profile = async ({ params }) => {
   try {
     const response = await fetchUser(id);
     user = response.user;
-    // console.log(user);
   } catch (error) {
     console.log(error.message);
   }
