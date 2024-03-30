@@ -1,9 +1,11 @@
 import LoadingSkeleton from "@/components/LoadingSkeleton/LoadingSkeleton";
 
-export default function Loading() {
+const page = () => {
   return (
-    <div className="h-screen w-full flex justify-center items-center">
+    <div className="font-bold h-screen w-full flex justify-center items-center">
       <LoadingSkeleton />
     </div>
   );
-}
+};
+
+export default page;
