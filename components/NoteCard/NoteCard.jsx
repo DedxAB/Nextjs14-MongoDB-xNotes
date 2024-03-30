@@ -103,14 +103,16 @@ const NoteCard = ({ note, user }) => {
             <div className="flex justify-between items-cente mt-1">
               <h2 className="text-sm font-bold py-1">
                 {pathName === "/"
-                  ? truncateString(note?.description, 177)
+                  ? truncateString(note?.description, 115)
                   : note?.description}
               </h2>
             </div>
           </Link>
           {/* Show the tags */}
           <div>
-            <span className="text-sm hover:underline cursor-pointer">#nextjs</span>
+            <span className="text-sm hover:underline cursor-pointer">
+              #nextjs
+            </span>
           </div>
 
           {/* Show the likes and comments */}
