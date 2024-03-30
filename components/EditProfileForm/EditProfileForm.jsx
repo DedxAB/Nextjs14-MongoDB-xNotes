@@ -49,7 +49,14 @@ const EditProfileForm = ({ authorId, bio, socialLinks }) => {
       </section>
       <section>
         <form onSubmit={handelOnSubmit} className="flex flex-col gap-3">
-          {/* Title input field */}
+
+          {/* Description text area */}
+          <Textarea
+            onChange={(e) => setNewBio(e.target.value)}
+            value={newBio}
+            placeholder={`Tell us about yourself...`}
+            className={`border shadow w-full px-4 py-3 font-bold rounded`}
+          />
           {/* <Input
             onChange={(e) => setNewTitle(e.target.value)}
             value={newBio}
@@ -59,14 +66,6 @@ const EditProfileForm = ({ authorId, bio, socialLinks }) => {
             placeholder="Topic name"
             className="border shadow w-full px-4 py-6 text-lg font-bold rounded"
           /> */}
-
-          {/* Description text area */}
-          <Textarea
-            onChange={(e) => setNewBio(e.target.value)}
-            value={newBio}
-            placeholder={`Tell us about yourself...`}
-            className={`border shadow w-full px-4 py-3 font-bold rounded`}
-          />
 
           {/* Buttons */}
           <div className="ml-auto">

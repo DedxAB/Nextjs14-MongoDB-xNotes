@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
 import { useSession } from "next-auth/react";
-import { CalendarDays, Notebook, Scroll, ScrollText } from "lucide-react";
+import { CalendarDays, Scroll, ScrollText } from "lucide-react";
 
 const ProfileSection = ({ user }) => {
   const { data: session } = useSession();
@@ -17,9 +17,9 @@ const ProfileSection = ({ user }) => {
     <section>
       <div className="mb-6 mt-8">
         {/* Profile Heading */}
-        <h1 className="text-4xl md:text-5xl mb-5 py-1 bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent font-bold">
+        <p className="text-4xl md:text-5xl mb-5 py-1 bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent font-bold">
           Profile
-        </h1>
+        </p>
         <div className="flex flex-wrap items-center gap-3 mb-3">
           {/* User Avatar */}
           <Avatar className={`w-16 h-16`}>
@@ -36,27 +36,23 @@ const ProfileSection = ({ user }) => {
             </div>
 
             {/* User Notes count */}
-            <div>
-              <div className="text-sm md:text-base text-gray-500 font-bold">
-                <div>
-                  {user?.notes.length === 0 ? (
-                    <div className="flex gap-1 items-center">
-                      <Scroll className="w-4" />
-                      <span>No Note Published</span>
-                    </div>
-                  ) : user?.notes.length === 1 ? (
-                    <div className="flex gap-1 items-center">
-                      <ScrollText className="w-4" />
-                      <span>1 Note published</span>
-                    </div>
-                  ) : (
-                    <div className="flex gap-1 items-center">
-                      <ScrollText className="w-4" />
-                      <span>{user?.notes.length} Notes Published</span>
-                    </div>
-                  )}
+            <div className="text-sm md:text-base text-gray-500 font-bold">
+              {user?.notes.length === 0 ? (
+                <div className="flex gap-1 items-center">
+                  <Scroll className="w-4" />
+                  <span>No Notes Published Yet</span>
                 </div>
-              </div>
+              ) : user?.notes.length === 1 ? (
+                <div className="flex gap-1 items-center">
+                  <ScrollText className="w-4" />
+                  <span>1 Note published</span>
+                </div>
+              ) : (
+                <div className="flex gap-1 items-center">
+                  <ScrollText className="w-4" />
+                  <span>{user?.notes.length} Notes Published</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
