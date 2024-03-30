@@ -7,6 +7,11 @@ import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+});
 
 const NoteCard = ({ note, user }) => {
   const { data: session } = useSession();
@@ -30,7 +35,7 @@ const NoteCard = ({ note, user }) => {
 
   return (
     <>
-      <div className="border flex justify-start gap-1 mb-3 rounded px-3 md:px-4 py-3  hover:shadow-lg transition-all duration-300 ease-in-out">
+      <div className="border flex justify-start gap-1 mb-3 rounded px-3 md:px-4 py-3 hover:shadow-lg transition-all duration-300 ease-in-out">
         {/* Show the author image */}
         <Link href={`/profile/${user?._id}`} className="my-1 mr-2">
           <Avatar>
@@ -64,7 +69,9 @@ const NoteCard = ({ note, user }) => {
             {/* Show the title and date */}
             <Link href={`/note/${note?._id}/details`}>
               {/* title  */}
-              <h2 className="text-base md:text-lg font-bold underline">
+              <h2
+                className={`${playfair.className} text-base md:text-lg font-bold underline`}
+              >
                 {note?.title}
               </h2>
 
