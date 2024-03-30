@@ -12,7 +12,6 @@ import { Playfair_Display } from "next/font/google";
 const playfair = Playfair_Display({
   subsets: ["latin"],
 });
-// const lato = Lato({ subsets: ["latin"], weight: ["100", "300", "400", "700"] });
 
 const NoteCard = ({ note, user }) => {
   const { data: session } = useSession();
@@ -46,7 +45,7 @@ const NoteCard = ({ note, user }) => {
         </Link>
         <div className="w-full">
           {/* Show the author name, username */}
-          <div className="flex flex-wrap items-center text-xs">
+          <div className="flex flex-wrap items-center text-xs pb-1">
             <Link
               href={`/profile/${user?._id}`}
               className="flex flex-wrap  items-center mr-2"
