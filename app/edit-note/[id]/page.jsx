@@ -31,7 +31,7 @@ const EditTopicPage = async ({ params }) => {
         id={id}
         title={title}
         description={description}
-        authorId={author}
+        author={author}
       />
     </div>
   );
