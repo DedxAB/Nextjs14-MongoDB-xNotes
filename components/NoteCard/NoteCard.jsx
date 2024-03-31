@@ -63,7 +63,7 @@ const NoteCard = ({ note, user }) => {
             {/* Show the title and date */}
             <Link href={`/note/${note?._id}/details`}>
               {/* title  */}
-              <h2 className={`text-xl md:text-2xl font-bold hover:underline`}>
+              <h2 className={`text-lg md:text-xl font-bold hover:underline`}>
                 {note?.title}
               </h2>
 
@@ -79,7 +79,7 @@ const NoteCard = ({ note, user }) => {
                   <div className="flex items-center">
                     {/* <FilePenLine className="w-3 mr-1" /> */}
                     <PencilLine className="w-3 mr-1" />
-                    <p className={`${playfair.className}`}>edited</p>
+                    <p>edited</p>
                   </div>
                 )}
               </div>
@@ -105,7 +105,7 @@ const NoteCard = ({ note, user }) => {
           {/* Show the description */}
           <Link href={`/note/${note?._id}/details`}>
             <div className="flex justify-between items-cente mt-1">
-              <h2 className="text-sm font-bold py-1">
+              <h2 className="text-sm md:text-base font-bold py-1">
                 {pathName === `/note/${note?._id}/details`
                   ? note?.description
                   : truncateString(note?.description, 115)}
