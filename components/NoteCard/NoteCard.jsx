@@ -51,9 +51,7 @@ const NoteCard = ({ note, user }) => {
               className="flex flex-wrap items-center mr-2 py-1"
             >
               {/* name  */}
-              <p className={`${playfair.className}font-bold mr-1`}>
-                {user?.name}
-              </p>
+              <p className={`font-bold mr-1`}>{user?.name}</p>
 
               {/* username */}
               <p className={`text-gray-500`}>@{user?.username}</p>
@@ -65,9 +63,7 @@ const NoteCard = ({ note, user }) => {
             {/* Show the title and date */}
             <Link href={`/note/${note?._id}/details`}>
               {/* title  */}
-              <h2
-                className={`${playfair.className} text-base md:text-lg font-bold hover:underline`}
-              >
+              <h2 className={`text-base md:text-lg font-bold hover:underline`}>
                 {note?.title}
               </h2>
 
