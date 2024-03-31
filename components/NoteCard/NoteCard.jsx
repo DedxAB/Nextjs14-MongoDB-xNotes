@@ -63,7 +63,7 @@ const NoteCard = ({ note, user }) => {
             {/* Show the title and date */}
             <Link href={`/note/${note?._id}/details`}>
               {/* title  */}
-              <h2 className={`text-base md:text-lg font-bold hover:underline`}>
+              <h2 className={`text-xl md:text-2xl font-bold hover:underline`}>
                 {note?.title}
               </h2>
 
