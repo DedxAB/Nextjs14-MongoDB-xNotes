@@ -72,8 +72,8 @@ const NoteCard = ({ note, user }) => {
               </h2>
 
               {/* date */}
-              <div className="flex text-xs flex-wrap justify-start items-center text-[#6b6e6e]">
-                <div className=" mr-2">
+              <div className="flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] py-1">
+                <div className="mr-2">
                   {
                     dayjs(note?.createdAt).format("MMM D, YYYY") // Mar 27, 2024
                   }
