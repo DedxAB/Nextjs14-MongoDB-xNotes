@@ -37,7 +37,7 @@ const NoteCard = ({ note, user }) => {
     <>
       <div className="border flex justify-start gap-1 mb-3 rounded px-3 md:px-4 py-3 hover:shadow-lg transition-all duration-300 ease-in-out">
         {/* Show the author image */}
-        <Link href={`/profile/${user?._id}`} className="my-1 mr-2">
+        <Link href={`/profile/${user?._id}`} className="mr-2 py-2">
           <Avatar>
             <AvatarImage src={user?.image} referrerPolicy="no-referrer" />
           </Avatar>
@@ -48,7 +48,7 @@ const NoteCard = ({ note, user }) => {
           <div className="flex flex-wrap items-center text-xs">
             <Link
               href={`/profile/${user?._id}`}
-              className="flex flex-wrap  items-center mr-2"
+              className="flex flex-wrap items-center mr-2 py-1"
             >
               {/* name  */}
               <p className={`${playfair.className}font-bold mr-1`}>
@@ -58,35 +58,34 @@ const NoteCard = ({ note, user }) => {
               {/* username */}
               <p className={`text-gray-500`}>@{user?.username}</p>
             </Link>
-            {/* Show the edited date if updated */}
-            {note?.updatedAt !== note?.createdAt && (
-              <div className="flex items-center text-gray-500 justify-between">
-                {/* <FilePenLine className="w-3 mr-1" /> */}
-                <PencilLine className="w-3 mr-1" />
-                <p className={playfair.className}>edited</p>
-              </div>
-            )}
           </div>
+
+          {/* Title and Date div  */}
           <div className="flex justify-between items-center gap-1">
             {/* Show the title and date */}
             <Link href={`/note/${note?._id}/details`}>
               {/* title  */}
               <h2
-                className={`${playfair.className} text-base md:text-lg font-bold underline`}
+                className={`${playfair.className} text-base md:text-lg font-bold hover:underline`}
               >
                 {note?.title}
               </h2>
 
               {/* date */}
-              <div className="flex flex-wrap justify-start items-center text-[#6b6e6e]">
-                <div className="text-xs mr-2">
-                  {/* {new Date(note?.createdAt).toLocaleString("en-US", {
-                    timeZone: "Asia/Kolkata",
-                  })} */}
+              <div className="flex text-xs flex-wrap justify-start items-center text-[#6b6e6e]">
+                <div className=" mr-2">
                   {
                     dayjs(note?.createdAt).format("MMM D, YYYY") // Mar 27, 2024
                   }
                 </div>
+                {/* Show the edited date if updated */}
+                {note?.updatedAt !== note?.createdAt && (
+                  <div className="flex items-center">
+                    {/* <FilePenLine className="w-3 mr-1" /> */}
+                    <PencilLine className="w-3 mr-1" />
+                    <p className={`${playfair.className}`}>edited</p>
+                  </div>
+                )}
               </div>
             </Link>
 
@@ -118,14 +117,16 @@ const NoteCard = ({ note, user }) => {
             </div>
           </Link>
           {/* Show the tags */}
-          <div>
-            <span className="text-sm hover:underline cursor-pointer">
+          <div className="mt-1">
+            <p
+              className={`text-sm hover:underline cursor-pointer ${playfair.className} inline-block`}
+            >
               #nextjs
-            </span>
+            </p>
           </div>
 
           {/* Show the likes and comments */}
-          <div className="flex gap-5 mt-1 py-1">
+          <div className="flex gap-5 mt-2 py-2">
             {/* Likes  */}
             <div className="flex gap-1 items-center">
               <svg
