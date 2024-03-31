@@ -26,7 +26,7 @@ const ProfileSection = ({ user }) => {
             <AvatarImage src={user?.image} alt={user?.name} />
             <AvatarFallback>{shortName}</AvatarFallback>
           </Avatar>
-          <div>
+          <div className="flex flex-col gap-1">
             {/* User name and username */}
             <div className="flex items-center flex-wrap font-bold">
               <p className="text-lg md:text-2xl mr-[.35rem]">{user?.name}</p>
@@ -58,7 +58,7 @@ const ProfileSection = ({ user }) => {
         </div>
 
         {/* User Bio */}
-        <div>
+        <div className="my-4">
           <p className="font-bold">
             {user?.bio ? user?.bio : "No bio available"}
           </p>
@@ -71,9 +71,9 @@ const ProfileSection = ({ user }) => {
           {/* User Joined date */}
           <div className="text-gray-500 flex gap-1 justify-start items-center">
             <CalendarDays className="w-4" />
-            <span className="text-sm font-bold">
+            <p className="text-sm font-bold">
               Joined on {dayjs(user?.createdAt).format("DD MMM YYYY")}
-            </span>
+            </p>
           </div>
 
           {/* Edit Profile Button of current user*/}
