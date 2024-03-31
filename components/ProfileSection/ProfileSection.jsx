@@ -23,7 +23,7 @@ const ProfileSection = ({ user }) => {
         <div className="flex flex-wrap items-center gap-3 mb-3">
           {/* User Avatar */}
           <Avatar className={`w-16 h-16`}>
-            <AvatarImage src={user?.image} alt={user?.name} />
+            <AvatarImage src={user?.image || "/logo.png"} alt={user?.name} />
             <AvatarFallback>{shortName}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col gap-1">
