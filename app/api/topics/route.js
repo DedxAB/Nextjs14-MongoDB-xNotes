@@ -19,6 +19,8 @@ export async function POST(req) {
     const newTopic = await Topic.create({ title, description, author });
 
     // Find the user by id and add the new topic to their notes array
+    // here i use push method to push the new topic id to the notes array
+    // but in this case i can use $addToSet to avoid duplicate values in the array of notes
     await User.findByIdAndUpdate(
       author,
       { $push: { notes: newTopic._id } },
