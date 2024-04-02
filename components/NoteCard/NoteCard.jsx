@@ -55,7 +55,7 @@ const NoteCard = ({ note, user }) => {
 
   return (
     <>
-      <div className="border flex justify-start gap-1 mb-3 rounded px-3 md:px-4 py-3 hover:shadow-lg transition-all duration-300 ease-in-out">
+      <div className="border flex justify-start gap-1 mb-3 rounded px-3 md:px-4 py-3">
         {/* Show the author image */}
         <Link href={`/profile/${user?._id}`} className="mr-2 py-1">
           <Avatar>
