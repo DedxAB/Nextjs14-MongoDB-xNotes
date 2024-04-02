@@ -8,6 +8,7 @@ import { usePathname, useRouter } from "next/navigation";
 import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
 import { Playfair_Display } from "next/font/google";
+import { toast } from "sonner";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -18,7 +19,12 @@ const NoteCard = ({ note, user }) => {
   const router = useRouter();
   const pathName = usePathname();
 
+  // console.log(session?.user.id);
   const handelLike = async (isLiked) => {
+    if (session?.user.id === undefined) {
+      toast.error("Please login to like the Note");
+      return;
+    }
     try {
       const res = await fetch(`/api/topics/${note?._id}/likes`, {
         method: "PATCH",
