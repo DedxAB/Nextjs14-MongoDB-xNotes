@@ -69,11 +69,11 @@ const NoteCard = ({ note, user }) => {
 
               {/* date */}
               <div className="flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] py-1">
-                <div className="mr-2">
+                <h2 className="mr-2">
                   {
-                    dayjs(note?.createdAt).format("MMM D, YYYY") // Mar 27, 2024
+                    dayjs(note?.createdAt).format("MMM D, YYYY | hh : mm A") // Mar 27, 2024
                   }
-                </div>
+                </h2>
                 {/* Show the edited date if updated */}
                 {note?.updatedAt !== note?.createdAt && (
                   <div className="flex items-center">
