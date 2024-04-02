@@ -7,7 +7,7 @@ const getTopics = async () => {
       cache: "no-store", // Disable cache
     });
     if (!res.ok) throw new Error("Error fetching Notes");
-    return res.json();
+    return await res.json();
   } catch (error) {
     console.log(error.message);
   }
