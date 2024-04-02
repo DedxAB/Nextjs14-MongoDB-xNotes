@@ -18,6 +18,21 @@ const topicSchema = new mongoose.Schema(
       ref: "User",
       required: [true, "Author is required"],
     },
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    comments: [
+      {
+        type: String,
+        author: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+      },
+    ],
   },
   { timestamps: true }
 );
