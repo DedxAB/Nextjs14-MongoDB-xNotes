@@ -18,18 +18,21 @@ const playfair = Playfair_Display({
 const NoteCard = ({ note, user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
   const { data: session } = useSession();
-  // const router = useRouter();
   const pathName = usePathname();
+  // const router = useRouter();
   // console.log(updatedNote);
 
-  // console.log(session?.user.id);
+  // Get the contentUpdatedAt and createdAt date for comparison the note is updated or not
+  const contentUpdatedAt = new Date(updatedNote?.contentUpdatedAt).getTime();
+  const createdAt = new Date(updatedNote?.createdAt).getTime();
+
   const handelLike = async (isLiked) => {
     if (session?.user.id === undefined) {
       toast.error("Please login to like the Note");
       return;
     }
     try {
-      const res = await fetch(`/api/topics/${note?._id}/likes`, {
+      const res = await fetch(`/api/topics/${updatedNote?._id}/likes`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -92,23 +95,23 @@ const NoteCard = ({ note, user }) => {
           {/* Title and Date div  */}
           <div className="flex justify-between items-center gap-1">
             {/* Show the title and date */}
-            <Link href={`/note/${note?._id}/details`}>
+            <Link href={`/note/${updatedNote?._id}/details`}>
               {/* title  */}
               <h2 className={`text-lg md:text-xl font-bold hover:underline`}>
-                {note?.title}
+                {updatedNote?.title}
               </h2>
 
               {/* date */}
               <div className="flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] py-1">
                 <h2 className="mr-2">
                   {
-                    dayjs(note?.createdAt).format("MMM D, YYYY | hh : mm A") // Mar 27, 2024
+                    dayjs(updatedNote?.createdAt).format("MMM D, YYYY | hh : mm A") // Mar 27, 2024
                   }
                 </h2>
                 {/* Show the edited date if updated */}
-                {note?.updatedAt !== note?.createdAt && (
+                {/* {alert(updatedNote?.createdAt)} */}
+                {contentUpdatedAt - createdAt > 1000 && (
                   <div className="flex items-center">
-                    {/* <FilePenLine className="w-3 mr-1" /> */}
                     <PencilLine className="w-3 mr-1" />
                     <p>edited</p>
                   </div>
@@ -118,28 +121,28 @@ const NoteCard = ({ note, user }) => {
 
             {/* Show Edit and remove button based on user who created this note */}
             {/* {alert(session?.user?.id)} */}
-            {session?.user?.id === note?.author &&
+            {session?.user?.id === updatedNote?.author &&
               pathName === `/profile/${user?._id}` && (
                 <div className="min-w-20">
                   {/* Add the edit button */}
-                  <Link href={`/edit-note/${note?._id}`}>
+                  <Link href={`/edit-note/${updatedNote?._id}`}>
                     <Button variant="outline" size="icon" className="mr-2">
                       <Pencil className="w-4" />
                     </Button>
                   </Link>
                   {/* Add the remove button */}
-                  <RemoveButton id={note?._id} />
+                  <RemoveButton id={updatedNote?._id} />
                 </div>
               )}
           </div>
 
           {/* Show the description */}
-          <Link href={`/note/${note?._id}/details`}>
+          <Link href={`/note/${updatedNote?._id}/details`}>
             <div className="flex justify-between items-cente mt-1">
               <h2 className="text-sm md:text-base font-bold py-1">
-                {pathName === `/note/${note?._id}/details`
-                  ? note?.description
-                  : truncateString(note?.description, 115)}
+                {pathName === `/note/${updatedNote?._id}/details`
+                  ? updatedNote?.description
+                  : truncateString(updatedNote?.description, 115)}
               </h2>
             </div>
           </Link>
