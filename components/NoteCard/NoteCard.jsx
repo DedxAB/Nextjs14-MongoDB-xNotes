@@ -9,15 +9,18 @@ import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
 import { Playfair_Display } from "next/font/google";
 import { toast } from "sonner";
+import { useState } from "react";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
 const NoteCard = ({ note, user }) => {
+  const [updatedNote, setUpdatedNote] = useState(note);
   const { data: session } = useSession();
-  const router = useRouter();
+  // const router = useRouter();
   const pathName = usePathname();
+  // console.log(updatedNote);
 
   // console.log(session?.user.id);
   const handelLike = async (isLiked) => {
@@ -37,7 +40,9 @@ const NoteCard = ({ note, user }) => {
         const errorData = await res.json();
         throw new Error("Failed to like the note" || errorData.message);
       }
-      router.refresh();
+      // router.refresh();
+      const upatedNote = await res.json();
+      setUpdatedNote(upatedNote.topic);
     } catch (error) {
       console.log(error);
     }
@@ -151,7 +156,7 @@ const NoteCard = ({ note, user }) => {
           <div className="flex gap-5 mt-2 py-2">
             {/* Likes  */}
             <div className="flex gap-1 items-center">
-              {note?.likes.includes(session?.user?.id) ? (
+              {updatedNote?.likes.includes(session?.user?.id) ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -179,7 +184,7 @@ const NoteCard = ({ note, user }) => {
                 </svg>
               )}
               <span className="text-sm font-bold">
-                {note?.likes.length} Likes
+                {updatedNote?.likes.length} Likes
               </span>
             </div>
 
