@@ -18,6 +18,10 @@ const topicSchema = new mongoose.Schema(
       ref: "User",
       required: [true, "Author is required"],
     },
+    contentUpdatedAt: {
+      type: Date,
+      default: Date.now,
+    },
     likes: [
       {
         type: mongoose.Schema.Types.ObjectId,
