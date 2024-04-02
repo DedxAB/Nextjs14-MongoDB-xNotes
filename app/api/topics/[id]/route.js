@@ -5,7 +5,12 @@ export async function PATCH(req, { params }) {
   const { id } = params;
   const { newTitle: title, newDescription: description } = await req.json();
   await connectDB();
-  await Topic.findByIdAndUpdate(id, { title, description });
+  // Update the contentUpdatedAt field along with title and description for only the updated note
+  await Topic.findByIdAndUpdate(id, {
+    title,
+    description,
+    contentUpdatedAt: Date.now(),
+  });
   return Response.json({ message: "Note updated" }, { status: 200 });
 }
 
