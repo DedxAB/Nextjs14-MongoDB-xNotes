@@ -4,7 +4,7 @@ import { Avatar, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { useSession } from "next-auth/react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
 import { Playfair_Display } from "next/font/google";
