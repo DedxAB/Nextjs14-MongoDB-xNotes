@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export const PATCH = async (req, { params }) => {
   const { id } = params;
   const { userId, isLiked } = await req.json();
-  // console.log(userId, isLiked, id);
   try {
     await connectDB();
     let update;
@@ -21,12 +20,7 @@ export const PATCH = async (req, { params }) => {
       return NextResponse.json({ message: "Topic not found" }, { status: 404 });
     }
 
-    return NextResponse.json(
-      {
-        message: "Like updated successfully",
-      },
-      { status: 200 }
-    );
+    return NextResponse.json({ topic }, { status: 200 });
   } catch (error) {
     console.error(error); // Log the error for debugging
     return NextResponse.json(
