@@ -165,13 +165,20 @@ const NoteCard = ({ note, user }) => {
             </div>
           </Link>
           {/* Show the tags */}
-          <div className="mt-1">
-            <p
-              className={`text-sm hover:underline cursor-pointer ${playfair.className} inline-block`}
-            >
-              #nextjs
-            </p>
-          </div>
+          {updatedNote?.tags.length > 0 && (
+            <div className="mt-1">
+              <p className={`text-sm ${playfair.className} inline-block`}>
+                {updatedNote?.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="mr-1 hover:underline cursor-pointer"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </p>
+            </div>
+          )}
 
           {/* Show the likes and comments */}
           <div className="flex gap-5 mt-2">
