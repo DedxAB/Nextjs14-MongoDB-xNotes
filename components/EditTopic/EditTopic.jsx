@@ -7,11 +7,13 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import Link from "next/link";
 import { MessageSquareX, Save } from "lucide-react";
+import { Label } from "../ui/label";
 
-const EditTopic = ({ id, title, description, author }) => {
+const EditTopic = ({ id, title, description, author, tags }) => {
   const route = useRouter();
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
+  const [newTags, setNewTags] = useState(tags);
 
   const handelOnSubmit = async (e) => {
     e.preventDefault();
@@ -19,13 +21,16 @@ const EditTopic = ({ id, title, description, author }) => {
       toast.warning("Please fill all the fields");
       return;
     }
+
+    const tagArray = newTags ? newTags.split(/[\s,]+/) : ["untagged"];
+
     try {
       const res = await fetch(`/api/topics/${id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify({ newTitle, newDescription }),
+        body: JSON.stringify({ newTitle, newDescription, newTags: tagArray }),
       });
       if (!res.ok) {
         throw new Error("Failed to Edit topic");
@@ -70,15 +75,19 @@ const EditTopic = ({ id, title, description, author }) => {
         />
 
         {/* Tags text area */}
+        <Label htmlFor="tags" className="font-bold md:text-base pl-1 mt-1">
+          Tags: #tag1, #tag2, ...sepereated by comma or space for multiple tags
+        </Label>
+
         <Input
-          // onChange={(e) => {
-          //   setTitle(e.target.value);
-          // }}
-          // value={title}
+          onChange={(e) => {
+            setNewTags(e.target.value);
+          }}
+          value={newTags}
           type="text"
           name="tags"
           id="tags"
-          placeholder="#tag - #nextjs14"
+          placeholder="#tag1, #tag2 - Optional"
           className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
         />
 
