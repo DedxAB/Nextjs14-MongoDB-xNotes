@@ -3,7 +3,7 @@ import Topic from "@/models/topic.model";
 import User from "@/models/user.model";
 
 export async function POST(req) {
-  const { title, description, author } = await req.json();
+  const { title, description, author, tags } = await req.json();
   try {
     await connectDB();
 
@@ -16,7 +16,7 @@ export async function POST(req) {
       );
     }
 
-    const newTopic = await Topic.create({ title, description, author });
+    const newTopic = await Topic.create({ title, description, author, tags });
 
     // Find the user by id and add the new topic to their notes array
     // here i use push method to push the new topic id to the notes array
