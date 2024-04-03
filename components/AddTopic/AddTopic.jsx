@@ -17,6 +17,7 @@ const AddTopic = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState("");
+  const [websiteLink, setWebsiteLink] = useState("");
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +35,7 @@ const AddTopic = () => {
         body: JSON.stringify({
           title,
           description,
+          websiteLink,
           author: session?.user?.id,
           tags: tagArray,
         }),
@@ -82,6 +84,19 @@ const AddTopic = () => {
           className="border shadow outline-none w-full px-4 py-6 text-lg font-bold rounded"
         />
 
+        {/* Website Link input field */}
+        <Input
+          onChange={(e) => {
+            setWebsiteLink(e.target.value);
+          }}
+          value={websiteLink}
+          type="text"
+          name="websiteLike"
+          id="websiteLike"
+          placeholder="https://attach website link if any (Optional)"
+          className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
+        />
+
         {/* Description text area */}
         <Textarea
           onChange={(e) => setDescription(e.target.value)}
@@ -92,7 +107,8 @@ const AddTopic = () => {
 
         {/* Tags text area */}
         <Label htmlFor="tags" className="font-bold md:text-base pl-1 mt-1">
-          Tags: #tag1, #tag2, ...sepereated by comma or space for multiple tags
+          Tags: tag1, tag2, ... sepereated by comma or space for multiple tags
+          (Optional)
         </Label>
 
         <Input
@@ -103,7 +119,7 @@ const AddTopic = () => {
           type="text"
           name="tags"
           id="tags"
-          placeholder="#tag1, #tag2 - Optional"
+          placeholder="tag1, tag2, ..."
           className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
         />
 
