@@ -7,6 +7,7 @@ export async function PATCH(req, { params }) {
     newTitle: title,
     newDescription: description,
     newTags: tags,
+    newWebsiteLink: websiteLink,
   } = await req.json();
   await connectDB();
   // Update the contentUpdatedAt field along with title and description for only the updated note
@@ -14,6 +15,7 @@ export async function PATCH(req, { params }) {
     title,
     description,
     tags,
+    websiteLink,
     contentUpdatedAt: Date.now(),
   });
   return Response.json({ message: "Note updated" }, { status: 200 });
