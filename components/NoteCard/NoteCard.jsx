@@ -15,7 +15,6 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-
 const NoteCard = ({ note, user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
   const { data: session } = useSession();
@@ -28,27 +27,39 @@ const NoteCard = ({ note, user }) => {
   const createdAt = new Date(updatedNote?.createdAt).getTime();
 
   const handelLike = async (isLiked) => {
-    if (session?.user.id === undefined) {
-      toast.error("Please signin to like this Note");
-      return;
-    }
+    // Optimistically update the state
+    setUpdatedNote((prevNote) => ({
+      ...prevNote,
+      likes: isLiked
+        ? [...prevNote.likes, session?.user?.id]
+        : prevNote.likes.filter((id) => id !== session?.user?.id),
+    }));
+
     try {
-      const res = await fetch(`/api/topics/${updatedNote?._id}/likes`, {
+      const res = await fetch(`/api/topics/${note?._id}/likes`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ userId: session?.user?.id, isLiked }),
       });
+
       if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error("Failed to like the note" || errorData.message);
+        throw new Error("Failed to like the note");
       }
-      // router.refresh();
-      const upatedNote = await res.json();
-      setUpdatedNote(upatedNote.topic);
+
+      const updatedNote = await res.json();
+      // Update the state with the server response
+      setUpdatedNote(updatedNote.topic);
     } catch (error) {
       console.log(error);
+      // Revert the state back if the server request failed
+      setUpdatedNote((prevNote) => ({
+        ...prevNote,
+        likes: isLiked
+          ? prevNote.likes.filter((id) => id !== session?.user?.id)
+          : [...prevNote.likes, session?.user?.id],
+      }));
     }
   };
 
@@ -106,7 +117,9 @@ const NoteCard = ({ note, user }) => {
               <div className="flex text-xs flex-wrap justify-start items-center text-[#6b6e6e]">
                 <h2 className="mr-2">
                   {
-                    dayjs(updatedNote?.createdAt).format("MMM D, YYYY | hh : mm A") // Mar 27, 2024
+                    dayjs(updatedNote?.createdAt).format(
+                      "MMM D, YYYY | hh : mm A"
+                    ) // Mar 27, 2024
                   }
                 </h2>
                 {/* Show the edited date if updated */}
