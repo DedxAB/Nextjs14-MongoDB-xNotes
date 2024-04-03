@@ -27,6 +27,10 @@ const NoteCard = ({ note, user }) => {
   const createdAt = new Date(updatedNote?.createdAt).getTime();
 
   const handelLike = async (isLiked) => {
+    if (!session) {
+      toast.error("Please signin to like this note");
+      return;
+    }
     // Optimistically update the state
     setUpdatedNote((prevNote) => ({
       ...prevNote,
