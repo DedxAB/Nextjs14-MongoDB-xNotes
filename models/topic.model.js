@@ -43,6 +43,10 @@ const topicSchema = new mongoose.Schema(
         trim: true,
       },
     ],
+    websiteLink: {
+      type: String,
+      trim: true,
+    },
   },
   { timestamps: true }
 );
