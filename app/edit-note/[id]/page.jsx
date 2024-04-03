@@ -23,7 +23,7 @@ const EditTopicPage = async ({ params }) => {
   const { id } = params;
   const { topic } = await getTopicById(id);
   // console.log(topic);
-  const { title, description, author } = topic;
+  const { title, description, author, tags } = topic;
 
   return (
     <div className="min-h-screen">
@@ -32,6 +32,7 @@ const EditTopicPage = async ({ params }) => {
         title={title}
         description={description}
         author={author}
+        tags={tags}
       />
     </div>
   );
