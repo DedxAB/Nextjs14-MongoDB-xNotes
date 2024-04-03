@@ -8,6 +8,7 @@ import { Textarea } from "../ui/textarea";
 import { useSession } from "next-auth/react";
 import { ArrowUpToLine, MessageSquareX } from "lucide-react";
 import Link from "next/link";
+import { Label } from "../ui/label";
 
 const AddTopic = () => {
   const router = useRouter();
@@ -15,6 +16,7 @@ const AddTopic = () => {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [tags, setTags] = useState("");
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -22,13 +24,19 @@ const AddTopic = () => {
       toast.warning("Please fill all the fields");
       return;
     }
+    const tagArray = tags ? tags.split(/[\s,]+/) : ["untagged"];
     try {
       const res = await fetch("/api/topics", {
         method: "POST",
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify({ title, description, author: session?.user?.id }),
+        body: JSON.stringify({
+          title,
+          description,
+          author: session?.user?.id,
+          tags: tagArray,
+        }),
       });
 
       // Check if the response is ok
@@ -83,15 +91,19 @@ const AddTopic = () => {
         />
 
         {/* Tags text area */}
+        <Label htmlFor="tags" className="font-bold md:text-base pl-1 mt-1">
+          Tags: #tag1, #tag2, ...sepereated by comma or space for multiple tags
+        </Label>
+
         <Input
-          // onChange={(e) => {
-          //   setTitle(e.target.value);
-          // }}
-          // value={title}
+          onChange={(e) => {
+            setTags(e.target.value);
+          }}
+          value={tags}
           type="text"
           name="tags"
           id="tags"
-          placeholder="#tag - #nextjs14"
+          placeholder="#tag1, #tag2 - Optional"
           className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
         />
 
