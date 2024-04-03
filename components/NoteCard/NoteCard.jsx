@@ -1,5 +1,5 @@
 "use client";
-import { Pencil, PencilLine } from "lucide-react";
+import { ExternalLink, Pencil, PencilLine } from "lucide-react";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -173,7 +173,7 @@ const NoteCard = ({ note, user }) => {
                     key={index}
                     className="mr-1 hover:underline cursor-pointer"
                   >
-                    {tag}
+                    #{tag}
                   </span>
                 ))}
               </p>
@@ -234,6 +234,11 @@ const NoteCard = ({ note, user }) => {
               </svg>
               <span className="text-sm font-bold">5 Comments</span>
             </div>
+            {updatedNote?.websiteLink && (
+              <Link href={updatedNote?.websiteLink} target="_blank">
+                <ExternalLink className="w-4" />
+              </Link>
+            )}
           </div>
         </div>
       </div>
