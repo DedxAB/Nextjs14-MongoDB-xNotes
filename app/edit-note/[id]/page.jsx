@@ -23,13 +23,14 @@ const EditTopicPage = async ({ params }) => {
   const { id } = params;
   const { topic } = await getTopicById(id);
   // console.log(topic);
-  const { title, description, author, tags } = topic;
+  const { title, description, author, tags, websiteLink } = topic;
 
   return (
     <div className="min-h-screen">
       <EditTopic
         id={id}
         title={title}
+        websiteLink={websiteLink}
         description={description}
         author={author}
         tags={tags}
