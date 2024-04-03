@@ -174,7 +174,7 @@ const NoteCard = ({ note, user }) => {
           </div>
 
           {/* Show the likes and comments */}
-          <div className="flex gap-5 mt-2 py-2">
+          <div className="flex gap-5 mt-2">
             {/* Likes  */}
             <div className="flex gap-1 items-center">
               {updatedNote?.likes.includes(session?.user?.id) ? (
