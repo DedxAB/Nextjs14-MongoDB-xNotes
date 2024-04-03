@@ -37,6 +37,12 @@ const topicSchema = new mongoose.Schema(
         },
       },
     ],
+    tags: [
+      {
+        type: String,
+        trim: true,
+      },
+    ],
   },
   { timestamps: true }
 );
