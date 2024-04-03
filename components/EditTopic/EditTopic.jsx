@@ -9,11 +9,12 @@ import Link from "next/link";
 import { MessageSquareX, Save } from "lucide-react";
 import { Label } from "../ui/label";
 
-const EditTopic = ({ id, title, description, author, tags }) => {
+const EditTopic = ({ id, title, description, author, tags, websiteLink }) => {
   const route = useRouter();
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
-  const [newTags, setNewTags] = useState(tags);
+  const [newTags, setNewTags] = useState(tags.join(", "));
+  const [newWebsiteLink, setNewWebsiteLink] = useState(websiteLink);
 
   const handelOnSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +31,12 @@ const EditTopic = ({ id, title, description, author, tags }) => {
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify({ newTitle, newDescription, newTags: tagArray }),
+        body: JSON.stringify({
+          newTitle,
+          newDescription,
+          newTags: tagArray,
+          newWebsiteLink,
+        }),
       });
       if (!res.ok) {
         throw new Error("Failed to Edit topic");
@@ -64,6 +70,19 @@ const EditTopic = ({ id, title, description, author, tags }) => {
           id="topic"
           placeholder="Topic name"
           className="border shadow w-full px-4 py-6 text-lg font-bold rounded"
+        />
+
+        {/* Website Link input field */}
+        <Input
+          onChange={(e) => {
+            setNewWebsiteLink(e.target.value);
+          }}
+          value={newWebsiteLink}
+          type="text"
+          name="websiteLike"
+          id="websiteLike"
+          placeholder="https://attach website link if any (Optional)"
+          className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
         />
 
         {/* Description text area */}
