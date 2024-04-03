@@ -15,6 +15,7 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
+
 const NoteCard = ({ note, user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
   const { data: session } = useSession();
@@ -28,7 +29,7 @@ const NoteCard = ({ note, user }) => {
 
   const handelLike = async (isLiked) => {
     if (session?.user.id === undefined) {
-      toast.error("Please login to like the Note");
+      toast.error("Please signin to like this Note");
       return;
     }
     try {
@@ -102,7 +103,7 @@ const NoteCard = ({ note, user }) => {
               </h2>
 
               {/* date */}
-              <div className="flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] py-1">
+              <div className="flex text-xs flex-wrap justify-start items-center text-[#6b6e6e]">
                 <h2 className="mr-2">
                   {
                     dayjs(updatedNote?.createdAt).format("MMM D, YYYY | hh : mm A") // Mar 27, 2024
