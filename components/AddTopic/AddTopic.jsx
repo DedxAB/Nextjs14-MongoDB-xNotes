@@ -117,8 +117,7 @@ const AddTopic = () => {
           htmlFor="tags"
           className="font-bold md:text-base pl-1 mt-2 text-gray-500"
         >
-          Tags: tag1, tag2, ... sepereated by comma or space for multiple tags
-          (Optional)
+          Tag: sepereated by comma or space for multiple tags
         </Label>
 
         <Input
@@ -129,7 +128,7 @@ const AddTopic = () => {
           type="text"
           name="tags"
           id="tags"
-          placeholder="tag1, tag2, ..."
+          placeholder="tag1, tag2 - Optional"
           className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
         />
 
