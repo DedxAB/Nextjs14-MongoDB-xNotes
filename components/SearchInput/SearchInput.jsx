@@ -20,7 +20,7 @@ const SearchInput = () => {
             name="search"
             type="text"
             placeholder="Search notes, tags, or username..."
-            className="w-full md:w-1/2 font-bold px-3 py-2 border border-gray-300 rounded-md"
+            className="w-full md:w-1/2 font-bold px-4 py-5"
           />
         </form>
       </div>
