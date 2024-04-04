@@ -13,9 +13,15 @@ export const GET = async (_req, { params }) => {
       path: "notes",
       options: { sort: { createdAt: -1 } },
     });
+    if (!user) {
+      return NextResponse.json({ message: "User not found" }, { status: 404 });
+    }
     return NextResponse.json({ user }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ error }, { status: 400 });
+    return NextResponse.json(
+      { message: "Failed to fetch user" },
+      { status: 500 }
+    );
   }
 };
 
@@ -24,9 +30,15 @@ export const PATCH = async (req, { params }) => {
   const { id } = params;
   const { bio } = await req.json();
   try {
-    await User.findByIdAndUpdate(id, { bio });
+    const user = await User.findByIdAndUpdate(id, { bio });
+    if (!user) {
+      return NextResponse.json({ message: "User not found" }, { status: 404 });
+    }
     return NextResponse.json({ message: "Bio updated" }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ error: error.message }, { status: 400 });
+    return NextResponse.json(
+      { message: "Failed to make changes" },
+      { status: 500 }
+    );
   }
 };

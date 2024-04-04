@@ -84,8 +84,8 @@ const Navbar = () => {
                 className={`cursor-pointer`}
                 onClick={() => signOut()}
               >
-                <LogOut className="w-4 mr-2" />
-                <span className="font-bold">Sign out</span>
+                <LogOut className="w-4 mr-2 text-red-500" />
+                <span className="font-bold text-red-500">Sign out</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

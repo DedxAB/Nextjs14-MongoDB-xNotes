@@ -7,7 +7,7 @@ const SearchResultBanner = ({ searchingFor }) => {
         </h1>
         <h1 className="text-xl md:text-2xl my-2">Here are the results...</h1>
       </div>
-      {/* <hr /> */}
+      <hr />
     </>
   );
 };

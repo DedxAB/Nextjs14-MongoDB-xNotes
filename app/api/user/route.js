@@ -19,7 +19,17 @@ export async function POST(req) {
 
 // Get all users
 export const GET = async (_req, _res) => {
-  await connectDB();
-  const users = await User.find().populate("notes");
-  return NextResponse.json({ users });
+  try {
+    await connectDB();
+    const users = await User.find().populate("notes");
+    if (!users) {
+      return NextResponse.json({ message: "No users found" }, { status: 404 });
+    }
+    return NextResponse.json({ users });
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Failed to fetch users" },
+      { status: 500 }
+    );
+  }
 };

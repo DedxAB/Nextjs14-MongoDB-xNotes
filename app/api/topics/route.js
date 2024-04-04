@@ -1,6 +1,7 @@
 import connectDB from "@/helper/mongodb";
 import Topic from "@/models/topic.model";
 import User from "@/models/user.model";
+import { NextResponse } from "next/server";
 
 export async function POST(req) {
   const { title, description, author, tags, websiteLink } = await req.json();
@@ -29,7 +30,7 @@ export async function POST(req) {
     // but in this case i can use $addToSet to avoid duplicate values in the array of notes
     await User.findByIdAndUpdate(
       author,
-      { $push: { notes: newTopic._id } },
+      { $addToSet: { notes: newTopic._id } },
       { new: true }
     );
 
@@ -40,9 +41,21 @@ export async function POST(req) {
 }
 
 export async function GET(_req) {
-  await connectDB();
-  const topics = await Topic.find().populate("author").sort({ createdAt: -1 });
-  return Response.json({ topics });
+  try {
+    await connectDB();
+    const topics = await Topic.find()
+      .populate("author")
+      .sort({ createdAt: -1 });
+    if (!topics) {
+      return NextResponse.json({ message: "No notes found" }, { status: 404 });
+    }
+    return Response.json({ topics }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Failed to fetch notes" },
+      { status: 500 }
+    );
+  }
 }
 
 export async function DELETE(req) {

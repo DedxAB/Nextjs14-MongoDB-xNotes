@@ -5,7 +5,7 @@ const SearchFeed = ({ notes, users }) => {
   // console.log("notes", notes);
   // console.log("users", users);
   return (
-    <>
+    <div className="mt-10">
       {users &&
         users.length > 0 &&
         users.map((user) => <UserCard key={user?._id} user={user} />)}
@@ -15,11 +15,11 @@ const SearchFeed = ({ notes, users }) => {
           <NoteCard key={note?._id} note={note} user={note?.author} />
         ))}
       {users.length === 0 && notes.length === 0 && (
-        <h1 className="my-5 font-bold text-base">
+        <h1 className="font-bold text-base">
           No results found. Please try again with a different search term.
         </h1>
       )}
-    </>
+    </div>
   );
 };
 
