@@ -2,6 +2,12 @@ import SearchFeed from "@/components/SearchFeed/SearchFeed";
 import SearchResultBanner from "@/components/SearchResultBanner/SearchResultBanner";
 import { BASE_URL } from "@/utils/constants";
 
+export const metadata = {
+  title: "Result | DedxNotes",
+  description: "Created by DedxAB | A Note sharing WebApp.",
+};
+
+
 const fetchData = async (q) => {
   try {
     const notesResponse = fetch(`${BASE_URL}/api/results/notes/${q}`, {

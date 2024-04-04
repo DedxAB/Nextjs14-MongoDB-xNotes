@@ -3,6 +3,7 @@ import { BASE_URL } from "@/utils/constants";
 
 export const metadata = {
   title: "Edit Note | DedxNotes",
+  description: "Created by DedxAB | A Note sharing WebApp.",
 };
 
 const getTopicById = async (id) => {

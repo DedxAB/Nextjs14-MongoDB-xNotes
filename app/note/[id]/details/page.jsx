@@ -2,8 +2,8 @@ import NoteDetailsById from "@/components/NoteDetailsById/NoteDetailsById";
 import { BASE_URL } from "@/utils/constants";
 
 export const metadata = {
-  title: "Note Details | DedxNote",
-  description: "This is the Note Details page",
+  title: "Note Details | DedxNotes",
+  description: "Created by DedxAB | A Note sharing WebApp.",
 };
 
 const fetchNoteById = async (id) => {

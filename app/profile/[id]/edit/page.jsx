@@ -1,6 +1,11 @@
 import EditProfileForm from "@/components/EditProfileForm/EditProfileForm";
 import { BASE_URL } from "@/utils/constants";
 
+export const metadata = {
+  title: "Edit Profile | DedxNotes",
+  description: "Created by DedxAB | A Note sharing WebApp.",
+};
+
 const fetchUserById = async (id) => {
   // console.log(id);
   try {

@@ -4,7 +4,7 @@ import { BASE_URL } from "@/utils/constants";
 
 export const metadata = {
   title: "Profile | DedxNotes",
-  description: "Created by DedxAB, This is a note-taking app.",
+  description: "Created by DedxAB | A Note sharing WebApp.",
 };
 
 const fetchUser = async (id) => {
