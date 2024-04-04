@@ -100,7 +100,10 @@ const EditTopic = ({ id, title, description, author, tags, websiteLink }) => {
         />
 
         {/* Tags text area */}
-        <Label htmlFor="tags" className="font-bold md:text-base pl-1 mt-1">
+        <Label
+          htmlFor="tags"
+          className="font-bold md:text-base pl-1 mt-2 text-gray-500"
+        >
           Tags: tag1, tag2, ...sepereated by comma or space for multiple tags
         </Label>
 
