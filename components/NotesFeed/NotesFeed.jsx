@@ -54,7 +54,6 @@ const NotesFeed = async () => {
         return (
           <NoteCard
             key={topic?._id}
-            noteId={topic?._id}
             note={topic}
             user={topic?.author}
           />

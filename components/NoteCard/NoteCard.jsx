@@ -165,57 +165,59 @@ const NoteCard = ({ note, user }) => {
             </div>
           </Link>
           {/* Show the tags */}
-          {updatedNote?.tags.length > 0 && (
+          {updatedNote?.tags && updatedNote?.tags.length > 0 && (
             <div className="mt-1">
               <p className={`text-sm ${playfair.className} inline-block`}>
                 {updatedNote?.tags.map((tag, index) => (
-                  <span
+                  <Link
+                    href={`/result?q=${tag}`}
                     key={index}
                     className="mr-1 hover:underline cursor-pointer"
                   >
                     #{tag}
-                  </span>
+                  </Link>
                 ))}
               </p>
             </div>
           )}
 
-          {/* Show the likes and comments */}
+          {/* Show the likes and comments and weblink */}
           <div className="flex gap-5 mt-2">
             {/* Likes  */}
-            <div className="flex gap-1 items-center">
-              {updatedNote?.likes.includes(session?.user?.id) ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-5 h-5 text-red-500 cursor-pointer"
-                  onClick={() => handelLike(false)}
-                >
-                  <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-5 h-5 cursor-pointer"
-                  onClick={() => handelLike(true)}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                  />
-                </svg>
-              )}
-              <span className="text-sm font-bold">
-                {updatedNote?.likes.length} Likes
-              </span>
-            </div>
-
+            {updatedNote?.likes && (
+              <div className="flex gap-1 items-center">
+                {updatedNote?.likes.includes(session?.user?.id) ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-5 h-5 text-red-500 cursor-pointer"
+                    onClick={() => handelLike(false)}
+                  >
+                    <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-5 h-5 cursor-pointer"
+                    onClick={() => handelLike(true)}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                    />
+                  </svg>
+                )}
+                <span className="text-sm font-bold">
+                  {updatedNote?.likes.length} Likes
+                </span>
+              </div>
+            )}
             {/* Comments */}
             <div className="flex gap-1 items-center">
               <svg
@@ -247,3 +249,32 @@ const NoteCard = ({ note, user }) => {
 };
 
 export default NoteCard;
+
+/*
+  note:
+  {
+    _id: '660dbaca2638ddeed21ca063',
+    title: 'Cloudinary',
+    description: 'Streamline media management and improve user experience by automatically delivering images and videos, enhanced and optimized for every user.',
+    author: {
+      _id: '65fda3f22f7ede6787e9f5af',
+      email: 'arnab.iguniverse@gmail.com',
+      name: 'Arnab Bhoumik',
+      image: 'https://lh3.googleusercontent.com/a/ACg8ocI1XTigSLw4VGEwGPKzRgn7G0h94GUPOupylNyMa9nBrA=s96-c',
+      username: 'arnab.iguniverse',
+      createdAt: '2024-03-22T15:29:54.498Z',
+      updatedAt: '2024-04-04T02:35:44.055Z',
+      __v: 0,
+      notes: [Array],
+      bio: 'Love the way you are | Student CSE | Love photography | Love playing cricket | Love watching Netflix.'        
+    },
+    likes: [],
+    comments: [],
+    tags: [ 'development' ],
+    websiteLink: 'https://cloudinary.com/',
+    contentUpdatedAt: '2024-04-03T20:23:38.182Z',
+    createdAt: '2024-04-03T20:23:38.183Z',
+    updatedAt: '2024-04-03T20:23:38.183Z',
+    __v: 0
+  }
+*/
