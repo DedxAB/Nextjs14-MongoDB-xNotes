@@ -7,7 +7,7 @@ import Footer from "@/components/Footer/Footer";
 
 export const metadata = {
   title: "Home | DedxNotes",
-  description: "Created by DedxAB, This is a note-taking app.",
+  description: "Created by DedxAB, a Note sharing app.",
 };
 
 export default function RootLayout({ children }) {

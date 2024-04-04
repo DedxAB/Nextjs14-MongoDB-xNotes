@@ -25,7 +25,14 @@ const AddTopic = () => {
       toast.warning("Please fill all the fields");
       return;
     }
-    const tagArray = tags ? tags.split(/[\s,]+/) : ["untagged"];
+    const tagArray =
+      tags && tags.trim() !== ""
+        ? tags
+            .trim()
+            .split(/[\s,]+/)
+            .filter(Boolean)
+        : [];
+
     try {
       const res = await fetch("/api/topics", {
         method: "POST",

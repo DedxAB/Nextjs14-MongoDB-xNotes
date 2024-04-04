@@ -23,7 +23,13 @@ const EditTopic = ({ id, title, description, author, tags, websiteLink }) => {
       return;
     }
 
-    const tagArray = newTags ? newTags.split(/[\s,]+/) : ["untagged"];
+    const tagArray =
+      newTags && newTags.trim() !== ""
+        ? newTags
+            .trim()
+            .split(/[\s,]+/)
+            .filter(Boolean)
+        : [];
 
     try {
       const res = await fetch(`/api/topics/${id}`, {
@@ -95,7 +101,7 @@ const EditTopic = ({ id, title, description, author, tags, websiteLink }) => {
 
         {/* Tags text area */}
         <Label htmlFor="tags" className="font-bold md:text-base pl-1 mt-1">
-          Tags: #tag1, #tag2, ...sepereated by comma or space for multiple tags
+          Tags: tag1, tag2, ...sepereated by comma or space for multiple tags
         </Label>
 
         <Input
@@ -106,7 +112,7 @@ const EditTopic = ({ id, title, description, author, tags, websiteLink }) => {
           type="text"
           name="tags"
           id="tags"
-          placeholder="#tag1, #tag2 - Optional"
+          placeholder="tag1, tag2 - Optional"
           className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
         />
 
