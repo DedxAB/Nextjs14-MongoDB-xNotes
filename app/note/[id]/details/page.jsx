@@ -21,14 +21,9 @@ const fetchNoteById = async (id) => {
 };
 const NoteDetails = async ({ params }) => {
   const { id } = params;
-  let note = {};
-  try {
-    const response = await fetchNoteById(id);
-    note = response.topic;
-    // console.log(note);
-  } catch (error) {
-    console.log(error.message);
-  }
+
+  const { note } = await fetchNoteById(id);
+
   return (
     <div className="min-h-[85vh]">
       <NoteDetailsById note={note} />
