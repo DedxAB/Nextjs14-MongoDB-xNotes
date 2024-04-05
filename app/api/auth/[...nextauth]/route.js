@@ -17,6 +17,7 @@ const authOptions = {
         await connectDB();
         const user = await User.findOne({ email: session.user.email });
         session.user.id = user._id.toString();
+        session.user.username = user.username;
         return session;
       } catch (error) {
         return new Error("Failed to get session");
@@ -27,7 +28,7 @@ const authOptions = {
       if (account.provider === "google") {
         const { email, name, image } = user;
         const username = email.split("@")[0];
-        try { 
+        try {
           await connectDB();
           const res = await fetch(`${BASE_URL}/api/user`, {
             method: "POST",
