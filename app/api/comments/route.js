@@ -36,7 +36,9 @@ export const POST = async (req) => {
 export const GET = async (_req) => {
   try {
     await connectDB();
-    const comments = await Comment.find();
+    const comments = await Comment.find()
+      .populate("author")
+      .sort({ createdAt: -1 });
     if (!comments) {
       return NextResponse.json(
         { message: "No comments found" },

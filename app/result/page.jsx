@@ -7,7 +7,6 @@ export const metadata = {
   description: "Created by DedxAB | A Note sharing WebApp.",
 };
 
-
 const fetchData = async (q) => {
   try {
     const notesResponse = fetch(`${BASE_URL}/api/results/notes/${q}`, {
@@ -23,8 +22,12 @@ const fetchData = async (q) => {
     ]);
 
     if (!dataNotes.ok || !dataUsers.ok) {
+      const errorNotesData = await dataNotes.json();
+      const errorUsersData = await dataUsers.json();
       throw new Error(
-        "Something went wrong!" || dataNotes.json() || dataUsers.json()
+        errorNotesData.message ||
+          errorUsersData.message ||
+          "Something went wrong!"
       );
     }
 

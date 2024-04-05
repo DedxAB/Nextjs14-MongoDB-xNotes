@@ -37,7 +37,7 @@ export async function PATCH(req, { params }) {
   }
 }
 
-export async function GET(_req, { params }) {
+export const GET = async (_req, { params }) => {
   const { id } = params;
   try {
     await connectDB();
@@ -45,8 +45,10 @@ export async function GET(_req, { params }) {
       .populate("author")
       .populate({
         path: "comments",
-        sort: { createdAt: -1 },
-        populate: { path: "author" },
+        options: { sort: { createdAt: -1 } },
+        populate: {
+          path: "author",
+        },
       });
 
     if (!note) {
@@ -54,9 +56,10 @@ export async function GET(_req, { params }) {
     }
     return Response.json({ note }, { status: 200 });
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
-      { message: "Failed to fetch note" },
+      { message: "Failed to connect with DB" },
       { status: 500 }
     );
   }
-}
+};

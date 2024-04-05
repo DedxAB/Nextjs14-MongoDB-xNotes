@@ -12,7 +12,8 @@ const fetchNoteById = async (id) => {
       cache: "no-store",
     });
     if (!res.ok) {
-      throw new Error("Failed to get Note" || res.json());
+      const errorData = await res.json();
+      throw new Error(errorData.message || "Failed to get Note");
     }
     return await res.json();
   } catch (error) {

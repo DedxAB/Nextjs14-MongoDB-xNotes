@@ -12,7 +12,10 @@ const fetchUser = async (id) => {
     const res = await fetch(`${BASE_URL}/api/user/${id}`, {
       cache: "no-store",
     });
-    if (!res.ok) throw new Error("Error fetching User");
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.message || "Failed to get User");
+    }
     return res.json();
   } catch (error) {
     console.log(error.message);

@@ -13,7 +13,8 @@ const fetchUserById = async (id) => {
       cache: "no-store",
     });
     if (!res.ok) {
-      throw new Error("Failed to get User data");
+      const errorData = await res.json();
+      throw new Error(errorData.message || "Failed to get User");
     }
     return await res.json();
   } catch (error) {
