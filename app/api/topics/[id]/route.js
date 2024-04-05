@@ -54,7 +54,7 @@ export const GET = async (_req, { params }) => {
     if (!note) {
       return NextResponse.json({ message: "Note not found" }, { status: 404 });
     }
-    return Response.json({ note }, { status: 200 });
+    return NextResponse.json({ note }, { status: 200 });
   } catch (error) {
     console.error(error);
     return NextResponse.json(

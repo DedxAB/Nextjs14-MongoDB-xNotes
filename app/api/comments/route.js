@@ -7,7 +7,7 @@ export const POST = async (req) => {
   const { text, author, noteId } = await req.json();
   try {
     await connectDB();
-    const comment = await Comment.create({ text, author });
+    const comment = await Comment.create({ text, author, topic: noteId });
     if (!comment) {
       return NextResponse.json(
         { message: "Failed to add comment" },
@@ -39,6 +39,7 @@ export const GET = async (_req) => {
     const comments = await Comment.find()
       .populate("author")
       .sort({ createdAt: -1 });
+
     if (!comments) {
       return NextResponse.json(
         { message: "No comments found" },
