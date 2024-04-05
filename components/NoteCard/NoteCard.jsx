@@ -167,12 +167,12 @@ const NoteCard = ({ note, user }) => {
           {/* Show the tags */}
           {updatedNote?.tags && updatedNote?.tags.length > 0 && (
             <div className="mt-1">
-              <p className={`text-sm ${playfair.className} inline-block`}>
+              <p className={`text-sm ${playfair.className}`}>
                 {updatedNote?.tags.map((tag, index) => (
                   <Link
                     href={`/result?q=${tag}`}
                     key={index}
-                    className="mr-1 hover:underline cursor-pointer"
+                    className="mr-1 hover:underline cursor-pointer inline-block"
                   >
                     #{tag}
                   </Link>

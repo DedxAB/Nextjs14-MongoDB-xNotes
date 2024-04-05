@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { CircleUserRound, LogOut, NotebookPen } from "lucide-react";
+import { CircleUserRound, LogIn, LogOut, NotebookPen } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Playfair_Display } from "next/font/google";
 
@@ -91,8 +91,12 @@ const Navbar = () => {
           </DropdownMenu>
         ) : (
           <Link href={`/signin`}>
-            <Button variant={`outline`} className="font-bold text-base">
-              Sign in
+            <Button
+              variant={`outline`}
+              className="font-bold text-base"
+              size="icon"
+            >
+              <LogIn className="w-4" />
             </Button>
           </Link>
         )}
