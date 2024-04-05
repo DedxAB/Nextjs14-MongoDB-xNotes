@@ -80,6 +80,6 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
-#customScrollBar::-webkit-scrollbar {
+/* #customScrollBar::-webkit-scrollbar {
   display: none;
-}
+} */

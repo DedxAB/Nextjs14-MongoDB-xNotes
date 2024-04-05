@@ -7,7 +7,7 @@ export const metadata = {
 
 const AddTopicPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-[85vh]">
       <AddTopic />
     </div>
   );

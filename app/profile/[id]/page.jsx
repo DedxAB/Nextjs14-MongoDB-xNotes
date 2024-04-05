@@ -49,7 +49,7 @@ const Profile = async ({ params }) => {
     console.log(error.message);
   }
   return (
-    <div className="min-h-screen">
+    <div className="min-h-[85vh]">
       <ProfileSection user={user} />
       <UserFeed notes={user?.notes} user={user} />
     </div>

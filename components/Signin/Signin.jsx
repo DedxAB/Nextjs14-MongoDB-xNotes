@@ -2,9 +2,9 @@
 import { signIn } from "next-auth/react";
 import { Button } from "../ui/button";
 
-const Signin = () => { 
+const Signin = () => {
   return (
-    <div className="flex items-center justify-center m-auto h-screen">
+    <div className="flex items-center justify-center m-auto h-[85vh]">
       <Button
         variant={`outline`}
         className={`font-bold h-10`}

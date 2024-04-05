@@ -35,7 +35,7 @@ const ProfileEditPage = async ({ params }) => {
   const { bio, socailLinks, _id: userId } = user;
   // console.log(bio);
   return (
-    <div className="min-h-screen">
+    <div className="min-h-[85vh]">
       <EditProfileForm authorId={userId} bio={bio} socailLinks={socailLinks} />
     </div>
   );

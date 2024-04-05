@@ -46,7 +46,7 @@ const Result = async ({ searchParams }) => {
   const users = usersArray;
   //   console.log("users", users);
   return (
-    <div className="min-h-screen">
+    <div className="min-h-[85vh]">
       <SearchResultBanner searchingFor={q} />
       <SearchFeed notes={notes} users={users} />
     </div>

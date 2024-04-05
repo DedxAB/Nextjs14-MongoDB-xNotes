@@ -27,7 +27,7 @@ const EditTopicPage = async ({ params }) => {
   const { title, description, author, tags, websiteLink } = topic;
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-[85vh]">
       <EditTopic
         id={id}
         title={title}
