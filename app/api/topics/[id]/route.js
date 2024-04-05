@@ -27,11 +27,11 @@ export async function GET(_req, { params }) {
   try {
     await connectDB();
     //   const topic = await Topic.findOne({ _id: id });
-    const topic = await Topic.findById(id).populate("author");
-    if (!topic) {
+    const note = await Topic.findById(id).populate("author");
+    if (!note) {
       return NextResponse.json({ message: "Note not found" }, { status: 404 });
     }
-    return Response.json({ topic }, { status: 200 });
+    return Response.json({ note }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { message: "Failed to fetch note" },
