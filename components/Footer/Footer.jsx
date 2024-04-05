@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <>
       <div className="max-w-3xl flex flex-col items-center justify-between p-6 mx-auto space-y-4 sm:space-y-0 sm:flex-row font-bold">
-        <Link href="https://dedxnotes.vercel.com/">
+        <Link href="https://dedxnotes.vercel.app/">
           <h1
             className={`font-bold text-xl md:text-2xl ${playfair.className}`}
           >
