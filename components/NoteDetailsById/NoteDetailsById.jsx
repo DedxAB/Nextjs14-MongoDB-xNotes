@@ -3,7 +3,7 @@ import NoteCommentCard from "../NoteCommentCard/NoteCommentCard";
 import NoteCommentForm from "../NoteCommentForm/NoteCommentForm";
 
 const NoteDetailsById = ({ note }) => {
-  const user = note.author;
+  const user = note?.author;
   // console.log(note);
   return (
     <>
@@ -22,8 +22,8 @@ const NoteDetailsById = ({ note }) => {
         </h1>
       )}
       {note?.comments?.length > 0 ? (
-        note.comments.map((comment) => (
-          <NoteCommentCard key={comment._id} comment={comment} />
+        note?.comments?.map((comment) => (
+          <NoteCommentCard key={comment?._id} comment={comment} />
         ))
       ) : (
         <div className="my-10">

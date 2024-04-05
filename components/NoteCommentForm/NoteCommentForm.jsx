@@ -42,7 +42,7 @@ const NoteCommentForm = ({ note }) => {
     }
   };
 
-  const shortName = session?.user.name
+  const shortName = session?.user?.name
     .split(" ")
     .map((n) => n[0])
     .join("");
@@ -54,7 +54,7 @@ const NoteCommentForm = ({ note }) => {
         <div className="mr-2 py-1">
           <Avatar>
             <AvatarImage
-              src={session?.user.image}
+              src={session?.user?.image}
               referrerPolicy="no-referrer"
             />
             <AvatarFallback>{shortName}</AvatarFallback>
@@ -67,7 +67,7 @@ const NoteCommentForm = ({ note }) => {
           <div className="flex flex-wrap items-center text-xs">
             <div className="flex flex-wrap items-center">
               {/* name  */}
-              <p className={`font-bold text-xs mr-1`}>{session?.user.name}</p>
+              <p className={`font-bold text-xs mr-1`}>{session?.user?.name}</p>
 
               {/* username */}
               <p className={`text-gray-500 text-xs`}>
