@@ -20,7 +20,6 @@ const NoteCard = ({ note, user }) => {
   const { data: session } = useSession();
   const pathName = usePathname();
   // const router = useRouter();
-  // console.log(updatedNote);
 
   // Get the contentUpdatedAt and createdAt date for comparison the note is updated or not
   const contentUpdatedAt = new Date(updatedNote?.contentUpdatedAt).getTime();
@@ -139,7 +138,7 @@ const NoteCard = ({ note, user }) => {
 
             {/* Show Edit and remove button based on user who created this note */}
             {/* {alert(session?.user?.id)} */}
-            {session?.user?.id === updatedNote?.author &&
+            {session?.user?.id === updatedNote?.author?._id &&
               pathName === `/profile/${user?._id}` && (
                 <div className="min-w-20">
                   {/* Add the edit button */}
@@ -219,7 +218,10 @@ const NoteCard = ({ note, user }) => {
               </div>
             )}
             {/* Comments */}
-            <div className="flex gap-1 items-center">
+            <Link
+              href={`/note/${updatedNote?._id}/details`}
+              className="flex gap-1 items-center"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -234,8 +236,10 @@ const NoteCard = ({ note, user }) => {
                   d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"
                 />
               </svg>
-              <span className="text-sm font-bold">5 Comments</span>
-            </div>
+              <span className="text-sm font-bold">
+                {updatedNote?.comments?.length} Comments
+              </span>
+            </Link>
             {updatedNote?.websiteLink && (
               <Link href={updatedNote?.websiteLink} target="_blank">
                 <ExternalLink className="w-4" />

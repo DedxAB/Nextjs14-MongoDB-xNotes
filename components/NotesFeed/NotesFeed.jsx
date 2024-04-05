@@ -17,7 +17,7 @@ const NotesFeed = async () => {
 
   try {
     const response = await getTopics();
-    topics = response.topics; // Assign the value inside the try block
+    topics = response.notes; // Assign the value inside the try block
     // console.log(topics);
   } catch (error) {
     console.log(error.message);
@@ -49,13 +49,13 @@ const NotesFeed = async () => {
   return (
     <>
       {/* Show the topic card */}
-      {topics?.map((topic) => {
+      {topics?.map((note) => {
         // console.log(topic);
         return (
           <NoteCard
-            key={topic?._id}
-            note={topic}
-            user={topic?.author}
+            key={note?._id}
+            note={note}
+            user={note?.author}
           />
         );
       })}

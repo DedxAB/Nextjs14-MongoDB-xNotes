@@ -22,9 +22,9 @@ const getTopicById = async (id) => {
 
 const EditTopicPage = async ({ params }) => {
   const { id } = params;
-  const { topic } = await getTopicById(id);
+  const { note } = await getTopicById(id);
   // console.log(topic);
-  const { title, description, author, tags, websiteLink } = topic;
+  const { title, description, author, tags, websiteLink } = note;
 
   return (
     <div className="min-h-[85vh]">

@@ -12,6 +12,9 @@ export const GET = async (_req, { params }) => {
     const user = await User.findById(id).populate({
       path: "notes",
       options: { sort: { createdAt: -1 } },
+      populate: {
+        path: "author",
+      },
     });
     if (!user) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });
@@ -30,7 +33,7 @@ export const PATCH = async (req, { params }) => {
   const { id } = params;
   const { bio } = await req.json();
   try {
-    const user = await User.findByIdAndUpdate(id, { bio });
+    const user = await User.findByIdAndUpdate(id, { bio }, { new: true });
     if (!user) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });
     }

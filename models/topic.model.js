@@ -30,11 +30,8 @@ const topicSchema = new mongoose.Schema(
     ],
     comments: [
       {
-        type: String,
-        author: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "User",
-        },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment",
       },
     ],
     tags: [

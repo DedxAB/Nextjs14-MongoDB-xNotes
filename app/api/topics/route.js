@@ -43,13 +43,13 @@ export async function POST(req) {
 export async function GET(_req) {
   try {
     await connectDB();
-    const topics = await Topic.find()
+    const notes = await Topic.find()
       .populate("author")
       .sort({ createdAt: -1 });
-    if (!topics) {
+    if (!notes) {
       return NextResponse.json({ message: "No notes found" }, { status: 404 });
     }
-    return Response.json({ topics }, { status: 200 });
+    return Response.json({ notes }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { message: "Failed to fetch notes" },
