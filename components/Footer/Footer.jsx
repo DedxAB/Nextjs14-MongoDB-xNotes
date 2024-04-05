@@ -1,23 +1,28 @@
 import Link from "next/link";
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({ subsets: ["latin"] });
 
 const Footer = () => {
   return (
     <>
-      <div className="max-w-3xl mx-auto p-4 sm:flex sm:items-center sm:justify-between font-bold">
-        <span className="text-sm sm:text-center">
-          © 2024{" "}
-          <Link
-            href="https://dedxnotes.vercel.com/"
-            className="hover:underline"
+      <div className="max-w-3xl flex flex-col items-center justify-between p-6 mx-auto space-y-4 sm:space-y-0 sm:flex-row font-bold">
+        <Link href="https://dedxnotes.vercel.com/">
+          <h1
+            className={`font-bold text-xl md:text-2xl ${playfair.className}`}
           >
             Dedx
             <span className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
               Notes
             </span>
-          </Link>
-          . All Rights Reserved.
-        </span>
-        <div className="flex mt-4 sm:justify-center sm:mt-0">
+          </h1>
+        </Link>
+
+        <p className="text-sm text-gray-500">
+          © Copyright 2024. All Rights Reserved.
+        </p>
+
+        <div className="flex -mx-2">
           <Link
             href="https://github.com/DedxAB"
             className="hover:text-pink-500"
@@ -78,6 +83,7 @@ const Footer = () => {
           </Link>
         </div>
       </div>
+      {/* </footer> */}
     </>
   );
 };
