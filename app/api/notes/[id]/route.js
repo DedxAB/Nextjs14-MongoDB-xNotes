@@ -1,5 +1,5 @@
 import connectDB from "@/helper/mongodb";
-import Topic from "@/models/topic.model";
+import Note from "@/models/note.model";
 import { NextResponse } from "next/server";
 
 export async function PATCH(req, { params }) {
@@ -14,7 +14,7 @@ export async function PATCH(req, { params }) {
   try {
     await connectDB();
     // Update the contentUpdatedAt field along with title and description for only the updated note
-    const note = await Topic.findByIdAndUpdate(
+    const note = await Note.findByIdAndUpdate(
       id,
       {
         title,
@@ -41,15 +41,7 @@ export const GET = async (_req, { params }) => {
   const { id } = params;
   try {
     await connectDB();
-    const note = await Topic.findById(id)
-      .populate("author")
-      .populate({
-        path: "comments",
-        options: { sort: { createdAt: -1 } },
-        populate: {
-          path: "author",
-        },
-      });
+    const note = await Note.findById(id).populate("author");
 
     if (!note) {
       return NextResponse.json({ message: "Note not found" }, { status: 404 });

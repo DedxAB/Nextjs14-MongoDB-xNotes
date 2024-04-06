@@ -1,4 +1,4 @@
-import EditTopic from "@/components/EditTopic/EditTopic";
+import EditNote from "@/components/EditNote/EditNote";
 import { BASE_URL } from "@/utils/constants";
 
 export const metadata = {
@@ -6,9 +6,9 @@ export const metadata = {
   description: "Created by DedxAB | A Note sharing WebApp.",
 };
 
-const getTopicById = async (id) => {
+const fetchNoteById = async (id) => {
   try {
-    const res = await fetch(`${BASE_URL}/api/topics/${id}`, {
+    const res = await fetch(`${BASE_URL}/api/notes/${id}`, {
       cache: "no-store",
     });
     if (!res.ok) {
@@ -21,15 +21,15 @@ const getTopicById = async (id) => {
   }
 };
 
-const EditTopicPage = async ({ params }) => {
+const page = async ({ params }) => {
   const { id } = params;
-  const { note } = await getTopicById(id);
-  // console.log(topic);
+  const { note } = await fetchNoteById(id);
+  // console.log(note);
   const { title, description, author, tags, websiteLink } = note;
 
   return (
     <div className="min-h-[85vh]">
-      <EditTopic
+      <EditNote
         id={id}
         title={title}
         websiteLink={websiteLink}
@@ -41,4 +41,4 @@ const EditTopicPage = async ({ params }) => {
   );
 };
 
-export default EditTopicPage;
+export default page;

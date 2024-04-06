@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const topicSchema = new mongoose.Schema(
+const noteSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -48,6 +48,6 @@ const topicSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Topic = mongoose.models.Topic || mongoose.model("Topic", topicSchema);
+const Note = mongoose.models.Note || mongoose.model("Note", noteSchema);
 
-export default Topic;
+export default Note;

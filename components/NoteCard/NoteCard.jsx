@@ -39,7 +39,7 @@ const NoteCard = ({ note, user }) => {
     }));
 
     try {
-      const res = await fetch(`/api/topics/${note?._id}/likes`, {
+      const res = await fetch(`/api/notes/${note?._id}/likes`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +53,7 @@ const NoteCard = ({ note, user }) => {
 
       const updatedNote = await res.json();
       // Update the state with the server response
-      setUpdatedNote(updatedNote.topic);
+      setUpdatedNote(updatedNote.note);
     } catch (error) {
       console.log(error);
       // Revert the state back if the server request failed

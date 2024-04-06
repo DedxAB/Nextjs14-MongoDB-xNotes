@@ -9,7 +9,7 @@ import Link from "next/link";
 import { MessageSquareX, Save } from "lucide-react";
 import { Label } from "../ui/label";
 
-const EditTopic = ({ id, title, description, author, tags, websiteLink }) => {
+const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
   const route = useRouter();
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
@@ -32,7 +32,7 @@ const EditTopic = ({ id, title, description, author, tags, websiteLink }) => {
         : [];
 
     try {
-      const res = await fetch(`/api/topics/${id}`, {
+      const res = await fetch(`/api/notes/${id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
@@ -45,7 +45,7 @@ const EditTopic = ({ id, title, description, author, tags, websiteLink }) => {
         }),
       });
       if (!res.ok) {
-        throw new Error("Failed to Edit topic");
+        throw new Error("Failed to Edit note.");
       }
       toast.success("Note Updated Successfully.");
       route.back();
@@ -72,9 +72,9 @@ const EditTopic = ({ id, title, description, author, tags, websiteLink }) => {
           onChange={(e) => setNewTitle(e.target.value)}
           value={newTitle}
           type="text"
-          name="topic"
-          id="topic"
-          placeholder="Topic name"
+          name="title"
+          id="title"
+          placeholder="Title of the Note..."
           className="border shadow w-full px-4 py-6 text-lg font-bold rounded"
         />
 
@@ -95,7 +95,7 @@ const EditTopic = ({ id, title, description, author, tags, websiteLink }) => {
         <Textarea
           onChange={(e) => setNewDescription(e.target.value)}
           value={newDescription}
-          placeholder={`Please fill the Details about the topic`}
+          placeholder={`Please fill the Details about the note`}
           className={`border shadow w-full px-4 py-3 font-bold rounded`}
         />
 
@@ -145,4 +145,4 @@ const EditTopic = ({ id, title, description, author, tags, websiteLink }) => {
   );
 };
 
-export default EditTopic;
+export default EditNote;

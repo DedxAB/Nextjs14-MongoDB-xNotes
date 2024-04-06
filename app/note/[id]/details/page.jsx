@@ -8,7 +8,7 @@ export const metadata = {
 
 const fetchNoteById = async (id) => {
   try {
-    const res = await fetch(`${BASE_URL}/api/topics/${id}`, {
+    const res = await fetch(`${BASE_URL}/api/notes/${id}`, {
       cache: "no-store",
     });
     if (!res.ok) {
@@ -23,8 +23,8 @@ const fetchNoteById = async (id) => {
 const NoteDetails = async ({ params }) => {
   const { id } = params;
 
-  const { note } = await fetchNoteById(id);
-  // console.log(note);
+  const {note} = await fetchNoteById(id);
+  console.log(note);
 
   return (
     <div className="min-h-[85vh]">

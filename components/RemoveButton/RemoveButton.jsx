@@ -21,10 +21,10 @@ const RemoveButton = ({ id }) => {
   const router = useRouter();
   const [conformationMessage, setConformationMessage] = useState(false);
 
-  const removeTopic = async () => {
+  const removeNote = async () => {
     if (conformationMessage) {
       try {
-        const res = await fetch(`/api/topics?id=${id}`, {
+        const res = await fetch(`/api/notes?id=${id}`, {
           method: "DELETE",
         });
 
@@ -65,7 +65,7 @@ const RemoveButton = ({ id }) => {
             >
               Cancel
             </AlertDialogCancel>
-            <AlertDialogAction className={`font-bold`} onClick={removeTopic}>
+            <AlertDialogAction className={`font-bold`} onClick={removeNote}>
               Continue
             </AlertDialogAction>
           </AlertDialogFooter>

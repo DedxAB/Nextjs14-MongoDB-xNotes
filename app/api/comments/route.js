@@ -1,20 +1,20 @@
 import connectDB from "@/helper/mongodb";
 import Comment from "@/models/comment.model";
-import Topic from "@/models/topic.model";
+import Note from "@/models/note.model";
 import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
   const { text, author, noteId } = await req.json();
   try {
     await connectDB();
-    const comment = await Comment.create({ text, author, topic: noteId });
+    const comment = await Comment.create({ text, author });
     if (!comment) {
       return NextResponse.json(
         { message: "Failed to add comment" },
         { status: 400 }
       );
     }
-    await Topic.findByIdAndUpdate(
+    await Note.findByIdAndUpdate(
       noteId,
       {
         $addToSet: { comments: comment._id },
@@ -48,6 +48,7 @@ export const GET = async (_req) => {
     }
     return NextResponse.json({ comments }, { status: 200 });
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { message: "Failed to connect to DB" },
       { status: 500 }

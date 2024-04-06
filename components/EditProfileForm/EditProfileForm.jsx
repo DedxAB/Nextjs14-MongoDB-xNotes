@@ -57,15 +57,6 @@ const EditProfileForm = ({ authorId, bio, socialLinks }) => {
             placeholder={`Tell us about yourself...`}
             className={`border shadow w-full px-4 py-3 font-bold rounded`}
           />
-          {/* <Input
-            onChange={(e) => setNewTitle(e.target.value)}
-            value={newBio}
-            type="text"
-            name="topic"
-            id="topic"
-            placeholder="Topic name"
-            className="border shadow w-full px-4 py-6 text-lg font-bold rounded"
-          /> */}
 
           {/* Buttons */}
           <div className="ml-auto">

@@ -10,7 +10,7 @@ import { ArrowUpToLine, MessageSquareX } from "lucide-react";
 import Link from "next/link";
 import { Label } from "../ui/label";
 
-const AddTopic = () => {
+const AddNote = () => {
   const router = useRouter();
   const { data: session } = useSession();
 
@@ -34,7 +34,7 @@ const AddTopic = () => {
         : [];
 
     try {
-      const res = await fetch("/api/topics", {
+      const res = await fetch("/api/notes", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -85,9 +85,9 @@ const AddTopic = () => {
           }}
           value={title}
           type="text"
-          name="topic"
-          id="topic"
-          placeholder="Topic name"
+          name="title"
+          id="title"
+          placeholder="Title of the Note..."
           className="border shadow outline-none w-full px-4 py-6 text-lg font-bold rounded"
         />
 
@@ -108,7 +108,7 @@ const AddTopic = () => {
         <Textarea
           onChange={(e) => setDescription(e.target.value)}
           value={description}
-          placeholder={`Please fill the Details about the topic`}
+          placeholder={`Please fill the Details about the note`}
           className={`border shadow w-full px-4 py-3 font-bold rounded`}
         />
 
@@ -158,4 +158,4 @@ const AddTopic = () => {
   );
 };
 
-export default AddTopic;
+export default AddNote;

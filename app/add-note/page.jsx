@@ -1,16 +1,16 @@
-import AddTopic from "@/components/AddTopic/AddTopic";
+import AddNote from "@/components/AddNote/AddNote";
 
 export const metadata = {
   title: "Add Note | DedxNotes",
   description: "Created by DedxAB | A Note sharing WebApp.",
 };
 
-const AddTopicPage = () => {
+const page = () => {
   return (
     <div className="min-h-[85vh]">
-      <AddTopic />
+      <AddNote />
     </div>
   );
 };
 
-export default AddTopicPage;
+export default page;

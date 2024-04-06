@@ -1,9 +1,9 @@
 import { BASE_URL } from "@/utils/constants";
 import NoteCard from "../NoteCard/NoteCard";
 
-const getTopics = async () => {
+const fetchNotes = async () => {
   try {
-    const res = await fetch(`${BASE_URL}/api/topics`, {
+    const res = await fetch(`${BASE_URL}/api/notes`, {
       cache: "no-store", // Disable cache
     });
     if (!res.ok) throw new Error("Error fetching Notes");
@@ -13,15 +13,8 @@ const getTopics = async () => {
   }
 };
 const NotesFeed = async () => {
-  let topics = []; // Define topics outside of the try block
-
-  try {
-    const response = await getTopics();
-    topics = response.notes; // Assign the value inside the try block
-    // console.log(topics);
-  } catch (error) {
-    console.log(error.message);
-  }
+  // Fetch the notes
+  const { notes } = await fetchNotes();
 
   /* 
   {
@@ -48,9 +41,9 @@ const NotesFeed = async () => {
 
   return (
     <>
-      {/* Show the topic card */}
-      {topics?.map((note) => {
-        // console.log(topic);
+      {/* Show the note card */}
+      {notes?.map((note) => {
+        // console.log(note);
         return (
           <NoteCard
             key={note?._id}

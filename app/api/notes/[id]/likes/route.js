@@ -1,5 +1,5 @@
 import connectDB from "@/helper/mongodb";
-import Topic from "@/models/topic.model";
+import Note from "@/models/note.model";
 import { NextResponse } from "next/server";
 
 export const PATCH = async (req, { params }) => {
@@ -13,14 +13,14 @@ export const PATCH = async (req, { params }) => {
     } else {
       update = { $pull: { likes: userId } };
     }
-    const topic = await Topic.findByIdAndUpdate(id, update, { new: true });
+    const note = await Note.findByIdAndUpdate(id, update, { new: true });
 
-    // Check if the topic exists
-    if (!topic) {
-      return NextResponse.json({ message: "Topic not found" }, { status: 404 });
+    // Check if the note exists
+    if (!note) {
+      return NextResponse.json({ message: "Note not found" }, { status: 404 });
     }
 
-    return NextResponse.json({ topic }, { status: 200 });
+    return NextResponse.json({ note }, { status: 200 });
   } catch (error) {
     console.error(error); // Log the error for debugging
     return NextResponse.json(
