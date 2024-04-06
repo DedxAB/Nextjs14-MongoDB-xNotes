@@ -101,7 +101,7 @@ const Navbar = () => {
           </Link>
         )}
       </div>
-      <Button onClick={() => signOut()}>signout</Button>
+      {/* <Button onClick={() => signOut()}>signout</Button> */}
     </nav>
   );
 };
