@@ -103,7 +103,7 @@ const NoteCard = ({ note, user }) => {
               <p className={`font-bold mr-1`}>{user?.name}</p>
 
               {/* username */}
-              <p className={`text-[#444746]`}>@{user?.username}</p>
+              <p className={`text-[#6b6e6e]`}>@{user?.username}</p>
             </Link>
           </div>
 
