@@ -16,6 +16,10 @@ const NoteCommentForm = ({ note }) => {
   const handelSubmitCommentForm = async (e) => {
     e.preventDefault();
     // console.log(comment);
+    if (!session) {
+      toast.error("You must be logged in to add a comment");
+      return;
+    }
     try {
       const res = await fetch(`/api/comments`, {
         method: "POST",
@@ -54,7 +58,7 @@ const NoteCommentForm = ({ note }) => {
         <div className="mr-2 py-1">
           <Avatar>
             <AvatarImage
-              src={session?.user?.image}
+              src={session?.user?.image || "/logo.png"}
               referrerPolicy="no-referrer"
             />
             <AvatarFallback>{shortName}</AvatarFallback>
@@ -67,11 +71,13 @@ const NoteCommentForm = ({ note }) => {
           <div className="flex flex-wrap items-center text-xs">
             <div className="flex flex-wrap items-center">
               {/* name  */}
-              <p className={`font-bold text-xs mr-1`}>{session?.user?.name}</p>
+              <p className={`font-bold text-xs mr-1`}>
+                {session?.user?.name || <>DedxNotes</>}
+              </p>
 
               {/* username */}
-              <p className={`text-gray-500 text-xs`}>
-                @{session?.user?.username}
+              <p className={`text-[#6b6e6e] text-xs`}>
+                @{session?.user?.username || <>dedxnotes</>}
               </p>
             </div>
           </div>
@@ -86,6 +92,7 @@ const NoteCommentForm = ({ note }) => {
                 value={comment}
                 name="comment"
                 required
+                disabled={!session}
               />
             </form>
           </div>

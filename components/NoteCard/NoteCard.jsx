@@ -27,7 +27,7 @@ const NoteCard = ({ note, user }) => {
 
   const handelLike = async (isLiked) => {
     if (!session) {
-      toast.error("Please signin to like this note");
+      toast.error("Please Login to Like this Note");
       return;
     }
     // Optimistically update the state
@@ -88,7 +88,10 @@ const NoteCard = ({ note, user }) => {
         {/* Show the author image */}
         <Link href={`/profile/${user?._id}`} className="mr-2 py-1">
           <Avatar>
-            <AvatarImage src={user?.image} referrerPolicy="no-referrer" />
+            <AvatarImage
+              src={user?.image || "/logo.png"}
+              referrerPolicy="no-referrer"
+            />
           </Avatar>
           {/* <MyImage src={user?.image} /> */}
         </Link>
