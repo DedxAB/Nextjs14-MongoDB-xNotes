@@ -6,7 +6,7 @@ const playfair = Playfair_Display({ subsets: ["latin"] });
 const Footer = () => {
   return (
     <>
-      <div className="max-w-3xl mx-auto px-4 flex flex-col gap-2 md:flex-row md:justify-between items-center py-3">
+      <div className="max-w-3xl mx-auto px-4 flex flex-col gap-1 md:flex-row md:justify-between items-center py-2 md:py-3">
         <Link href="https://dedxnotes.vercel.app/">
           <h1 className={`font-bold text-lg md:text-xl ${playfair.className}`}>
             Dedx
@@ -16,11 +16,11 @@ const Footer = () => {
           </h1>
         </Link>
 
-        <p className="text-sm text-[#444746] font-bold">
+        <p className="text-sm font-bold">
           © Copyright 2024. All Rights Reserved.
         </p>
 
-        <div className="flex">
+        <div className="flex items-center justify-between my-1 md:my-0">
           <Link
             href="https://github.com/DedxAB"
             className="hover:text-pink-500"
