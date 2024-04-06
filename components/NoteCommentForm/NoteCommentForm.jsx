@@ -77,7 +77,7 @@ const NoteCommentForm = ({ note }) => {
           </div>
 
           {/* Show the user comment text*/}
-          <div className="text-sm font-bold text-gray-500">
+          <div className="text-sm font-bold">
             <form onSubmit={handelSubmitCommentForm}>
               <CustomInput
                 type="text"
@@ -85,6 +85,7 @@ const NoteCommentForm = ({ note }) => {
                 onChange={(e) => setComment(e.target.value)}
                 value={comment}
                 name="comment"
+                required
               />
             </form>
           </div>

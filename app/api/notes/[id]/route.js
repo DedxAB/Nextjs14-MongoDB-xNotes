@@ -1,6 +1,8 @@
-import connectDB from "@/helper/mongodb";
 import Note from "@/models/note.model";
+import connectDB from "@/helper/mongodb";
 import { NextResponse } from "next/server";
+import User from "@/models/user.model";
+import Comment from "@/models/comment.model";
 
 export async function PATCH(req, { params }) {
   const { id } = params;
@@ -41,7 +43,13 @@ export const GET = async (_req, { params }) => {
   const { id } = params;
   try {
     await connectDB();
-    const note = await Note.findById(id).populate("author");
+    const note = await Note.findById(id)
+      .populate("author")
+      .populate({
+        path: "comments",
+        options: { sort: { createdAt: -1 } },
+        populate: { path: "author" },
+      });
 
     if (!note) {
       return NextResponse.json({ message: "Note not found" }, { status: 404 });
