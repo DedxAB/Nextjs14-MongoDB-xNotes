@@ -23,7 +23,6 @@ const Navbar = () => {
   const router = useRouter();
   const { status, data: session } = useSession();
   const name = session?.user?.name;
-
   let shortName = name
     ?.split(" ")
     .map((n) => n[0])
@@ -61,6 +60,9 @@ const Navbar = () => {
             </Button>
           </Link>
         )}
+        {/* {!session && (
+         
+        )} */}
 
         {status === "authenticated" ? (
           <DropdownMenu>
@@ -90,18 +92,22 @@ const Navbar = () => {
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
-          <Link href={`/signin`}>
-            <Button
-              variant={`outline`}
-              className="font-bold text-base"
-              size="icon"
-            >
-              <LogIn className="w-4" />
+          <div className="flex gap-4">
+            <Link href={`/signin`}>
+              <Button
+                variant={`outline`}
+                className="font-bold text-base"
+                size="icon"
+              >
+                <LogIn className="w-4" />
+              </Button>
+            </Link>
+            <Button variant={`outline`} size="icon" onClick={() => signOut()}>
+              <LogOut className="w-4 text-red-500" />
             </Button>
-          </Link>
+          </div>
         )}
       </div>
-      {/* <Button onClick={() => signOut()}>signout</Button> */}
     </nav>
   );
 };
