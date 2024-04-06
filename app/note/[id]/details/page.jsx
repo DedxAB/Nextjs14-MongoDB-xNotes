@@ -24,7 +24,7 @@ const NoteDetails = async ({ params }) => {
   const { id } = params;
 
   const {note} = await fetchNoteById(id);
-  console.log(note);
+  // console.log(note);
 
   return (
     <div className="min-h-[85vh]">
