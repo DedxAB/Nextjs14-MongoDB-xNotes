@@ -21,12 +21,21 @@ const RemoveComment = ({ comment, note }) => {
   const [conformationMessage, setConformationMessage] = useState(false);
   const router = useRouter();
   const { data: session } = useSession();
-  //   console.log(comment);
-  //   console.log(note);
 
-  const deleteComment = async () => {
+  const deleteComment = async (id) => {
     if (conformationMessage) {
       try {
+        const res = await fetch(`/api/comments/delete/${id}`, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ noteId: note._id }),
+        });
+        const errorData = await res.json();
+        if (!res.ok) {
+          throw new Error(errorData.message || "Falied to Delete Comment.");
+        }
         toast.success("Comment Deleted Successfully.");
         router.refresh();
       } catch (e) {
@@ -69,7 +78,7 @@ const RemoveComment = ({ comment, note }) => {
               </AlertDialogCancel>
               <AlertDialogAction
                 className={`font-bold`}
-                onClick={deleteComment}
+                onClick={() => deleteComment(comment._id)}
               >
                 Continue
               </AlertDialogAction>
