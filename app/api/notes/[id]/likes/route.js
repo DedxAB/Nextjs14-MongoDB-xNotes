@@ -22,7 +22,7 @@ export const PATCH = async (req, { params }) => {
 
     return NextResponse.json({ note }, { status: 200 });
   } catch (error) {
-    console.error(error); // Log the error for debugging
+    // console.error(error); // Log the error for debugging
     return NextResponse.json(
       { message: "Failed to update Like" },
       { status: 500 }
