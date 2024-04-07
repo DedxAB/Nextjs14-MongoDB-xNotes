@@ -30,7 +30,7 @@ const Navbar = () => {
     .join("");
 
   return (
-    <nav className="max-w-3xl mx-auto px-4 flex justify-between items-center py-3">
+    <nav className="max-w-3xl mx-auto px-4 flex justify-between items-center py-4">
       <Link href={`/`}>
         <h1 className={`font-bold text-2xl md:text-3xl ${playfair.className}`}>
           Dedx
@@ -41,10 +41,11 @@ const Navbar = () => {
       </Link>
       {status === "loading" ? (
         <>
-          <div className="animate-pulse flex gap-4 items-center">
-            <div className="bg-gray-300 h-9 w-10 rounded-md"></div>
-            <div className="bg-gray-300 h-9 w-20 rounded-md"></div>
-            <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
+          <div className="flex space-x-2 h-9 items-center mr-6">
+            <div className="w-3 h-3 bg-pink-500 rounded-full animate-ping"></div>
+            <div className="w-3 h-3 bg-pink-500 rounded-full animate-ping"></div>
+            <div className="w-3 h-3 bg-pink-500 rounded-full animate-ping"></div>
+            <div className="w-3 h-3 bg-pink-500 rounded-full animate-ping"></div>
           </div>
         </>
       ) : (
