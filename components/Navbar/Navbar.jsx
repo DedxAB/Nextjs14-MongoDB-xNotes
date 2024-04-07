@@ -16,6 +16,7 @@ import {
 import { CircleUserRound, LogIn, LogOut, NotebookPen } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Playfair_Display } from "next/font/google";
+import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";
 
 const playfair = Playfair_Display({ subsets: ["latin"] });
 
@@ -38,76 +39,86 @@ const Navbar = () => {
           </span>
         </h1>
       </Link>
-      <div className="flex items-center justify-between gap-4">
-        {/* Theme changing component  */}
-        <ThemeToggle />
+      {status === "loading" ? (
+        <>
+          <div className="animate-pulse flex gap-4 items-center">
+            <div className="bg-gray-300 h-9 w-10 rounded-md"></div>
+            <div className="bg-gray-300 h-9 w-20 rounded-md"></div>
+            <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
+          </div>
+        </>
+      ) : (
+        <div className="flex items-center justify-between gap-4">
+          {/* Theme changing component  */}
+          <ThemeToggle />
 
-        {status === "authenticated" && (
-          <Link href={`/add-note`}>
-            <Button
-              variant={`outline`}
-              className="hidden md:font-bold md:flex md:gap-1"
-            >
-              <NotebookPen className="w-4" />
-              <span>Write</span>
-            </Button>
-            <Button
-              variant={`outline`}
-              className="font-bold md:hidden"
-              size="icon"
-            >
-              <NotebookPen className="w-4" />
-            </Button>
-          </Link>
-        )}
-        {/* {!session && (
+          {status === "authenticated" && (
+            <Link href={`/add-note`}>
+              <Button
+                variant={`outline`}
+                className="hidden md:font-bold md:flex md:gap-1"
+              >
+                <NotebookPen className="w-4" />
+                <span>Write</span>
+              </Button>
+              <Button
+                variant={`outline`}
+                className="font-bold md:hidden"
+                size="icon"
+              >
+                <NotebookPen className="w-4" />
+              </Button>
+            </Link>
+          )}
+          {/* {!session && (
          
         )} */}
 
-        {status === "authenticated" ? (
-          <DropdownMenu>
-            <DropdownMenuTrigger>
-              <Avatar>
-                <AvatarImage src={`${session?.user?.image}`} />
-                <AvatarFallback>{shortName}</AvatarFallback>
-              </Avatar>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem
-                className={`cursor-pointer`}
-                onClick={() => router.push(`/profile/${session?.user?.id}`)}
-              >
-                <CircleUserRound className="w-4 mr-2" />
-                <span className="font-bold">Profile</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                className={`cursor-pointer`}
-                onClick={() => signOut()}
-              >
-                <LogOut className="w-4 mr-2 text-red-500" />
-                <span className="font-bold text-red-500">Sign out</span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        ) : (
-          <div className="flex gap-4">
-            <Link href={`/signin`}>
-              <Button
-                variant={`outline`}
-                className="font-bold text-base"
-                size="icon"
-              >
-                <LogIn className="w-4" />
+          {status === "authenticated" ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <Avatar>
+                  <AvatarImage src={`${session?.user?.image}`} />
+                  <AvatarFallback>{shortName}</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  className={`cursor-pointer`}
+                  onClick={() => router.push(`/profile/${session?.user?.id}`)}
+                >
+                  <CircleUserRound className="w-4 mr-2" />
+                  <span className="font-bold">Profile</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className={`cursor-pointer`}
+                  onClick={() => signOut()}
+                >
+                  <LogOut className="w-4 mr-2 text-red-500" />
+                  <span className="font-bold text-red-500">Sign out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <div className="flex gap-4">
+              <Link href={`/signin`}>
+                <Button
+                  variant={`outline`}
+                  className="font-bold text-base"
+                  size="icon"
+                >
+                  <LogIn className="w-4" />
+                </Button>
+              </Link>
+              <Button variant={`outline`} size="icon" onClick={() => signOut()}>
+                <LogOut className="w-4 text-red-500" />
               </Button>
-            </Link>
-            <Button variant={`outline`} size="icon" onClick={() => signOut()}>
-              <LogOut className="w-4 text-red-500" />
-            </Button>
-          </div>
-        )}
-      </div>
+            </div>
+          )}
+        </div>
+      )}
     </nav>
   );
 };
