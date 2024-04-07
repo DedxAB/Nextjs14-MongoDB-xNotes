@@ -56,7 +56,7 @@ export const GET = async (_req, { params }) => {
     }
     return NextResponse.json({ note }, { status: 200 });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return NextResponse.json(
       { message: "Failed to connect with DB" },
       { status: 500 }
