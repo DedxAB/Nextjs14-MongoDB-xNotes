@@ -33,14 +33,16 @@ const NoteCommentForm = ({ note }) => {
         }),
       });
 
+      const errorData = await res.json();
+
       if (!res.ok) {
-        throw new Error("Failed to add comment" || res.json());
+        throw new Error(errorData.message || "Failed to add comment");
       }
 
       toast.success("Comment added Successfully");
       router.refresh();
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     } finally {
       setComment("");
     }
