@@ -111,7 +111,7 @@ const NoteCard = ({ note, user }) => {
           </div>
 
           {/* Title and Date div  */}
-          <div className="flex justify-between items-center gap-1">
+          <div className="flex justify-between items-start gap-1">
             {/* Show the title and date */}
             <Link href={`/note/${updatedNote?._id}/details`}>
               {/* title  */}
