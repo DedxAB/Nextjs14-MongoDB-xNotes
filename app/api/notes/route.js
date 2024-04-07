@@ -1,4 +1,5 @@
 import connectDB from "@/helper/mongodb";
+import Comment from "@/models/comment.model";
 import Note from "@/models/note.model";
 import User from "@/models/user.model";
 import { NextResponse } from "next/server";
@@ -71,6 +72,8 @@ export async function DELETE(req) {
       },
       { new: true }
     );
+    // delete the related comments
+    await Comment.deleteMany({_id:{$in: deletedNote.comments}})
     return Response.json({ deletedNote }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
