@@ -68,7 +68,7 @@ const NoteCommentForm = ({ note }) => {
         </div>
 
         {/* Show the author name, username and user comment text */}
-        <div className="w-full flex flex-col gap-1">
+        <div className="w-full flex flex-col gap-1 md:gap-2">
           {/* Show the author name, username */}
           <div className="flex flex-wrap items-center text-xs">
             <div className="flex flex-wrap items-center">
