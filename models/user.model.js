@@ -30,6 +30,12 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    socialLinks: {
+      facebook: { type: String, trim: true },
+      twitter: { type: String, trim: true },
+      instagram: { type: String, trim: true },
+      // add more platforms as needed...
+    },
   },
   { timestamps: true }
 );
