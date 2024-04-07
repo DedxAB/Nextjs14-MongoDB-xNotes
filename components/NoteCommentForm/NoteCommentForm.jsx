@@ -37,7 +37,7 @@ const NoteCommentForm = ({ note }) => {
         throw new Error("Failed to add comment" || res.json());
       }
 
-      toast.success("Comment added successfully");
+      toast.success("Comment added Successfully");
       router.refresh();
     } catch (error) {
       console.log(error.message);
