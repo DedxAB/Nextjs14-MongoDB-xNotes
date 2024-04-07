@@ -23,7 +23,7 @@ const NoteDetailsById = ({ note }) => {
       )}
       {note?.comments?.length > 0 ? (
         note?.comments?.map((comment) => (
-          <NoteCommentCard key={comment?._id} comment={comment} />
+          <NoteCommentCard key={comment?._id} comment={comment} note={note} />
         ))
       ) : (
         <div className="my-10">
