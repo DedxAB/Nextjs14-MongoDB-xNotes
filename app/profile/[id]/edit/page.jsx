@@ -25,19 +25,14 @@ const fetchUserById = async (id) => {
 const ProfileEditPage = async ({ params }) => {
   const { id } = params;
   // console.log(id);
-  let user = {};
-  try {
-    const response = await fetchUserById(id);
-    user = response.user;
-    // console.log(user);
-  } catch (error) {
-    console.log(error.message);
-  }
-  const { bio, socailLinks, _id: userId } = user;
+
+  const { user } = await fetchUserById(id);
+
+  const { bio, socialLinks, _id: userId } = user;
   // console.log(bio);
   return (
     <div className="min-h-[85vh]">
-      <EditProfileForm authorId={userId} bio={bio} socailLinks={socailLinks} />
+      <EditProfileForm userId={userId} bio={bio} socialLinks={socialLinks} />
     </div>
   );
 };

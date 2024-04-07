@@ -44,13 +44,8 @@ const UserFeed = ({ notes, user }) => {
 
 const Profile = async ({ params }) => {
   const { id } = params;
-  let user = {};
-  try {
-    const response = await fetchUser(id);
-    user = response.user;
-  } catch (error) {
-    console.log(error.message);
-  }
+  const { user } = await fetchUser(id);
+
   return (
     <div className="min-h-[85vh]">
       <ProfileSection user={user} />
