@@ -1,11 +1,19 @@
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 const NoteCommentCard = ({ comment }) => {
   let shortName = comment?.author?.name
     ?.split(" ")
     .map((n) => n[0])
     .join("");
+
+  const commentTime = dayjs(comment?.createdAt);
+  const relativeTime = commentTime.fromNow();
+  // console.log(relativeTime);
 
   return (
     <>
@@ -24,22 +32,22 @@ const NoteCommentCard = ({ comment }) => {
         {/* Show the author name, username and user comment text */}
         <div className="w-full flex flex-col gap-1">
           {/* Show the author name, username */}
-          <div className="flex flex-wrap items-center text-xs">
-            <Link
-              href={`/profile/${comment?.author?._id}`}
-              className="flex flex-wrap items-center mr-2"
-            >
-              {/* name  */}
-              <p className={`font-bold text-xs mr-1`}>
-                {comment?.author?.name}
-              </p>
+          <Link
+            href={`/profile/${comment?.author?._id}`}
+            className="flex flex-wrap items-center mr-2 text-xs gap-1"
+          >
+            {/* name  */}
+            <p className={`font-bold`}>{comment?.author?.name}</p>
 
-              {/* username */}
-              <p className={`text-gray-500 text-xs`}>
-                @{comment?.author?.username}
-              </p>
-            </Link>
-          </div>
+            {/* username */}
+            <p className={`text-[#6b6e6e]`}>@{comment?.author?.username}</p>
+            <p className="text-[#6b6e6e]">
+              {
+                // Show the relative time
+                relativeTime
+              }
+            </p>
+          </Link>
 
           {/* Show the user comment text*/}
           <div className="text-sm font-bold">
