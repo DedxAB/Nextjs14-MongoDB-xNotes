@@ -27,7 +27,7 @@ const NoteCard = ({ note, user }) => {
 
   const handelLike = async (isLiked) => {
     if (!session) {
-      toast.error("Please Login to Like this Note");
+      toast.error("Please Login to like Notes");
       return;
     }
     // Optimistically update the state
