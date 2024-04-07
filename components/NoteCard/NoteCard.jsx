@@ -168,7 +168,7 @@ const NoteCard = ({ note, user }) => {
           </Link>
           {/* Show the tags */}
           {updatedNote?.tags && updatedNote?.tags.length > 0 && (
-            <div className="mt-1">
+            <div className="my-1">
               <p className={`text-sm ${playfair.className}`}>
                 {updatedNote?.tags.map((tag, index) => (
                   <Link
