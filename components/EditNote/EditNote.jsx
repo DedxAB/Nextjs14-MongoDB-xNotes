@@ -91,6 +91,13 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           className="border shadow w-full px-4 py-6 text-lg font-bold rounded"
         />
 
+        {/* Description text area */}
+        <Textarea
+          onChange={(e) => setNewDescription(e.target.value)}
+          value={newDescription}
+          placeholder={`Please fill the Details about the note`}
+          className={`border shadow w-full px-4 py-3 font-bold rounded`}
+        />
         {/* Website Link input field */}
         <Input
           onChange={(e) => {
@@ -102,14 +109,6 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           id="websiteLike"
           placeholder="https://attach website link if any (Optional)"
           className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
-        />
-
-        {/* Description text area */}
-        <Textarea
-          onChange={(e) => setNewDescription(e.target.value)}
-          value={newDescription}
-          placeholder={`Please fill the Details about the note`}
-          className={`border shadow w-full px-4 py-3 font-bold rounded`}
         />
 
         {/* Tags text area */}
@@ -128,7 +127,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           type="text"
           name="tags"
           id="tags"
-          placeholder="tag1, tag2 - Optional"
+          placeholder="tag1, tag2, ... (Optional) for search purpose."
           className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
         />
 
