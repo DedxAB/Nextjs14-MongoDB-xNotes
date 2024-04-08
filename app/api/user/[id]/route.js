@@ -27,10 +27,10 @@ export const GET = async (_req, { params }) => {
 };
 
 export const PATCH = async (req, { params }) => {
-  await connectDB();
   const { id } = params;
   const { bio, socialLinks } = await req.json();
   try {
+    await connectDB();
     const user = await User.findByIdAndUpdate(
       id,
       { bio, socialLinks },
