@@ -10,12 +10,10 @@ import { useRouter } from "next/navigation";
 import { Input } from "../ui/input";
 
 const isValidUrl = (url) => {
-  try {
-    new URL(url);
-    return true;
-  } catch (_) {
-    return false;
-  }
+  const urlRegex = new RegExp(
+    "^https:\\/\\/www\\.[a-zA-Z0-9-]+(\\.[a-zA-Z]{2,})+(\\/[-a-zA-Z0-9@:%_\\+.~#?&//=]*)?$"
+  );
+  return urlRegex.test(url);
 };
 
 const EditProfileForm = ({ userId, bio, socialLinks }) => {
