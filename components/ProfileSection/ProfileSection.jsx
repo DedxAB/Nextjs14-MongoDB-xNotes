@@ -58,10 +58,8 @@ const ProfileSection = ({ user }) => {
         </div>
 
         {/* User Bio */}
-        <div className="my-4">
-          <p className="font-bold">
-            {user?.bio ? user?.bio : "No bio available"}
-          </p>
+        <div className="whitespace-pre-line font-bold my-4">
+          {user?.bio ? user?.bio : "No bio available"}
         </div>
 
         {/* User Social Links */}

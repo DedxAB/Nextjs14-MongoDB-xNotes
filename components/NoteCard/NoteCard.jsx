@@ -158,13 +158,13 @@ const NoteCard = ({ note, user }) => {
 
           {/* Show the description */}
           <Link href={`/note/${updatedNote?._id}/details`}>
-            <div className="flex justify-between items-cente mt-1">
-              <h2 className="text-sm md:text-base font-bold py-1">
-                {pathName === `/note/${updatedNote?._id}/details`
-                  ? updatedNote?.description
-                  : truncateString(updatedNote?.description, 115)}
-              </h2>
+            {/* <div className="flex justify-between items-cente mt-1"> */}
+            <div className="text-sm md:text-base font-bold mt-1 py-1 whitespace-pre-line">
+              {pathName === `/note/${updatedNote?._id}/details`
+                ? updatedNote?.description
+                : truncateString(updatedNote?.description, 115)}
             </div>
+            {/* </div> */}
           </Link>
           {/* Show the tags */}
           {updatedNote?.tags && updatedNote?.tags.length > 0 && (
