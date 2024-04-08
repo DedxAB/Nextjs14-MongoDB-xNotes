@@ -2,13 +2,11 @@ import connectDB from "@/helper/mongodb";
 import User from "@/models/user.model";
 import { NextResponse } from "next/server";
 
+// Get a single user by id
 export const GET = async (_req, { params }) => {
-  // Connect to the database
-  await connectDB();
-
-  // Destructure the user id from the params object and find the user by id
   const { id } = params;
   try {
+    await connectDB();
     const user = await User.findById(id).populate({
       path: "notes",
       options: { sort: { createdAt: -1 } },
@@ -22,7 +20,7 @@ export const GET = async (_req, { params }) => {
     return NextResponse.json({ user }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
-      { message: "Failed to fetch user" },
+      { message: "Failed to connect to the server" },
       { status: 500 }
     );
   }
