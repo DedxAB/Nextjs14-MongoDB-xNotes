@@ -58,7 +58,7 @@
   }
 }
 ::selection {
-  color: yellow;
+  color: rgb(255, 41, 77);
 }
 
 @font-face {
