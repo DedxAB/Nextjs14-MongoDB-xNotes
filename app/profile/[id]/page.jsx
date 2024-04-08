@@ -16,7 +16,7 @@ const fetchUser = async (id) => {
       const errorData = await res.json();
       throw new Error(errorData.message || "Failed to get User");
     }
-    return res.json();
+    return await res.json();
   } catch (error) {
     console.log(error.message);
   }
