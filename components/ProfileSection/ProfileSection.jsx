@@ -4,13 +4,7 @@ import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
 import { useSession } from "next-auth/react";
-import {
-  CalendarDays,
-  Facebook,
-  Scroll,
-  ScrollText,
-  Twitter,
-} from "lucide-react";
+import { CalendarDays, Scroll, ScrollText } from "lucide-react";
 
 const ProfileSection = ({ user }) => {
   const { data: session } = useSession();
