@@ -25,7 +25,7 @@ const UserBanner = async () => {
               Hello, Guest
             </h1>
             <h1 className="text-3xl md:text-4xl my-2">
-              Wants to create notes?
+              Want to create notes?
             </h1>
             <Link href={`/signin`}>
               <Button
