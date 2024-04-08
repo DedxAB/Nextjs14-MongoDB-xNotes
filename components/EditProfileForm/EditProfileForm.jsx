@@ -9,10 +9,10 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Input } from "../ui/input";
 
+// Validate URL function
 const isValidUrl = (url) => {
-  const urlRegex = new RegExp(
-    "^https:\\/\\/www\\.[a-zA-Z0-9-]+(\\.[a-zA-Z]{2,})+(\\/[-a-zA-Z0-9@:%_\\+.~#?&//=]*)?$"
-  );
+  const urlRegex =
+    /^(https?:\/\/)?([a-z\d-]+\.)*[a-z\d-]+\.[a-z]{2,}(\/[^\s]*)?$/i;
   return urlRegex.test(url);
 };
 
@@ -62,7 +62,7 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
           Profile details changes?
         </h1>
         <h1 className="text-xl md:text-2xl my-2">
-          Dont worry! You are at right place.
+          Don&apos;t worry! You are at the right place.
         </h1>
       </section>
       <section>
@@ -108,7 +108,6 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
             <Link href={`/profile/${userId}`}>
               <Button variant={`outline`} className="font-bold w-fit mr-3">
                 <MessageSquareX className="w-4 mr-1" />
-                {/* <X className="w-4 mr-1" /> */}
                 Cancel
               </Button>
             </Link>

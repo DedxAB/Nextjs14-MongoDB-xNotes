@@ -9,6 +9,13 @@ import Link from "next/link";
 import { MessageSquareX, Save } from "lucide-react";
 import { Label } from "../ui/label";
 
+// Validate URL function
+const isValidUrl = (url) => {
+  const urlRegex =
+    /^(https?:\/\/)?([a-z\d-]+\.)*[a-z\d-]+\.[a-z]{2,}(\/[^\s]*)?$/i;
+  return urlRegex.test(url);
+};
+
 const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
   const route = useRouter();
   const [newTitle, setNewTitle] = useState(title);
@@ -20,6 +27,12 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
     e.preventDefault();
     if (!newTitle || !newDescription) {
       toast.warning("Please fill all the fields");
+      return;
+    }
+
+    // validate URL if provided
+    if (newWebsiteLink && !isValidUrl(newWebsiteLink)) {
+      toast.warning("Please enter a valid website link (if provided).");
       return;
     }
 

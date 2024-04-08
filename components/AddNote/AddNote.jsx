@@ -10,6 +10,13 @@ import { ArrowUpToLine, MessageSquareX } from "lucide-react";
 import Link from "next/link";
 import { Label } from "../ui/label";
 
+// Validate URL function
+const isValidUrl = (url) => {
+  const urlRegex =
+    /^(https?:\/\/)?([a-z\d-]+\.)*[a-z\d-]+\.[a-z]{2,}(\/[^\s]*)?$/i;
+  return urlRegex.test(url);
+};
+
 const AddNote = () => {
   const router = useRouter();
   const { data: session } = useSession();
@@ -25,6 +32,13 @@ const AddNote = () => {
       toast.warning("Please fill all the fields");
       return;
     }
+
+    // validate URL if provided
+    if (websiteLink && !isValidUrl(websiteLink)) {
+      toast.warning("Please enter a valid website link (if provided).");
+      return;
+    }
+    
     const tagArray =
       tags && tags.trim() !== ""
         ? tags
