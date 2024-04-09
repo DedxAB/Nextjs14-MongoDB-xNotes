@@ -87,7 +87,9 @@ const Navbar = () => {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   className={`cursor-pointer`}
-                  onClick={() => router.push(`/profile/${session?.user?.id}`)}
+                  onClick={() =>
+                    router.push(`/profile/${session?.user?.id}/details`)
+                  }
                 >
                   <CircleUserRound className="w-4 mr-2" />
                   <span className="font-bold">Profile</span>
