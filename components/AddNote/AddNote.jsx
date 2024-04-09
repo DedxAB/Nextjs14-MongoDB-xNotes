@@ -6,7 +6,13 @@ import { toast } from "sonner";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { useSession } from "next-auth/react";
-import { ArrowUpToLine, ExternalLink, MessageSquareX } from "lucide-react";
+import {
+  ArrowUpToLine,
+  ExternalLink,
+  MessageSquareX,
+  MessageSquareXIcon,
+  X,
+} from "lucide-react";
 import Link from "next/link";
 import { Label } from "../ui/label";
 import { Avatar, AvatarImage } from "../ui/avatar";
@@ -191,17 +197,22 @@ const AddNote = () => {
         />
 
         {/* Buttons */}
-        <div className="flex justify-between items-center">
-          <div className="font-bold text-lg text-gray-500">
+        <div className="flex justify-between items-center gap-1">
+          <div className="font-bold text-base text-gray-500 w-max">
             Want to Preview?
           </div>
           {/* Cancel Button */}
-          <div className="flex justify-end">
+          <div className="flex justify-end gap-3 md:gap-4">
             <Link href={`/`}>
-              <Button variant={`outline`} className="font-bold w-fit mr-3">
+              <Button
+                variant={`outline`}
+                className="hidden md:font-bold md:flex"
+              >
                 <MessageSquareX className="w-4 mr-1" />
-                {/* <X className="w-4 mr-1" /> */}
                 Cancel
+              </Button>
+              <Button variant={`outline`} className="md:hidden" size="icon">
+                <X className="w-4" />
               </Button>
             </Link>
 
@@ -209,10 +220,18 @@ const AddNote = () => {
             <Button
               type={`submit`}
               variant={`outline`}
-              className="font-bold w-fit"
+              className="hidden md:font-bold md:flex"
             >
               <ArrowUpToLine className="w-4 mr-1" />
               Publish
+            </Button>
+            <Button
+              type={`submit`}
+              variant={`outline`}
+              className="md:hidden"
+              size="icon"
+            >
+              <ArrowUpToLine className="w-4" />
             </Button>
           </div>
         </div>
