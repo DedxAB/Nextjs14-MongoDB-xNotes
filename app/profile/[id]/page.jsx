@@ -1,6 +1,7 @@
 import NoteCard from "@/components/NoteCard/NoteCard";
 import ProfileSection from "@/components/ProfileSection/ProfileSection";
 import { BASE_URL } from "@/utils/constants";
+import { toast } from "sonner";
 
 export const metadata = {
   title: "Profile | DedxNotes",

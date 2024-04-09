@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -22,6 +22,26 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
   const [newDescription, setNewDescription] = useState(description);
   const [newTags, setNewTags] = useState(tags.join(", "));
   const [newWebsiteLink, setNewWebsiteLink] = useState(websiteLink);
+  const [charCount, setCharCount] = useState(0);
+
+  // resize textarea
+  const textareaRef = useRef(null);
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [newDescription]);
+
+  // Max character count for description
+  const maxCharCount = 300;
+  const handelDescriptionChange = (e) => {
+    const text = e.target.value;
+    if (text.length <= maxCharCount) {
+      setNewDescription(text);
+      setCharCount(text.length);
+    }
+  };
 
   const handelOnSubmit = async (e) => {
     e.preventDefault();
@@ -89,16 +109,20 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           name="title"
           id="title"
           placeholder="Title of the Note..."
-          className="border shadow w-full px-4 py-6 text-lg font-bold rounded"
+          className="shadow px-4 py-6 text-lg font-bold"
         />
 
         {/* Description text area */}
         <Textarea
-          onChange={(e) => setNewDescription(e.target.value)}
+          ref={textareaRef}
+          onChange={handelDescriptionChange}
           value={newDescription}
           placeholder={`Please fill the Details about the note`}
-          className={`border shadow w-full px-4 py-3 font-bold rounded`}
+          className={`shadow px-4 py-3 font-bold min-h-32 overflow-hidden`}
         />
+        <p className="font-bold text-right text-sm text-gray-500">
+          {charCount}/{maxCharCount}
+        </p>
         {/* Website Link input field */}
         <Input
           onChange={(e) => {
@@ -109,7 +133,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           name="websiteLike"
           id="websiteLike"
           placeholder="https://attach website link if any (Optional)"
-          className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
+          className="shadow px-4 py-5 text-base font-bold"
         />
 
         {/* Tags text area */}
@@ -129,7 +153,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           name="tags"
           id="tags"
           placeholder="tag1, tag2, ... (Optional)"
-          className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
+          className="shadow px-4 py-5 text-base font-bold"
         />
 
         {/* Buttons */}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { MessageSquareX, Save } from "lucide-react";
 import { Textarea } from "../ui/textarea";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Input } from "../ui/input";
@@ -20,6 +20,26 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
   const route = useRouter();
   const [newBio, setNewBio] = useState(bio || "");
   const [socialLink, setSocialLink] = useState(socialLinks || {});
+  const [charCount, setCharCount] = useState(0);
+
+  // resize textarea
+  const textareaRef = useRef(null);
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [newBio]);
+
+  // Max character count for bio
+  const maxCharCount = 160;
+  const handleBioChange = (e) => {
+    const text = e.target.value;
+    if (text.length <= maxCharCount) {
+      setNewBio(text);
+      setCharCount(text.length);
+    }
+  };
 
   const handelOnSubmit = async (e) => {
     e.preventDefault();
@@ -69,11 +89,15 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
         <form onSubmit={handelOnSubmit} className="flex flex-col gap-3">
           {/* Description text area */}
           <Textarea
-            onChange={(e) => setNewBio(e.target.value)}
+            ref={textareaRef}
+            onChange={handleBioChange}
             value={newBio}
             placeholder={`Tell us about yourself...`}
-            className={`border shadow w-full px-4 py-3 font-bold rounded`}
+            className={`px-4 py-3 font-bold shadow overflow-hidden`}
           />
+          <p className="text-right font-bold text-sm text-gray-500">
+            {charCount}/{maxCharCount}
+          </p>
           {/* Social Links */}
           <div className="flex flex-wrap gap-3">
             <Input

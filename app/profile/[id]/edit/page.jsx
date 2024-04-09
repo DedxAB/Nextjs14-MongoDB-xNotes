@@ -1,5 +1,6 @@
 import EditProfileForm from "@/components/EditProfileForm/EditProfileForm";
 import { BASE_URL } from "@/utils/constants";
+import { toast } from "sonner";
 
 export const metadata = {
   title: "Edit Profile | DedxNotes",

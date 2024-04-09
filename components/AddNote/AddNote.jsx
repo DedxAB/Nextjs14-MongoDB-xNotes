@@ -1,15 +1,12 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { useSession } from "next-auth/react";
-import {
-  ArrowUpToLine,
-  ExternalLink,
-} from "lucide-react";
+import { ArrowUpToLine, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { Label } from "../ui/label";
 import { Avatar, AvatarImage } from "../ui/avatar";
@@ -37,6 +34,15 @@ const AddNote = () => {
   const [websiteLink, setWebsiteLink] = useState("");
   const [charCount, setCharCount] = useState(0);
   const [preview, setPreview] = useState(false);
+
+  const textareaRef = useRef(null);
+ // Auto resize the textarea
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [description]);
 
   const maxCharCount = 300;
 
@@ -118,7 +124,6 @@ const AddNote = () => {
       localStorage.removeItem("tags");
       localStorage.removeItem("websiteLink");
     } catch (error) {
-      // Display the error message
       toast.error(error.message);
       console.log(error.message);
     }
@@ -147,18 +152,19 @@ const AddNote = () => {
           name="title"
           id="title"
           placeholder="Title of the Note..."
-          className="border shadow outline-none w-full px-4 py-6 text-lg font-bold rounded"
+          className="shadow px-4 py-6 text-lg font-bold"
         />
 
         {/* Description text area */}
         <Textarea
+          ref={textareaRef}
           onChange={handelDescriptionChange}
           value={description}
           placeholder={`Please fill the Details about the note`}
-          className={`border shadow w-full px-4 py-3 font-bold rounded h-44`}
+          className={`shadow px-4 py-3 font-bold min-h-32 overflow-hidden`}
         />
-        <p className="font-bold ml-1 text-sm text-gray-500">
-          {maxCharCount - charCount} characters remaining.
+        <p className="text-right font-bold text-sm text-gray-500">
+          {charCount}/{maxCharCount}
         </p>
         {/* Website Link input field */}
         <Input
@@ -170,7 +176,7 @@ const AddNote = () => {
           name="websiteLike"
           id="websiteLike"
           placeholder="https://attach website link if any (Optional)"
-          className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
+          className="shadow px-4 py-5 text-base font-bold"
         />
 
         {/* Tags text area */}
@@ -190,7 +196,7 @@ const AddNote = () => {
           name="tags"
           id="tags"
           placeholder="tag1, tag2, ... (Optional)"
-          className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
+          className="shadow px-4 py-5 text-base font-bold"
         />
 
         {/* Buttons */}
