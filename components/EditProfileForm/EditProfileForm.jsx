@@ -73,6 +73,7 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
       route.refresh();
     } catch (error) {
       toast.error(error.message);
+      console.log(error.message);
     }
   };
 
@@ -130,7 +131,7 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
           {/* Buttons */}
           <div className="ml-auto">
             {/* Cancel Button */}
-            <Link href={`/profile/${userId}`}>
+            <Link href={`/profile/${userId}/details`}>
               <Button variant={`outline`} className="font-bold w-fit mr-3">
                 <MessageSquareX className="w-4 mr-1" />
                 Cancel

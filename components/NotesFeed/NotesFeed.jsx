@@ -1,6 +1,5 @@
 import { BASE_URL } from "@/utils/constants";
 import NoteCard from "../NoteCard/NoteCard";
-import { toast } from "sonner";
 
 const fetchNotes = async () => {
   try {
@@ -13,7 +12,6 @@ const fetchNotes = async () => {
     }
     return await res.json();
   } catch (error) {
-    toast.error(error.message);
     console.log(error.message);
   }
 };

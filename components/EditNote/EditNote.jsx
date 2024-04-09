@@ -160,10 +160,9 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
         {/* Buttons */}
         <div className="ml-auto">
           {/* Cancel Button */}
-          <Link href={`/profile/${author?._id}`}>
+          <Link href={`/profile/${author?._id}/details`}>
             <Button variant={`outline`} className="font-bold w-fit mr-3">
               <MessageSquareX className="w-4 mr-1" />
-              {/* <X className="w-4 mr-1" /> */}
               Cancel
             </Button>
           </Link>

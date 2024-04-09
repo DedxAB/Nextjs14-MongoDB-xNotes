@@ -144,7 +144,7 @@ const NoteCard = ({ note, user }) => {
             {/* Show Edit and remove button based on user who created this note */}
             {/* {alert(session?.user?.id)} */}
             {session?.user?.id === updatedNote?.author?._id &&
-              pathName === `/profile/${user?._id}` && (
+              pathName === `/profile/${user?._id}/details` && (
                 <div className="min-w-20">
                   {/* Add the edit button */}
                   <Link href={`/edit-note/${updatedNote?._id}`}>

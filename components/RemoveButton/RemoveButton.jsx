@@ -36,7 +36,7 @@ const RemoveButton = ({ id }) => {
         toast.success("Note Deleted Successfully.");
         router.refresh();
       } catch (e) {
-        toast.error("Failed to Delete Note.");
+        toast.error(e.message);
         console.log(e.message);
       }
       setConformationMessage(false);

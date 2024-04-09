@@ -1,7 +1,6 @@
 import SearchFeed from "@/components/SearchFeed/SearchFeed";
 import SearchResultBanner from "@/components/SearchResultBanner/SearchResultBanner";
 import { BASE_URL } from "@/utils/constants";
-import { toast } from "sonner";
 
 export const metadata = {
   title: "Result",
@@ -36,7 +35,6 @@ const fetchData = async (q) => {
 
     return { notesArray, usersArray };
   } catch (error) {
-    toast.error(error.message);
     console.error(error);
   }
 };

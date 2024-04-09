@@ -1,6 +1,5 @@
 import EditProfileForm from "@/components/EditProfileForm/EditProfileForm";
 import { BASE_URL } from "@/utils/constants";
-import { toast } from "sonner";
 
 export const metadata = {
   title: "Edit Profile",
@@ -18,7 +17,6 @@ const fetchUserById = async (id) => {
     }
     return await res.json();
   } catch (error) {
-    toast.error(error.message);
     console.error(error.message);
   }
 };
