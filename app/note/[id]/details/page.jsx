@@ -1,10 +1,8 @@
 import NoteDetailsById from "@/components/NoteDetailsById/NoteDetailsById";
 import { BASE_URL } from "@/utils/constants";
-import { toast } from "sonner";
 
 export const metadata = {
-  title: "Note Details | DedxNotes",
-  description: "Created by DedxAB | A Note sharing WebApp.",
+  title: "Note Details",
 };
 
 const fetchNoteById = async (id) => {
@@ -18,7 +16,7 @@ const fetchNoteById = async (id) => {
     }
     return await res.json();
   } catch (error) {
-    toast.error(error.message);
+    // toast.error(error.message);
     console.log(error.message);
   }
 };

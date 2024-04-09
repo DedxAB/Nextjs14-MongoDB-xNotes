@@ -1,11 +1,9 @@
 import NoteCard from "@/components/NoteCard/NoteCard";
 import ProfileSection from "@/components/ProfileSection/ProfileSection";
 import { BASE_URL } from "@/utils/constants";
-import { toast } from "sonner";
 
 export const metadata = {
-  title: "Profile | DedxNotes",
-  description: "Created by DedxAB | A Note sharing WebApp.",
+  title: "Profile",
 };
 
 const fetchUser = async (id) => {
@@ -19,7 +17,6 @@ const fetchUser = async (id) => {
     }
     return await res.json();
   } catch (error) {
-    toast.error(error.message);
     console.log(error.message);
   }
 };

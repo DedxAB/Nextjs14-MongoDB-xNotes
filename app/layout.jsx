@@ -6,7 +6,10 @@ import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 
 export const metadata = {
-  title: "Home | DedxNotes",
+  title: {
+    default: "DedxNotes - A Note sharing Platform",
+    template: "%s | DedxNotes",
+  },
   description: "Created by DedxAB | A Note sharing WebApp.",
 };
 

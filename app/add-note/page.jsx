@@ -1,8 +1,7 @@
 import AddNote from "@/components/AddNote/AddNote";
 
 export const metadata = {
-  title: "Add Note | DedxNotes",
-  description: "Created by DedxAB | A Note sharing WebApp.",
+  title: "Add Note",
 };
 
 const page = () => {

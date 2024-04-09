@@ -3,8 +3,7 @@ import { BASE_URL } from "@/utils/constants";
 import { toast } from "sonner";
 
 export const metadata = {
-  title: "Edit Note | DedxNotes",
-  description: "Created by DedxAB | A Note sharing WebApp.",
+  title: "Edit Note",
 };
 
 const fetchNoteById = async (id) => {

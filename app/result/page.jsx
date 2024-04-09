@@ -4,8 +4,7 @@ import { BASE_URL } from "@/utils/constants";
 import { toast } from "sonner";
 
 export const metadata = {
-  title: "Result | DedxNotes",
-  description: "Created by DedxAB | A Note sharing WebApp.",
+  title: "Result",
 };
 
 const fetchData = async (q) => {
