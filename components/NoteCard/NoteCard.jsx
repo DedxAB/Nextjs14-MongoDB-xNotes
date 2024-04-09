@@ -75,7 +75,7 @@ const NoteCard = ({ note, user }) => {
         {str?.length > num && (
           <>
             <span>... </span>
-            <span className="bg-gradient-to-r from-blue-500 via-red-500 to-pink-500 bg-clip-text text-transparent cursor-pointer hover:underline">
+            <span className="bg-gradient-to-r from-blue-500 via-red-500 to-red-300 bg-clip-text text-transparent cursor-pointer hover:underline">
               Show more
             </span>
           </>
