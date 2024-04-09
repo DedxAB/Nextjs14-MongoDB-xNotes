@@ -9,9 +9,6 @@ import { useSession } from "next-auth/react";
 import {
   ArrowUpToLine,
   ExternalLink,
-  MessageSquareX,
-  MessageSquareXIcon,
-  X,
 } from "lucide-react";
 import Link from "next/link";
 import { Label } from "../ui/label";
@@ -201,9 +198,9 @@ const AddNote = () => {
           <div className="font-bold text-base text-gray-500 w-max">
             Want to Preview?
           </div>
-          {/* Cancel Button */}
           <div className="flex justify-end gap-3 md:gap-4">
-            <Link href={`/`}>
+            {/* Cancel Button */}
+            {/* <Link href={`/`}>
               <Button
                 variant={`outline`}
                 className="hidden md:font-bold md:flex"
@@ -214,24 +211,12 @@ const AddNote = () => {
               <Button variant={`outline`} className="md:hidden" size="icon">
                 <X className="w-4" />
               </Button>
-            </Link>
+            </Link> */}
 
             {/* Publish Button */}
-            <Button
-              type={`submit`}
-              variant={`outline`}
-              className="hidden md:font-bold md:flex"
-            >
+            <Button type={`submit`} variant={`outline`} className="font-bold">
               <ArrowUpToLine className="w-4 mr-1" />
               Publish
-            </Button>
-            <Button
-              type={`submit`}
-              variant={`outline`}
-              className="md:hidden"
-              size="icon"
-            >
-              <ArrowUpToLine className="w-4" />
             </Button>
           </div>
         </div>
