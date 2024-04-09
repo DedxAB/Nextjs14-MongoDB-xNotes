@@ -116,7 +116,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           htmlFor="tags"
           className="font-bold md:text-base pl-1 mt-2 text-gray-500"
         >
-          Tag: sepereated by comma or space for multiple tags
+          Tag: sepereated by comma or space for multiple tags (search purpose).
         </Label>
 
         <Input
@@ -127,7 +127,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           type="text"
           name="tags"
           id="tags"
-          placeholder="tag1, tag2, ... (Optional) for search purpose."
+          placeholder="tag1, tag2, ... (Optional)"
           className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
         />
 
