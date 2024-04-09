@@ -16,7 +16,6 @@ import {
 import { CircleUserRound, LogIn, LogOut, NotebookPen } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Playfair_Display } from "next/font/google";
-import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";
 
 const playfair = Playfair_Display({ subsets: ["latin"] });
 

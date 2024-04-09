@@ -1,5 +1,6 @@
 import NoteDetailsById from "@/components/NoteDetailsById/NoteDetailsById";
 import { BASE_URL } from "@/utils/constants";
+import { toast } from "sonner";
 
 export const metadata = {
   title: "Note Details | DedxNotes",
