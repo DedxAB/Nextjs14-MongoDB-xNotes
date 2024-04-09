@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
 import { Input } from "../ui/input";
@@ -25,6 +25,36 @@ const AddNote = () => {
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState("");
   const [websiteLink, setWebsiteLink] = useState("");
+  const [charCount, setCharCount] = useState(0);
+
+  const maxCharCount = 300;
+
+  useEffect(() => {
+    const title = JSON.parse(localStorage.getItem("title"));
+    const description = JSON.parse(localStorage.getItem("description"));
+    const tags = JSON.parse(localStorage.getItem("tags"));
+    const websiteLink = JSON.parse(localStorage.getItem("websiteLink"));
+
+    if (title) setTitle(title);
+    if (description) setDescription(description);
+    if (tags) setTags(tags);
+    if (websiteLink) setWebsiteLink(websiteLink);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("title", JSON.stringify(title));
+    localStorage.setItem("description", JSON.stringify(description));
+    localStorage.setItem("tags", JSON.stringify(tags));
+    localStorage.setItem("websiteLink", JSON.stringify(websiteLink));
+  }, [title, description, tags, websiteLink]);
+
+  const handelDescriptionChange = (e) => {
+    const text = e.target.value;
+    if (text.length <= maxCharCount) {
+      setDescription(text);
+      setCharCount(text.length);
+    }
+  };
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -72,6 +102,10 @@ const AddNote = () => {
       toast.success("Note Published Sucessfully.");
       router.back();
       router.refresh();
+      localStorage.removeItem("title");
+      localStorage.removeItem("description");
+      localStorage.removeItem("tags");
+      localStorage.removeItem("websiteLink");
     } catch (error) {
       // Display the error message
       toast.error(error.message);
@@ -107,11 +141,14 @@ const AddNote = () => {
 
         {/* Description text area */}
         <Textarea
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={handelDescriptionChange}
           value={description}
           placeholder={`Please fill the Details about the note`}
-          className={`border shadow w-full px-4 py-3 font-bold rounded`}
+          className={`border shadow w-full px-4 py-3 font-bold rounded h-44`}
         />
+        <p className="font-bold ml-1 text-sm text-gray-500">
+          {maxCharCount - charCount} characters remaining.
+        </p>
         {/* Website Link input field */}
         <Input
           onChange={(e) => {
@@ -130,7 +167,7 @@ const AddNote = () => {
           htmlFor="tags"
           className="font-bold md:text-base pl-1 mt-2 text-gray-500"
         >
-          Tag: sepereated by comma or space for multiple tags
+          Tag: sepereated by comma or space for multiple tags (search purpose).
         </Label>
 
         <Input
@@ -141,7 +178,7 @@ const AddNote = () => {
           type="text"
           name="tags"
           id="tags"
-          placeholder="tag1, tag2, ... (Optional) for search purpose."
+          placeholder="tag1, tag2, ... (Optional)"
           className="border shadow outline-none w-full px-4 py-5 text-base font-bold rounded"
         />
 
