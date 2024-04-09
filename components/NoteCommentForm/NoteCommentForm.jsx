@@ -37,9 +37,8 @@ const NoteCommentForm = ({ note }) => {
         }),
       });
 
-      const errorData = await res.json();
-
       if (!res.ok) {
+        const errorData = await res.json();
         throw new Error(errorData.message || "Failed to add comment");
       }
 

@@ -18,6 +18,7 @@ const fetchUser = async (id) => {
     }
     return await res.json();
   } catch (error) {
+    toast.error(error.message);
     console.log(error.message);
   }
 };

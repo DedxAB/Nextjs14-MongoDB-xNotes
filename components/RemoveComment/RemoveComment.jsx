@@ -39,7 +39,7 @@ const RemoveComment = ({ comment, note }) => {
         toast.success("Comment Deleted Successfully.");
         router.refresh();
       } catch (e) {
-        toast.error("Failed to Delete Comment.");
+        toast.error(e.message);
         console.log(e.message);
       }
       setConformationMessage(false);

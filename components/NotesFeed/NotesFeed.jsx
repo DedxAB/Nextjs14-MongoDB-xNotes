@@ -1,14 +1,19 @@
 import { BASE_URL } from "@/utils/constants";
 import NoteCard from "../NoteCard/NoteCard";
+import { toast } from "sonner";
 
 const fetchNotes = async () => {
   try {
     const res = await fetch(`${BASE_URL}/api/notes`, {
       cache: "no-store", // Disable cache
     });
-    if (!res.ok) throw new Error("Error fetching Notes");
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.message || "Error fetching Notes");
+    }
     return await res.json();
   } catch (error) {
+    toast.error(error.message);
     console.log(error.message);
   }
 };
@@ -44,13 +49,7 @@ const NotesFeed = async () => {
       {/* Show the note card */}
       {notes?.map((note) => {
         // console.log(note);
-        return (
-          <NoteCard
-            key={note?._id}
-            note={note}
-            user={note?.author}
-          />
-        );
+        return <NoteCard key={note?._id} note={note} user={note?.author} />;
       })}
     </>
   );

@@ -28,7 +28,10 @@ const RemoveButton = ({ id }) => {
           method: "DELETE",
         });
 
-        if (!res.ok) throw new Error("Error deleting note");
+        if (!res.ok) {
+          const errorData = await res.json();
+          throw new Error(errorData.message || "Error deleting note");
+        }
         toast.success("Note Deleted Successfully.");
         router.refresh();
       } catch (e) {

@@ -1,5 +1,6 @@
 import EditNote from "@/components/EditNote/EditNote";
 import { BASE_URL } from "@/utils/constants";
+import { toast } from "sonner";
 
 export const metadata = {
   title: "Edit Note | DedxNotes",
@@ -17,6 +18,7 @@ const fetchNoteById = async (id) => {
     }
     return await res.json();
   } catch (error) {
+    toast.error(error.message);
     console.log(error.message);
   }
 };

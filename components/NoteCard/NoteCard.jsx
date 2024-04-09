@@ -48,14 +48,16 @@ const NoteCard = ({ note, user }) => {
       });
 
       if (!res.ok) {
-        throw new Error("Failed to like the note");
+        const errorData = await res.json();
+        throw new Error(errorData.message || "Failed to like the note");
       }
 
       const updatedNote = await res.json();
       // Update the state with the server response
       setUpdatedNote(updatedNote.note);
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
+      console.log(error.message);
       // Revert the state back if the server request failed
       setUpdatedNote((prevNote) => ({
         ...prevNote,

@@ -64,6 +64,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
       route.back();
       route.refresh();
     } catch (error) {
+      toast.error(error.message);
       console.log(error.message);
     }
   };
