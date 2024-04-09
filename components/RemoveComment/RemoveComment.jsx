@@ -19,6 +19,7 @@ import { useRouter } from "next/navigation";
 
 const RemoveComment = ({ comment, note }) => {
   const [conformationMessage, setConformationMessage] = useState(false);
+
   const router = useRouter();
   const { data: session } = useSession();
 

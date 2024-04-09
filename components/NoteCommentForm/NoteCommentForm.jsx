@@ -8,8 +8,9 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
 const NoteCommentForm = ({ note }) => {
-  const router = useRouter();
   const [comment, setComment] = useState("");
+
+  const router = useRouter();
   const { data: session } = useSession();
   // console.log(session);
 

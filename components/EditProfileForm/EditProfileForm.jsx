@@ -17,10 +17,11 @@ const isValidUrl = (url) => {
 };
 
 const EditProfileForm = ({ userId, bio, socialLinks }) => {
-  const route = useRouter();
   const [newBio, setNewBio] = useState(bio || "");
   const [socialLink, setSocialLink] = useState(socialLinks || {});
   const [charCount, setCharCount] = useState(0);
+
+  const route = useRouter();
 
   // resize textarea
   const textareaRef = useRef(null);

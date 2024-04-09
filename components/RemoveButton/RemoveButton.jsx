@@ -18,8 +18,9 @@ import {
 } from "../ui/alert-dialog";
 
 const RemoveButton = ({ id }) => {
-  const router = useRouter();
   const [conformationMessage, setConformationMessage] = useState(false);
+
+  const router = useRouter();
 
   const removeNote = async () => {
     if (conformationMessage) {

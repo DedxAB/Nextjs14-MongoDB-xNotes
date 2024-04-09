@@ -1,6 +1,5 @@
-import { CalendarDays, Scroll, ScrollText } from "lucide-react";
+import {  Scroll, ScrollText } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import dayjs from "dayjs";
 import Link from "next/link";
 
 const UserCard = ({ user }) => {

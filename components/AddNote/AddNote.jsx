@@ -25,9 +25,6 @@ const isValidUrl = (url) => {
 };
 
 const AddNote = () => {
-  const router = useRouter();
-  const { data: session } = useSession();
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState("");
@@ -35,8 +32,11 @@ const AddNote = () => {
   const [charCount, setCharCount] = useState(0);
   const [preview, setPreview] = useState(false);
 
+  const router = useRouter();
+  const { data: session } = useSession();
+
   const textareaRef = useRef(null);
- // Auto resize the textarea
+  // Auto resize the textarea
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";

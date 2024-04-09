@@ -17,12 +17,13 @@ const isValidUrl = (url) => {
 };
 
 const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
-  const route = useRouter();
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
   const [newTags, setNewTags] = useState(tags.join(", "));
   const [newWebsiteLink, setNewWebsiteLink] = useState(websiteLink);
   const [charCount, setCharCount] = useState(0);
+
+  const route = useRouter();
 
   // resize textarea
   const textareaRef = useRef(null);

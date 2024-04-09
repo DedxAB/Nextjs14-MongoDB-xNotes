@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 const SearchInput = () => {
   const [search, setSearch] = useState("");
+
   const router = useRouter();
   const handelSubmit = (e) => {
     e.preventDefault();
