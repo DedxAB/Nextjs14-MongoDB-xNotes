@@ -44,8 +44,6 @@ const AddNote = () => {
     }
   }, [description]);
 
-  const maxCharCount = 300;
-
   useEffect(() => {
     const title = JSON.parse(localStorage.getItem("title"));
     const description = JSON.parse(localStorage.getItem("description"));
@@ -65,6 +63,8 @@ const AddNote = () => {
     localStorage.setItem("websiteLink", JSON.stringify(websiteLink));
   }, [title, description, tags, websiteLink]);
 
+  // Max character count for the description
+  const maxCharCount = 350;
   const handelDescriptionChange = (e) => {
     const text = e.target.value;
     if (text.length <= maxCharCount) {

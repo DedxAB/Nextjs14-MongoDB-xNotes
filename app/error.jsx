@@ -11,7 +11,7 @@ const Error = () => {
           <span className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent mr-2">
             Opps!
           </span>
-          Something went wrong. Return to Home or
+          Something went wrong.
         </p>
         <Button
           variant={`destructive`}

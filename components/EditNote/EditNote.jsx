@@ -35,7 +35,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
   }, [newDescription]);
 
   // Max character count for description
-  const maxCharCount = 300;
+  const maxCharCount = 350;
   const handelDescriptionChange = (e) => {
     const text = e.target.value;
     if (text.length <= maxCharCount) {
