@@ -1,5 +1,7 @@
 import connectDB from "@/helper/mongodb";
+import Note from "@/models/note.model";
 import User from "@/models/user.model";
+
 import { NextResponse } from "next/server";
 
 // Get a single user by id
