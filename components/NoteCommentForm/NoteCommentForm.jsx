@@ -20,6 +20,10 @@ const NoteCommentForm = ({ note }) => {
       toast.error("You must be logged in to add a comment");
       return;
     }
+    if (!comment) {
+      toast.warning("Please add a comment before submitting");
+      return;
+    }
     try {
       const res = await fetch(`/api/comments`, {
         method: "POST",
@@ -42,6 +46,7 @@ const NoteCommentForm = ({ note }) => {
       toast.success("Comment added Successfully");
       router.refresh();
     } catch (error) {
+      toast.error(error.message);
       console.log(error);
     } finally {
       setComment("");
@@ -93,7 +98,7 @@ const NoteCommentForm = ({ note }) => {
                 onChange={(e) => setComment(e.target.value)}
                 value={comment}
                 name="comment"
-                required
+                // required
                 disabled={!session}
               />
             </form>
