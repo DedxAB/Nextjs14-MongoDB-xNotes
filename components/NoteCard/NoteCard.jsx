@@ -52,9 +52,10 @@ const NoteCard = ({ note, user }) => {
         throw new Error(errorData.message || "Failed to like the note");
       }
 
-      const updatedNote = await res.json();
+      const { updatedNote } = await res.json();
+      // console.log(updatedNote);
       // Update the state with the server response
-      setUpdatedNote(updatedNote.note);
+      setUpdatedNote(updatedNote);
     } catch (error) {
       toast.error(error.message);
       console.log(error.message);
@@ -143,7 +144,7 @@ const NoteCard = ({ note, user }) => {
 
             {/* Show Edit and remove button based on user who created this note */}
             {/* {alert(session?.user?.id)} */}
-            {session?.user?.id === updatedNote?.author?._id &&
+            {session?.user?.id === user?._id &&
               pathName === `/profile/${user?._id}/details` && (
                 <div className="min-w-20">
                   {/* Add the edit button */}

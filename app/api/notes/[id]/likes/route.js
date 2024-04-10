@@ -13,14 +13,16 @@ export const PATCH = async (req, { params }) => {
     } else {
       update = { $pull: { likes: userId } };
     }
-    const note = await Note.findByIdAndUpdate(id, update, { new: true });
+    const updatedNote = await Note.findByIdAndUpdate(id, update, {
+      new: true,
+    });
 
     // Check if the note exists
-    if (!note) {
+    if (!updatedNote) {
       return NextResponse.json({ message: "Note not found" }, { status: 404 });
     }
 
-    return NextResponse.json({ note }, { status: 200 });
+    return NextResponse.json({ updatedNote }, { status: 200 });
   } catch (error) {
     // console.error(error); // Log the error for debugging
     return NextResponse.json(

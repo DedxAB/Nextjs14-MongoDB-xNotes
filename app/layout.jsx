@@ -10,7 +10,7 @@ export const metadata = {
     default: "DedxNotes - A Note sharing Platform",
     template: "%s | DedxNotes",
   },
-  description: "Created by DedxAB | A Note sharing WebApp.",
+  description: "A Note sharing WebApp - Share your notes with the world",
 };
 
 export default function RootLayout({ children }) {

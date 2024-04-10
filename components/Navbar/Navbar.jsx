@@ -53,7 +53,7 @@ const Navbar = () => {
           <ThemeToggle />
 
           {status === "authenticated" && (
-            <Link href={`/add-note`}>
+            <Link href={`/create-note`}>
               <Button
                 variant={`outline`}
                 className="hidden md:font-bold md:flex md:gap-1"
