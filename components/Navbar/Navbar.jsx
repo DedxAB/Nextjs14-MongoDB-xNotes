@@ -51,7 +51,6 @@ const Navbar = () => {
         <div className="flex items-center justify-between gap-4">
           {/* Theme changing component  */}
           <ThemeToggle />
-
           {status === "authenticated" && (
             <Link href={`/create-note`}>
               <Button
@@ -70,15 +69,16 @@ const Navbar = () => {
               </Button>
             </Link>
           )}
-          {/* {!session && (
-         
-        )} */}
 
+          {/* Dropdown menu for user profile */}
           {status === "authenticated" ? (
             <DropdownMenu>
               <DropdownMenuTrigger>
                 <Avatar>
-                  <AvatarImage src={session?.user?.image || "/logo.png"} />
+                  <AvatarImage
+                    src={session?.user?.image || "/logo.png"}
+                    alt={`Profile image of ${session?.user?.name}`}
+                  />
                   <AvatarFallback>{shortName}</AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>

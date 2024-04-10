@@ -1,6 +1,6 @@
 "use client";
 import { ExternalLink, Pencil, PencilLine } from "lucide-react";
-import { Avatar, AvatarImage } from "../ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { useSession } from "next-auth/react";
@@ -19,7 +19,11 @@ const NoteCard = ({ note, user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
   const { data: session } = useSession();
   const pathName = usePathname();
-  // const router = useRouter();
+
+  const shortName = user?.name
+    .split(" ")
+    .map((n) => n[0])
+    .join("");
 
   // Get the contentUpdatedAt and createdAt date for comparison the note is updated or not
   const contentUpdatedAt = new Date(updatedNote?.contentUpdatedAt).getTime();
@@ -76,7 +80,7 @@ const NoteCard = ({ note, user }) => {
         {str?.length > num && (
           <>
             <span>... </span>
-            <span className="bg-gradient-to-r from-blue-500 via-red-500 to-red-700 bg-clip-text text-transparent cursor-pointer hover:underline">
+            <span className="bg-gradient-to-r from-blue-500 via-red-500 to-red-700 bg-clip-text text-transparent text-sm">
               Show more
             </span>
           </>
@@ -94,7 +98,9 @@ const NoteCard = ({ note, user }) => {
             <AvatarImage
               src={user?.image || "/logo.png"}
               referrerPolicy="no-referrer"
+              alt={`Profile Image of ${user?.name}`}
             />
+            <AvatarFallback>{shortName}</AvatarFallback>
           </Avatar>
           {/* <MyImage src={user?.image} /> */}
         </Link>
