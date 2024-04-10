@@ -5,12 +5,25 @@ import { NextAuthProviders } from "./Providers";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 
+// export const metadata = {
+//   title: {
+//     default: "DedxNotes - A Note sharing Platform",
+//     template: "%s | DedxNotes",
+//   },
+//   description: "A Note sharing WebApp - Share your notes with the world",
+// };
+
 export const metadata = {
   title: {
-    default: "DedxNotes - A Note sharing Platform",
+    default: "DedxNotes - Share Your Notes with the World",
     template: "%s | DedxNotes",
   },
-  description: "A Note sharing WebApp - Share your notes with the world",
+  description: "An interactive Note Sharing WebApp for Note-Taking and Ideas",
+  keywords:
+    "notes, productivity, online platform, notes sharing, ideas, notes app, dedxnotes productivity, dedxnotes note-taking, dedxnotes note sharing, dedxnotes notes app",
+  author: "DedxAB",
+  image: "https://dedxnotes.vercel.app/dedxnotes-logo.png",
+  url: "https://dedxnotes.vercel.app/",
 };
 
 export default function RootLayout({ children }) {
