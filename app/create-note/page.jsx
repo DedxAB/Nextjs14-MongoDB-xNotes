@@ -1,7 +1,7 @@
 import AddNote from "@/components/AddNote/AddNote";
 
 export const metadata = {
-  title: "Add Note",
+  title: "Create Note",
 };
 
 const page = () => {
