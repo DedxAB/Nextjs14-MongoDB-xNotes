@@ -130,7 +130,7 @@ const NoteCard = ({ note, user }) => {
 
               {/* date */}
               <div className="flex text-xs flex-wrap justify-start items-center text-[#6b6e6e]">
-                <h2 className="mr-2">
+                <h2 className="mr-1">
                   {
                     dayjs(updatedNote?.createdAt).format(
                       "MMM D, YYYY | hh : mm A"
@@ -141,6 +141,7 @@ const NoteCard = ({ note, user }) => {
                 {/* {alert(updatedNote?.createdAt)} */}
                 {contentUpdatedAt - createdAt > 1000 && (
                   <div className="flex items-center">
+                    &nbsp;·&nbsp;
                     <PencilLine className="w-3 mr-1" />
                     <p>edited</p>
                   </div>

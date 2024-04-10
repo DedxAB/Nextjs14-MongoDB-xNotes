@@ -42,8 +42,9 @@ const NoteCommentCard = ({ comment, note }) => {
               <p className={`font-bold`}>{comment?.author?.name}</p>
 
               {/* username */}
-              <p className={`text-[#6b6e6e]`}>@{comment?.author?.username}</p>
+              {/* <p className={`text-[#6b6e6e]`}>@{comment?.author?.username}</p> */}
               <p className="text-[#6b6e6e]">
+                &nbsp;·&nbsp;
                 {dayjs().diff(commentTime, "day") > 1
                   ? commentTime.format("MMM DD, YYYY")
                   : relativeTime}
