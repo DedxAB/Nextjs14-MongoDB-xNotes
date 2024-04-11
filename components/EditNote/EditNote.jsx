@@ -134,7 +134,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           name="websiteLike"
           id="websiteLike"
           placeholder="https://attach website link if any (Optional)"
-          className="shadow px-4 py-5 text-base font-bold"
+          className="shadow px-4 py-5 font-bold"
         />
 
         {/* Tags text area */}
@@ -154,7 +154,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           name="tags"
           id="tags"
           placeholder="tag1, tag2, ... (Optional)"
-          className="shadow px-4 py-5 text-base font-bold"
+          className="shadow px-4 py-5 font-bold"
         />
 
         {/* Buttons */}
