@@ -79,10 +79,10 @@ const NoteCard = ({ note, user }) => {
         {str?.length > num ? str.slice(0, num) : str}
         {str?.length > num && (
           <>
-            <span>... </span>
-            <span className="bg-gradient-to-r from-blue-500 via-red-500 to-red-700 bg-clip-text text-transparent text-sm">
+            <span>.... </span>
+            {/* <span className="bg-gradient-to-r from-blue-500 via-red-500 to-red-700 bg-clip-text text-transparent text-sm">
               Show more
-            </span>
+            </span> */}
           </>
         )}
       </>
@@ -184,7 +184,7 @@ const NoteCard = ({ note, user }) => {
                   <Link
                     href={`/result?q=${tag}`}
                     key={index}
-                    className="mr-1 hover:underline cursor-pointer inline-block"
+                    className="mr-[0.3rem] md:mr-2 hover:underline cursor-pointer inline-block"
                   >
                     #{tag}
                   </Link>
