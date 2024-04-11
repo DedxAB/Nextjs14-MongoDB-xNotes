@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import RemoveComment from "../RemoveComment/RemoveComment";
 
+
 dayjs.extend(relativeTime);
 
 const NoteCommentCard = ({ comment, note }) => {
@@ -36,15 +37,15 @@ const NoteCommentCard = ({ comment, note }) => {
             {/* Show the author name, username */}
             <Link
               href={`/profile/${comment?.author?._id}`}
-              className="flex flex-wrap items-center mr-2 text-xs gap-1"
+              className="flex flex-wrap items-center text-xs gap-1"
             >
               {/* name  */}
               <p className={`font-bold`}>{comment?.author?.name}</p>
 
               {/* username */}
               {/* <p className={`text-[#6b6e6e]`}>@{comment?.author?.username}</p> */}
-              <p className="text-[#6b6e6e]">
-                &nbsp;·&nbsp;
+              <p className={`text-[#6b6e6e]`}>
+                &middot;{" "}
                 {dayjs().diff(commentTime, "day") > 1
                   ? commentTime.format("MMM DD, YYYY")
                   : relativeTime}

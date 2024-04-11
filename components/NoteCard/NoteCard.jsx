@@ -7,9 +7,14 @@ import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
-import { Playfair_Display } from "next/font/google";
+import { Playfair_Display, Lustria } from "next/font/google";
 import { toast } from "sonner";
 import { useState } from "react";
+
+const lustria = Lustria({
+  subsets: ["latin"],
+  weight: ["400"],
+});
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -141,7 +146,7 @@ const NoteCard = ({ note, user }) => {
                 {/* {alert(updatedNote?.createdAt)} */}
                 {contentUpdatedAt - createdAt > 1000 && (
                   <div className="flex items-center">
-                    &nbsp;·&nbsp;
+                    &middot;&nbsp;
                     <PencilLine className="w-3 mr-1" />
                     <p>edited</p>
                   </div>
@@ -169,7 +174,9 @@ const NoteCard = ({ note, user }) => {
           {/* Show the description */}
           <Link href={`/note/${updatedNote?._id}/details`}>
             {/* <div className="flex justify-between items-cente mt-1"> */}
-            <div className="text-sm md:text-base font-bold mt-1 py-1 whitespace-pre-line">
+            <div
+              className={`text-sm md:text-base font-bold mt-1 py-1 whitespace-pre-line ${lustria.className}`}
+            >
               {pathName === `/note/${updatedNote?._id}/details`
                 ? updatedNote?.description
                 : truncateString(updatedNote?.description, 115)}
