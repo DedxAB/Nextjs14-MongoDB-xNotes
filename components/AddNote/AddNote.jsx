@@ -12,6 +12,7 @@ import { Label } from "../ui/label";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
 import { Playfair_Display } from "next/font/google";
+import { josefin_sans_font } from "@/utils/fonts";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -205,23 +206,9 @@ const AddNote = () => {
             Want to Preview?
           </div>
           <div className="flex justify-end gap-3 md:gap-4">
-            {/* Cancel Button */}
-            {/* <Link href={`/`}>
-              <Button
-                variant={`outline`}
-                className="hidden md:font-bold md:flex"
-              >
-                <MessageSquareX className="w-4 mr-1" />
-                Cancel
-              </Button>
-              <Button variant={`outline`} className="md:hidden" size="icon">
-                <X className="w-4" />
-              </Button>
-            </Link> */}
-
             {/* Publish Button */}
             <Button type={`submit`} variant={`outline`} className="font-bold">
-              <ArrowUpToLine className="w-4 mr-1" />
+              <ArrowUpToLine className="w-4 h-4 mr-1" />
               Publish
             </Button>
           </div>
@@ -248,14 +235,14 @@ const AddNote = () => {
               </div>
               <div className="w-full">
                 {/* Show the author name, username */}
-                <div className="flex flex-wrap items-center text-xs">
-                  <div className="flex flex-wrap items-center mr-2 py-1">
-                    {/* name  */}
-                    <p className={`font-bold mr-1`}>DedxNotes</p>
+                <div
+                  className={`flex flex-wrap items-center text-xs mr-2 py-1 ${josefin_sans_font}`}
+                >
+                  {/* name  */}
+                  <p className={`font-bold mr-1`}>DedxNotes</p>
 
-                    {/* username */}
-                    <p className={`text-[#6b6e6e]`}>@dedxnotes</p>
-                  </div>
+                  {/* username */}
+                  <p className={`text-[#6b6e6e]`}>@dedxnotes</p>
                 </div>
 
                 {/* Title and Date div  */}
@@ -270,12 +257,12 @@ const AddNote = () => {
                     </h2>
 
                     {/* date */}
-                    <div className="flex text-xs flex-wrap justify-start items-center text-[#6b6e6e]">
-                      <h2 className="mr-2">
-                        {
-                          dayjs(Date.now()).format("MMM D, YYYY | hh : mm A") // Mar 27, 2024
-                        }
-                      </h2>
+                    <div
+                      className={`md:pt-1 flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] ${josefin_sans_font}`}
+                    >
+                      {
+                        dayjs(Date.now()).format("MMM D, YYYY | hh : mm A") // Mar 27, 2024
+                      }
                     </div>
                   </div>
                 </div>
@@ -283,7 +270,7 @@ const AddNote = () => {
                 {/* Show the description */}
                 {/* <div className="flex justify-between items-cente mt-1"> */}
                 {description && (
-                  <div className="text-sm md:text-base font-bold mt-1 py-1 whitespace-pre-line">
+                  <div className="text-sm md:text-base mt-1 py-1 whitespace-pre-line">
                     {description}
                   </div>
                 )}
@@ -302,7 +289,7 @@ const AddNote = () => {
 
                 {/* Show the likes and comments and weblink */}
                 {(title || description || websiteLink) && (
-                  <div className="flex gap-5 mt-2 pt-1">
+                  <div className="flex gap-5 mt-2 pt-1 items-center">
                     <div className="flex gap-1 items-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -334,7 +321,7 @@ const AddNote = () => {
                     {websiteLink && (
                       <>
                         <Link href={websiteLink} target="_blank">
-                          <ExternalLink className="w-4" />
+                          <ExternalLink className="w-4 h-4" />
                         </Link>
                       </>
                     )}

@@ -124,21 +124,21 @@ const NoteCard = ({ note, user }) => {
 
               {/* date */}
               <div
-                className={`flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] ${josefin_sans_font}`}
+                className={`md:pt-1 flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] ${josefin_sans_font}`}
               >
-                <h2 className="mr-1">
+                <p className="mr-1">
                   {
                     dayjs(updatedNote?.createdAt).format(
                       "MMM D, YYYY | hh : mm A"
                     ) // Mar 27, 2024
                   }
-                </h2>
+                </p>
                 {/* Show the edited date if updated */}
                 {/* {alert(updatedNote?.createdAt)} */}
                 {contentUpdatedAt - createdAt > 1000 && (
                   <p className="flex justify-center items-center">
                     &middot;&nbsp;
-                    <PencilLine className="w-3 mr-1" />
+                    <PencilLine className="w-3 h-3 mr-1" />
                     <span>edited</span>
                   </p>
                 )}
@@ -146,14 +146,13 @@ const NoteCard = ({ note, user }) => {
             </Link>
 
             {/* Show Edit and remove button based on user who created this note */}
-            {/* {alert(session?.user?.id)} */}
             {session?.user?.id === user?._id &&
               pathName === `/profile/${user?._id}/details` && (
                 <div className="min-w-20">
                   {/* Add the edit button */}
                   <Link href={`/edit-note/${updatedNote?._id}`}>
                     <Button variant="outline" size="icon" className="mr-2">
-                      <Pencil className="w-4" />
+                      <Pencil className="w-4 h-4" />
                     </Button>
                   </Link>
                   {/* Add the remove button */}
@@ -192,7 +191,7 @@ const NoteCard = ({ note, user }) => {
           )}
 
           {/* Show the likes and comments and weblink */}
-          <div className="flex gap-5 mt-2 pt-1">
+          <div className="flex gap-5 mt-2 pt-1 items-center">
             {/* Likes  */}
             {updatedNote?.likes && (
               <div className="flex gap-1 items-center">
@@ -253,7 +252,7 @@ const NoteCard = ({ note, user }) => {
             </Link>
             {updatedNote?.websiteLink && (
               <Link href={updatedNote?.websiteLink} target="_blank">
-                <ExternalLink className="w-4" />
+                <ExternalLink className="w-4 h-4" />
               </Link>
             )}
           </div>

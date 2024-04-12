@@ -57,7 +57,7 @@ const Navbar = () => {
                 variant={`outline`}
                 className="hidden md:font-bold md:flex md:gap-1"
               >
-                <NotebookPen className="w-4" />
+                <NotebookPen className="w-4 h-4" />
                 <span>Write</span>
               </Button>
               <Button
@@ -65,7 +65,7 @@ const Navbar = () => {
                 className="font-bold md:hidden"
                 size="icon"
               >
-                <NotebookPen className="w-4" />
+                <NotebookPen className="w-4 h-4" />
               </Button>
             </Link>
           )}
@@ -91,14 +91,14 @@ const Navbar = () => {
                     router.push(`/profile/${session?.user?.id}/details`)
                   }
                 >
-                  <CircleUserRound className="w-4 mr-2" />
+                  <CircleUserRound className="w-4 h-4 mr-2" />
                   <span className="font-bold">Profile</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   className={`cursor-pointer`}
                   onClick={() => signOut()}
                 >
-                  <LogOut className="w-4 mr-2 text-red-500" />
+                  <LogOut className="w-4 h-4 mr-2 text-red-500" />
                   <span className="font-bold text-red-500">Sign out</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>

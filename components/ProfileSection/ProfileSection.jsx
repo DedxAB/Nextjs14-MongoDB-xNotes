@@ -42,17 +42,17 @@ const ProfileSection = ({ user }) => {
             <div className="text-sm md:text-base text-gray-500 font-bold">
               {user?.notes.length === 0 ? (
                 <div className="flex gap-1 items-center">
-                  <Scroll className="w-4" />
+                  <Scroll className="w-4 h-4" />
                   <span>No Notes Published Yet</span>
                 </div>
               ) : user?.notes.length === 1 ? (
                 <div className="flex gap-1 items-center">
-                  <ScrollText className="w-4" />
+                  <ScrollText className="w-4 h-4" />
                   <span>1 Note published</span>
                 </div>
               ) : (
                 <div className="flex gap-1 items-center">
-                  <ScrollText className="w-4" />
+                  <ScrollText className="w-4 h-4" />
                   <span>{user?.notes.length} Notes Published</span>
                 </div>
               )}
@@ -145,9 +145,9 @@ const ProfileSection = ({ user }) => {
         <div className="my-4 flex flex-wrap justify-between items-center">
           {/* User Joined date */}
           <div
-            className={`text-gray-500 flex gap-1 justify-start items-end ${josefin_sans_font}`}
+            className={`text-gray-500 flex gap-1 justify-start ${josefin_sans_font}`}
           >
-            <CalendarDays className="w-4" />
+            <CalendarDays className="w-4 h-4" />
             <p className="text-sm font-bold">
               Joined on {dayjs(user?.createdAt).format("DD MMM YYYY")}
             </p>
