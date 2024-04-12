@@ -1,6 +1,7 @@
 import { Scroll, ScrollText } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
+import { federo_font } from "@/utils/fonts";
 
 const UserCard = ({ user }) => {
   let shortName = user?.name
@@ -24,7 +25,9 @@ const UserCard = ({ user }) => {
           </div>
           <div className="w-full">
             {/* Show the author name, username */}
-            <div className="flex flex-wrap items-center text-xs md:py-1">
+            <div
+              className={`flex flex-wrap items-center text-xs md:py-1 ${federo_font}`}
+            >
               {/* name  */}
               <p className={`font-bold text-base md:text-lg mr-1`}>
                 {user?.name}

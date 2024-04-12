@@ -7,18 +7,9 @@ import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
-import { Playfair_Display, Lustria } from "next/font/google";
 import { toast } from "sonner";
 import { useState } from "react";
-
-const lustria = Lustria({
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-});
+import { federo_font, playfair_font } from "@/utils/fonts";
 
 const NoteCard = ({ note, user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
@@ -96,7 +87,7 @@ const NoteCard = ({ note, user }) => {
 
   return (
     <>
-      <div className="border flex justify-start gap-1 mb-3 rounded px-3 md:px-4 py-3">
+      <div className="border flex justify-start gap-1 mb-3 md:mb-4 rounded px-3 md:px-4 py-3">
         {/* Show the author image */}
         <Link href={`/profile/${user?._id}/details`} className="mr-2 pt-[5px]">
           <Avatar>
@@ -113,14 +104,16 @@ const NoteCard = ({ note, user }) => {
           {/* Show the author name, username */}
           <div className="flex flex-wrap items-center text-xs">
             <Link
-              href={`/profile/${user?._id}`}
+              href={`/profile/${user?._id}/details`}
               className="flex flex-wrap items-center mr-2 py-1"
             >
               {/* name  */}
-              <p className={`font-bold mr-1`}>{user?.name}</p>
+              <p className={`font-bold mr-1 ${federo_font}`}>{user?.name}</p>
 
               {/* username */}
-              <p className={`text-[#6b6e6e]`}>@{user?.username}</p>
+              <p className={`text-[#6b6e6e] ${federo_font}`}>
+                @{user?.username}
+              </p>
             </Link>
           </div>
 
@@ -134,7 +127,9 @@ const NoteCard = ({ note, user }) => {
               </h2>
 
               {/* date */}
-              <div className="flex text-xs flex-wrap justify-start items-center text-[#6b6e6e]">
+              <div
+                className={`flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] ${federo_font}`}
+              >
                 <h2 className="mr-1">
                   {
                     dayjs(updatedNote?.createdAt).format(
@@ -175,7 +170,7 @@ const NoteCard = ({ note, user }) => {
           <Link href={`/note/${updatedNote?._id}/details`}>
             {/* <div className="flex justify-between items-cente mt-1"> */}
             <div
-              className={`text-sm md:text-base font-bold mt-1 py-1 whitespace-pre-line ${lustria.className}`}
+              className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line`}
             >
               {pathName === `/note/${updatedNote?._id}/details`
                 ? updatedNote?.description
@@ -186,7 +181,7 @@ const NoteCard = ({ note, user }) => {
           {/* Show the tags */}
           {updatedNote?.tags && updatedNote?.tags.length > 0 && (
             <div className="my-1">
-              <p className={`text-sm ${playfair.className}`}>
+              <p className={`text-sm ${playfair_font}`}>
                 {updatedNote?.tags.map((tag, index) => (
                   <Link
                     href={`/result?q=${tag}`}

@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
 import { useSession } from "next-auth/react";
 import { CalendarDays, Scroll, ScrollText } from "lucide-react";
+import { federo_font } from "@/utils/fonts";
 
 const ProfileSection = ({ user }) => {
   const { data: session } = useSession();
@@ -28,7 +29,9 @@ const ProfileSection = ({ user }) => {
           </Avatar>
           <div className="flex flex-col gap-1">
             {/* User name and username */}
-            <div className="flex items-center flex-wrap font-bold">
+            <div
+              className={`flex items-center flex-wrap font-bold ${federo_font}`}
+            >
               <p className="text-lg md:text-2xl mr-[.35rem]">{user?.name}</p>
               <p className="text-base md:text-xl text-gray-500">
                 @{user?.username}
@@ -141,7 +144,9 @@ const ProfileSection = ({ user }) => {
 
         <div className="my-4 flex flex-wrap justify-between items-center">
           {/* User Joined date */}
-          <div className="text-gray-500 flex gap-1 justify-start items-center">
+          <div
+            className={`text-gray-500 flex gap-1 justify-start items-center ${federo_font}`}
+          >
             <CalendarDays className="w-4" />
             <p className="text-sm font-bold">
               Joined on {dayjs(user?.createdAt).format("DD MMM YYYY")}

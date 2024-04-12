@@ -4,11 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { NextAuthProviders } from "./Providers";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
-import { Josefin_Sans } from "next/font/google";
 
-const josefinSans = Josefin_Sans({
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: {
@@ -26,7 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${josefinSans.className}`}>
+      <body>
         <NextAuthProviders>
           <ThemeProvider
             attribute="class"

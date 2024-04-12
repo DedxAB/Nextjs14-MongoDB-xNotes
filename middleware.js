@@ -10,7 +10,7 @@ export const config = {
      * - favicon.ico (favicon file)
      */
     "/add-note",
-    "/profile/:path*",
+    // "/profile/:path*",
     "/edit-note/:path*",
     // "/api/:path*",
     // "/((?!api|_next/static|_next/image|favicon.ico).*)",
