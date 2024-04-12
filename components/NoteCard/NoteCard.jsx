@@ -165,11 +165,11 @@ const NoteCard = ({ note, user }) => {
           <Link href={`/note/${updatedNote?._id}/details`}>
             {/* <div className="flex justify-between items-cente mt-1"> */}
             <div
-              className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line`}
+              className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${josefin_sans_font}`}
             >
               {pathName === `/note/${updatedNote?._id}/details`
                 ? updatedNote?.description
-                : truncateString(updatedNote?.description, 115)}
+                : truncateString(updatedNote?.description, 118)}
             </div>
             {/* </div> */}
           </Link>

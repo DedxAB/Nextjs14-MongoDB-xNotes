@@ -270,7 +270,9 @@ const AddNote = () => {
                 {/* Show the description */}
                 {/* <div className="flex justify-between items-cente mt-1"> */}
                 {description && (
-                  <div className="text-sm md:text-base mt-1 py-1 whitespace-pre-line">
+                  <div
+                    className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${josefin_sans_font}`}
+                  >
                     {description}
                   </div>
                 )}
