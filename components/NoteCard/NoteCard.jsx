@@ -9,7 +9,7 @@ import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
 import { toast } from "sonner";
 import { useState } from "react";
-import { federo_font, playfair_font } from "@/utils/fonts";
+import { josefin_sans_font, playfair_font } from "@/utils/fonts";
 
 const NoteCard = ({ note, user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
@@ -102,20 +102,16 @@ const NoteCard = ({ note, user }) => {
         </Link>
         <div className="w-full">
           {/* Show the author name, username */}
-          <div className="flex flex-wrap items-center text-xs">
-            <Link
-              href={`/profile/${user?._id}/details`}
-              className="flex flex-wrap items-center mr-2 py-1"
-            >
-              {/* name  */}
-              <p className={`font-bold mr-1 ${federo_font}`}>{user?.name}</p>
+          <Link
+            href={`/profile/${user?._id}/details`}
+            className={`flex flex-wrap items-center text-xs mr-2 py-1 ${josefin_sans_font}`}
+          >
+            {/* name  */}
+            <p className={`font-bold mr-1`}>{user?.name}</p>
 
-              {/* username */}
-              <p className={`text-[#6b6e6e] ${federo_font}`}>
-                @{user?.username}
-              </p>
-            </Link>
-          </div>
+            {/* username */}
+            <p className={`text-[#6b6e6e] `}>@{user?.username}</p>
+          </Link>
 
           {/* Title and Date div  */}
           <div className="flex justify-between items-start gap-1">
@@ -128,7 +124,7 @@ const NoteCard = ({ note, user }) => {
 
               {/* date */}
               <div
-                className={`flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] ${federo_font}`}
+                className={`flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] ${josefin_sans_font}`}
               >
                 <h2 className="mr-1">
                   {
@@ -140,11 +136,11 @@ const NoteCard = ({ note, user }) => {
                 {/* Show the edited date if updated */}
                 {/* {alert(updatedNote?.createdAt)} */}
                 {contentUpdatedAt - createdAt > 1000 && (
-                  <div className="flex items-center">
+                  <p className="flex justify-center items-center">
                     &middot;&nbsp;
                     <PencilLine className="w-3 mr-1" />
-                    <p>edited</p>
-                  </div>
+                    <span>edited</span>
+                  </p>
                 )}
               </div>
             </Link>

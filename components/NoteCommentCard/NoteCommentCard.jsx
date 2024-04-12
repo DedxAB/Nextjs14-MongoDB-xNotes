@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import RemoveComment from "../RemoveComment/RemoveComment";
-import { federo_font } from "@/utils/fonts";
+import { josefin_sans_font } from "@/utils/fonts";
 
 dayjs.extend(relativeTime);
 
@@ -37,7 +37,7 @@ const NoteCommentCard = ({ comment, note }) => {
             {/* Show the author name, username */}
             <Link
               href={`/profile/${comment?.author?._id}`}
-              className={`flex flex-wrap items-center text-xs gap-1 ${federo_font}`}
+              className={`flex flex-wrap items-center text-xs gap-1 ${josefin_sans_font}`}
             >
               {/* name  */}
               <p className={`font-bold`}>{comment?.author?.name}</p>

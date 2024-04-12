@@ -6,7 +6,7 @@ import { useState } from "react";
 import { CustomInput } from "../ui/custom-input";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { federo_font } from "@/utils/fonts";
+import { josefin_sans_font } from "@/utils/fonts";
 
 const NoteCommentForm = ({ note }) => {
   const [comment, setComment] = useState("");
@@ -76,7 +76,9 @@ const NoteCommentForm = ({ note }) => {
         {/* Show the author name, username and user comment text */}
         <div className="w-full flex flex-col gap-1 md:gap-2">
           {/* Show the author name, username */}
-          <div className={`flex flex-wrap items-center text-xs ${federo_font}`}>
+          <div
+            className={`flex flex-wrap items-center text-xs ${josefin_sans_font}`}
+          >
             {/* name  */}
             <p className={`font-bold  mr-1`}>
               {session?.user?.name || <>DedxNotes</>}
