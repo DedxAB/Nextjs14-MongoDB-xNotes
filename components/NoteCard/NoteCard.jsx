@@ -87,7 +87,7 @@ const NoteCard = ({ note, user }) => {
 
   return (
     <>
-      <div className="border flex justify-start gap-1 mb-3 md:mb-4 rounded px-3 md:px-4 py-3">
+      <div className="border flex justify-start gap-1 mb-3 md:mb-4 rounded px-3 md:px-4 py-[.85rem]">
         {/* Show the author image */}
         <Link href={`/profile/${user?._id}/details`} className="mr-2 pt-[5px]">
           <Avatar>
@@ -133,8 +133,8 @@ const NoteCard = ({ note, user }) => {
                     ) // Mar 27, 2024
                   }
                 </p>
+
                 {/* Show the edited date if updated */}
-                {/* {alert(updatedNote?.createdAt)} */}
                 {contentUpdatedAt - createdAt > 1000 && (
                   <p className="flex justify-center items-center">
                     &middot;&nbsp;
@@ -155,6 +155,7 @@ const NoteCard = ({ note, user }) => {
                       <Pencil className="w-4 h-4" />
                     </Button>
                   </Link>
+
                   {/* Add the remove button */}
                   <RemoveButton id={updatedNote?._id} />
                 </div>
