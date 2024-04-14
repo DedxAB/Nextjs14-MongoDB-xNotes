@@ -163,7 +163,6 @@ const NoteCard = ({ note, user }) => {
 
           {/* Show the description */}
           <Link href={`/note/${updatedNote?._id}/details`}>
-            {/* <div className="flex justify-between items-cente mt-1"> */}
             <div
               className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${opensans_font}`}
             >
@@ -171,8 +170,8 @@ const NoteCard = ({ note, user }) => {
                 ? updatedNote?.description
                 : truncateString(updatedNote?.description, 128)}
             </div>
-            {/* </div> */}
           </Link>
+
           {/* Show the tags */}
           {updatedNote?.tags && updatedNote?.tags.length > 0 && (
             <div className="pt-1">
