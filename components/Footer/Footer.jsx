@@ -1,14 +1,12 @@
+import { playfair_font } from "@/utils/fonts";
 import Link from "next/link";
-import { Playfair_Display } from "next/font/google";
-
-const playfair = Playfair_Display({ subsets: ["latin"] });
 
 const Footer = () => {
   return (
     <>
       <div className="max-w-3xl mx-auto px-4 flex flex-col gap-1 md:flex-row md:justify-between items-center py-2 md:py-3">
         <Link href="https://dedxnotes.vercel.app/">
-          <h1 className={`font-bold text-lg md:text-xl ${playfair.className}`}>
+          <h1 className={`font-bold text-lg md:text-xl ${playfair_font}`}>
             Dedx
             <span className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
               Notes
