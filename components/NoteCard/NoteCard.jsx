@@ -9,7 +9,7 @@ import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
 import { toast } from "sonner";
 import { useState } from "react";
-import { josefin_sans_font, playfair_font } from "@/utils/fonts";
+import { josefin_sans_font, opensans_font, playfair_font } from "@/utils/fonts";
 
 const NoteCard = ({ note, user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
@@ -75,10 +75,10 @@ const NoteCard = ({ note, user }) => {
         {str?.length > num ? str.slice(0, num) : str}
         {str?.length > num && (
           <>
-            <span>.... </span>
-            {/* <span className="bg-gradient-to-r from-blue-500 via-red-500 to-red-700 bg-clip-text text-transparent text-sm">
+            <span>... </span>
+            <span className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
               Show more
-            </span> */}
+            </span>
           </>
         )}
       </>
@@ -165,28 +165,26 @@ const NoteCard = ({ note, user }) => {
           <Link href={`/note/${updatedNote?._id}/details`}>
             {/* <div className="flex justify-between items-cente mt-1"> */}
             <div
-              className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${josefin_sans_font}`}
+              className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${opensans_font}`}
             >
               {pathName === `/note/${updatedNote?._id}/details`
                 ? updatedNote?.description
-                : truncateString(updatedNote?.description, 118)}
+                : truncateString(updatedNote?.description, 128)}
             </div>
             {/* </div> */}
           </Link>
           {/* Show the tags */}
           {updatedNote?.tags && updatedNote?.tags.length > 0 && (
-            <div className="my-1">
-              <p className={`text-sm ${playfair_font}`}>
-                {updatedNote?.tags.map((tag, index) => (
-                  <Link
-                    href={`/result?q=${tag}`}
-                    key={index}
-                    className="mr-[0.3rem] md:mr-2 hover:underline cursor-pointer inline-block"
-                  >
-                    #{tag}
-                  </Link>
-                ))}
-              </p>
+            <div className="pt-1">
+              {updatedNote?.tags.map((tag, index) => (
+                <Link
+                  href={`/result?q=${tag}`}
+                  key={index}
+                  className={`text-sm md:text-base ${playfair_font} mr-2 hover:underline cursor-pointer border px-2 py-[0.16rem] rounded inline-block my-1`}
+                >
+                  {tag}
+                </Link>
+              ))}
             </div>
           )}
 
