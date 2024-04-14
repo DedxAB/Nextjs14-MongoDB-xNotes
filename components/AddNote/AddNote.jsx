@@ -11,12 +11,8 @@ import Link from "next/link";
 import { Label } from "../ui/label";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
-import { Playfair_Display } from "next/font/google";
-import { josefin_sans_font } from "@/utils/fonts";
+import { josefin_sans_font, opensans_font, playfair_font } from "@/utils/fonts";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-});
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -271,7 +267,7 @@ const AddNote = () => {
                 {/* <div className="flex justify-between items-cente mt-1"> */}
                 {description && (
                   <div
-                    className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${josefin_sans_font}`}
+                    className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${opensans_font}`}
                   >
                     {description}
                   </div>
@@ -280,12 +276,16 @@ const AddNote = () => {
                 {/* Show the tags */}
 
                 {tags && (
-                  <div className="my-1">
-                    <p className={`text-sm ${playfair.className}`}>
-                      <span className="mr-1 inline-block">
-                        #{tags.split(/[\s,]+/).join(" #")}
-                      </span>
-                    </p>
+                  <div className="py-1">
+                    {tags.split(/[\s,]+/).map((tag, index) => (
+                      <Link
+                        href={`/result?q=${tag}`}
+                        key={index}
+                        className={`text-sm md:text-base ${playfair_font} mr-2 hover:underline cursor-pointer border px-2 py-[0.16rem] rounded inline-block my-1`}
+                      >
+                        {tag}
+                      </Link>
+                    ))}
                   </div>
                 )}
 
