@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Input } from "../ui/input";
+import { useSession } from "next-auth/react";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -20,6 +21,8 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
   const [newBio, setNewBio] = useState(bio || "");
   const [socialLink, setSocialLink] = useState(socialLinks || {});
   const [charCount, setCharCount] = useState(0);
+  const { data: session } = useSession();
+  // console.log(session);
 
   const route = useRouter();
 
@@ -66,7 +69,8 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
         },
       });
       if (!res.ok) {
-        throw new Error("Failed to update bio");
+        const errorData = await res.json();
+        throw new Error(errorData.message || "Failed to update bio");
       }
       toast.success("Bio Updated Successfully");
       route.back();
@@ -131,12 +135,21 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
           {/* Buttons */}
           <div className="ml-auto">
             {/* Cancel Button */}
-            <Link href={`/profile/${userId}/details`}>
-              <Button variant={`outline`} className="font-bold w-fit mr-3">
-                <MessageSquareX className="w-4 mr-1" />
-                Cancel
-              </Button>
-            </Link>
+            {session?.user?.isAdmin ? (
+              <Link href={`/admin/${userId}/details`}>
+                <Button variant={`outline`} className="font-bold w-fit mr-3">
+                  <MessageSquareX className="w-4 mr-1" />
+                  Cancel
+                </Button>
+              </Link>
+            ) : (
+              <Link href={`/profile/${userId}/details`}>
+                <Button variant={`outline`} className="font-bold w-fit mr-3">
+                  <MessageSquareX className="w-4 mr-1" />
+                  Cancel
+                </Button>
+              </Link>
+            )}
 
             {/* Save Button */}
             <Button
