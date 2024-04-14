@@ -13,7 +13,6 @@ import { Avatar, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
 import { josefin_sans_font, opensans_font, playfair_font } from "@/utils/fonts";
 
-
 // Validate URL function
 const isValidUrl = (url) => {
   const urlRegex =
@@ -276,12 +275,12 @@ const AddNote = () => {
                 {/* Show the tags */}
 
                 {tags && (
-                  <div className="py-1">
+                  <div className="pt-1">
                     {tags.split(/[\s,]+/).map((tag, index) => (
                       <Link
                         href={`/result?q=${tag}`}
                         key={index}
-                        className={`text-sm md:text-base ${playfair_font} mr-2 hover:underline cursor-pointer border px-2 py-[0.16rem] rounded inline-block my-1`}
+                        className={`text-sm md:text-base ${playfair_font} mr-2 cursor-pointer border px-2 py-[0.16rem] rounded inline-block my-1 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200 ease-in-out`}
                       >
                         {tag}
                       </Link>
