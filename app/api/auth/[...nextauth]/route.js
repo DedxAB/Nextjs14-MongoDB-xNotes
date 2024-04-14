@@ -18,6 +18,7 @@ const authOptions = {
         const user = await User.findOne({ email: session.user.email });
         session.user.id = user._id.toString();
         session.user.username = user.username;
+        session.user.isAdmin = user.isAdmin;
         return session;
       } catch (error) {
         return new Error("Failed to get session");
