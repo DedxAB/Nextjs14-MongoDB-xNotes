@@ -83,15 +83,27 @@ const Navbar = () => {
               <DropdownMenuContent>
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  className={`cursor-pointer`}
-                  onClick={() =>
-                    router.push(`/profile/${session?.user?.id}/details`)
-                  }
-                >
-                  <CircleUserRound className="w-4 h-4 mr-2" />
-                  <span className="font-bold">Profile</span>
-                </DropdownMenuItem>
+                {session?.user?.isAdmin ? (
+                  <DropdownMenuItem
+                    className={`cursor-pointer`}
+                    onClick={() =>
+                      router.push(`/admin/${session?.user?.id}/details`)
+                    }
+                  >
+                    <CircleUserRound className="w-4 h-4 mr-2" />
+                    <span className="font-bold">Admin</span>
+                  </DropdownMenuItem>
+                ) : (
+                  <DropdownMenuItem
+                    className={`cursor-pointer`}
+                    onClick={() =>
+                      router.push(`/profile/${session?.user?.id}/details`)
+                    }
+                  >
+                    <CircleUserRound className="w-4 h-4 mr-2" />
+                    <span className="font-bold">Profile</span>
+                  </DropdownMenuItem>
+                )}
                 <DropdownMenuItem
                   className={`cursor-pointer`}
                   onClick={() => signOut()}
