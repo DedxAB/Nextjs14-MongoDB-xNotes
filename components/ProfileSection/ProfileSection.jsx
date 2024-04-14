@@ -154,13 +154,20 @@ const ProfileSection = ({ user }) => {
           </div>
 
           {/* Edit Profile Button of current user*/}
-          {session?.user?.id === user?._id && (
-            <Link href={`/profile/${user?._id}/edit`}>
-              <Button variant={`outline`} className={`font-bold`}>
-                Edit Profile
-              </Button>
-            </Link>
-          )}
+          {session?.user?.id === user?._id &&
+            (session?.user?.isAdmin ? (
+              <Link href={`/admin/${user?._id}/edit`}>
+                <Button variant={`outline`} className={`font-bold`}>
+                  Edit Admin Profile
+                </Button>
+              </Link>
+            ) : (
+              <Link href={`/profile/${user?._id}/edit`}>
+                <Button variant={`outline`} className={`font-bold`}>
+                  Edit Profile
+                </Button>
+              </Link>
+            ))}
         </div>
       </div>
     </section>
