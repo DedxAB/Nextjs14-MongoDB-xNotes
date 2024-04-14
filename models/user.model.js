@@ -20,6 +20,11 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: [true, "Username already exists"],
     },
+    isAdmin: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
     notes: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -34,7 +39,9 @@ const userSchema = new mongoose.Schema(
       facebook: { type: String, trim: true },
       twitter: { type: String, trim: true },
       instagram: { type: String, trim: true },
-      // add more platforms as needed...
+      linkedin: { type: String, trim: true },
+      github: { type: String, trim: true },
+      website: { type: String, trim: true },
     },
   },
   { timestamps: true }
