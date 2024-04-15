@@ -10,7 +10,7 @@ const UserCard = ({ user }) => {
     .join("");
   return (
     <>
-      <div className="border mb-3 rounded px-3 md:px-4 py-3">
+      <div className="border mb-3 rounded px-3 md:px-4 py-2">
         <Link
           href={`/profile/${user?._id}/details`}
           className="flex justify-start items-center gap-1"
