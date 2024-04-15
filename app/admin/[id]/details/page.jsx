@@ -1,6 +1,10 @@
+import AdminToggle from "@/components/AdminToggle/AdminToggle";
 import NoteCard from "@/components/NoteCard/NoteCard";
 import ProfileSection from "@/components/ProfileSection/ProfileSection";
+import ShowAllUser from "@/components/ShowAllUser/ShowAllUser";
+import { Button } from "@/components/ui/button";
 import { BASE_URL } from "@/utils/constants";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export const metadata = {
@@ -48,10 +52,19 @@ const page = async ({ params }) => {
   if (user?.isAdmin === false) {
     redirect("/");
   }
-
+  if (!user) {
+    redirect("/");
+  }
   return (
     <div className="min-h-[85vh]">
       <ProfileSection user={user} />
+      {/* <ShowAllUser /> */}
+      <Link href={`/admin/${id}/details/all-user`}>
+        <Button variant={`outline`} className={`text-sm font-semibold mb-3`}>
+          Fetch All User
+        </Button>
+      </Link>
+      {/* <AdminToggle /> */}
       <UserFeed notes={user?.notes} user={user} />
     </div>
   );
