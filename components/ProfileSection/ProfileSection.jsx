@@ -21,7 +21,7 @@ const ProfileSection = ({ user }) => {
         <p className="text-4xl md:text-5xl mb-5 py-1 bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent font-bold">
           Profile
         </p>
-        <div className="flex flex-wrap items-center gap-3 mb-3">
+        <div className="flex items-center gap-3 mb-3">
           {/* User Avatar */}
           <Avatar className={`w-16 h-16`}>
             <AvatarImage src={user?.image || "/logo.png"} alt={user?.name} />
