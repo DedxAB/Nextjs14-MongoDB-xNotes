@@ -1,33 +1,55 @@
-import { BASE_URL } from "@/utils/constants";
-import UserCard from "../UserCard/UserCard";
+"use client";
 
-const fetchAllUser = async () => {
-  try {
-    const res = await fetch(`${BASE_URL}/api/user`, {
-      cache: "no-store",
-    });
+import { useState } from "react";
+import { Label } from "../ui/label";
+import { Switch } from "../ui/switch";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.message || "Failed to get User");
+const AdminToggle = ({ user, currentUserEmail }) => {
+  const [isAdmin, setIsAdmin] = useState(user?.isAdmin || false);
+  const router = useRouter();
+  const { data: session } = useSession();
+
+  const toggleAdminStatus = async () => {
+    try {
+      const res = await fetch(`/api/user/toggleAdminStatus/${user?._id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ isAdmin: !isAdmin }),
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.message || "Failed to update user");
+      }
+
+      const { updatedUser } = await res.json();
+      setIsAdmin(updatedUser?.isAdmin);
+
+      toast.success(
+        `${user?.name} is now ${updatedUser?.isAdmin ? "Admin" : "User"}`
+      );
+      router.refresh();
+    } catch (error) {
+      toast.error(error.message);
+      console.log(error.message);
     }
-    return await res.json();
-  } catch (error) {
-    console.log(error.message);
-  }
-};
+  };
 
-const AdminToggle = async () => {
-  const { users } = await fetchAllUser();
-  return (
-    <div>
-      <h1 className="font-bold text-lg mb-3">All Users</h1>
-      {users?.length > 0 &&
-        users?.map((user) => {
-          return <UserCard key={user?._id} user={user} />;
-        })}
+  return session?.user?.isAdmin ? (
+    <div className="flex items-center space-x-2">
+      <Label>Admin : {isAdmin ? "Yes" : "No"}</Label>
+      <Switch
+        checked={isAdmin}
+        onCheckedChange={toggleAdminStatus}
+        disabled={currentUserEmail === user?.email}
+      />
     </div>
-  );
+  ) : null;
 };
 
 export default AdminToggle;
