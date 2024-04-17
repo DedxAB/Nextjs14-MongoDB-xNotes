@@ -10,7 +10,7 @@ export const metadata = {
     default: "DedxNotes - Share Your Notes with the World",
     template: "%s | DedxNotes",
   },
-  description: "An interactive Note Sharing WebApp for Note-Taking and Ideas",
+  description: "An interactive Note Sharing WebApp for Note-Taking and Ideas, Share your Notes with the World!🌍",
   keywords:
     "notes, productivity, online platform, notes sharing, ideas, notes app, dedxnotes productivity, dedxnotes note-taking, dedxnotes note sharing, dedxnotes notes app",
   author: "DedxAB",
