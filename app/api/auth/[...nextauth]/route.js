@@ -51,6 +51,7 @@ const authOptions = {
     signIn: "/signin",
     signOut: "/",
   },
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 const authHandler = NextAuth(authOptions);
