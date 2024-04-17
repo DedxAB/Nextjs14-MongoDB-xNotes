@@ -43,17 +43,17 @@ const UserCard = ({ user }) => {
               {user?.notes.length === 0 ? (
                 <div className="flex gap-1 items-center">
                   <Scroll className="w-4" />
-                  <span>No Notes Published Yet</span>
+                  <span>No Notes</span>
                 </div>
               ) : user?.notes.length === 1 ? (
                 <div className="flex gap-1 items-center">
                   <ScrollText className="w-4" />
-                  <span>1 Note published</span>
+                  <span>1 Note</span>
                 </div>
               ) : (
                 <div className="flex gap-1 items-center">
                   <ScrollText className="w-4" />
-                  <span>{user?.notes.length} Notes Published</span>
+                  <span>{user?.notes.length} Notes</span>
                 </div>
               )}
             </div>
