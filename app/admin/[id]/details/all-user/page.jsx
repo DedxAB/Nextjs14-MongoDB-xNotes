@@ -25,7 +25,7 @@ const page = async () => {
   const session = await getServerSession();
   const { allUsers } = await fetchAllUser();
 
-  // if () {
+  // if (!session?.user?.isAdmin) {
   //   redirect("/");
   // }
 
