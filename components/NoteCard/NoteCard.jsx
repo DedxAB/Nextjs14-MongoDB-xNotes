@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
 import { toast } from "sonner";
@@ -16,6 +16,7 @@ const NoteCard = ({ note, user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
   const { data: session } = useSession();
   const pathName = usePathname();
+  const router = useRouter();
 
   const shortName = user?.name
     .split(" ")
@@ -57,6 +58,7 @@ const NoteCard = ({ note, user }) => {
       // console.log(updatedNote);
       // Update the state with the server response
       setUpdatedNote(updatedNote);
+      router.refresh();
     } catch (error) {
       toast.error(error.message);
       console.log(error.message);
@@ -194,7 +196,7 @@ const NoteCard = ({ note, user }) => {
             {/* Likes  */}
             {updatedNote?.likes && (
               <div className="flex gap-1 items-center">
-                {updatedNote?.likes.includes(session?.user?.id) ? (
+                {updatedNote?.likes?.includes(session?.user?.id) ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
