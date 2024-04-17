@@ -1,14 +1,18 @@
 "use client";
 import { signIn } from "next-auth/react";
 import { Button } from "../ui/button";
+import { useSearchParams } from "next/navigation";
 
 const Signin = () => {
+  const searchParams = useSearchParams();
+  const callBackUrl = searchParams.get("callbackUrl" || "/");
+
   return (
     <div className="flex items-center justify-center m-auto min-h-[85vh]">
       <Button
         variant={`outline`}
         className={`font-bold h-10`}
-        onClick={() => signIn("google")}
+        onClick={() => signIn("google", { callbackUrl: callBackUrl })}
       >
         {/* Google svg  */}
         <svg
