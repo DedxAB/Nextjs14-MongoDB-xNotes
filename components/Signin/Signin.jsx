@@ -11,7 +11,7 @@ const Signin = () => {
 
   return (
     <div className="flex items-center justify-center m-auto min-h-[85vh]">
-      <div className="flex items-center justify-between flex-col md:flex-row m-auto h-fit w-full">
+      <div className="flex items-center justify-between flex-col md:flex-row">
         <div className="w-full md:w-1/2 h-full">
           <Image
             src={`https://images.pexels.com/photos/1367192/pexels-photo-1367192.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`}
@@ -21,7 +21,7 @@ const Signin = () => {
             className="object-cover w-full h-full"
           ></Image>
         </div>
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-1/2 h-full">
           <div className="flex flex-col space-y-5 py-8 items-center justify-center">
             <div className="text-lg mb-4">
               Welcome back to{" "}
