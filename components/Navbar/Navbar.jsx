@@ -106,7 +106,7 @@ const Navbar = () => {
                 )}
                 <DropdownMenuItem
                   className={`cursor-pointer`}
-                  onClick={() => signOut()}
+                  onClick={() => signOut({ callbackUrl: "/" })}
                 >
                   <LogOut className="w-4 h-4 mr-2 text-red-500" />
                   <span className="font-bold text-red-500">Sign out</span>
