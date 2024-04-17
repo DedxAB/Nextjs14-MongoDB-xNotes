@@ -36,7 +36,7 @@ const Signin = () => {
             </div>
             <div className="text-center">
               <h1 className="text-2xl font-bold">Sign in to your account</h1>
-              <p>Or sign up for a new account</p>
+              <p className="text-gray-500">Or sign up for a new account</p>
             </div>
             <Button
               variant={`outline`}
