@@ -1,6 +1,9 @@
+import AdminToggle from "@/components/AdminToggle/AdminToggle";
 import UserCard from "@/components/UserCard/UserCard";
 import { BASE_URL } from "@/utils/constants";
 import { josefin_sans_font } from "@/utils/fonts";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
 const fetchAllUser = async () => {
   try {
@@ -19,7 +22,13 @@ const fetchAllUser = async () => {
 };
 
 const page = async () => {
+  const session = await getServerSession();
   const { allUsers } = await fetchAllUser();
+
+  // if () {
+  //   redirect("/");
+  // }
+
   return (
     <div className="min-h-[85vh]">
       <h1 className="font-bold text-lg mb-3">All Users</h1>
@@ -31,7 +40,10 @@ const page = async () => {
               <div
                 className={`px-3 md:px-4 py-1 absolute right-0 bottom-1 ${josefin_sans_font} text-xs`}
               >
-                Admin: {user?.isAdmin ? "Yes" : "No"}
+                <AdminToggle
+                  user={user}
+                  currentUserEmail={session?.user?.email}
+                />
               </div>
             </div>
           );
