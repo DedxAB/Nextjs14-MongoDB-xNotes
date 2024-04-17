@@ -26,7 +26,7 @@ const UserCard = ({ user }) => {
           <div className="w-full">
             {/* Show the author name, username */}
             <div
-              className={`flex flex-wrap items-center text-xs md:py-1 ${josefin_sans_font}`}
+              className={`flex flex-wrap items-center text-xs ${josefin_sans_font}`}
             >
               {/* name  */}
               <p className={`font-bold text-base md:text-lg mr-1`}>
