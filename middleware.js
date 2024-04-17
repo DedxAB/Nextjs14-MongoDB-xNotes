@@ -9,8 +9,9 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    "/add-note",
+    "/create-note",
     "/edit-note/:path*",
-    "/admin/:path*",
+    "/admin/:path*", // Match /admin/username/details
+    "/profile/:path*", // Match /profile/username/details
   ],
 };
