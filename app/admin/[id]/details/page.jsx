@@ -1,7 +1,5 @@
-import AdminToggle from "@/components/AdminToggle/AdminToggle";
 import NoteCard from "@/components/NoteCard/NoteCard";
 import ProfileSection from "@/components/ProfileSection/ProfileSection";
-import ShowAllUser from "@/components/ShowAllUser/ShowAllUser";
 import { Button } from "@/components/ui/button";
 import { BASE_URL } from "@/utils/constants";
 import Link from "next/link";
@@ -49,12 +47,10 @@ const page = async ({ params }) => {
   const { id } = params;
   const { user } = await fetchUser(id);
 
-  if (user?.isAdmin === false) {
+  if (!user?.isAdmin) {
     redirect("/");
   }
-  if (!user) {
-    redirect("/");
-  }
+  
   return (
     <div className="min-h-[85vh]">
       <ProfileSection user={user} />
@@ -64,7 +60,6 @@ const page = async ({ params }) => {
           Fetch All User
         </Button>
       </Link>
-      {/* <AdminToggle /> */}
       <UserFeed notes={user?.notes} user={user} />
     </div>
   );
