@@ -2,17 +2,33 @@
 import { signIn } from "next-auth/react";
 import { Button } from "../ui/button";
 import { useSearchParams } from "next/navigation";
+import { playfair_font } from "@/utils/fonts";
 
 const Signin = () => {
   const searchParams = useSearchParams();
-  const callBackUrl = searchParams.get("callbackUrl" || "/");
+  const callBackUrl = searchParams.get("callbackUrl");
 
   return (
-    <div className="flex items-center justify-center m-auto min-h-[85vh]">
+    <div className="flex flex-col items-center justify-center m-auto min-h-[85vh]">
+      <div className="text-lg my-5">
+        Welcome back to
+        <p className={`ml-1 inline-block text-3xl font-bold ${playfair_font}`}>
+          Dedx
+          <span
+            className={`bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent`}
+          >
+            Notes
+          </span>
+        </p>
+      </div>
+      <div className="text-center mb-5">
+        <h1 className="text-2xl font-bold">Sign in to your account</h1>
+        <p className="text-gray-500">Or sign up for a new account</p>
+      </div>
       <Button
         variant={`outline`}
         className={`font-bold h-10`}
-        onClick={() => signIn("google", { callbackUrl: callBackUrl })}
+        onClick={() => signIn("google", { callbackUrl: callBackUrl || "/" })}
       >
         {/* Google svg  */}
         <svg
@@ -41,7 +57,7 @@ const Signin = () => {
             d="M43.611,20.083L43.595,20L42,20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
           ></path>
         </svg>
-        <span>Signin with Google</span>
+        <span>Continue with Google</span>
       </Button>
     </div>
   );
