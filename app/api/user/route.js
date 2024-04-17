@@ -31,7 +31,9 @@ export async function POST(req) {
 export const GET = async (_req, _res) => {
   try {
     await connectDB();
-    const allUsers = await User.find().populate("notes");
+    const allUsers = await User.find()
+      .populate("notes")
+      .sort({ createdAt: -1 });
     if (!allUsers) {
       return NextResponse.json({ message: "No users found" }, { status: 404 });
     }
