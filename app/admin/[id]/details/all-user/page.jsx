@@ -10,7 +10,7 @@ const fetchAllUser = async () => {
 
     if (!res.ok) {
       const errorData = await res.json();
-      throw new Error(errorData.message || "Failed to get User");
+      throw new Error(errorData.message || "Failed to get all Users");
     }
     return await res.json();
   } catch (error) {
