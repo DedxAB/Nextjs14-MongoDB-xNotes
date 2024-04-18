@@ -154,7 +154,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           type="text"
           name="tags"
           id="tags"
-          placeholder="keyword1, keyword2, ... (Optional)"
+          placeholder="tech, web ... (Optional)"
           className="shadow px-4 py-5 font-bold"
         />
 

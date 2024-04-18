@@ -192,7 +192,7 @@ const AddNote = () => {
           type="text"
           name="tags"
           id="tags"
-          placeholder="keyword1, keyword2, ... (Optional)"
+          placeholder="development, tech, ... (Optional)"
           className="shadow px-4 py-5 font-bold"
         />
 
