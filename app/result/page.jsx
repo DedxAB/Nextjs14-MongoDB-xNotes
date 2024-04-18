@@ -42,7 +42,7 @@ const fetchData = async (q) => {
 const Result = async ({ searchParams }) => {
   const { q } = searchParams;
 
-  const { notesArray, usersArray } = await fetchData(q);
+  const { notesArray, usersArray } = await fetchData(encodeURIComponent(q));
   const notes = notesArray;
   //   console.log("notes", notes);
   const users = usersArray;

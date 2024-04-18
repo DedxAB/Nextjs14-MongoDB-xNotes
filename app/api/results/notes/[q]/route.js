@@ -5,6 +5,7 @@ import { NextResponse } from "next/server";
 
 export const GET = async (_req, { params }) => {
   const { q } = params;
+  // console.log("query=", q);
   try {
     await connectDB();
     // Use a regex for case-insensitive searching
