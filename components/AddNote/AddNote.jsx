@@ -11,7 +11,12 @@ import Link from "next/link";
 import { Label } from "../ui/label";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
-import { josefin_sans_font, opensans_font, playfair_font } from "@/utils/fonts";
+import {
+  inter_font,
+  josefin_sans_font,
+  opensans_font,
+  playfair_font,
+} from "@/utils/fonts";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -267,7 +272,7 @@ const AddNote = () => {
                 {/* <div className="flex justify-between items-cente mt-1"> */}
                 {description && (
                   <div
-                    className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${opensans_font}`}
+                    className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${inter_font}`}
                   >
                     {description}
                   </div>

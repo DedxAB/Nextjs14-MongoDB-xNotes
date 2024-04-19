@@ -10,7 +10,7 @@ import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
 import { toast } from "sonner";
 import { useState } from "react";
-import { josefin_sans_font, opensans_font, playfair_font } from "@/utils/fonts";
+import { inter_font, josefin_sans_font, playfair_font } from "@/utils/fonts";
 
 const NoteCard = ({ note, user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
@@ -92,17 +92,18 @@ const NoteCard = ({ note, user }) => {
     <>
       <div className="border flex justify-start gap-1 mb-3 md:mb-4 rounded px-3 md:px-4 py-[.85rem]">
         {/* Show the author image */}
-        <Link href={`/profile/${user?._id}/details`} className="mr-2 pt-[5px]">
-          <Avatar>
-            <AvatarImage
-              src={user?.image || "/logo.png"}
-              referrerPolicy="no-referrer"
-              alt={`Profile Image of ${user?.name}`}
-            />
-            <AvatarFallback>{shortName}</AvatarFallback>
-          </Avatar>
-          {/* <MyImage src={user?.image} /> */}
-        </Link>
+        <div className="mr-2 pt-[5px]">
+          <Link href={`/profile/${user?._id}/details`}>
+            <Avatar >
+              <AvatarImage
+                src={user?.image || "/logo.png"}
+                referrerPolicy="no-referrer"
+                alt={`Profile Image of ${user?.name}`}
+              />
+              <AvatarFallback>{shortName}</AvatarFallback>
+            </Avatar>
+          </Link>
+        </div>
         <div className="w-full">
           {/* Show the author name, username */}
           <Link
@@ -168,7 +169,7 @@ const NoteCard = ({ note, user }) => {
           {/* Show the description */}
           <Link href={`/note/${updatedNote?._id}/details`}>
             <div
-              className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${opensans_font}`}
+              className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${inter_font}`}
             >
               {pathName === `/note/${updatedNote?._id}/details`
                 ? updatedNote?.description
