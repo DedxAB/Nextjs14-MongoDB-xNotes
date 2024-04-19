@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import RemoveComment from "../RemoveComment/RemoveComment";
-import { josefin_sans_font } from "@/utils/fonts";
+import { inter_font, josefin_sans_font } from "@/utils/fonts";
 
 dayjs.extend(relativeTime);
 
@@ -53,8 +53,8 @@ const NoteCommentCard = ({ comment, note }) => {
             </Link>
 
             {/* Show the user comment text*/}
-            <div className="text-sm font-bold">
-              <p className="text-sm">{comment?.text}</p>
+            <div>
+              <p className={`text-sm ${inter_font}`}>{comment?.text}</p>
             </div>
           </div>
           <div>
