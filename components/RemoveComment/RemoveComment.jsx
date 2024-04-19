@@ -49,7 +49,8 @@ const RemoveComment = ({ comment, note }) => {
 
   if (
     session?.user?.id === comment?.author?._id ||
-    session?.user?.id === note?.author?._id
+    session?.user?.id === note?.author?._id ||
+    session?.user?.isAdmin
   ) {
     return (
       <>
