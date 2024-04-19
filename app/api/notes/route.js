@@ -73,8 +73,11 @@ export async function DELETE(req) {
       { new: true }
     );
     // delete the related comments
-    await Comment.deleteMany({_id:{$in: deletedNote.comments}})
-    return Response.json({ deletedNote }, { status: 200 });
+    await Comment.deleteMany({ _id: { $in: deletedNote.comments } });
+    return Response.json(
+      { message: "Note deleted successfully" },
+      { status: 200 }
+    );
   } catch (error) {
     return NextResponse.json(
       {
