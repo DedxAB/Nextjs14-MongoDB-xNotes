@@ -11,12 +11,7 @@ import Link from "next/link";
 import { Label } from "../ui/label";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
-import {
-  inter_font,
-  josefin_sans_font,
-  opensans_font,
-  playfair_font,
-} from "@/utils/fonts";
+import { inter_font, josefin_sans_font, playfair_font } from "@/utils/fonts";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -35,6 +30,14 @@ const AddNote = () => {
 
   const router = useRouter();
   const { data: session } = useSession();
+
+  // Clear all the data from the form
+  const clearAllData = () => {
+    setTitle("");
+    setDescription("");
+    setTags("");
+    setWebsiteLink("");
+  };
 
   const textareaRef = useRef(null);
   // Auto resize the textarea
@@ -221,9 +224,12 @@ const AddNote = () => {
         <Button
           onClick={() => setPreview(!preview)}
           variant={`outline`}
-          className="font-bold w-fit mt-2"
+          className="font-bold w-fit mt-2 mr-2"
         >
           {preview ? "Hide Preview" : "Preview"}
+        </Button>
+        <Button className={`font-bold`} onClick={clearAllData}>
+          Clear all
         </Button>
         {preview && (
           <>
