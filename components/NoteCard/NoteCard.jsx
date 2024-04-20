@@ -94,7 +94,7 @@ const NoteCard = ({ note, user }) => {
         {/* Show the author image */}
         <div className="mr-2 pt-[5px]">
           <Link href={`/profile/${user?._id}/details`}>
-            <Avatar >
+            <Avatar>
               <AvatarImage
                 src={user?.image || "/logo.png"}
                 referrerPolicy="no-referrer"
@@ -254,7 +254,7 @@ const NoteCard = ({ note, user }) => {
             </Link>
             {updatedNote?.websiteLink && (
               <Link href={updatedNote?.websiteLink} target="_blank">
-                <ExternalLink className="w-4 h-4" />
+                <ExternalLink className="w-4 h-4 hover:text-primary" />
               </Link>
             )}
           </div>
