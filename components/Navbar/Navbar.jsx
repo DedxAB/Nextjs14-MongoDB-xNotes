@@ -95,21 +95,21 @@ const Navbar = () => {
                   </DropdownMenuItem>
                 ) : (
                   <DropdownMenuItem
-                    className={`cursor-pointer`}
+                    className={`cursor-pointer flex items-center space-x-2`}
                     onClick={() =>
                       router.push(`/profile/${session?.user?.id}/details`)
                     }
                   >
-                    <CircleUserRound className="w-4 h-4 mr-2" />
+                    <CircleUserRound className="w-4 h-4" />
                     <span className="font-bold">Profile</span>
                   </DropdownMenuItem>
                 )}
                 <DropdownMenuItem
-                  className={`cursor-pointer`}
+                  className={`cursor-pointer flex items-center space-x-2`}
                   onClick={() => signOut({ callbackUrl: "/" })}
                 >
-                  <LogOut className="w-4 h-4 mr-2 text-red-500" />
-                  <span className="font-bold text-red-500">Sign out</span>
+                  <LogOut className="w-4 h-4 text-primary" />
+                  <span className="font-bold text-primary">Sign out</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
