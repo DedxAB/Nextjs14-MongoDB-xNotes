@@ -208,7 +208,7 @@ const AddNote = () => {
           </div>
           <div className="flex justify-end gap-3 md:gap-4">
             {/* Publish Button */}
-            <Button type={`submit`} variant={`outline`} className="font-bold">
+            <Button type={`submit`} className="font-bold">
               <ArrowUpToLine className="w-4 h-4 mr-1" />
               Publish
             </Button>

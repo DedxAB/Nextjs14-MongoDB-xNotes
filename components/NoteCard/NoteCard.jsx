@@ -184,7 +184,7 @@ const NoteCard = ({ note, user }) => {
                 <Link
                   href={`/result?q=${encodeURIComponent(tag)}`}
                   key={index}
-                  className={`text-sm md:text-base ${playfair_font} mr-2 cursor-pointer border px-2 py-[0.16rem] rounded inline-block my-1 hover:bg-gray-100 hover:text-gray-900 transition-all duration-300 ease-in-out`}
+                  className={`text-sm md:text-base ${playfair_font} mr-2 cursor-pointer border px-2 py-[0.16rem] rounded inline-block my-1 hover:bg-primary hover:text-white transition-all duration-300 ease-in-out`}
                 >
                   {tag}
                 </Link>

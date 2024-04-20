@@ -163,18 +163,14 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           {/* Cancel Button */}
           <Link href={`/profile/${author?._id}/details`}>
             <Button variant={`outline`} className="font-bold w-fit mr-3">
-              <MessageSquareX className="w-4 mr-1" />
+              <MessageSquareX className="w-4 h-4 mr-1" />
               Cancel
             </Button>
           </Link>
 
           {/* Save Button */}
-          <Button
-            type={`submit`}
-            variant={`outline`}
-            className="font-bold w-fit"
-          >
-            <Save className="w-4 mr-1" />
+          <Button type={`submit`} className="font-bold w-fit">
+            <Save className="w-4 h-4 mr-1" />
             Save
           </Button>
         </div>

@@ -21,7 +21,7 @@ const Footer = () => {
         <div className="flex items-center justify-between my-1 md:my-0">
           <Link
             href="https://github.com/DedxAB"
-            className="hover:text-pink-500 transition-all duration-300 ease-in-out"
+            className="hover:text-primary transition-all duration-300 ease-in-out"
             target="_blank"
           >
             <svg
@@ -42,7 +42,7 @@ const Footer = () => {
 
           <Link
             href="https://twitter.com/sumit_x09"
-            className="hover:text-pink-500 ms-5 transition-all duration-300 ease-in-out"
+            className="hover:text-primary ms-5 transition-all duration-300 ease-in-out"
             target="_blank"
           >
             <svg
@@ -62,7 +62,7 @@ const Footer = () => {
           </Link>
           <Link
             href="https://www.instagram.com/sumit_ig09"
-            className="hover:text-pink-500 ms-5 transition-all duration-300 ease-in-out"
+            className="hover:text-primary ms-5 transition-all duration-300 ease-in-out"
             target="_blank"
           >
             <svg

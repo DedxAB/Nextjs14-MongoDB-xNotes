@@ -26,12 +26,7 @@ const UserBanner = async () => {
             </h1>
             <h1 className="text-3xl md:text-4xl my-2">Want to create notes?</h1>
             <Link href={`/signin`}>
-              <Button
-                variant={`outline`}
-                className={`text-base font-bold mt-1`}
-              >
-                Sign in
-              </Button>
+              <Button className={`text-base font-bold mt-1`}>Sign in</Button>
             </Link>
           </div>
         </>

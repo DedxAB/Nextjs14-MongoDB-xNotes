@@ -52,14 +52,14 @@ const Navbar = () => {
           {status === "authenticated" && (
             <Link href={`/create-note`}>
               <Button
-                variant={`outline`}
-                className="hidden md:font-bold md:flex md:gap-1"
+                // variant={`outline`}
+                className="hidden md:font-bold md:flex md:gap-1 md:items-center"
               >
                 <NotebookPen className="w-4 h-4" />
                 <span>Write</span>
               </Button>
               <Button
-                variant={`outline`}
+                // variant={`outline`}
                 className="font-bold md:hidden"
                 size="icon"
               >
@@ -116,11 +116,7 @@ const Navbar = () => {
           ) : (
             <div className="flex gap-4">
               <Link href={`/signin`}>
-                <Button
-                  variant={`outline`}
-                  className="font-bold text-base"
-                  size="icon"
-                >
+                <Button className="font-bold text-base" size="icon">
                   <LogIn className="w-4" />
                 </Button>
               </Link>

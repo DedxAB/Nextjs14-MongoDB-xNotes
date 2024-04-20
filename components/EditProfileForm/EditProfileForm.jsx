@@ -138,26 +138,22 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
             {session?.user?.isAdmin ? (
               <Link href={`/admin/${userId}/details`}>
                 <Button variant={`outline`} className="font-bold w-fit mr-3">
-                  <MessageSquareX className="w-4 mr-1" />
+                  <MessageSquareX className="w-4 h-4 mr-1" />
                   Cancel
                 </Button>
               </Link>
             ) : (
               <Link href={`/profile/${userId}/details`}>
                 <Button variant={`outline`} className="font-bold w-fit mr-3">
-                  <MessageSquareX className="w-4 mr-1" />
+                  <MessageSquareX className="w-4 h-4 mr-1" />
                   Cancel
                 </Button>
               </Link>
             )}
 
             {/* Save Button */}
-            <Button
-              type={`submit`}
-              variant={`outline`}
-              className="font-bold w-fit"
-            >
-              <Save className="w-4 mr-1" />
+            <Button type={`submit`} className="font-bold w-fit">
+              <Save className="w-4 h-4 mr-1" />
               Save
             </Button>
           </div>

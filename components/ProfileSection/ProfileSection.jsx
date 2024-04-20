@@ -73,7 +73,7 @@ const ProfileSection = ({ user }) => {
                 href={user?.socialLinks?.facebook}
                 target="_blank"
                 rel="noreferrer"
-                className="text-pink-500"
+                className="text-primary"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +96,7 @@ const ProfileSection = ({ user }) => {
                 href={user?.socialLinks?.twitter}
                 target="_blank"
                 rel="noreferrer"
-                className="text-pink-500"
+                className="text-primary"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +119,7 @@ const ProfileSection = ({ user }) => {
                 href={user?.socialLinks?.instagram}
                 target="_blank"
                 rel="noreferrer"
-                className="text-pink-500"
+                className="text-primary"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -157,13 +157,13 @@ const ProfileSection = ({ user }) => {
           {session?.user?.id === user?._id &&
             (session?.user?.isAdmin ? (
               <Link href={`/admin/${user?._id}/edit`}>
-                <Button variant={`outline`} className={`font-bold`}>
+                <Button className={`font-bold`}>
                   Edit Admin Profile
                 </Button>
               </Link>
             ) : (
               <Link href={`/profile/${user?._id}/edit`}>
-                <Button variant={`outline`} className={`font-bold`}>
+                <Button className={`font-bold`}>
                   Edit Profile
                 </Button>
               </Link>
