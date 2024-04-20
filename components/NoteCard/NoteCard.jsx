@@ -10,6 +10,7 @@ import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
 import { toast } from "sonner";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { inter_font, josefin_sans_font, playfair_font } from "@/utils/fonts";
 
 const NoteCard = ({ note, user }) => {
@@ -90,7 +91,12 @@ const NoteCard = ({ note, user }) => {
 
   return (
     <>
-      <div className="border flex justify-start gap-1 mb-3 md:mb-4 rounded px-3 md:px-4 py-[.85rem]">
+      <motion.div
+        initial={{ y: 20 }}
+        animate={{ y: 0 }}
+        transition={{ ease: "easeOut", duration: 0.5 }}
+        className="border flex justify-start gap-1 mb-3 md:mb-4 rounded px-3 md:px-4 py-[.85rem]"
+      >
         {/* Show the author image */}
         <div className="mr-2 pt-[5px]">
           <Link href={`/profile/${user?._id}/details`}>
@@ -259,7 +265,7 @@ const NoteCard = ({ note, user }) => {
             )}
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
