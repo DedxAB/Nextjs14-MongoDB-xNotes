@@ -42,4 +42,4 @@ This project aims to simplify note-taking and sharing. Feel free to explore the 
 
 ---
 
-[Visit DedxNotes](https://dedxnotes.vercel.app/%29) | GitHub Repository
+[Visit DedxNotes]([https://dedxnotes.vercel.app/%29](https://github.com/DedxAB/Nextjs14-MongoDB-xNotes)) | GitHub Repository
