@@ -14,7 +14,7 @@ export const metadata = {
     "An interactive Note Sharing app for Note-Taking and Ideas, Share your Notes with the World!🌍. Your go-to platform for digital sticky notes for easy recall and reference, making note-taking and idea sharing a breeze. Start organizing your thoughts today!",
   keywords:
     "notes, sticky notes, digital sticky note, recall notes, productivity, online platform, notes sharing, ideas, notes app, dedxnotes productivity, dedxnotes note-taking, dedxnotes note sharing, dedxnotes notes app",
-  author: "DedxAB",
+  creator: "DedxAB - Arnab Bhoumik",
   image: "https://dedxnotes.vercel.app/dedxnotes-logo.png",
   url: "https://dedxnotes.vercel.app/",
 };
