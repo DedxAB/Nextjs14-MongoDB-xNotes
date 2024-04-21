@@ -22,7 +22,7 @@ Welcome to DedxNotes, an interactive Note Sharing WebApp built with Next.js 14 a
 
 - **User Profiles**: Each user has a personalized profile where they can view their notes, manage settings, and explore their activity history.
 
-- **Search Functionality**: The search bar lets users find notes based on keywords, tags, or specific content. It's like having a powerful search engine for your personal notes.
+- **Search Functionality**: The search bar lets users find notes based on keywords, tags, or specific content. It's like having a powerful search engine for your notes.
 
 - **Responsive Design**: DedxNotes adapts to different devices and screen sizes, ensuring a smooth experience whether you're on a desktop, tablet, or mobile phone.
 
@@ -42,4 +42,4 @@ This project aims to simplify note-taking and sharing. Feel free to explore the 
 
 ---
 
-[Visit DedxNotes](https://dedxnotes.vercel.app/%29) | GitHub Repository
+[Visit DedxNotes](https://dedxnotes.vercel.app/) | GitHub Repository
