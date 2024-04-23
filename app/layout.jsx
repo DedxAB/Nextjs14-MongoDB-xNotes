@@ -7,7 +7,7 @@ import Footer from "@/components/Footer/Footer";
 
 export const metadata = {
   title: {
-    default: "DedxNotes - Digital Sticky Notes Platform",
+    default: "DedxNotes - Digital Sticky Notes",
     template: "%s | DedxNotes",
   },
   description:
