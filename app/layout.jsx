@@ -11,7 +11,7 @@ export const metadata = {
     template: "%s | DedxNotes",
   },
   description:
-    "An interactive Note Sharing app for Note-Taking and Ideas, Share your Notes with the World!🌍. Your go-to platform for digital sticky notes for easy recall and reference, making note-taking and idea sharing a breeze. Start organizing your thoughts today!",
+    "Welcome to our interactive note-sharing platform! Create digital sticky notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today! 🌟",
   keywords:
     "notes, sticky notes, digital sticky note, recall notes, productivity, online platform, notes sharing, ideas, notes app, dedxnotes productivity, dedxnotes note-taking, dedxnotes note sharing, dedxnotes notes app",
   creator: "DedxAB - Arnab Bhoumik",
