@@ -10,7 +10,11 @@ import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
 import { toast } from "sonner";
 import { useState } from "react";
-import { inter_font, josefin_sans_font, playfair_font } from "@/utils/fonts";
+import {
+  inter_font,
+  josefin_sans_font,
+  source_code_pro_font,
+} from "@/utils/fonts";
 
 const NoteCard = ({ note, user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
@@ -123,7 +127,9 @@ const NoteCard = ({ note, user }) => {
             {/* Show the title and date */}
             <Link href={`/note/${updatedNote?._id}/details`}>
               {/* title  */}
-              <h2 className={`text-lg md:text-xl font-bold hover:underline`}>
+              <h2
+                className={`text-lg md:text-xl font-bold ${source_code_pro_font}`}
+              >
                 {updatedNote?.title}
               </h2>
 
@@ -185,7 +191,7 @@ const NoteCard = ({ note, user }) => {
                 <Link
                   href={`/result?q=${encodeURIComponent(tag)}`}
                   key={index}
-                  className={`text-sm md:text-base ${playfair_font} mr-2 cursor-pointer border px-2 py-[0.16rem] rounded inline-block my-1 hover:bg-primary hover:text-white transition-all duration-300 ease-in-out`}
+                  className={`text-sm md:text-base ${source_code_pro_font} mr-2 cursor-pointer border px-2 py-[0.16rem] rounded inline-block my-1 hover:bg-primary hover:text-white transition-all duration-300 ease-in-out`}
                 >
                   {tag}
                 </Link>
@@ -194,7 +200,7 @@ const NoteCard = ({ note, user }) => {
           )}
 
           {/* Show the likes and comments and weblink */}
-          <div className="flex gap-5 mt-2 pt-1 items-center">
+          <div className={`${source_code_pro_font} flex gap-5 mt-2 pt-1 items-center`}>
             {/* Likes  */}
             {updatedNote?.likes && (
               <div className="flex gap-1 items-center">
