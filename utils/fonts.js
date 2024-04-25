@@ -3,9 +3,14 @@ import {
   Playfair_Display,
   Open_Sans,
   Inter,
+  Source_Code_Pro,
 } from "next/font/google";
 
 const opensans = Open_Sans({
+  subsets: ["latin"],
+});
+
+const sourceCodePro = Source_Code_Pro({
   subsets: ["latin"],
 });
 
@@ -26,5 +31,12 @@ const josefin_sans_font = josefinSans.className;
 const playfair_font = playfair.className;
 const opensans_font = opensans.className;
 const inter_font = inter.className;
+const source_code_pro_font = sourceCodePro.className;
 
-export { josefin_sans_font, playfair_font, opensans_font, inter_font };
+export {
+  josefin_sans_font,
+  playfair_font,
+  opensans_font,
+  inter_font,
+  source_code_pro_font,
+};
