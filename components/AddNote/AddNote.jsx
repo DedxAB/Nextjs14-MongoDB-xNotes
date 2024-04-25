@@ -11,7 +11,12 @@ import Link from "next/link";
 import { Label } from "../ui/label";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
-import { inter_font, josefin_sans_font, playfair_font } from "@/utils/fonts";
+import {
+  inter_font,
+  josefin_sans_font,
+  playfair_font,
+  source_code_pro_font,
+} from "@/utils/fonts";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -258,7 +263,7 @@ const AddNote = () => {
                   <div>
                     {/* title  */}
                     <h2
-                      className={`text-lg md:text-xl font-bold hover:underline`}
+                      className={`text-lg md:text-xl font-bold ${source_code_pro_font}`}
                     >
                       {title}
                     </h2>
@@ -275,7 +280,6 @@ const AddNote = () => {
                 </div>
 
                 {/* Show the description */}
-                {/* <div className="flex justify-between items-cente mt-1"> */}
                 {description && (
                   <div
                     className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${inter_font}`}
@@ -283,16 +287,15 @@ const AddNote = () => {
                     {description}
                   </div>
                 )}
-                {/* </div> */}
-                {/* Show the tags */}
 
+                {/* Show the tags */}
                 {tags && (
                   <div className="pt-1">
                     {tags.split(/[\s,]+/).map((tag, index) => (
                       <Link
                         href={`/result?q=${tag}`}
                         key={index}
-                        className={`text-sm md:text-base ${playfair_font} mr-2 cursor-pointer border px-2 py-[0.16rem] rounded inline-block my-1 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200 ease-in-out`}
+                        className={`text-sm md:text-base ${source_code_pro_font} mr-2 cursor-pointer border px-2 py-[0.16rem] rounded inline-block my-1 hover:bg-primary hover:text-white transition-all duration-300 ease-in-out`}
                       >
                         {tag}
                       </Link>
@@ -302,13 +305,15 @@ const AddNote = () => {
 
                 {/* Show the likes and comments and weblink */}
                 {(title || description || websiteLink) && (
-                  <div className="flex gap-5 mt-2 pt-1 items-center">
+                  <div
+                    className={`flex gap-5 mt-2 pt-1 items-center ${source_code_pro_font}`}
+                  >
                     <div className="flex gap-1 items-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="currentColor"
-                        className="w-5 h-5 text-red-500 cursor-pointer"
+                        className="w-5 h-5 text-primary cursor-pointer"
                       >
                         <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
                       </svg>
@@ -321,7 +326,7 @@ const AddNote = () => {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="w-5 h-5 cursor-pointer"
+                        className="w-5 h-5 cursor-pointer text-primary"
                       >
                         <path
                           strokeLinecap="round"
@@ -334,7 +339,7 @@ const AddNote = () => {
                     {websiteLink && (
                       <>
                         <Link href={websiteLink} target="_blank">
-                          <ExternalLink className="w-4 h-4" />
+                          <ExternalLink className="w-4 h-4 text-primary" />
                         </Link>
                       </>
                     )}
