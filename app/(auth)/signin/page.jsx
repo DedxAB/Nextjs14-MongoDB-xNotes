@@ -5,15 +5,7 @@ import { redirect } from "next/navigation";
 const SigninPage = async () => {
   const session = await getServerSession();
 
-  if (session) {
-    redirect("/");
-  } else {
-    return (
-      <>
-        <Signin />
-      </>
-    );
-  }
+  return <>{session ? redirect("/") : <Signin />}</>;
 };
 
 export default SigninPage;
