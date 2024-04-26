@@ -200,7 +200,9 @@ const NoteCard = ({ note, user }) => {
           )}
 
           {/* Show the likes and comments and weblink */}
-          <div className={`${source_code_pro_font} flex gap-5 mt-2 pt-1 items-center`}>
+          <div
+            className={`${source_code_pro_font} flex gap-5 mt-2 pt-1 items-center`}
+          >
             {/* Likes  */}
             {updatedNote?.likes && (
               <div className="flex gap-1 items-center">
