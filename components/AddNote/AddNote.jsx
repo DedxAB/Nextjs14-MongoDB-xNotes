@@ -152,6 +152,13 @@ const AddNote = () => {
       {/* Form to add the Note */}
       <form onSubmit={handelSubmit} className="flex flex-col gap-3">
         {/* Title input field */}
+        <Label
+          htmlFor="title"
+          className="font-bold md:text-base pl-1 text-[#444746]"
+        >
+          Title:
+        </Label>
+
         <Input
           onChange={(e) => {
             setTitle(e.target.value);
@@ -165,6 +172,12 @@ const AddNote = () => {
         />
 
         {/* Description text area */}
+        <Label
+          htmlFor="description"
+          className="font-bold md:text-base pl-1 text-[#444746]"
+        >
+          Description:
+        </Label>
         <Textarea
           ref={textareaRef}
           onChange={handelDescriptionChange}
@@ -172,7 +185,7 @@ const AddNote = () => {
           placeholder={`Please fill the Details about the note`}
           className={`shadow px-4 py-3 font-bold min-h-32 overflow-hidden`}
         />
-        <p className="text-right font-bold text-sm text-gray-500">
+        <p className="text-right font-bold text-sm text-[#444746]">
           {charCount}/{maxCharCount}
         </p>
         {/* Website Link input field */}
@@ -191,10 +204,9 @@ const AddNote = () => {
         {/* Tags text area */}
         <Label
           htmlFor="tags"
-          className="font-bold md:text-base pl-1 mt-2 text-gray-500"
+          className="font-bold md:text-base pl-1 mt-2 text-[#444746]"
         >
-          Keyword: sepereated by comma or space for multiple keyword (search
-          purpose).
+          Keyword: (for better search results)
         </Label>
 
         <Input
@@ -211,7 +223,7 @@ const AddNote = () => {
 
         {/* Buttons */}
         <div className="flex justify-between items-center gap-1">
-          <div className="font-bold text-base text-gray-500 w-max">
+          <div className="font-bold text-base text-[#444746] w-max">
             Want to Preview?
           </div>
           <div className="flex justify-end gap-3 md:gap-4">
