@@ -8,6 +8,7 @@ import { Textarea } from "../ui/textarea";
 import Link from "next/link";
 import { MessageSquareX, Save } from "lucide-react";
 import { Label } from "../ui/label";
+import { inter_font } from "@/utils/fonts";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -103,6 +104,12 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
       </div>
       <form onSubmit={handelOnSubmit} className="flex flex-col gap-3">
         {/* Title input field */}
+        <Label
+          htmlFor="title"
+          className="font-bold md:text-base pl-1 text-[#444746]"
+        >
+          Title:
+        </Label>
         <Input
           onChange={(e) => setNewTitle(e.target.value)}
           value={newTitle}
@@ -114,6 +121,12 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
         />
 
         {/* Description text area */}
+        <Label
+          htmlFor="description"
+          className="font-bold md:text-base pl-1 text-[#444746]"
+        >
+          Description:
+        </Label>
         <Textarea
           ref={textareaRef}
           onChange={handelDescriptionChange}
@@ -121,7 +134,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           placeholder={`Please fill the Details about the note`}
           className={`shadow px-4 py-3 font-bold min-h-32 overflow-hidden`}
         />
-        <p className="font-bold text-right text-sm text-gray-500">
+        <p className="font-bold text-right text-sm text-[#444746]">
           {charCount}/{maxCharCount}
         </p>
         {/* Website Link input field */}
@@ -140,10 +153,9 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
         {/* Tags text area */}
         <Label
           htmlFor="tags"
-          className="font-bold md:text-base pl-1 mt-2 text-gray-500"
+          className="font-bold md:text-base pl-1 mt-2 text-[#444746]"
         >
-          Keyword: sepereated by comma or space for multiple keyword (search
-          purpose).
+          Keyword: (for better search results)
         </Label>
 
         <Input
@@ -154,7 +166,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           type="text"
           name="tags"
           id="tags"
-          placeholder="tech, web ... (Optional)"
+          placeholder="development, tech, ... (Optional)"
           className="shadow px-4 py-5 font-bold"
         />
 
