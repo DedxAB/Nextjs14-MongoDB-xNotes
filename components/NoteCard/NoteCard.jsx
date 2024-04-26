@@ -95,7 +95,7 @@ const NoteCard = ({ note, user }) => {
   return (
     <>
       {/* Note card 03notecard branch */}
-      <div className="border flex justify-start gap-1 mb-3 md:mb-4 rounded px-3 md:px-4 py-[.85rem]">
+      <div className="border flex justify-start gap-1 mb-3 md:mb-4 rounded-md px-3 md:px-4 py-[.85rem]">
         {/* Show the author image */}
         <div className="mr-2 pt-[5px]">
           <Link href={`/profile/${user?._id}/details`}>
