@@ -84,9 +84,12 @@ const NoteCard = ({ note, user }) => {
         {str?.length > num && (
           <>
             <span>... </span>
-            <span className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
+            <Link
+              href={`/note/${updatedNote?._id}/details`}
+              className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent"
+            >
               Show more
-            </span>
+            </Link>
           </>
         )}
       </>
@@ -180,15 +183,15 @@ const NoteCard = ({ note, user }) => {
           </div>
 
           {/* Show the description */}
-          <Link href={`/note/${updatedNote?._id}/details`}>
-            <div
-              className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${inter_font}`}
-            >
-              {pathName === `/note/${updatedNote?._id}/details`
-                ? updatedNote?.description
-                : truncateString(updatedNote?.description, 128)}
-            </div>
-          </Link>
+          {/* <Link href={`/note/${updatedNote?._id}/details`}> */}
+          <div
+            className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${inter_font}`}
+          >
+            {pathName === `/note/${updatedNote?._id}/details`
+              ? updatedNote?.description
+              : truncateString(updatedNote?.description, 128)}
+          </div>
+          {/* </Link> */}
 
           {/* Show the tags */}
           {updatedNote?.tags && updatedNote?.tags.length > 0 && (
