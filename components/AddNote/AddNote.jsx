@@ -85,6 +85,11 @@ const AddNote = () => {
     e.preventDefault();
     if (!title || !description) {
       toast.warning("Please fill all the fields");
+      // const toastId = toast("Sonner");
+
+      // toast.success("Toast has been updated", {
+      //   id: toastId,
+      // });
       return;
     }
 
@@ -103,6 +108,7 @@ const AddNote = () => {
         : [];
 
     try {
+      const toastId = toast.loading("Publishing Note...");
       const res = await fetch("/api/notes", {
         method: "POST",
         headers: {
@@ -124,7 +130,10 @@ const AddNote = () => {
         throw new Error(errorData.message || "Failed to save Note");
       }
 
-      toast.success("Note Published Sucessfully.");
+      // toast.success("Note Published Sucessfully.");
+      toast.success("Note Published Sucessfully.", {
+        id: toastId,
+      });
       router.back();
       router.refresh();
       localStorage.removeItem("title");
