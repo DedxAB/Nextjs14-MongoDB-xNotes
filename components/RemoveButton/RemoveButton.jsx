@@ -25,8 +25,8 @@ const RemoveButton = ({ id, title }) => {
 
   const removeNote = async () => {
     if (conformationMessage) {
+      const toastId = toast.loading("Deleting Note...");
       try {
-        const toastId = toast.loading("Deleting Note...");
         const res = await fetch(`/api/notes?id=${id}`, {
           method: "DELETE",
         });
@@ -40,7 +40,9 @@ const RemoveButton = ({ id, title }) => {
         });
         router.refresh();
       } catch (e) {
-        toast.error(e.message);
+        toast.error(e.message, {
+          id: toastId,
+        });
         console.log(e.message);
       }
       setConformationMessage(false);
