@@ -22,6 +22,7 @@ const NoteCard = ({ note, user }) => {
   const pathName = usePathname();
   const router = useRouter();
 
+  // Get the first letter of the name to show in the avatar
   const shortName = user?.name
     .split(" ")
     .map((n) => n[0])
@@ -159,7 +160,8 @@ const NoteCard = ({ note, user }) => {
             {/* Show this in the Profile page only */}
             {/* Show Edit and remove button based on user who created this note */}
             {(session?.user?.id === user?._id || session?.user?.isAdmin) &&
-              pathName === `/profile/${user?._id}/details` && (
+              (pathName === `/profile/${user?._id}/details` ||
+                pathName === `/admin/${user?._id}/details`) && (
                 <div className="min-w-20">
                   {/* Add the edit button */}
                   <Link href={`/edit-note/${updatedNote?._id}`}>
