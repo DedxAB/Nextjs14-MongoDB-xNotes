@@ -16,6 +16,7 @@ import {
 import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { inter_font, source_code_pro_font } from "@/utils/fonts";
 
 const RemoveComment = ({ comment, note }) => {
   const [conformationMessage, setConformationMessage] = useState(false);
@@ -25,6 +26,7 @@ const RemoveComment = ({ comment, note }) => {
 
   const deleteComment = async (id) => {
     if (conformationMessage) {
+      const toastId = toast.loading("Deleting Comment...");
       try {
         const res = await fetch(`/api/comments/delete/${id}`, {
           method: "DELETE",
@@ -37,10 +39,10 @@ const RemoveComment = ({ comment, note }) => {
         if (!res.ok) {
           throw new Error(errorData.message || "Falied to Delete Comment.");
         }
-        toast.success("Comment Deleted Successfully.");
+        toast.success("Comment Deleted Successfully.", { id: toastId });
         router.refresh();
       } catch (e) {
-        toast.error(e.message);
+        toast.error(e.message, { id: toastId });
         console.log(e.message);
       }
       setConformationMessage(false);
@@ -68,7 +70,11 @@ const RemoveComment = ({ comment, note }) => {
             <AlertDialogHeader>
               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
               <AlertDialogDescription className={`font-bold`}>
-                This action cannot be undone.
+                This action cannot be undone. You are about to delete this
+                comment :{" "}
+                <span className={`text-primary ${source_code_pro_font}`}>
+                  {comment?.text}
+                </span>
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
