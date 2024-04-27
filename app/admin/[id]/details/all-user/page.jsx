@@ -31,7 +31,7 @@ const page = async () => {
 
   return (
     <div className="min-h-[85vh]">
-      <h1 className="font-bold text-lg mb-3">All Users</h1>
+      <h1 className="font-bold text-lg my-5">All Users</h1>
       {allUsers?.length > 0 &&
         allUsers?.map((user) => {
           return (
