@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
 import { useSession } from "next-auth/react";
-import { CalendarDays, Scroll, ScrollText } from "lucide-react";
+import { CalendarDays, Contact, Scroll, ScrollText } from "lucide-react";
 import { josefin_sans_font } from "@/utils/fonts";
 
 const ProfileSection = ({ user }) => {
@@ -32,7 +32,14 @@ const ProfileSection = ({ user }) => {
             <div
               className={`flex items-center flex-wrap font-bold ${josefin_sans_font}`}
             >
-              <p className="text-lg md:text-2xl mr-[.35rem]">{user?.name}</p>
+              <p className="text-lg md:text-2xl mr-[.35rem] flex flex-wrap items-center">
+                {user?.name}
+                {user?.isAdmin && (
+                  <span className="inline-block ml-[.15rem]" title="admin">
+                    <Contact className="w-4 md:w-5 h-4 md:h-5 pb-[.15rem]" />
+                  </span>
+                )}
+              </p>
               <p className="text-base md:text-xl text-gray-500">
                 @{user?.username}
               </p>
@@ -157,15 +164,11 @@ const ProfileSection = ({ user }) => {
           {session?.user?.id === user?._id &&
             (session?.user?.isAdmin ? (
               <Link href={`/admin/${user?._id}/edit`}>
-                <Button className={`font-bold`}>
-                  Edit Admin Profile
-                </Button>
+                <Button className={`font-bold`}>Edit Admin Profile</Button>
               </Link>
             ) : (
               <Link href={`/profile/${user?._id}/edit`}>
-                <Button className={`font-bold`}>
-                  Edit Profile
-                </Button>
+                <Button className={`font-bold`}>Edit Profile</Button>
               </Link>
             ))}
         </div>
