@@ -60,8 +60,8 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
       }
     }
 
+    const toastId = toast.loading("Updating Bio...");
     try {
-      const toastId = toast.loading("Updating Bio...");
       const res = await fetch(`/api/user/${userId}`, {
         method: "PATCH",
         body: JSON.stringify({ bio: newBio, socialLinks: socialLink }),
@@ -79,7 +79,9 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
       route.back();
       route.refresh();
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message, {
+        id: toastId,
+      });
       console.log(error.message);
     }
   };
