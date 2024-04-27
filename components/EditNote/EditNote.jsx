@@ -66,8 +66,8 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
             .filter(Boolean)
         : [];
 
+    const toastId = toast.loading("Updating Note...");
     try {
-      const toastId = toast.loading("Updating Note...");
       const res = await fetch(`/api/notes/${id}`, {
         method: "PATCH",
         headers: {
@@ -89,7 +89,9 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
       route.back();
       route.refresh();
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message, {
+        id: toastId,
+      });
       console.log(error.message);
     }
   };
