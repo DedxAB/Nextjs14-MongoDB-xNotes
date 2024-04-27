@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
               <Navbar />
             </div>
             <main className="max-w-3xl mx-auto px-4">{children}</main>
-            <Toaster richColors position="bottom-right" />
+            <Toaster richColors position="bottom-right" closeButton />
             {/* footer  */}
             <div className="w-full border-t mt-8">
               <Footer />
