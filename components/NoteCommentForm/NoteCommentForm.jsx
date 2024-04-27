@@ -6,7 +6,7 @@ import { useState } from "react";
 import { CustomInput } from "../ui/custom-input";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { josefin_sans_font } from "@/utils/fonts";
+import { inter_font, josefin_sans_font, source_code_pro_font } from "@/utils/fonts";
 
 const NoteCommentForm = ({ note }) => {
   const [comment, setComment] = useState("");
@@ -26,6 +26,7 @@ const NoteCommentForm = ({ note }) => {
       toast.warning("Please add a comment before submitting");
       return;
     }
+    const toastId = toast.loading("Adding Comment...");
     try {
       const res = await fetch(`/api/comments`, {
         method: "POST",
@@ -44,10 +45,12 @@ const NoteCommentForm = ({ note }) => {
         throw new Error(errorData.message || "Failed to add comment");
       }
 
-      toast.success("Comment added Successfully");
+      toast.success("Comment added Successfully", {
+        id: toastId,
+      });
       router.refresh();
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message, { id: toastId });
       console.log(error);
     } finally {
       setComment("");
@@ -95,11 +98,11 @@ const NoteCommentForm = ({ note }) => {
             <form onSubmit={handelSubmitCommentForm}>
               <CustomInput
                 type="text"
-                placeholder="Add a comment"
+                placeholder="Add a comment... and press Enter key"
+                className={`${inter_font} font-normal`}
                 onChange={(e) => setComment(e.target.value)}
                 value={comment}
                 name="comment"
-                // required
                 disabled={!session}
               />
             </form>
