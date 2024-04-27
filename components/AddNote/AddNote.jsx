@@ -14,7 +14,6 @@ import dayjs from "dayjs";
 import {
   inter_font,
   josefin_sans_font,
-  playfair_font,
   source_code_pro_font,
 } from "@/utils/fonts";
 
@@ -154,7 +153,7 @@ const AddNote = () => {
         {/* Title input field */}
         <Label
           htmlFor="title"
-          className="font-bold md:text-base pl-1 text-[#444746]"
+          className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
         >
           Title:
         </Label>
@@ -174,7 +173,7 @@ const AddNote = () => {
         {/* Description text area */}
         <Label
           htmlFor="description"
-          className="font-bold md:text-base pl-1 text-[#444746]"
+          className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
         >
           Description:
         </Label>
@@ -204,7 +203,7 @@ const AddNote = () => {
         {/* Tags text area */}
         <Label
           htmlFor="tags"
-          className="font-bold md:text-base pl-1 mt-2 text-[#444746]"
+          className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
         >
           Keyword: (for better search results)
         </Label>
@@ -223,7 +222,9 @@ const AddNote = () => {
 
         {/* Buttons */}
         <div className="flex justify-between items-center gap-1">
-          <div className="font-bold text-base text-[#444746] w-max">
+          <div
+            className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
+          >
             Want to Preview?
           </div>
           <div className="flex justify-end gap-3 md:gap-4">

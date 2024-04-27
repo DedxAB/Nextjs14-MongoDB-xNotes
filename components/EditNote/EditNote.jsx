@@ -8,7 +8,7 @@ import { Textarea } from "../ui/textarea";
 import Link from "next/link";
 import { MessageSquareX, Save } from "lucide-react";
 import { Label } from "../ui/label";
-import { inter_font } from "@/utils/fonts";
+import { inter_font, source_code_pro_font } from "@/utils/fonts";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -106,7 +106,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
         {/* Title input field */}
         <Label
           htmlFor="title"
-          className="font-bold md:text-base pl-1 text-[#444746]"
+          className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
         >
           Title:
         </Label>
@@ -123,7 +123,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
         {/* Description text area */}
         <Label
           htmlFor="description"
-          className="font-bold md:text-base pl-1 text-[#444746]"
+          className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
         >
           Description:
         </Label>
@@ -153,7 +153,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
         {/* Tags text area */}
         <Label
           htmlFor="tags"
-          className="font-bold md:text-base pl-1 mt-2 text-[#444746]"
+          className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
         >
           Keyword: (for better search results)
         </Label>
