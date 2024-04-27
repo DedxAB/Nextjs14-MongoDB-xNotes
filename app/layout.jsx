@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
             <main className="max-w-3xl mx-auto px-4 min-h-[85vh]">
               {children}
             </main>
-            <Toaster richColors position="bottom-right" closeButton />
+            <Toaster richColors position="top-right" closeButton />
             {/* footer  */}
             <div className="w-full border-t mt-8">
               <Footer />
