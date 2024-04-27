@@ -61,6 +61,7 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
     }
 
     try {
+      const toastId = toast.loading("Updating Bio...");
       const res = await fetch(`/api/user/${userId}`, {
         method: "PATCH",
         body: JSON.stringify({ bio: newBio, socialLinks: socialLink }),
@@ -72,7 +73,9 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
         const errorData = await res.json();
         throw new Error(errorData.message || "Failed to update bio");
       }
-      toast.success("Bio Updated Successfully");
+      toast.success("Bio Updated Successfully", {
+        id: toastId,
+      });
       route.back();
       route.refresh();
     } catch (error) {

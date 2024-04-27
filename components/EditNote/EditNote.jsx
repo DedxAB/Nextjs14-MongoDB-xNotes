@@ -67,6 +67,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
         : [];
 
     try {
+      const toastId = toast.loading("Updating Note...");
       const res = await fetch(`/api/notes/${id}`, {
         method: "PATCH",
         headers: {
@@ -82,7 +83,9 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
       if (!res.ok) {
         throw new Error("Failed to Edit note.");
       }
-      toast.success("Note Updated Successfully.");
+      toast.success("Note Updated Successfully.", {
+        id: toastId,
+      });
       route.back();
       route.refresh();
     } catch (error) {
