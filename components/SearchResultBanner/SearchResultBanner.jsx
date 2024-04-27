@@ -8,7 +8,7 @@ const SearchResultBanner = ({ searchingFor, notes, users }) => {
         </h1>
         {notes?.length > 0 || users?.length > 0 ? (
           <h1 className="text-xl md:text-2xl my-2">
-            Here are the {totalResults}{" "}
+            Here {totalResults === 1 ? "is" : "are"} the {totalResults}{" "}
             {totalResults === 1 ? "result" : "results"}...
           </h1>
         ) : (
