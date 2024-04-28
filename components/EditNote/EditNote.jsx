@@ -188,7 +188,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           {/* Save Button */}
           <Button type={`submit`} className="font-bold w-fit">
             <Save className="w-4 h-4 mr-1" />
-            Save
+            Update
           </Button>
         </div>
       </form>
