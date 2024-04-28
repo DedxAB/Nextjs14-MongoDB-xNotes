@@ -1,36 +1,26 @@
 import AdminToggle from "@/components/AdminToggle/AdminToggle";
 import UserCard from "@/components/UserCard/UserCard";
-import { BASE_URL } from "@/utils/constants";
+import { Input } from "@/components/ui/input";
+import { fetchAllUser, fetchUserByEmail } from "@/services/userServices";
 import { josefin_sans_font } from "@/utils/fonts";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-const fetchAllUser = async () => {
-  try {
-    const res = await fetch(`${BASE_URL}/api/user`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.message || "Failed to get all Users");
-    }
-    return await res.json();
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
 const page = async () => {
   const session = await getServerSession();
   const { allUsers } = await fetchAllUser();
+  const { user: currentUser } = await fetchUserByEmail(session?.user?.email);
 
-  // if (!session?.user?.isAdmin) {
-  //   redirect("/");
-  // }
+  if (!currentUser?.isAdmin) {
+    redirect("/");
+  }
 
   return (
     <div className="min-h-[85vh]">
+      {/* Search the user by name */}
+      <form className="my-5 w-full md:w-1/2">
+        <Input placeholder={`Search by name`} className={`font-bold`}></Input>
+      </form>
       <h1 className="font-bold text-lg my-5">All Users</h1>
       {allUsers?.length > 0 &&
         allUsers?.map((user) => {
