@@ -56,7 +56,7 @@ const page = async ({ params }) => {
       <ProfileSection user={user} />
       {/* <ShowAllUser /> */}
       <Link href={`/admin/${id}/details/all-user`}>
-        <Button variant={`outline`} className={`text-sm font-semibold mb-3`}>
+        <Button className={`text-sm font-semibold mb-3`}>
           Fetch All User
         </Button>
       </Link>
