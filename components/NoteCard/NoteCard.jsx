@@ -15,6 +15,7 @@ import {
   josefin_sans_font,
   source_code_pro_font,
 } from "@/utils/fonts";
+import NoteDescription from "../NoteDescription/NoteDescription";
 
 const NoteCard = ({ note, user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
@@ -75,25 +76,6 @@ const NoteCard = ({ note, user }) => {
           : [...prevNote.likes, session?.user?.id],
       }));
     }
-  };
-
-  const truncateString = (str, num) => {
-    return (
-      <>
-        {str?.length > num ? str.slice(0, num) : str}
-        {str?.length > num && (
-          <>
-            <span>... </span>
-            <Link
-              href={`/note/${updatedNote?._id}/details`}
-              className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent"
-            >
-              see more
-            </Link>
-          </>
-        )}
-      </>
-    );
   };
 
   return (
@@ -183,15 +165,10 @@ const NoteCard = ({ note, user }) => {
           </div>
 
           {/* Show the description */}
-          {/* <Link href={`/note/${updatedNote?._id}/details`}> */}
-          <div
-            className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${inter_font}`}
-          >
-            {pathName === `/note/${updatedNote?._id}/details`
-              ? updatedNote?.description
-              : truncateString(updatedNote?.description, 128)}
-          </div>
-          {/* </Link> */}
+          <NoteDescription
+            description={updatedNote?.description}
+            noteId={updatedNote?._id}
+          />
 
           {/* Show the tags */}
           {updatedNote?.tags && updatedNote?.tags.length > 0 && (
