@@ -73,7 +73,7 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
         const errorData = await res.json();
         throw new Error(errorData.message || "Failed to update bio");
       }
-      toast.success("Bio Updated Successfully", {
+      toast.success("Bio Updated Successfully.", {
         id: toastId,
       });
       route.back();
@@ -159,7 +159,7 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
             {/* Save Button */}
             <Button type={`submit`} className="font-bold w-fit">
               <Save className="w-4 h-4 mr-1" />
-              Save
+              Update
             </Button>
           </div>
         </form>
