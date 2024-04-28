@@ -12,7 +12,7 @@ export async function POST(req) {
     // Check if a note with the same title already exists
     const existingNote = await Note.findOne({ title });
     if (existingNote) {
-      return Response.json(
+      return NextResponse.json(
         { message: "Title already exists. Please try another Title" },
         { status: 400 }
       );
@@ -35,9 +35,21 @@ export async function POST(req) {
       { new: true }
     );
 
-    return Response.json({ message: "Note created" }, { status: 201 });
+    if (!newNote) {
+      return NextResponse.json(
+        { message: "Failed to create note" },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ message: "Note created" }, { status: 201 });
   } catch (error) {
-    return new Response("Failed to create a new Note", { status: 500 });
+    return NextResponse.json(
+      {
+        message: "Failed to connect with server",
+      },
+      { status: 500 }
+    );
   }
 }
 
@@ -48,7 +60,7 @@ export async function GET(_req) {
     if (!notes) {
       return NextResponse.json({ message: "No notes found" }, { status: 404 });
     }
-    return Response.json({ notes }, { status: 200 });
+    return NextResponse.json({ notes }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { message: "Failed to fetch notes" },
@@ -74,7 +86,7 @@ export async function DELETE(req) {
     );
     // delete the related comments
     await Comment.deleteMany({ _id: { $in: deletedNote.comments } });
-    return Response.json(
+    return NextResponse.json(
       { message: "Note deleted successfully" },
       { status: 200 }
     );

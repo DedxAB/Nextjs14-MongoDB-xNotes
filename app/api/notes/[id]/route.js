@@ -30,7 +30,7 @@ export async function PATCH(req, { params }) {
     if (!note) {
       return NextResponse.json({ message: "Note not found" }, { status: 404 });
     }
-    return Response.json({ message: "Note updated" }, { status: 200 });
+    return NextResponse.json({ message: "Note updated" }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { message: "Failed to update note" },
