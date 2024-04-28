@@ -19,7 +19,7 @@ const NoteCommentCard = ({ comment, note }) => {
 
   return (
     <>
-      <div className="border flex justify-start items-start gap-3 mb-3 rounded px-3 md:px-4 py-2">
+      <div className="border flex justify-start items-start gap-3 mb-3 rounded-lg px-3 md:px-4 py-2">
         {/* Show the author image */}
         <Link href={`/profile/${comment?.author?._id}/details`} className="">
           <Avatar>
