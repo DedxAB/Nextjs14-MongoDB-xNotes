@@ -6,7 +6,9 @@ import { useState } from "react";
 import { CustomInput } from "../ui/custom-input";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { inter_font, josefin_sans_font, source_code_pro_font } from "@/utils/fonts";
+import { inter_font, josefin_sans_font } from "@/utils/fonts";
+import { Button } from "../ui/button";
+import { SendHorizontal } from "lucide-react";
 
 const NoteCommentForm = ({ note }) => {
   const [comment, setComment] = useState("");
@@ -15,9 +17,7 @@ const NoteCommentForm = ({ note }) => {
   const { data: session } = useSession();
   // console.log(session);
 
-  const handelSubmitCommentForm = async (e) => {
-    e.preventDefault();
-    // console.log(comment);
+  const handleSubmitCommentForm = async () => {
     if (!session) {
       toast.error("You must be logged in to add a comment");
       return;
@@ -57,6 +57,14 @@ const NoteCommentForm = ({ note }) => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      e.target.blur();
+      handleSubmitCommentForm();
+    }
+  };
+
   const shortName = session?.user?.name
     .split(" ")
     .map((n) => n[0])
@@ -64,7 +72,7 @@ const NoteCommentForm = ({ note }) => {
 
   return (
     <>
-      <div className="border flex justify-start items-center gap-1 mb-3 rounded px-3 md:px-4 py-3">
+      <div className="border flex justify-start items-center gap-1 mb-3 rounded-lg px-3 md:px-4 py-3">
         {/* Show the author image */}
         <div className="mr-2 py-1">
           <Avatar>
@@ -94,18 +102,25 @@ const NoteCommentForm = ({ note }) => {
           </div>
 
           {/* Show the user comment text*/}
-          <div className="text-sm font-bold">
-            <form onSubmit={handelSubmitCommentForm}>
-              <CustomInput
-                type="text"
-                placeholder="Add a comment... and press Enter key"
-                className={`${inter_font} font-normal`}
-                onChange={(e) => setComment(e.target.value)}
-                value={comment}
-                name="comment"
-                disabled={!session}
-              />
-            </form>
+          <div className="text-sm font-bold flex justify-between items-center space-x-2">
+            <CustomInput
+              type="text"
+              placeholder="Add a comment here..."
+              className={`${inter_font} font-normal md:text-sm`}
+              onChange={(e) => setComment(e.target.value)}
+              value={comment}
+              name="comment"
+              disabled={!session}
+              onKeyDown={handleKeyDown}
+            />
+            <Button
+              size="icon"
+              className={`h-8 w-10`}
+              disabled={!session || !comment}
+              onClick={handleSubmitCommentForm}
+            >
+              <SendHorizontal className="w-4 h-4" />
+            </Button>
           </div>
         </div>
       </div>
