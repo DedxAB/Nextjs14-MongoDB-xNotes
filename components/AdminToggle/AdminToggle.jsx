@@ -14,6 +14,7 @@ const AdminToggle = ({ user, currentUserEmail }) => {
 
   const toggleAdminStatus = async () => {
     try {
+      const toastId = toast.loading("Updating user status...");
       const res = await fetch(`/api/user/toggleAdminStatus/${user?._id}`, {
         method: "PATCH",
         headers: {
@@ -31,11 +32,14 @@ const AdminToggle = ({ user, currentUserEmail }) => {
       setIsAdmin(updatedUser?.isAdmin);
 
       toast.success(
-        `${user?.name} is now ${updatedUser?.isAdmin ? "Admin" : "User"}`
+        `${user?.name} is now ${updatedUser?.isAdmin ? "Admin" : "User"}`,
+        {
+          id: toastId,
+        }
       );
       router.refresh();
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message, { id: toastId });
       console.log(error.message);
     }
   };
