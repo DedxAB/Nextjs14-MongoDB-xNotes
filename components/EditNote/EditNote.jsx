@@ -133,6 +133,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           Description:
         </Label>
         <Textarea
+          id="description"
           ref={textareaRef}
           onChange={handelDescriptionChange}
           value={newDescription}
