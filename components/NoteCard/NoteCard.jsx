@@ -88,7 +88,7 @@ const NoteCard = ({ note, user }) => {
               href={`/note/${updatedNote?._id}/details`}
               className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent"
             >
-              Show more
+              see more
             </Link>
           </>
         )}
