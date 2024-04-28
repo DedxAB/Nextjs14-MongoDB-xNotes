@@ -16,6 +16,7 @@ import {
   josefin_sans_font,
   source_code_pro_font,
 } from "@/utils/fonts";
+import NoteDescription from "../NoteDescription/NoteDescription";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -183,6 +184,7 @@ const AddNote = () => {
           Description:
         </Label>
         <Textarea
+          id="description"
           ref={textareaRef}
           onChange={handelDescriptionChange}
           value={description}
@@ -298,13 +300,7 @@ const AddNote = () => {
                 </div>
 
                 {/* Show the description */}
-                {description && (
-                  <div
-                    className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${inter_font}`}
-                  >
-                    {description}
-                  </div>
-                )}
+                {description && <NoteDescription description={description} />}
 
                 {/* Show the tags */}
                 {tags && (
