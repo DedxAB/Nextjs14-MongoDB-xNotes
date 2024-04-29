@@ -1,4 +1,4 @@
-import connectDB from "@/helper/mongodb";
+import connectDB from "@/db/mongodb";
 import User from "@/models/user.model";
 import { BASE_URL } from "@/utils/constants";
 import NextAuth from "next-auth/next";

@@ -1,5 +1,5 @@
 import Note from "@/models/note.model";
-import connectDB from "@/helper/mongodb";
+import connectDB from "@/db/mongodb";
 import { NextResponse } from "next/server";
 import User from "@/models/user.model";
 import Comment from "@/models/comment.model";

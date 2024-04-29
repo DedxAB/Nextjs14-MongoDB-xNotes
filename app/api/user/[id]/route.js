@@ -1,4 +1,4 @@
-import connectDB from "@/helper/mongodb";
+import connectDB from "@/db/mongodb";
 import Note from "@/models/note.model";
 import User from "@/models/user.model";
 
