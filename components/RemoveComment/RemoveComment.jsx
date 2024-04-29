@@ -26,6 +26,9 @@ const RemoveComment = ({ comment, note }) => {
 
   const deleteComment = async (id) => {
     if (conformationMessage) {
+      if (!session) {
+        return toast.error("You need to login to delete a comment.");
+      }
       const toastId = toast.loading("Deleting Comment...");
       try {
         const res = await fetch(`/api/comments/delete/${id}`, {
@@ -50,9 +53,10 @@ const RemoveComment = ({ comment, note }) => {
   };
 
   if (
-    session?.user?.id === comment?.author?._id ||
-    session?.user?.id === note?.author?._id ||
-    session?.user?.isAdmin
+    session &&
+    (session?.user?.id === comment?.author?._id ||
+      session?.user?.id === note?.author?._id ||
+      session?.user?.isAdmin)
   ) {
     return (
       <>
