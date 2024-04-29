@@ -1,24 +1,8 @@
 import EditProfileForm from "@/components/EditProfileForm/EditProfileForm";
-import { BASE_URL } from "@/utils/constants";
+import { fetchUserById } from "@/services/userServices";
 
 export const metadata = {
   title: "Edit Profile",
-};
-
-const fetchUserById = async (id) => {
-  // console.log(id);
-  try {
-    const res = await fetch(`${BASE_URL}/api/user/${id}`, {
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.message || "Failed to get User");
-    }
-    return await res.json();
-  } catch (error) {
-    console.error(error.message);
-  }
 };
 
 const ProfileEditPage = async ({ params }) => {

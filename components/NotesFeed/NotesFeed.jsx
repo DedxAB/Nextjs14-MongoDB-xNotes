@@ -1,23 +1,9 @@
-import { BASE_URL } from "@/utils/constants";
 import NoteCard from "../NoteCard/NoteCard";
+import { fetchAllNotes } from "@/services/noteServices";
 
-const fetchNotes = async () => {
-  try {
-    const res = await fetch(`${BASE_URL}/api/notes`, {
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.message || "Error fetching Notes");
-    }
-    return await res.json();
-  } catch (error) {
-    console.log(error.message);
-  }
-};
 const NotesFeed = async () => {
-  // Fetch the notes
-  const { notes } = await fetchNotes();
+  // Fetch the all notes
+  const { notes } = await fetchAllNotes();
 
   return (
     <>

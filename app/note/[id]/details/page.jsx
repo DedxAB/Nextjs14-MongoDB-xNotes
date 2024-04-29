@@ -1,28 +1,14 @@
 import NoteDetailsById from "@/components/NoteDetailsById/NoteDetailsById";
-import { BASE_URL } from "@/utils/constants";
+import { fetchNoteById } from "@/services/noteServices";
 
 export const metadata = {
   title: "Note Details",
 };
 
-const fetchNoteById = async (id) => {
-  try {
-    const res = await fetch(`${BASE_URL}/api/notes/${id}`, {
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.message || "Failed to get Note");
-    }
-    return await res.json();
-  } catch (error) {
-    console.log(error.message);
-  }
-};
 const NoteDetails = async ({ params }) => {
   const { id } = params;
 
-  const {note} = await fetchNoteById(id);
+  const { note } = await fetchNoteById(id);
   // console.log(note);
 
   return (

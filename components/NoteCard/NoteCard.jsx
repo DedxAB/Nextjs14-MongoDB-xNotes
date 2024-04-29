@@ -10,11 +10,7 @@ import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
 import { toast } from "sonner";
 import { useState } from "react";
-import {
-  inter_font,
-  josefin_sans_font,
-  source_code_pro_font,
-} from "@/utils/fonts";
+import { josefin_sans_font, source_code_pro_font } from "@/utils/fonts";
 import NoteDescription from "../NoteDescription/NoteDescription";
 
 const NoteCard = ({ note, user }) => {
@@ -81,7 +77,7 @@ const NoteCard = ({ note, user }) => {
   return (
     <>
       {/* Note card 03notecard branch */}
-      <div className="border flex justify-start gap-1 mb-3 md:mb-4 rounded-lg px-3 md:px-4 py-[.85rem]">
+      <div className="border-t border-x flex justify-start gap-1 mb-3 md:mb-4 rounded-tr-xl rounded-tl-xl px-3 md:px-4 py-[.85rem]">
         {/* Show the author image */}
         <div className="mr-2 pt-[5px]">
           <Link href={`/profile/${user?._id}/details`}>

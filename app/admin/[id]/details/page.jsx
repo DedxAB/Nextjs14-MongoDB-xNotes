@@ -1,27 +1,12 @@
 import NoteCard from "@/components/NoteCard/NoteCard";
 import ProfileSection from "@/components/ProfileSection/ProfileSection";
 import { Button } from "@/components/ui/button";
-import { BASE_URL } from "@/utils/constants";
+import { fetchUserById } from "@/services/userServices";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "Admin Profile",
-};
-
-const fetchUser = async (id) => {
-  try {
-    const res = await fetch(`${BASE_URL}/api/user/${id}`, {
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.message || "Failed to get User");
-    }
-    return await res.json();
-  } catch (error) {
-    console.log(error.message);
-  }
 };
 
 const UserFeed = ({ notes, user }) => {
@@ -45,20 +30,18 @@ const UserFeed = ({ notes, user }) => {
 
 const page = async ({ params }) => {
   const { id } = params;
-  const { user } = await fetchUser(id);
+  const { user } = await fetchUserById(id);
 
   if (!user?.isAdmin) {
     redirect("/");
   }
-  
+
   return (
     <div className="min-h-[85vh]">
       <ProfileSection user={user} />
       {/* <ShowAllUser /> */}
       <Link href={`/admin/${id}/details/all-user`}>
-        <Button className={`text-sm font-semibold mb-3`}>
-          Fetch All User
-        </Button>
+        <Button className={`text-sm font-semibold mb-3`}>Fetch All User</Button>
       </Link>
       <UserFeed notes={user?.notes} user={user} />
     </div>
