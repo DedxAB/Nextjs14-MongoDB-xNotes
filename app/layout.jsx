@@ -40,12 +40,12 @@ export default function RootLayout({ children }) {
             <div className="w-full sticky top-0 left-0 backdrop-filter backdrop-blur-lg bg-opacity-30 border-b z-10">
               <Navbar />
             </div>
-            <main className="max-w-3xl mx-auto px-4 min-h-[85vh]">
+            <main className="max-w-3xl mx-auto px-4 min-h-[100vh]">
               {children}
             </main>
             <Toaster richColors position="top-right" closeButton />
             {/* footer  */}
-            <div className="w-full border-t mt-8">
+            <div className="w-full border-t mt-16">
               <Footer />
             </div>
           </ThemeProvider>
