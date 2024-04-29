@@ -21,13 +21,20 @@ const NoteCommentCard = ({ comment, note }) => {
     <>
       <div className="border flex justify-start items-start gap-3 mb-3 rounded-lg px-3 md:px-4 py-2">
         {/* Show the author image */}
-        <Link href={`/profile/${comment?.author?._id}/details`} className="">
+        <Link
+          href={
+            comment?.author?._id
+              ? `/profile/${comment?.author?._id}/details`
+              : "#"
+          }
+          className=""
+        >
           <Avatar>
             <AvatarImage
-              src={comment?.author?.image}
+              src={comment?.author?.image || "/logo.png"}
               referrerPolicy="no-referrer"
             />
-            <AvatarFallback>{shortName} </AvatarFallback>
+            <AvatarFallback>{shortName || "DN"} </AvatarFallback>
           </Avatar>
         </Link>
 
@@ -36,11 +43,17 @@ const NoteCommentCard = ({ comment, note }) => {
           <div className="w-full flex flex-col gap-1">
             {/* Show the author name, username */}
             <Link
-              href={`/profile/${comment?.author?._id}`}
+              href={
+                comment?.author?._id
+                  ? `/profile/${comment?.author?._id}/details`
+                  : `#`
+              }
               className={`flex flex-wrap items-center text-xs gap-1 ${josefin_sans_font}`}
             >
               {/* name  */}
-              <p className={`font-bold`}>{comment?.author?.name}</p>
+              <p className={`font-bold`}>
+                {comment?.author?.name || "DedxNotes"}
+              </p>
 
               {/* username */}
               {/* <p className={`text-[#6b6e6e]`}>@{comment?.author?.username}</p> */}
