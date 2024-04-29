@@ -16,7 +16,7 @@ import {
 import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { inter_font, source_code_pro_font } from "@/utils/fonts";
+import { source_code_pro_font } from "@/utils/fonts";
 
 const RemoveComment = ({ comment, note }) => {
   const [conformationMessage, setConformationMessage] = useState(false);
