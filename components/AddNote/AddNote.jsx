@@ -12,7 +12,6 @@ import { Label } from "../ui/label";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
 import {
-  inter_font,
   josefin_sans_font,
   source_code_pro_font,
 } from "@/utils/fonts";
@@ -142,6 +141,7 @@ const AddNote = () => {
       console.log(error.message);
     }
   };
+  
   return (
     <>
       {/* Create Note banner  */}
