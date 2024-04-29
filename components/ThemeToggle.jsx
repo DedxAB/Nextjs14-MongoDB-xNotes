@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function ThemeToggle() {
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   return (
     <DropdownMenu>
@@ -27,19 +27,19 @@ export function ThemeToggle() {
       <DropdownMenuContent align="end" className={`font-bold`}>
         <DropdownMenuItem
           onClick={() => setTheme("light")}
-          className={`cursor-pointer`}
+          className={`cursor-pointer ${theme === "light" && "bg-accent"}`}
         >
           ☀️&nbsp;&nbsp;Light
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("dark")}
-          className={`cursor-pointer`}
+          className={`cursor-pointer ${theme === "dark" && "bg-accent"}`}
         >
           🌚&nbsp;&nbsp;Dark
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("system")}
-          className={`cursor-pointer`}
+          className={`cursor-pointer ${theme === "system" && "bg-accent"}`}
         >
           🌗&nbsp;&nbsp;System
         </DropdownMenuItem>
