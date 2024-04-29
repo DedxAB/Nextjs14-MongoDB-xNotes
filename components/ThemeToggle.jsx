@@ -29,19 +29,19 @@ export function ThemeToggle() {
           onClick={() => setTheme("light")}
           className={`cursor-pointer`}
         >
-         ☀️  Light 
+          ☀️&nbsp;&nbsp;Light
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("dark")}
           className={`cursor-pointer`}
         >
-          🌚  Dark
+          🌚&nbsp;&nbsp;Dark
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("system")}
           className={`cursor-pointer`}
         >
-          🌗  System
+          🌗&nbsp;&nbsp;System
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
