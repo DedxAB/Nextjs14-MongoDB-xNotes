@@ -1,23 +1,8 @@
 import EditNote from "@/components/EditNote/EditNote";
-import { BASE_URL } from "@/utils/constants";
+import { fetchNoteById } from "@/services/noteServices";
 
 export const metadata = {
   title: "Edit Note",
-};
-
-const fetchNoteById = async (id) => {
-  try {
-    const res = await fetch(`${BASE_URL}/api/notes/${id}`, {
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.message || "Failed to get Note");
-    }
-    return await res.json();
-  } catch (error) {
-    console.log(error.message);
-  }
 };
 
 const page = async ({ params }) => {
