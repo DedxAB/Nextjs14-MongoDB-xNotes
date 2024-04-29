@@ -8,7 +8,7 @@ import { Textarea } from "../ui/textarea";
 import Link from "next/link";
 import { MessageSquareX, Save } from "lucide-react";
 import { Label } from "../ui/label";
-import { inter_font, source_code_pro_font } from "@/utils/fonts";
+import { source_code_pro_font } from "@/utils/fonts";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -187,7 +187,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           </Link>
 
           {/* Save Button */}
-          <Button type={`submit`} className="font-bold w-fit">
+          <Button className="font-bold w-fit">
             <Save className="w-4 h-4 mr-1" />
             Update
           </Button>
