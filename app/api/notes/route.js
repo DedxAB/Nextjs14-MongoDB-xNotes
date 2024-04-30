@@ -2,6 +2,7 @@ import connectDB from "@/db/mongodb";
 import Comment from "@/models/comment.model";
 import Note from "@/models/note.model";
 import User from "@/models/user.model";
+import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -73,10 +74,28 @@ export async function DELETE(req) {
   try {
     await connectDB();
     const id = req.nextUrl.searchParams.get("id");
+
+    const session = await getServerSession();
+    const note = await Note.findById(id).populate("author");
+
+    if (session.user.email !== note?.author?.email) {
+      return NextResponse.json(
+        { message: "You are not authorized to delete this note" },
+        { status: 403 }
+      );
+    }
+
     const deletedNote = await Note.findByIdAndDelete(id);
     if (!deletedNote) {
-      return NextResponse.json({ message: "Note not found" }, { status: 404 });
+      return NextResponse.json(
+        {
+          message: "Failed to delete note. Note not found",
+        },
+        { status: 404 }
+      );
     }
+
+    // remove the note id from the user's notes array
     await User.findByIdAndUpdate(
       deletedNote.author,
       {
@@ -84,7 +103,8 @@ export async function DELETE(req) {
       },
       { new: true }
     );
-    // delete the related comments
+
+    // remove the comments from Comment collection that are associated with the deleted note
     await Comment.deleteMany({ _id: { $in: deletedNote.comments } });
     return NextResponse.json(
       { message: "Note deleted successfully" },
@@ -93,7 +113,7 @@ export async function DELETE(req) {
   } catch (error) {
     return NextResponse.json(
       {
-        message: "Failed to connect with DB",
+        message: "Failed to connect with server. Please try again later",
       },
       { status: 500 }
     );
