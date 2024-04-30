@@ -81,7 +81,8 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
         }),
       });
       if (!res.ok) {
-        throw new Error("Failed to Edit note.");
+        const errorData = await res.json();
+        throw new Error(errorData.message || "Failed to Edit note.");
       }
       toast.success("Note Updated Successfully.", {
         id: toastId,
