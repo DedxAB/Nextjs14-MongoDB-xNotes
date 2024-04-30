@@ -38,9 +38,9 @@ const NoteCommentCard = ({ comment, note }) => {
           </Avatar>
         </Link>
 
-        <div className="flex justify-between items-start w-full">
+        <div className="flex justify-between items-center w-full gap-1">
           {/* Show the author name, username and user comment text */}
-          <div className="w-full flex flex-col gap-1">
+          <div className="w-full flex flex-col space-y-[.15rem] md:space-y-[.10rem]">
             {/* Show the author name, username */}
             <Link
               href={
@@ -51,14 +51,14 @@ const NoteCommentCard = ({ comment, note }) => {
               className={`flex flex-wrap items-center text-xs gap-1 ${josefin_sans_font}`}
             >
               {/* name  */}
-              <p className={`font-bold`}>
+              <p className={`font-bold pt-[.10rem]`}>
                 {comment?.author?.name || "DedxNotes"}
               </p>
 
               {/* username */}
               {/* <p className={`text-[#6b6e6e]`}>@{comment?.author?.username}</p> */}
               <p className={`text-[#6b6e6e]`}>
-                &middot;{" "}
+                •{" "}
                 {dayjs().diff(commentTime, "day") > 1
                   ? commentTime.format("MMM DD, YYYY")
                   : relativeTime}

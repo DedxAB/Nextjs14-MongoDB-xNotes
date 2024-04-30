@@ -130,7 +130,7 @@ const NoteCard = ({ note, user }) => {
                 {/* Show the edited date if updated */}
                 {contentUpdatedAt - createdAt > 1000 && (
                   <p className="flex justify-center items-center">
-                    &middot;&nbsp;
+                    •&nbsp;
                     <PencilLine className="w-3 h-3 mr-1" />
                     <span>edited</span>
                   </p>
