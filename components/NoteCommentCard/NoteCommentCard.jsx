@@ -40,7 +40,7 @@ const NoteCommentCard = ({ comment, note }) => {
 
         <div className="flex justify-between items-center w-full gap-1">
           {/* Show the author name, username and user comment text */}
-          <div className="w-full flex flex-col space-y-1 md:space-y-[.10rem]">
+          <div className="w-full flex flex-col space-y-[.15rem] md:space-y-[.10rem]">
             {/* Show the author name, username */}
             <Link
               href={
