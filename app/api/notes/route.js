@@ -76,9 +76,11 @@ export async function DELETE(req) {
     const id = req.nextUrl.searchParams.get("id");
 
     const session = await getServerSession();
+    const currentUser = await User.findOne({ email: session?.user?.email });
     const note = await Note.findById(id).populate("author");
 
-    if (session.user.email !== note?.author?.email) {
+    // Check if the current user is the author of the note or an admin
+    if (session.user.email !== note?.author?.email && !currentUser.isAdmin) {
       return NextResponse.json(
         { message: "You are not authorized to delete this note" },
         { status: 403 }
