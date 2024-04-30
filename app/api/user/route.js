@@ -7,18 +7,23 @@ export async function POST(req) {
   const { email, name, image, username } = await req.json();
   try {
     await connectDB();
-    const isExist = await User.findOne({ email });
-    if (isExist) {
-      throw new Error("Email already exists");
+    const isExistUser = await User.findOne({ email });
+    if (isExistUser) {
+      const updatedUser = await User.findByIdAndUpdate(
+        isExistUser?._id,
+        { name },
+        { new: true }
+      );
+      return NextResponse.json({ user: updatedUser }, { status: 200 });
     }
-    const user = await User.create({ email, name, image, username });
-    if (!user) {
+    const newUser = await User.create({ email, name, image, username });
+    if (!newUser) {
       return NextResponse.json(
         { message: "Failed to create user" },
         { status: 400 }
       );
     }
-    return NextResponse.json({ user }, { status: 201 });
+    return NextResponse.json({ user: newUser }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
       { message: "Failed to connect to server" },
