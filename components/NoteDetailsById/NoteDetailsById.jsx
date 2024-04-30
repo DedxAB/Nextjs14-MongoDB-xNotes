@@ -4,7 +4,7 @@ import NoteCommentForm from "../NoteCommentForm/NoteCommentForm";
 
 const NoteDetailsById = ({ note }) => {
   const user = note?.author;
-  // console.log(note);
+
   return (
     <>
       {/* Create Note banner  */}
@@ -14,17 +14,19 @@ const NoteDetailsById = ({ note }) => {
         </h1>
         <h1 className="text-xl md:text-2xl my-2">Feel free to comment.</h1>
       </div>
+
       <NoteCard note={note} user={user} />
       <NoteCommentForm note={note} />
-      {note?.comments?.length > 0 && (
-        <h1 className="text-lg md:text-xl font-bold text-[#444746] my-5">
-          Comments
-        </h1>
-      )}
+
       {note?.comments?.length > 0 ? (
-        note?.comments?.map((comment) => (
-          <NoteCommentCard key={comment?._id} comment={comment} note={note} />
-        ))
+        <>
+          <h1 className="text-lg md:text-xl font-bold text-[#444746] my-5">
+            Comments
+          </h1>
+          {note?.comments?.map((comment) => (
+            <NoteCommentCard key={comment?._id} comment={comment} note={note} />
+          ))}
+        </>
       ) : (
         <div className="my-10">
           <h1 className="text-base md:text-2xl font-bold text-[#444746]">

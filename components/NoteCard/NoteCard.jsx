@@ -216,7 +216,7 @@ const NoteCard = ({ note, user }) => {
                   </svg>
                 )}
                 <span className="text-sm font-bold">
-                  {updatedNote?.likes.length} Likes
+                  {updatedNote?.likes?.length} Likes
                 </span>
               </div>
             )}
@@ -240,7 +240,7 @@ const NoteCard = ({ note, user }) => {
                 />
               </svg>
               <span className="text-sm font-bold">
-                {updatedNote?.comments?.length} Comments
+                {note?.comments?.length} Comments
               </span>
             </Link>
             {updatedNote?.websiteLink && (
