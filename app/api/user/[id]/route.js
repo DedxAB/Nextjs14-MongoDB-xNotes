@@ -1,6 +1,7 @@
 import connectDB from "@/db/mongodb";
 import Note from "@/models/note.model";
 import User from "@/models/user.model";
+import { getServerSession } from "next-auth";
 
 import { NextResponse } from "next/server";
 
@@ -29,18 +30,30 @@ export const GET = async (_req, { params }) => {
 };
 
 export const PATCH = async (req, { params }) => {
-  const { id } = params;
-  const { bio, socialLinks } = await req.json();
   try {
     await connectDB();
-    const user = await User.findByIdAndUpdate(
+    const { id } = params;
+    const { bio, socialLinks } = await req.json();
+    const session = await getServerSession();
+
+    // Find the user by ID and check if the session email matches the user's email
+    const user = await User.findById(id);
+    if (!user) {
+      return NextResponse.json({ message: "User not found" }, { status: 404 });
+    }
+    if (user.email !== session?.user?.email) {
+      return NextResponse.json(
+        { message: "You are not authorized to perform this action" },
+        { status: 401 }
+      );
+    }
+
+    // Update the user's bio and social links
+    const updatedUser = await User.findByIdAndUpdate(
       id,
       { bio, socialLinks },
       { new: true }
     );
-    if (!user) {
-      return NextResponse.json({ message: "User not found" }, { status: 404 });
-    }
     return NextResponse.json({ message: "Bio updated" }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
@@ -49,3 +62,13 @@ export const PATCH = async (req, { params }) => {
     );
   }
 };
+
+/*
+  {
+  user: {
+    name: 'Arnab Bhoumik',
+    email: 'arnab.iguniverse@gmail.com',
+    image: 'https://lh3.googleusercontent.com/a/ACg8ocLW2fMMYawjqifhsIMXH-w_XuvKJ2AnbCrfjmDyXNG3NTKL3cE=s96-c'
+  }
+}
+*/
