@@ -1,8 +1,12 @@
 import NoteDetailsById from "@/components/NoteDetailsById/NoteDetailsById";
 import { fetchNoteById } from "@/services/noteServices";
 
-export const metadata = {
-  title: "Note Details",
+export const generateMetadata = async ({ params }) => {
+  const { id } = params;
+  const { note } = await fetchNoteById(id);
+  return {
+    title: `${note?.title || "Note Details"}`,
+  };
 };
 
 const NoteDetails = async ({ params }) => {
