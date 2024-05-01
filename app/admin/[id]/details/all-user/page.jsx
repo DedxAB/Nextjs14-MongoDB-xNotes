@@ -6,6 +6,10 @@ import { josefin_sans_font } from "@/utils/fonts";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
+export const metadata = {
+  title: "All User",
+};
+
 const page = async () => {
   const session = await getServerSession();
   const { allUsers } = await fetchAllUser();

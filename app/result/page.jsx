@@ -2,8 +2,11 @@ import SearchFeed from "@/components/SearchFeed/SearchFeed";
 import SearchResultBanner from "@/components/SearchResultBanner/SearchResultBanner";
 import { fetchResultOfQuery } from "@/services/resultServices";
 
-export const metadata = {
-  title: "Result",
+export const generateMetadata = async ({ searchParams }) => {
+  const { q } = searchParams;
+  return {
+    title: `Search results for ${q}`,
+  };
 };
 
 const Result = async ({ searchParams }) => {
