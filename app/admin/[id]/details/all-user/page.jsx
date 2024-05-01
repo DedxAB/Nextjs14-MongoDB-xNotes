@@ -1,5 +1,6 @@
 import AdminToggle from "@/components/AdminToggle/AdminToggle";
 import UserCard from "@/components/UserCard/UserCard";
+import WelcomeBanner from "@/components/WelcomeBanner/WelcomeBanner";
 import { Input } from "@/components/ui/input";
 import { fetchAllUser, fetchUserByEmail } from "@/services/userServices";
 import { josefin_sans_font } from "@/utils/fonts";
@@ -21,6 +22,11 @@ const page = async () => {
 
   return (
     <div className="min-h-[85vh]">
+      {/* Banner Section */}
+      <WelcomeBanner
+        title={`Welcome Admin`}
+        description={`Here you can see all the users and toggle their admin status.`}
+      />
       {/* Search the user by name */}
       <form className="my-5 w-full md:w-1/2">
         <Input placeholder={`Search by name`} className={`font-bold`}></Input>
