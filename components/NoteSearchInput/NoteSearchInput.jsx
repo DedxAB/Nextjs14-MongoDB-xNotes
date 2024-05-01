@@ -7,7 +7,7 @@ export default function NoteSearchInput({ allNotes, setFilteredNotes }) {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      console.log("useEffect called");
+      // console.log("useEffect called");
       if (searchText.trim() === "") {
         setFilteredNotes(allNotes);
       } else {
