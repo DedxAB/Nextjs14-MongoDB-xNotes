@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Input } from "../ui/input";
 import { useSession } from "next-auth/react";
+import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
 
 // Validate URL function
 const isValidUrl = (url) => {
