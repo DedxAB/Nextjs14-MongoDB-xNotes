@@ -79,7 +79,7 @@ const NoteCard = ({ note, user }) => {
       {/* Note card 03notecard branch */}
       <div className="border-t border-x flex justify-start gap-1 mb-3 md:mb-4 rounded-tr-xl rounded-tl-xl px-3 md:px-4 py-[.85rem]">
         {/* Show the author image */}
-        <div className="pt-[5px] mr-2 flex flex-col justify-between items-start">
+        <div className="pt-[5px] mr-2 flex flex-col justify-between items-center">
           <Link href={`/profile/${user?._id}/details`}>
             <Avatar>
               <AvatarImage
