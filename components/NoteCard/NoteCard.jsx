@@ -79,7 +79,7 @@ const NoteCard = ({ note, user }) => {
       {/* Note card 03notecard branch */}
       <div className="border-t border-x flex justify-start gap-1 mb-3 md:mb-4 rounded-tr-xl rounded-tl-xl px-3 md:px-4 py-[.85rem]">
         {/* Show the author image */}
-        <div className="mr-2 pt-[5px]">
+        <div className="pt-[5px] mr-2 flex flex-col justify-between items-start">
           <Link href={`/profile/${user?._id}/details`}>
             <Avatar>
               <AvatarImage
@@ -90,6 +90,26 @@ const NoteCard = ({ note, user }) => {
               <AvatarFallback>{shortName}</AvatarFallback>
             </Avatar>
           </Link>
+          <div className="block sm:hidden">
+            {(session?.user?.id === user?._id || session?.user?.isAdmin) &&
+              (pathName === `/profile/${user?._id}/details` ||
+                pathName === `/admin/${user?._id}/details`) && (
+                <div className="flex flex-col gap-2">
+                  {/* Add the edit button */}
+                  <Link href={`/edit-note/${updatedNote?._id}`}>
+                    <Button variant="outline" size="icon">
+                      <Pencil className="w-4 h-4" />
+                    </Button>
+                  </Link>
+
+                  {/* Add the remove button */}
+                  <RemoveButton
+                    id={updatedNote?._id}
+                    title={updatedNote?.title}
+                  />
+                </div>
+              )}
+          </div>
         </div>
         <div className="w-full">
           {/* Show the author name, username */}
@@ -143,7 +163,7 @@ const NoteCard = ({ note, user }) => {
             {(session?.user?.id === user?._id || session?.user?.isAdmin) &&
               (pathName === `/profile/${user?._id}/details` ||
                 pathName === `/admin/${user?._id}/details`) && (
-                <div className="min-w-20">
+                <div className="min-w-20 hidden sm:block">
                   {/* Add the edit button */}
                   <Link href={`/edit-note/${updatedNote?._id}`}>
                     <Button variant="outline" size="icon" className="mr-2">
