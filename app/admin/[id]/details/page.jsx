@@ -1,5 +1,5 @@
 import ProfileSection from "@/components/ProfileSection/ProfileSection";
-import UserFeed from "@/components/UserFeed/UserFeed";
+import UserFeed from "@/components/UserNotesFeed/UserNotesFeed";
 import { Button } from "@/components/ui/button";
 import { fetchUserById } from "@/services/userServices";
 import Link from "next/link";
