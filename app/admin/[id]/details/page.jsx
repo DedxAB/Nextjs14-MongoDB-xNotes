@@ -1,5 +1,5 @@
-import NoteCard from "@/components/NoteCard/NoteCard";
 import ProfileSection from "@/components/ProfileSection/ProfileSection";
+import UserFeed from "@/components/UserNotesFeed/UserNotesFeed";
 import { Button } from "@/components/ui/button";
 import { fetchUserById } from "@/services/userServices";
 import Link from "next/link";
@@ -11,25 +11,6 @@ export const generateMetadata = async ({ params }) => {
   return {
     title: `${user?.name || "Profile"}`,
   };
-};
-
-const UserFeed = ({ notes, user }) => {
-  return (
-    <>
-      {notes && notes.length > 0 && (
-        <>
-          <hr className="my-6" />
-          <section>
-            <h1 className="font-bold text-lg mb-3">All Notes</h1>
-          </section>
-        </>
-      )}
-      {notes?.length > 0 &&
-        notes?.map((note) => {
-          return <NoteCard key={note?._id} note={note} user={user} />;
-        })}
-    </>
-  );
 };
 
 const page = async ({ params }) => {
@@ -45,8 +26,9 @@ const page = async ({ params }) => {
       <ProfileSection user={user} />
       {/* <ShowAllUser /> */}
       <Link href={`/admin/${id}/details/all-user`}>
-        <Button className={`text-sm font-semibold mb-3`}>Fetch All User</Button>
+        <Button className={`text-sm font-semibold mb-1`}>Fetch All User</Button>
       </Link>
+      <hr className="my-6" />
       <UserFeed notes={user?.notes} user={user} />
     </div>
   );

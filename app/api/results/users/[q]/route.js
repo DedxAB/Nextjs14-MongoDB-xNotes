@@ -10,7 +10,9 @@ export const GET = async (_req, { params }) => {
     // Use a regex for case-insensitive searching
     const regex = new RegExp(q, "i");
 
-    const users = await User.find({ username: regex })
+    const users = await User.find({
+      $or: [{ name: regex }, { username: regex }],
+    })
       .populate("notes")
       .sort({ createdAt: -1 });
     if (!users) {

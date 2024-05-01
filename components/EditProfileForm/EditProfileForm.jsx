@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Input } from "../ui/input";
 import { useSession } from "next-auth/react";
+import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -88,15 +89,11 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
 
   return (
     <>
-      {/* Banner */}
-      <section className="font-bold text-[#444746] mb-6 mt-8">
-        <h1 className="text-4xl md:text-5xl py-1 bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent">
-          Profile details changes?
-        </h1>
-        <h1 className="text-xl md:text-2xl my-2">
-          Don&apos;t worry! You are at the right place.
-        </h1>
-      </section>
+      <WelcomeBanner
+        title={`Profile details changes?`}
+        description={`Don't worry! You are at the right place.`}
+      />
+
       <section>
         <form onSubmit={handelOnSubmit} className="flex flex-col gap-3">
           {/* Description text area */}
