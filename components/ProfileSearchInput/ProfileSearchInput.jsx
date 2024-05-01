@@ -17,7 +17,7 @@ export default function ProfileSearchInput({ allNotes, setFilteredNotes }) {
         );
         setFilteredNotes(filtered);
       }
-    }, 300);
+    }, 500);
     return () => clearTimeout(timeoutId);
   }, [allNotes, searchText, setFilteredNotes]);
 
