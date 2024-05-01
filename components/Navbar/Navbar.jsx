@@ -51,16 +51,11 @@ const Navbar = () => {
           <ThemeToggle />
           {status === "authenticated" && (
             <Link href={`/create-note`}>
-              <Button
-                className="hidden md:font-bold md:flex md:gap-1 md:items-center"
-              >
+              <Button className="hidden md:font-bold md:flex md:gap-1 md:items-center">
                 <NotebookPen className="w-4 h-4" />
                 <span>Write</span>
               </Button>
-              <Button
-                className="font-bold md:hidden"
-                size="icon"
-              >
+              <Button className="font-bold md:hidden" size="icon">
                 <NotebookPen className="w-4 h-4" />
               </Button>
             </Link>
@@ -78,7 +73,7 @@ const Navbar = () => {
                   <AvatarFallback>{shortName}</AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
+              <DropdownMenuContent align="end" className={`font-bold`}>
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 {session?.user?.isAdmin ? (
@@ -89,7 +84,7 @@ const Navbar = () => {
                     }
                   >
                     <CircleUserRound className="w-4 h-4 mr-2" />
-                    <span className="font-bold">Admin</span>
+                    <span>Admin</span>
                   </DropdownMenuItem>
                 ) : (
                   <DropdownMenuItem
@@ -99,7 +94,7 @@ const Navbar = () => {
                     }
                   >
                     <CircleUserRound className="w-4 h-4" />
-                    <span className="font-bold">Profile</span>
+                    <span>Profile</span>
                   </DropdownMenuItem>
                 )}
                 <DropdownMenuItem
@@ -107,14 +102,14 @@ const Navbar = () => {
                   onClick={() => signOut({ callbackUrl: "/" })}
                 >
                   <LogOut className="w-4 h-4 text-primary" />
-                  <span className="font-bold text-primary">Sign Out</span>
+                  <span className="text-primary">Sign Out</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
             <div className="flex gap-4">
               <Link href={`/signin`}>
-                <Button className="font-bold text-base" size="icon">
+                <Button size="icon">
                   <LogIn className="w-4" />
                 </Button>
               </Link>
