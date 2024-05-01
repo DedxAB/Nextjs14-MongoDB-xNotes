@@ -100,14 +100,11 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
   return (
     <>
       {/* Create Note banner  */}
-      <div className="font-bold text-[#444746] mb-6 mt-8">
-        <h1 className="text-4xl md:text-5xl py-1 bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent">
-          Any Changes?
-        </h1>
-        <h1 className="text-xl md:text-2xl my-2">
-          Dont worry! You are at right place.
-        </h1>
-      </div>
+      <WelcomeBanner
+        title="Any Changes?"
+        description={`Dont worry! You are at right place.`}
+      />
+
       <form onSubmit={handelOnSubmit} className="flex flex-col gap-3">
         {/* Title input field */}
         <Label

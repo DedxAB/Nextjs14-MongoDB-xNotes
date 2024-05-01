@@ -11,11 +11,9 @@ import Link from "next/link";
 import { Label } from "../ui/label";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
-import {
-  josefin_sans_font,
-  source_code_pro_font,
-} from "@/utils/fonts";
+import { josefin_sans_font, source_code_pro_font } from "@/utils/fonts";
 import NoteDescription from "../NoteDescription/NoteDescription";
+import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -141,18 +139,14 @@ const AddNote = () => {
       console.log(error.message);
     }
   };
-  
+
   return (
     <>
       {/* Create Note banner  */}
-      <div className="font-bold text-[#444746] mb-6 mt-8">
-        <h1 className="text-4xl md:text-5xl py-1 bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent">
-          Write Note
-        </h1>
-        <h1 className="text-xl md:text-2xl my-2">
-          Write and share your notes with us.
-        </h1>
-      </div>
+      <WelcomeBanner
+        title={`Write Note`}
+        description={`Write and share your notes with us.`}
+      />
 
       {/* Form to add the Note */}
       <form onSubmit={handelSubmit} className="flex flex-col gap-3">
