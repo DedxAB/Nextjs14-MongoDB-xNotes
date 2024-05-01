@@ -36,7 +36,7 @@ const SearchInput = () => {
             name="search"
             type="text"
             placeholder={placeholder}
-            className="w-full md:w-1/2 font-bold px-4 py-5"
+            className="w-full md:w-1/2 font-bold px-4 py-5 text-base"
           />
         </form>
       </div>

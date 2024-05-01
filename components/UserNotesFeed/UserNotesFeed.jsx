@@ -13,7 +13,7 @@ const UserNotesFeed = ({ notes, user }) => {
         setFilteredNotes={setFilteredNotes}
       />
       {filteredNotes.length > 0 ? (
-        <h1 className="font-bold text-base mb-3">
+        <h1 className="font-bold text-base my-5">
           All Notes ({filteredNotes?.length})
         </h1>
       ) : (

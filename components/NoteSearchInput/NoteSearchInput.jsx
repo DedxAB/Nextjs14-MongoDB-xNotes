@@ -24,7 +24,7 @@ export default function NoteSearchInput({ allNotes, setFilteredNotes }) {
   return (
     <Input
       placeholder={`Search notes by title`}
-      className={`font-bold my-5 w-full md:w-1/2`}
+      className={`font-bold px-4 py-5 text-base w-full md:w-1/2 my-5`}
       onChange={(e) => setSearchText(e.target.value)}
       value={searchText}
     />

@@ -16,7 +16,7 @@ export default function AllUserDetails({ allUsers, session }) {
         setFilteredUsers={setFilteredUsers}
       />
 
-      <h1 className="font-bold text-lg my-5">
+      <h1 className="font-bold text-base my-5">
         All Users ({filteredUsers?.length})
       </h1>
       {filteredUsers?.length > 0 &&
