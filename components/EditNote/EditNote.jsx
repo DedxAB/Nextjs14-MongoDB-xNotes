@@ -9,6 +9,7 @@ import Link from "next/link";
 import { MessageSquareX, Save } from "lucide-react";
 import { Label } from "../ui/label";
 import { source_code_pro_font } from "@/utils/fonts";
+import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
 
 // Validate URL function
 const isValidUrl = (url) => {
