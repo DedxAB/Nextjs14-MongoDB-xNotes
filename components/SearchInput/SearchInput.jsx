@@ -7,20 +7,19 @@ const SearchInput = () => {
   const [search, setSearch] = useState("");
   const [placeholder, setPlaceholder] = useState("Search notes...");
 
-  const searchTerms = [
-    "Search notes...",
-    "Search keyword...",
-    "Search username...",
-  ];
-
   useEffect(() => {
+    const searchTerms = [
+      "Search notes...",
+      "Search keyword...",
+      "Search username...",
+    ];
     const intervalId = setInterval(() => {
       const randomIndex = Math.floor(Math.random() * searchTerms.length);
       setPlaceholder(searchTerms[randomIndex]);
     }, 2000);
 
     return () => clearInterval(intervalId);
-  },[]); 
+  }, []);
 
   const router = useRouter();
   const handelSubmit = (e) => {
