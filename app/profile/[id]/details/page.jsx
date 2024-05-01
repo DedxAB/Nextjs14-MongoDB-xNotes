@@ -1,5 +1,5 @@
 import ProfileSection from "@/components/ProfileSection/ProfileSection";
-import UserFeed from "@/components/UserFeed/UserFeed";
+import UserFeed from "@/components/UserNotesFeed/UserNotesFeed";
 import { fetchUserById } from "@/services/userServices";
 
 export const generateMetadata = async ({ params }) => {
