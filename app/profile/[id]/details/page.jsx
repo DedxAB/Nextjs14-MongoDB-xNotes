@@ -2,8 +2,12 @@ import NoteCard from "@/components/NoteCard/NoteCard";
 import ProfileSection from "@/components/ProfileSection/ProfileSection";
 import { fetchUserById } from "@/services/userServices";
 
-export const metadata = {
-  title: "Profile",
+export const generateMetadata = async ({ params }) => {
+  const { id } = params;
+  const { user } = await fetchUserById(id);
+  return {
+    title: `${user?.name || "Profile"}`,
+  };
 };
 
 const UserFeed = ({ notes, user }) => {
