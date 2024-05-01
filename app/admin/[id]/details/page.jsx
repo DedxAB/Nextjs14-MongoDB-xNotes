@@ -5,8 +5,12 @@ import { fetchUserById } from "@/services/userServices";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-export const metadata = {
-  title: "Admin Profile",
+export const generateMetadata = async ({ params }) => {
+  const { id } = params;
+  const { user } = await fetchUserById(id);
+  return {
+    title: `${user?.name || "Profile"}`,
+  };
 };
 
 const UserFeed = ({ notes, user }) => {
