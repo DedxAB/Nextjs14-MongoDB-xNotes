@@ -44,6 +44,12 @@ const noteSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    visibility: {
+      type: String,
+      enum: ["public", "private"],
+      default: "public",
+      required: [true, "Visibility is required"],
+    },
   },
   { timestamps: true }
 );
