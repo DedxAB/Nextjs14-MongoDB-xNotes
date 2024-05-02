@@ -12,7 +12,7 @@ const page = async ({ params }) => {
   const { note } = await fetchNoteById(id);
   const session = await getServerSession();
   // console.log(note);
-  const { title, description, author, tags, websiteLink } = note;
+  const { title, description, author, tags, websiteLink, visibility } = note;
 
   // Check if the current user is the author of the note, if not redirect to the home page
   if (session?.user?.email !== author?.email) {
@@ -29,6 +29,7 @@ const page = async ({ params }) => {
         description={description}
         author={author}
         tags={tags}
+        visibility={visibility}
       />
     </div>
   );
