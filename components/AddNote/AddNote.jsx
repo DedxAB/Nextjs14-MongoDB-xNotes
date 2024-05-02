@@ -38,6 +38,7 @@ const AddNote = () => {
   const [websiteLink, setWebsiteLink] = useState("");
   const [charCount, setCharCount] = useState(0);
   const [preview, setPreview] = useState(false);
+  const [selectVisibility, setSelectVisibility] = useState("public");
 
   const router = useRouter();
   const { data: session } = useSession();
@@ -122,6 +123,7 @@ const AddNote = () => {
           websiteLink,
           author: session?.user?.id,
           tags: tagArray,
+          visibility: selectVisibility,
         }),
       });
 
@@ -239,7 +241,10 @@ const AddNote = () => {
           </div>
           <div className="flex items-center flex-wrap justify-end gap-3 md:gap-4">
             <div>
-              <Select>
+              <Select
+                onValueChange={(newValue) => setSelectVisibility(newValue)}
+                defaultValue={selectVisibility}
+              >
                 <SelectTrigger className="w-[116px]">
                   <SelectValue placeholder="Share with" />
                 </SelectTrigger>
