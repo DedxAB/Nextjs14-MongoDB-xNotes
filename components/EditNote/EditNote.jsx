@@ -27,12 +27,23 @@ const isValidUrl = (url) => {
   return urlRegex.test(url);
 };
 
-const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
+const EditNote = ({
+  id,
+  title,
+  description,
+  author,
+  tags,
+  websiteLink,
+  visibility,
+}) => {
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
   const [newTags, setNewTags] = useState(tags.join(", "));
   const [newWebsiteLink, setNewWebsiteLink] = useState(websiteLink);
   const [charCount, setCharCount] = useState(0);
+  const [selectNewVisibility, setSelectNewVisibility] = useState(
+    visibility || "public"
+  );
 
   const route = useRouter();
 
@@ -88,6 +99,7 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           newDescription,
           newTags: tagArray,
           newWebsiteLink,
+          selectNewVisibility,
         }),
       });
       if (!res.ok) {
@@ -195,7 +207,10 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
           </Link>
 
           <div className="flex items-center flex-wrap justify-end gap-3 md:gap-4">
-            <Select>
+            <Select
+              onValueChange={(newValue) => setSelectNewVisibility(newValue)}
+              defaultValue={selectNewVisibility}
+            >
               <SelectTrigger className="w-[116px]">
                 <SelectValue placeholder="Share with" />
               </SelectTrigger>

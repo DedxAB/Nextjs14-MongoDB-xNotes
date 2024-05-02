@@ -148,13 +148,21 @@ const NoteCard = ({ note, user }) => {
                 </p>
 
                 {/* Show the edited date if updated */}
-                {contentUpdatedAt - createdAt > 1000 && (
+                {/* {contentUpdatedAt - createdAt > 1000 && (
                   <p className="flex justify-center items-center">
                     •&nbsp;
                     <PencilLine className="w-3 h-3 mr-1" />
                     <span>edited</span>
                   </p>
-                )}
+                )} */}
+                <div>
+                  •&nbsp;
+                  <span>
+                    {updatedNote?.visibility === "private"
+                      ? "Only me"
+                      : "Public"}
+                  </span>
+                </div>
               </div>
             </Link>
 
