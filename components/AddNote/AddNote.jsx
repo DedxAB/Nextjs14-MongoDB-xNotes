@@ -14,6 +14,15 @@ import dayjs from "dayjs";
 import { josefin_sans_font, source_code_pro_font } from "@/utils/fonts";
 import NoteDescription from "../NoteDescription/NoteDescription";
 import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -222,13 +231,31 @@ const AddNote = () => {
         />
 
         {/* Buttons */}
-        <div className="flex justify-between items-center gap-1">
+        <div className="flex justify-between items-end gap-1">
           <div
             className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
           >
             Want to Preview?
           </div>
-          <div className="flex justify-end gap-3 md:gap-4">
+          <div className="flex items-center flex-wrap justify-end gap-3 md:gap-4">
+            <div>
+              <Select>
+                <SelectTrigger className="w-[116px]">
+                  <SelectValue placeholder="Share with" />
+                </SelectTrigger>
+                <SelectContent className="w-[124px]">
+                  <SelectGroup>
+                    <SelectLabel>Visibility</SelectLabel>
+                    <SelectItem value="private" className={`cursor-pointer`}>
+                      👨‍🎤&nbsp;Only me
+                    </SelectItem>
+                    <SelectItem value="public" className={`cursor-pointer`}>
+                      🌏&nbsp;Public
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
             {/* Publish Button */}
             <Button type={`submit`} className="font-bold">
               <ArrowUpToLine className="w-4 h-4 mr-1" />

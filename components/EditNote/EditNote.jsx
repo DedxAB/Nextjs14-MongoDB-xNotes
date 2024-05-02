@@ -10,6 +10,15 @@ import { MessageSquareX, Save } from "lucide-react";
 import { Label } from "../ui/label";
 import { source_code_pro_font } from "@/utils/fonts";
 import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -176,20 +185,38 @@ const EditNote = ({ id, title, description, author, tags, websiteLink }) => {
         />
 
         {/* Buttons */}
-        <div className="ml-auto">
+        <div className="ml-auto flex items-end gap-3 md:gap-4">
           {/* Cancel Button */}
           <Link href={`/profile/${author?._id}/details`}>
-            <Button variant={`outline`} className="font-bold w-fit mr-3">
+            <Button variant={`outline`} className="font-bold w-fit">
               <MessageSquareX className="w-4 h-4 mr-1" />
               Cancel
             </Button>
           </Link>
 
-          {/* Save Button */}
-          <Button className="font-bold w-fit">
-            <Save className="w-4 h-4 mr-1" />
-            Update
-          </Button>
+          <div className="flex items-center flex-wrap justify-end gap-3 md:gap-4">
+            <Select>
+              <SelectTrigger className="w-[116px]">
+                <SelectValue placeholder="Share with" />
+              </SelectTrigger>
+              <SelectContent className="w-[124px]">
+                <SelectGroup>
+                  <SelectLabel>Visibility</SelectLabel>
+                  <SelectItem value="private" className={`cursor-pointer`}>
+                    👨‍🎤&nbsp;Only me
+                  </SelectItem>
+                  <SelectItem value="public" className={`cursor-pointer`}>
+                    🌏&nbsp;Public
+                  </SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+            {/* Save Button */}
+            <Button className="font-bold w-fit">
+              <Save className="w-4 h-4 mr-1" />
+              Update
+            </Button>
+          </div>
         </div>
       </form>
     </>
