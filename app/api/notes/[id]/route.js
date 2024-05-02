@@ -7,8 +7,13 @@ import { getServerSession } from "next-auth";
 
 export async function PATCH(req, { params }) {
   const { id } = params;
-  const { newTitle, newDescription, newTags, newWebsiteLink } =
-    await req.json();
+  const {
+    newTitle,
+    newDescription,
+    newTags,
+    newWebsiteLink,
+    selectNewVisibility,
+  } = await req.json();
 
   try {
     await connectDB();
@@ -35,6 +40,7 @@ export async function PATCH(req, { params }) {
         tags: newTags,
         websiteLink: newWebsiteLink,
         contentUpdatedAt: Date.now(),
+        visibility: selectNewVisibility,
       },
       { new: true }
     );
