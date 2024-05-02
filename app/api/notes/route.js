@@ -6,7 +6,8 @@ import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
-  const { title, description, author, tags, websiteLink } = await req.json();
+  const { title, description, author, tags, websiteLink, visibility } =
+    await req.json();
   try {
     await connectDB();
 
@@ -25,7 +26,15 @@ export async function POST(req) {
       author,
       tags,
       websiteLink,
+      visibility,
     });
+
+    if (!newNote) {
+      return NextResponse.json(
+        { message: "Failed to create note" },
+        { status: 500 }
+      );
+    }
 
     // Find the user by id and add the new note to their notes array
     // here i use push method to push the new note id to the notes array
@@ -35,13 +44,6 @@ export async function POST(req) {
       { $addToSet: { notes: newNote._id } },
       { new: true }
     );
-
-    if (!newNote) {
-      return NextResponse.json(
-        { message: "Failed to create note" },
-        { status: 500 }
-      );
-    }
 
     return NextResponse.json({ message: "Note created" }, { status: 201 });
   } catch (error) {
