@@ -12,7 +12,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+} from "../ui/custom-dropdown-menu";
 import { CircleUserRound, LogIn, LogOut, NotebookPen } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { playfair_font } from "@/utils/fonts";
