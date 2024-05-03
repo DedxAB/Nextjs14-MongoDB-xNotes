@@ -60,18 +60,7 @@ export async function GET(_req) {
   try {
     await connectDB();
 
-    const session = await getServerSession();
-    // console.log(session);
-    const currentUser = await User.findOne({ email: session?.user?.email });
-
-    const notes = await Note.find({
-      $or: [
-        { visibility: "public" },
-        { author: currentUser?._id, visibility: "private" },
-      ],
-    })
-      .populate("author")
-      .sort({ createdAt: -1 });
+    const notes = await Note.find().populate("author").sort({ createdAt: -1 });
     if (!notes) {
       return NextResponse.json({ message: "No notes found" }, { status: 404 });
     }
