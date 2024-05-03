@@ -1,4 +1,5 @@
 import NoteDetailsById from "@/components/NoteDetailsById/NoteDetailsById";
+import UserCard from "@/components/UserCard/UserCard";
 import WelcomeBanner from "@/components/WelcomeBanner/WelcomeBanner";
 import { fetchNoteById } from "@/services/noteServices";
 import { getServerSession } from "next-auth";
@@ -6,8 +7,15 @@ import { getServerSession } from "next-auth";
 export const generateMetadata = async ({ params }) => {
   const { id } = params;
   const { note } = await fetchNoteById(id);
+  const session = await getServerSession();
+  const currentUserEmail = session?.user?.email;
+
   return {
-    title: `${note?.title || "Note Details"}`,
+    title: `${
+      currentUserEmail !== note?.author?.email && note?.visibility !== "public"
+        ? "Note Details (Private)"
+        : note?.title
+    }`,
   };
 };
 
@@ -31,6 +39,7 @@ const NoteDetails = async ({ params }) => {
           to view this note, please ask the author to change the visibility to
           public.`}
         />
+        <UserCard user={note?.author} />
       </div>
     );
   }
