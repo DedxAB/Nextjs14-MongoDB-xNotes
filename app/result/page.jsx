@@ -29,7 +29,7 @@ const Result = async ({ searchParams }) => {
   //   console.log("users", users);
   return (
     <div className="min-h-[85vh]">
-      <SearchResultBanner searchingFor={q} notes={notes} users={users} />
+      <SearchResultBanner searchingFor={q} notes={filteredNotes} users={users} />
       <SearchFeed notes={filteredNotes} users={users} />
     </div>
   );
