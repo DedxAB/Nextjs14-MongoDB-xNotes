@@ -22,13 +22,15 @@ export default function NoteSearchInput({ allNotes, setFilteredNotes, user }) {
   }, [allNotes, searchText, setFilteredNotes]);
 
   return (
-    <Input
-      placeholder={`Search ${
-        user?.name?.split(" ")[0].toLowerCase() || "User"
-      }'s notes by title...`}
-      className={`font-bold px-4 py-5 text-base w-full md:w-1/2 my-5`}
-      onChange={(e) => setSearchText(e.target.value)}
-      value={searchText}
-    />
+    <>
+      <Input
+        placeholder={`Search ${
+          user?.name?.split(" ")[0].toLowerCase() || "User"
+        }'s notes by title...`}
+        className={`font-bold px-4 py-5 text-base w-full md:w-1/2 my-5`}
+        onChange={(e) => setSearchText(e.target.value)}
+        value={searchText}
+      />
+    </>
   );
 }

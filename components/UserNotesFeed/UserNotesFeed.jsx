@@ -8,11 +8,14 @@ const UserNotesFeed = ({ notes, user }) => {
 
   return (
     <>
-      <ProfileSearchInput
-        allNotes={notes} 
-        user={user}
-        setFilteredNotes={setFilteredNotes}
-      />
+      {notes?.length > 0 && (
+        <ProfileSearchInput
+          allNotes={notes}
+          user={user}
+          setFilteredNotes={setFilteredNotes}
+        />
+      )}
+
       {filteredNotes.length > 0 ? (
         <h1 className="font-bold text-base my-5">
           All Notes ({filteredNotes?.length})
@@ -20,7 +23,6 @@ const UserNotesFeed = ({ notes, user }) => {
       ) : (
         <h1 className="font-bold text-lg mb-3">No notes found</h1>
       )}
-
       {filteredNotes.length > 0 &&
         filteredNotes.map((note) => (
           <NoteCard key={note?._id} note={note} user={user} />

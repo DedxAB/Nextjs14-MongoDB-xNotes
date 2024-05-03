@@ -11,6 +11,7 @@ const SearchInput = () => {
     const searchTerms = [
       "Search notes...",
       "Search keyword...",
+      "Search user...",
       "Search username...",
     ];
     const intervalId = setInterval(() => {
@@ -24,7 +25,9 @@ const SearchInput = () => {
   const router = useRouter();
   const handelSubmit = (e) => {
     e.preventDefault();
-    router.push(`/result?q=${search}`);
+    if (search.length > 0) {
+      router.push(`/result?q=${search}`);
+    }
   };
   return (
     <>

@@ -13,13 +13,44 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/custom-dropdown-menu";
-import { CircleUserRound, LogIn, LogOut, NotebookPen } from "lucide-react";
+import {
+  CircleUserRound,
+  LogIn,
+  LogOut,
+  NotebookPen,
+  Search,
+  X,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { playfair_font } from "@/utils/fonts";
+import { useState } from "react";
+import { Input } from "../ui/input";
 
 const Navbar = () => {
+  const [openSearch, setOpenSearch] = useState(false);
+  const [searchText, setSearchText] = useState("");
   const router = useRouter();
   const { status, data: session } = useSession();
+
+  // if (openSearch) {
+  //   setTimeout(() => {
+  //     if (searchText.length === 0) {
+  //       setOpenSearch(!openSearch);
+  //     }
+  //   }, 10000); // Close search after 15 seconds of inactivity
+  // }
+
+  const hadleSearchInput = (e) => {
+    e.preventDefault();
+    if (searchText.length > 0) {
+      router.push(`/result?q=${searchText}`);
+    }
+    setTimeout(() => {
+      setOpenSearch(!openSearch);
+      setSearchText("");
+    }, 1000);
+  };
+
   const name = session?.user?.name;
   let shortName = name
     ?.split(" ")
@@ -27,7 +58,7 @@ const Navbar = () => {
     .join("");
 
   return (
-    <nav className="max-w-3xl mx-auto px-4 flex justify-between items-center py-4">
+    <nav className="max-w-3xl relative mx-auto px-4 flex justify-between items-center py-4">
       <Link href={`/`}>
         <h1 className={`font-bold text-2xl md:text-3xl ${playfair_font}`}>
           Dedx
@@ -47,6 +78,13 @@ const Navbar = () => {
         </>
       ) : (
         <div className="flex items-center justify-between gap-4">
+          <Button
+            size="icon"
+            variant="outline"
+            onClick={() => setOpenSearch(!openSearch)}
+          >
+            <Search className="w-5 h-5" />
+          </Button>
           {/* Theme changing component  */}
           <ThemeToggle />
           {status === "authenticated" && (
@@ -118,6 +156,34 @@ const Navbar = () => {
               </Button>
             </div>
           )}
+        </div>
+      )}
+      {openSearch && (
+        <div className="w-full px-4 absolute top-4 left-0">
+          {/* Content */}
+          <div className="w-full flex items-center z-20">
+            <form onSubmit={hadleSearchInput} className="w-full">
+              <Input
+                ref={(input) => input && input.focus()}
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+                name="search"
+                type="text"
+                placeholder={`Search user, notes, keywords...`}
+                className="font-bold px-4 py-5 rounded-lg text-base bg-white text-black"
+              />
+            </form>
+            <Button
+              size="icon"
+              className={`h-10 w-12 ml-2`}
+              onClick={() => {
+                setOpenSearch(!openSearch);
+                setSearchText("");
+              }}
+            >
+              <X className="w-4 h-4" />
+            </Button>
+          </div>
         </div>
       )}
     </nav>
