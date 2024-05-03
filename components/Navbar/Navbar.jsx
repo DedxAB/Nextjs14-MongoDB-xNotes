@@ -42,7 +42,7 @@ const Navbar = () => {
         if (searchText.length === 0) {
           setOpenSearch(false);
         }
-      }, 7000); // Close search after 15 seconds of inactivity
+      }, 5000); // Close search after 15 seconds of inactivity
     }
 
     return () => clearTimeout(timeoutId);
