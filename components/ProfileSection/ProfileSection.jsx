@@ -46,7 +46,7 @@ const ProfileSection = ({ user }) => {
             </div>
 
             {/* Username  */}
-            <div className="">
+            <div className="font-bold">
               <p
                 className={`text-base md:text-xl text-gray-500 ${josefin_sans_font}`}
               >

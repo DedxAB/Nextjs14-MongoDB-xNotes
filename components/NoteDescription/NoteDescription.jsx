@@ -67,7 +67,7 @@ const NoteDescription = ({ description, noteId = "" }) => {
   return (
     <>
       <div
-        className={`text-sm md:text-base mt-1 py-1 whitespace-pre-line ${inter_font}`}
+        className={`text-sm md:text-base mt-[0.28rem] py-1 whitespace-pre-line ${inter_font}`}
       >
         <ReactLinkify componentDecorator={customLink}>
           {pathName === `/note/${noteId}/details` || pathName === "/create-note"

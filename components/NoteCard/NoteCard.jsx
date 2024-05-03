@@ -137,7 +137,7 @@ const NoteCard = ({ note, user }) => {
 
               {/* date */}
               <div
-                className={`md:pt-1 flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] ${josefin_sans_font}`}
+                className={`pt-[.19rem] md:pt-1 flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] ${josefin_sans_font}`}
               >
                 <p className="mr-1">
                   {
