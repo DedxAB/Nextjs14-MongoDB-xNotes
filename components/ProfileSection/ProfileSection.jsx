@@ -40,14 +40,19 @@ const ProfileSection = ({ user }) => {
                   </span>
                 )}
               </p>
-              <p className="text-base md:text-xl text-gray-500">
+              {/* <p className="text-base md:text-xl text-gray-500">
                 @{user?.username}
-              </p>
+              </p> */}
             </div>
 
-            {/* User Notes count */}
-            <div className="text-sm md:text-base text-gray-500 font-bold">
-              {user?.notes.length === 0 ? (
+            {/* Username  */}
+            <div className="">
+              <p
+                className={`text-base md:text-xl text-gray-500 ${josefin_sans_font}`}
+              >
+                @{user?.username}
+              </p>
+              {/* {user?.notes.length === 0 ? (
                 <div className="flex gap-1 items-center">
                   <Scroll className="w-4 h-4" />
                   <span>No Notes Published Yet</span>
@@ -62,7 +67,7 @@ const ProfileSection = ({ user }) => {
                   <ScrollText className="w-4 h-4" />
                   <span>{user?.notes.length} Notes Published</span>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>

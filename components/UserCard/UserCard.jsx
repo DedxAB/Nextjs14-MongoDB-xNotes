@@ -39,7 +39,7 @@ const UserCard = ({ user }) => {
               </p> */}
             </div>
             {/* Show the author notes count */}
-            <div className="text-sm font-bold text-gray-500">
+            <div className="">
               {/* username */}
               <p
                 className={`text-gray-500 text-sm font-bold ${josefin_sans_font}`}
