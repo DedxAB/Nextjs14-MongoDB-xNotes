@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
 import { useSession } from "next-auth/react";
-import { CalendarDays, Contact, Scroll, ScrollText } from "lucide-react";
+import { CalendarDays, Contact } from "lucide-react";
 import { josefin_sans_font } from "@/utils/fonts";
 
 const ProfileSection = ({ user }) => {

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import NoteCard from "../NoteCard/NoteCard";
-import ProfileSearchInput from "../NoteSearchInput/NoteSearchInput";
+import ProfileSearchInput from "../ProfileSearchInput/ProfileSearchInput";
 
 const UserNotesFeed = ({ notes, user }) => {
   const [filteredNotes, setFilteredNotes] = useState(notes || []);

@@ -2,7 +2,11 @@
 import { useState, useEffect } from "react";
 import { Input } from "../ui/input";
 
-export default function NoteSearchInput({ allNotes, setFilteredNotes, user }) {
+export default function ProfileSearchInput({
+  allNotes,
+  setFilteredNotes,
+  user,
+}) {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {

@@ -1,4 +1,3 @@
-import { Scroll, ScrollText } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
 import { josefin_sans_font } from "@/utils/fonts";
@@ -8,6 +7,7 @@ const UserCard = ({ user }) => {
     ?.split(" ")
     .map((n) => n[0])
     .join("");
+
   return (
     <>
       <div className="border mb-3 rounded-lg px-3 md:px-4 py-2">
