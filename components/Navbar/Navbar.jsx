@@ -48,7 +48,7 @@ const Navbar = () => {
     setTimeout(() => {
       setOpenSearch(!openSearch);
       setSearchText("");
-    }, 1000);
+    }, 300);
   };
 
   const name = session?.user?.name;
