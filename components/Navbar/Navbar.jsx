@@ -23,22 +23,30 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { playfair_font } from "@/utils/fonts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
   const [openSearch, setOpenSearch] = useState(false);
   const [searchText, setSearchText] = useState("");
   const router = useRouter();
   const { status, data: session } = useSession();
+  const { theme } = useTheme();
 
-  // if (openSearch) {
-  //   setTimeout(() => {
-  //     if (searchText.length === 0) {
-  //       setOpenSearch(!openSearch);
-  //     }
-  //   }, 10000); // Close search after 15 seconds of inactivity
-  // }
+  useEffect(() => {
+    let timeoutId;
+
+    if (openSearch) {
+      timeoutId = setTimeout(() => {
+        if (searchText.length === 0) {
+          setOpenSearch(false);
+        }
+      }, 7000); // Close search after 15 seconds of inactivity
+    }
+
+    return () => clearTimeout(timeoutId);
+  }, [openSearch, searchText]);
 
   const hadleSearchInput = (e) => {
     e.preventDefault();
@@ -170,7 +178,16 @@ const Navbar = () => {
                 name="search"
                 type="text"
                 placeholder={`Search user, notes, keywords...`}
-                className="font-bold px-4 py-5 rounded-lg text-base bg-white text-black"
+                className={`font-bold px-4 py-5 rounded-lg text-base ${
+                  theme === "system"
+                    ? window.matchMedia &&
+                      window.matchMedia("(prefers-color-scheme: dark)").matches
+                      ? "bg-black"
+                      : "bg-white"
+                    : theme === "light"
+                    ? "bg-white"
+                    : "bg-black"
+                }`}
               />
             </form>
             <Button
