@@ -1,5 +1,7 @@
 import NoteDetailsById from "@/components/NoteDetailsById/NoteDetailsById";
+import WelcomeBanner from "@/components/WelcomeBanner/WelcomeBanner";
 import { fetchNoteById } from "@/services/noteServices";
+import { getServerSession } from "next-auth";
 
 export const generateMetadata = async ({ params }) => {
   const { id } = params;
@@ -11,9 +13,27 @@ export const generateMetadata = async ({ params }) => {
 
 const NoteDetails = async ({ params }) => {
   const { id } = params;
+  const session = await getServerSession();
+  const currentUserEmail = session?.user?.email;
 
   const { note } = await fetchNoteById(id);
   // console.log(note);
+
+  if (
+    currentUserEmail !== note?.author?.email &&
+    note?.visibility !== "public"
+  ) {
+    return (
+      <div className="min-h-[85vh]">
+        <WelcomeBanner
+          title={`Note Details`}
+          description={`This note is private and can only be viewed by the author. If you want
+          to view this note, please ask the author to change the visibility to
+          public.`}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-[85vh]">
