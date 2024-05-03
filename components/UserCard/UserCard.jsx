@@ -34,13 +34,19 @@ const UserCard = ({ user }) => {
               </p>
 
               {/* username */}
-              <p className={`text-gray-500 text-sm font-bold`}>
+              {/* <p className={`text-gray-500 text-sm font-bold`}>
                 @{user?.username}
-              </p>
+              </p> */}
             </div>
             {/* Show the author notes count */}
             <div className="text-sm font-bold text-gray-500">
-              {user?.notes.length === 0 ? (
+              {/* username */}
+              <p
+                className={`text-gray-500 text-sm font-bold ${josefin_sans_font}`}
+              >
+                @{user?.username}
+              </p>
+              {/* {user?.notes.length === 0 ? (
                 <div className="flex gap-1 items-center">
                   <Scroll className="w-4" />
                   <span>No Notes</span>
@@ -55,7 +61,7 @@ const UserCard = ({ user }) => {
                   <ScrollText className="w-4" />
                   <span>{user?.notes.length} Notes</span>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </Link>
