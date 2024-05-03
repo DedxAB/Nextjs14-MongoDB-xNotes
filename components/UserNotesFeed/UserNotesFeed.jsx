@@ -9,7 +9,8 @@ const UserNotesFeed = ({ notes, user }) => {
   return (
     <>
       <ProfileSearchInput
-        allNotes={notes}
+        allNotes={notes} 
+        user={user}
         setFilteredNotes={setFilteredNotes}
       />
       {filteredNotes.length > 0 ? (
