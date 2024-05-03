@@ -142,7 +142,7 @@ const NoteCard = ({ note, user }) => {
                 <p className="mr-1">
                   {
                     dayjs(updatedNote?.createdAt).format(
-                      "MMM D, YYYY | hh : mm A"
+                      "MMM D, YYYY • hh : mm A"
                     ) // Mar 27, 2024
                   }
                 </p>
