@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Input } from "../ui/input";
 
-export default function NoteSearchInput({ allNotes, setFilteredNotes }) {
+export default function NoteSearchInput({ allNotes, setFilteredNotes, user }) {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
@@ -23,7 +23,9 @@ export default function NoteSearchInput({ allNotes, setFilteredNotes }) {
 
   return (
     <Input
-      placeholder={`Search notes by title`}
+      placeholder={`Search ${
+        user?.name?.split(" ")[0].toLowerCase() || "User"
+      }'s notes by title...`}
       className={`font-bold px-4 py-5 text-base w-full md:w-1/2 my-5`}
       onChange={(e) => setSearchText(e.target.value)}
       value={searchText}
