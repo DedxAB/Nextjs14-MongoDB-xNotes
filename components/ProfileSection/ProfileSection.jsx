@@ -5,7 +5,15 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
 import { useSession } from "next-auth/react";
 import { CalendarDays, Contact } from "lucide-react";
-import { josefin_sans_font } from "@/utils/fonts";
+import { josefin_sans_font, source_code_pro_font } from "@/utils/fonts";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
 
 const ProfileSection = ({ user }) => {
   const { data: session } = useSession();
@@ -35,9 +43,27 @@ const ProfileSection = ({ user }) => {
               <p className="text-lg md:text-2xl mr-[.35rem] flex flex-wrap items-center">
                 {user?.name}
                 {user?.isAdmin && (
-                  <span className="inline-block ml-[.15rem]" title="admin">
-                    <Contact className="w-4 md:w-5 h-4 md:h-5 pb-[.15rem]" />
-                  </span>
+                  <>
+                    <div className="mr-10 ml-1 pt-2">
+                      <Dialog>
+                        <DialogTrigger>
+                          <Contact className="w-4 md:w-5 h-4 md:h-5 pb-[.15rem]" />
+                        </DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle className="mb-2">
+                              What is this badge?
+                            </DialogTitle>
+                            <DialogDescription>
+                              This badge indicates that the user is an admin of
+                              this website. Admin has special privileges and can
+                              manage the website.
+                            </DialogDescription>
+                          </DialogHeader>
+                        </DialogContent>
+                      </Dialog>
+                    </div>
+                  </>
                 )}
               </p>
               {/* <p className="text-base md:text-xl text-gray-500">

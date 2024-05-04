@@ -29,9 +29,9 @@ export default function SharePopup({ handleShare, updatedNote }) {
 
   return (
     <>
-      <div className="fixed inset-0 z-50 overflow-auto flex justify-center items-center">
+      <div className="fixed inset-0 z-50 bg-black/80 overflow-auto flex justify-center items-center">
         <div className="absolute inset-0" onClick={handleShare}></div>
-        <div className="rounded-lg mt-15 w-80 p-6 relative border backdrop-blur-md">
+        <div className="rounded-lg mt-15 min-w-72 max-w-lg p-6 relative border bg-background">
           {/* Modal content */}
           <div className="mb-4">
             <h2 className="text-xl font-bold">Share Note</h2>
@@ -39,22 +39,27 @@ export default function SharePopup({ handleShare, updatedNote }) {
           </div>
 
           {/* Form to enter email */}
-          <div className="flex items-center gap-4">
-            <FacebookShareButton
-              url={`${BASE_URL}/note/${updatedNote?._id}/details`}
-            >
-              <FacebookIcon size={32} round />
-            </FacebookShareButton>
-            <WhatsappShareButton
-              url={`${BASE_URL}/note/${updatedNote?._id}/details`}
-            >
-              <WhatsappIcon size={32} round />
-            </WhatsappShareButton>
-            <TwitterShareButton
-              url={`${BASE_URL}/note/${updatedNote?._id}/details`}
-            >
-              <TwitterIcon size={32} round />
-            </TwitterShareButton>
+          <div className="flex items-center justify-between">
+            {/* Social Share */}
+            <div className="flex items-center gap-4">
+              <FacebookShareButton
+                url={`${BASE_URL}/note/${updatedNote?._id}/details`}
+              >
+                <FacebookIcon size={32} round />
+              </FacebookShareButton>
+              <WhatsappShareButton
+                url={`${BASE_URL}/note/${updatedNote?._id}/details`}
+              >
+                <WhatsappIcon size={32} round />
+              </WhatsappShareButton>
+              <TwitterShareButton
+                url={`${BASE_URL}/note/${updatedNote?._id}/details`}
+              >
+                <TwitterIcon size={32} round />
+              </TwitterShareButton>
+            </div>
+
+            {/* Copy button */}
             <Button
               onClick={handleCopy}
               variant=""
@@ -77,11 +82,11 @@ export default function SharePopup({ handleShare, updatedNote }) {
           {/* Close button */}
           <button
             onClick={handleShare}
-            className="absolute top-0 right-0 mt-2 mr-2 text-gray-600 hover:text-gray-800 focus:outline-none"
+            className="absolute top-0 right-0 mt-2 mr-2 text-primary focus:outline-none border rounded-full p-1 hover:border-primary transition-all duration-300 ease-in-out"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              className="h-4 w-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
