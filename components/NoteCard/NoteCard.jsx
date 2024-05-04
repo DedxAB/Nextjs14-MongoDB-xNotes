@@ -134,10 +134,6 @@ const NoteCard = ({ note, user }) => {
               {/* username */}
               <p className={`text-[#6b6e6e] `}>@{user?.username}</p>
             </Link>
-
-            {isOpenShareModal && (
-              <SharePopup updatedNote={updatedNote} handleShare={handleShare} />
-            )}
           </div>
 
           {/* Title and Date div  */}
@@ -304,6 +300,9 @@ const NoteCard = ({ note, user }) => {
             >
               <Share2 className="w-4 h-4 " />
             </div>
+            {isOpenShareModal && (
+              <SharePopup updatedNote={updatedNote} handleShare={handleShare} />
+            )}
           </div>
         </div>
       </div>

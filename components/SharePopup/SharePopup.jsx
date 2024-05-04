@@ -2,7 +2,7 @@
 
 import { BASE_URL } from "@/utils/constants";
 import { Check, Clipboard, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -15,6 +15,13 @@ import { Button } from "../ui/button";
 
 export default function SharePopup({ handleShare, updatedNote }) {
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflowY = "hidden";
+    return () => {
+      document.body.style.overflowY = "scroll";
+    };
+  }, []);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(
@@ -29,64 +36,66 @@ export default function SharePopup({ handleShare, updatedNote }) {
 
   return (
     <>
-      <div className="fixed inset-0 z-50 bg-black/80 overflow-hidden flex justify-center items-center">
-        <div className="absolute inset-0" onClick={handleShare}></div>
-        <div className="rounded-lg mt-15 min-w-72 max-w-lg p-6 relative border bg-background">
-          {/* Modal content */}
-          <div className="mb-4">
-            <h2 className="text-xl font-bold">Share Note</h2>
-            <p className="mt-2">{updatedNote?.title}</p>
-          </div>
+      <div
+        className="fixed inset-0 z-10 bg-black/80 overflow-hidden flex justify-center items-center"
+        onClick={handleShare}
+      ></div>
 
-          {/* Form to enter email */}
-          <div className="flex items-center justify-between">
-            {/* Social Share */}
-            <div className="flex items-center gap-4">
-              <FacebookShareButton
-                url={`${BASE_URL}/note/${updatedNote?._id}/details`}
-              >
-                <FacebookIcon size={32} round />
-              </FacebookShareButton>
-              <WhatsappShareButton
-                url={`${BASE_URL}/note/${updatedNote?._id}/details`}
-              >
-                <WhatsappIcon size={32} round />
-              </WhatsappShareButton>
-              <TwitterShareButton
-                url={`${BASE_URL}/note/${updatedNote?._id}/details`}
-              >
-                <TwitterIcon size={32} round />
-              </TwitterShareButton>
-            </div>
-
-            {/* Copy button */}
-            <Button
-              onClick={handleCopy}
-              variant=""
-              className="flex gap-1 items-center"
-            >
-              {copied ? (
-                <>
-                  <Check className="w-4 h-4" />
-                  <p>Copied</p>
-                </>
-              ) : (
-                <>
-                  <Clipboard className="w-4 h-4" />
-                  <p>Copy</p>
-                </>
-              )}
-            </Button>
-          </div>
-
-          {/* Close button */}
-          <button
-            onClick={handleShare}
-            className="absolute top-0 right-0 mt-2 mr-2 text-primary focus:outline-none border rounded-full p-1 hover:border-primary transition-all duration-300 ease-in-out"
-          >
-            <X className="w-4 h-4" />
-          </button>
+      {/* Modal content */}
+      <div className="fixed z-20 top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] rounded-lg mt-15 min-w-72 max-w-lg p-6 border bg-background">
+        <div className="mb-4">
+          <h2 className="text-xl font-bold">Share Note</h2>
+          <p className="mt-2">{updatedNote?.title}</p>
         </div>
+
+        {/* Form to enter email */}
+        <div className="flex items-center justify-between gap-2">
+          {/* Social Share */}
+          <div className="flex items-center gap-4">
+            <FacebookShareButton
+              url={`${BASE_URL}/note/${updatedNote?._id}/details`}
+            >
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            <WhatsappShareButton
+              url={`${BASE_URL}/note/${updatedNote?._id}/details`}
+            >
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+            <TwitterShareButton
+              url={`${BASE_URL}/note/${updatedNote?._id}/details`}
+            >
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+          </div>
+
+          {/* Copy button */}
+          <Button
+            onClick={handleCopy}
+            variant=""
+            className="flex gap-1 items-center"
+          >
+            {copied ? (
+              <>
+                <Check className="w-4 h-4" />
+                <p>Copied</p>
+              </>
+            ) : (
+              <>
+                <Clipboard className="w-4 h-4" />
+                <p>Copy</p>
+              </>
+            )}
+          </Button>
+        </div>
+
+        {/* Close button */}
+        <button
+          onClick={handleShare}
+          className="absolute top-0 right-0 mt-2 mr-2 text-primary focus:outline-none border rounded-full p-1 hover:border-primary transition-all duration-300 ease-in-out"
+        >
+          <X className="w-4 h-4" />
+        </button>
       </div>
     </>
   );

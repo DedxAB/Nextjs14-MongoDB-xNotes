@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
 import { useSession } from "next-auth/react";
 import { CalendarDays, Contact } from "lucide-react";
-import { josefin_sans_font, source_code_pro_font } from "@/utils/fonts";
+import { inter_font, josefin_sans_font } from "@/utils/fonts";
 import {
   Dialog,
   DialogContent,
@@ -54,7 +54,7 @@ const ProfileSection = ({ user }) => {
                             <DialogTitle className="mb-2">
                               What is this badge?
                             </DialogTitle>
-                            <DialogDescription>
+                            <DialogDescription className={`${inter_font}`}>
                               This badge indicates that the user is an admin of
                               this website. Admin has special privileges and can
                               manage the website.
