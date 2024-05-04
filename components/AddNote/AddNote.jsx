@@ -6,13 +6,9 @@ import { toast } from "sonner";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { useSession } from "next-auth/react";
-import { ArrowUpToLine, ExternalLink, Share2 } from "lucide-react";
-import Link from "next/link";
+import { ArrowUpToLine } from "lucide-react";
 import { Label } from "../ui/label";
-import { Avatar, AvatarImage } from "../ui/avatar";
-import dayjs from "dayjs";
-import { josefin_sans_font, source_code_pro_font } from "@/utils/fonts";
-import NoteDescription from "../NoteDescription/NoteDescription";
+import { source_code_pro_font } from "@/utils/fonts";
 import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
 import {
   Select,
