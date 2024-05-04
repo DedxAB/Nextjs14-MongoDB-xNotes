@@ -40,7 +40,7 @@ const ProfileSection = ({ user }) => {
             <div
               className={`flex items-center flex-wrap font-bold ${josefin_sans_font}`}
             >
-              <p className="text-lg md:text-2xl mr-[.35rem] flex flex-wrap items-center">
+              <div className="text-lg md:text-2xl mr-[.35rem] flex flex-wrap items-center">
                 {user?.name}
                 {user?.isAdmin && (
                   <>
@@ -65,7 +65,7 @@ const ProfileSection = ({ user }) => {
                     </div>
                   </>
                 )}
-              </p>
+              </div>
               {/* <p className="text-base md:text-xl text-gray-500">
                 @{user?.username}
               </p> */}
