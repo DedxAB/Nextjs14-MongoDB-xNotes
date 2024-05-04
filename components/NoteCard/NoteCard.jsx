@@ -131,12 +131,6 @@ const NoteCard = ({ note, user }) => {
               <p className={`text-[#6b6e6e] `}>@{user?.username}</p>
             </Link>
 
-            <div
-              onClick={handleShare}
-              className="mr-1 block sm:hidden cursor-pointer"
-            >
-              <Share2 className="w-4 h-4 text-primary" />
-            </div>
             {isOpenShareModal && (
               <SharePopup updatedNote={updatedNote} handleShare={handleShare} />
             )}
@@ -260,7 +254,7 @@ const NoteCard = ({ note, user }) => {
                   </svg>
                 )}
                 <span className="text-sm font-bold">
-                  {updatedNote?.likes?.length} Likes
+                  {updatedNote?.likes?.length}
                 </span>
               </div>
             )}
@@ -284,7 +278,7 @@ const NoteCard = ({ note, user }) => {
                 />
               </svg>
               <span className="text-sm font-bold">
-                {note?.comments?.length} Comments
+                {note?.comments?.length}
               </span>
             </Link>
             {updatedNote?.websiteLink && (
@@ -294,7 +288,7 @@ const NoteCard = ({ note, user }) => {
             )}
             <div
               onClick={handleShare}
-              className="mr-1 hidden sm:flex sm:items-center sm:gap-2 cursor-pointer"
+              className="mr-1 flex items-center gap-2 cursor-pointer"
             >
               <Share2 className="w-4 h-4 text-primary" />
               <p className="text-sm font-bold">Share</p>
