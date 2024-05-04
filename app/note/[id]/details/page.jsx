@@ -13,7 +13,7 @@ export const generateMetadata = async ({ params }) => {
   return {
     title: `${
       currentUserEmail !== note?.author?.email && note?.visibility !== "public"
-        ? "Note Details (Private)"
+        ? "Note Title (Private)"
         : note?.title
     }`,
     description: `${

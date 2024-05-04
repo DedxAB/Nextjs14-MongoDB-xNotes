@@ -11,6 +11,7 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
+import { Button } from "../ui/button";
 
 export default function SharePopup({ handleShare, updatedNote }) {
   const [copied, setCopied] = useState(false);
@@ -29,11 +30,11 @@ export default function SharePopup({ handleShare, updatedNote }) {
     <>
       <div className="fixed inset-0 z-50 overflow-auto flex justify-center items-center">
         <div className="absolute inset-0" onClick={handleShare}></div>
-        <div className="rounded-lg mt-15 w-80 p-6 relative border backdrop-blur-xl">
+        <div className="rounded-lg mt-15 w-80 p-6 relative border backdrop-blur-md">
           {/* Modal content */}
           <div className="mb-4">
             <h2 className="text-xl font-bold">Share Note</h2>
-            <p className="text-gray-600 mt-2">{updatedNote?.title}</p>
+            <p className="mt-2">{updatedNote?.title}</p>
           </div>
 
           {/* Form to enter email */}
@@ -53,19 +54,23 @@ export default function SharePopup({ handleShare, updatedNote }) {
             >
               <TwitterIcon size={32} round />
             </TwitterShareButton>
-            <button onClick={handleCopy} className="flex gap-1 items-center">
+            <Button
+              onClick={handleCopy}
+              variant=""
+              className="flex gap-1 items-center"
+            >
               {copied ? (
                 <>
-                  <Check className="text-green-500 w-7 h-7" />
+                  <Check className="w-4 h-4" />
                   <p>Copied</p>
                 </>
               ) : (
                 <>
-                  <Clipboard className="text-primary w-7 h-7" />
+                  <Clipboard className="w-4 h-4" />
                   <p>Copy</p>
                 </>
               )}
-            </button>
+            </Button>
           </div>
 
           {/* Close button */}
