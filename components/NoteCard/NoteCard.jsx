@@ -147,9 +147,7 @@ const NoteCard = ({ note, user }) => {
             {/* Show the title and date */}
             <Link href={`/note/${updatedNote?._id}/details`}>
               {/* title  */}
-              <h2
-                className={`text-lg md:text-xl font-bold ${source_code_pro_font}`}
-              >
+              <h2 className={`text-lg md:text-xl font-bold`}>
                 {updatedNote?.title}
               </h2>
 
@@ -219,7 +217,7 @@ const NoteCard = ({ note, user }) => {
                 <Link
                   href={`/result?q=${encodeURIComponent(tag)}`}
                   key={index}
-                  className={`text-sm md:text-base ${source_code_pro_font} mr-2 cursor-pointer border px-2 py-[0.16rem] rounded inline-block my-1 hover:bg-primary hover:text-white transition-all duration-300 ease-in-out`}
+                  className={`text-sm md:text-base  mr-2 cursor-pointer border px-2 py-[0.16rem] rounded inline-block my-1 hover:bg-primary hover:text-white transition-all duration-300 ease-in-out`}
                 >
                   {tag}
                 </Link>

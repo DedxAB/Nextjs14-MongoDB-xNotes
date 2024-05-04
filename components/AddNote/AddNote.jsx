@@ -308,11 +308,7 @@ const AddNote = () => {
                   {/* Show the title and date */}
                   <div>
                     {/* title  */}
-                    <h2
-                      className={`text-lg md:text-xl font-bold ${source_code_pro_font}`}
-                    >
-                      {title}
-                    </h2>
+                    <h2 className={`text-lg md:text-xl font-bold`}>{title}</h2>
 
                     {/* date */}
                     <div
@@ -335,7 +331,7 @@ const AddNote = () => {
                       <Link
                         href={`/result?q=${tag}`}
                         key={index}
-                        className={`text-sm md:text-base ${source_code_pro_font} mr-2 cursor-pointer border px-2 py-[0.16rem] rounded inline-block my-1 hover:bg-primary hover:text-white transition-all duration-300 ease-in-out`}
+                        className={`text-sm md:text-base mr-2 cursor-pointer border px-2 py-[0.16rem] rounded inline-block my-1 hover:bg-primary hover:text-white transition-all duration-300 ease-in-out`}
                       >
                         {tag}
                       </Link>

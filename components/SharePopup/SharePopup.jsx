@@ -23,7 +23,8 @@ export default function SharePopup({ handleShare, updatedNote }) {
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
-    }, 4000);
+      handleShare();
+    }, 1000);
   };
 
   return (
