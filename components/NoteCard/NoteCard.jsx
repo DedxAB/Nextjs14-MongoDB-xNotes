@@ -10,7 +10,11 @@ import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
 import { toast } from "sonner";
 import { useState } from "react";
-import { josefin_sans_font, source_code_pro_font } from "@/utils/fonts";
+import {
+  inter_font,
+  josefin_sans_font,
+  source_code_pro_font,
+} from "@/utils/fonts";
 import NoteDescription from "../NoteDescription/NoteDescription";
 import SharePopup from "../SharePopup/SharePopup";
 
@@ -219,13 +223,11 @@ const NoteCard = ({ note, user }) => {
             </div>
           )}
 
-          {/* Show the likes and comments and weblink */}
-          <div
-            className={`${source_code_pro_font} flex gap-5 mt-2 pt-1 items-center`}
-          >
+          {/* Show the likes and comments and weblink share  */}
+          <div className={`flex gap-3 mt-2 pt-1 items-center`}>
             {/* Likes  */}
             {updatedNote?.likes && (
-              <div className="flex gap-1 items-center">
+              <div className="flex gap-1 items-center transition-all duration-300 ease-in-out border hover:border-primary rounded-full p-2">
                 {updatedNote?.likes?.includes(session?.user?.id) ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -243,7 +245,7 @@ const NoteCard = ({ note, user }) => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-5 h-5 cursor-pointer text-primary"
+                    className="w-5 h-5 cursor-pointer "
                     onClick={() => handelLike(true)}
                   >
                     <path
@@ -258,10 +260,11 @@ const NoteCard = ({ note, user }) => {
                 </span>
               </div>
             )}
+
             {/* Comments */}
             <Link
               href={`/note/${updatedNote?._id}/details`}
-              className="flex gap-1 items-center"
+              className="flex gap-1 items-center transition-all duration-300 ease-in-out border hover:border-primary rounded-full p-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -269,7 +272,7 @@ const NoteCard = ({ note, user }) => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-5 h-5 cursor-pointer text-primary"
+                className="w-5 h-5 cursor-pointer "
               >
                 <path
                   strokeLinecap="round"
@@ -281,17 +284,25 @@ const NoteCard = ({ note, user }) => {
                 {note?.comments?.length}
               </span>
             </Link>
+
+            {/* Website link */}
             {updatedNote?.websiteLink && (
-              <Link href={updatedNote?.websiteLink} target="_blank">
-                <ExternalLink className="w-4 h-4 text-primary" />
+              <Link
+                href={updatedNote?.websiteLink}
+                target="_blank"
+                rel="noopener"
+                className="border rounded-full p-[.63rem] hover:border-primary transition-all duration-300 ease-in-out"
+              >
+                <ExternalLink className="w-4 h-4 " />
               </Link>
             )}
+
+            {/* Share */}
             <div
               onClick={handleShare}
-              className="mr-1 flex items-center gap-2 cursor-pointer"
+              className="mr-1 cursor-pointer transition-all duration-300 ease-in-out border rounded-full p-[.63rem] hover:border-primary"
             >
-              <Share2 className="w-4 h-4 text-primary" />
-              <p className="text-sm font-bold">Share</p>
+              <Share2 className="w-4 h-4 " />
             </div>
           </div>
         </div>
