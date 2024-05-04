@@ -42,7 +42,7 @@ const Navbar = () => {
         if (searchText.length === 0) {
           setOpenSearch(false);
         }
-      }, 6000); // Close search after 15 seconds of inactivity
+      }, 116000); // Close search after 15 seconds of inactivity
     }
 
     return () => clearTimeout(timeoutId);
@@ -167,7 +167,7 @@ const Navbar = () => {
         </div>
       )}
       {openSearch && (
-        <div className="w-full px-4 absolute top-4 left-0">
+        <div className="w-full px-4 absolute top-[.83rem] left-0">
           {/* Content */}
           <div className="w-full flex items-center z-20">
             <form onSubmit={hadleSearchInput} className="w-full">
@@ -192,13 +192,13 @@ const Navbar = () => {
             </form>
             <Button
               size="icon"
-              className={`h-10 w-12 ml-2`}
+              className={`h-[2.69rem] w-12 ml-2 rounded-lg`}
               onClick={() => {
                 setOpenSearch(!openSearch);
                 setSearchText("");
               }}
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5" />
             </Button>
           </div>
         </div>

@@ -13,12 +13,12 @@ export const generateMetadata = async ({ params }) => {
   return {
     title: `${
       currentUserEmail !== note?.author?.email && note?.visibility !== "public"
-        ? "Note Title (Private)"
+        ? "Note Details (Private)"
         : note?.title
     }`,
     description: `${
       currentUserEmail !== note?.author?.email && note?.visibility !== "public"
-        ? "Note Details (Private)"
+        ? "An interactive note-sharing platform! Create digital sticky notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today! 🌟"
         : note?.description
     }`,
   };
