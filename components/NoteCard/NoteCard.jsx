@@ -10,11 +10,7 @@ import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
 import { toast } from "sonner";
 import { useState } from "react";
-import {
-  inter_font,
-  josefin_sans_font,
-  source_code_pro_font,
-} from "@/utils/fonts";
+import { josefin_sans_font } from "@/utils/fonts";
 import NoteDescription from "../NoteDescription/NoteDescription";
 import SharePopup from "../SharePopup/SharePopup";
 
