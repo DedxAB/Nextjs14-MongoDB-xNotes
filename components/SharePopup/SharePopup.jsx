@@ -28,6 +28,7 @@ export default function SharePopup({ handleShare, updatedNote }) {
   return (
     <>
       <div className="fixed inset-0 z-50 overflow-auto flex justify-center items-center">
+        <div className="absolute inset-0" onClick={handleShare}></div>
         <div className="rounded-lg mt-15 w-80 p-6 relative border backdrop-blur-xl">
           {/* Modal content */}
           <div className="mb-4">
