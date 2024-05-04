@@ -10,8 +10,11 @@ export const metadata = {
     default: "DedxNotes - Digital Sticky Notes",
     template: "%s - DedxNotes",
   },
-  description:
-    "An interactive note-sharing platform! Create digital sticky notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today! 🌟",
+  description: {
+    default:
+      "An interactive note-sharing platform! Create digital sticky notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today! 🌟",
+    template: "%s - DedxNotes",
+  },
   keywords:
     "notes, sticky notes, digital sticky note, recall notes, productivity, online platform, notes sharing, ideas, notes app, dedxnotes productivity, dedxnotes note-taking, dedxnotes note sharing, dedxnotes notes app",
   creator: "DedxAB - Arnab Bhoumik",
