@@ -51,7 +51,7 @@ export default function SharePopup({ handleShare, updatedNote }) {
         {/* Form to enter email */}
         <div className="flex items-center justify-between gap-2">
           {/* Social Share */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <FacebookShareButton
               url={`${BASE_URL}/note/${updatedNote?._id}/details`}
             >
