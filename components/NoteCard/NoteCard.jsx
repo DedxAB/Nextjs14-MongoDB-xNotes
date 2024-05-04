@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, Pencil, PencilLine } from "lucide-react";
+import { ExternalLink, Pencil, Share2 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -12,9 +12,11 @@ import { toast } from "sonner";
 import { useState } from "react";
 import { josefin_sans_font, source_code_pro_font } from "@/utils/fonts";
 import NoteDescription from "../NoteDescription/NoteDescription";
+import SharePopup from "../SharePopup/SharePopup";
 
 const NoteCard = ({ note, user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
+  const [isOpenShareModal, setIsOpenShareModal] = useState(false);
   const { data: session } = useSession();
   const pathName = usePathname();
   const router = useRouter();
@@ -74,10 +76,14 @@ const NoteCard = ({ note, user }) => {
     }
   };
 
+  const handleShare = () => {
+    setIsOpenShareModal(!isOpenShareModal);
+  };
+
   return (
     <>
       {/* Note card 03notecard branch */}
-      <div className="border-t border-x flex justify-start gap-1 mb-3 md:mb-4 rounded-tr-xl rounded-tl-xl px-3 md:px-4 py-[.85rem]">
+      <div className="border-t border-x flex justify-start gap-1 mb-3 md:mb-4 rounded-tr-xl rounded-tl-xl px-3 md:px-4 py-[.85rem] relative">
         {/* Show the author image */}
         <div className="pt-[5px] mr-2 flex flex-col justify-between items-center">
           <Link href={`/profile/${user?._id}/details`}>
@@ -112,17 +118,29 @@ const NoteCard = ({ note, user }) => {
           </div>
         </div>
         <div className="w-full">
-          {/* Show the author name, username */}
-          <Link
-            href={`/profile/${user?._id}/details`}
-            className={`flex flex-wrap items-center text-xs mr-2 py-1 ${josefin_sans_font}`}
-          >
-            {/* name  */}
-            <p className={`font-bold mr-1`}>{user?.name}</p>
+          <div className="flex justify-between items-center">
+            {/* Show the author name, username */}
+            <Link
+              href={`/profile/${user?._id}/details`}
+              className={`flex flex-wrap items-center text-xs mr-2 py-1 ${josefin_sans_font}`}
+            >
+              {/* name  */}
+              <p className={`font-bold mr-1`}>{user?.name}</p>
 
-            {/* username */}
-            <p className={`text-[#6b6e6e] `}>@{user?.username}</p>
-          </Link>
+              {/* username */}
+              <p className={`text-[#6b6e6e] `}>@{user?.username}</p>
+            </Link>
+
+            <div
+              onClick={handleShare}
+              className="mr-1 block sm:hidden cursor-pointer"
+            >
+              <Share2 className="w-4 h-4 text-primary" />
+            </div>
+            {isOpenShareModal && (
+              <SharePopup updatedNote={updatedNote} handleShare={handleShare} />
+            )}
+          </div>
 
           {/* Title and Date div  */}
           <div className="flex justify-between items-start gap-1">
@@ -276,6 +294,13 @@ const NoteCard = ({ note, user }) => {
                 <ExternalLink className="w-4 h-4 text-primary" />
               </Link>
             )}
+            <div
+              onClick={handleShare}
+              className="mr-1 hidden sm:flex sm:items-center sm:gap-2 cursor-pointer"
+            >
+              <Share2 className="w-4 h-4 text-primary" />
+              <p className="text-sm font-bold">Share</p>
+            </div>
           </div>
         </div>
       </div>
