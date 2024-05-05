@@ -21,13 +21,15 @@ const ProfileEditPage = async ({ params }) => {
   // console.log(id);
 
   const { user } = await fetchUserById(id);
+  // console.log(user);
 
-  const { bio, socialLinks, _id: userId } = user;
+  const { bio, socialLinks, _id: userId, username, name } = user;
   // console.log(bio);
 
   if (session?.user?.email === user?.email) {
     return (
       <div className="min-h-[85vh]">
+        {/* Breadcrumb */}
         <div className="mt-3">
           <Breadcrumb>
             <BreadcrumbList>
@@ -43,7 +45,15 @@ const ProfileEditPage = async ({ params }) => {
             </BreadcrumbList>
           </Breadcrumb>
         </div>
-        <EditProfileForm userId={userId} bio={bio} socialLinks={socialLinks} />
+
+        {/* Edit Profile Form Here */}
+        <EditProfileForm
+          userId={userId}
+          bio={bio}
+          socialLinks={socialLinks}
+          name={name}
+          username={username}
+        />
       </div>
     );
   } else {

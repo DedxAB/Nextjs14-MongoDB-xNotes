@@ -9,12 +9,10 @@ export async function POST(req) {
     await connectDB();
     const isExistUser = await User.findOne({ email });
     if (isExistUser) {
-      const updatedUser = await User.findByIdAndUpdate(
-        isExistUser?._id,
-        { name },
-        { new: true }
+      return NextResponse.json(
+        { message: "User already exists" },
+        { status: 400 }
       );
-      return NextResponse.json({ user: updatedUser }, { status: 200 });
     }
     const newUser = await User.create({ email, name, image, username });
     if (!newUser) {
