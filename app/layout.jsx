@@ -4,7 +4,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { NextAuthProviders } from "./Providers";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
-import SecondNavbar from "@/components/SecondNavbar/SecondNavbar";
 
 export const metadata = {
   title: {
@@ -40,9 +39,6 @@ export default function RootLayout({ children }) {
             {/* navbar */}
             <div className="w-full sticky top-0 left-0 backdrop-filter backdrop-blur-lg bg-opacity-30 border-b z-10">
               <Navbar />
-            </div>
-            <div className="border-b">
-              <SecondNavbar />
             </div>
 
             {/* main content */}

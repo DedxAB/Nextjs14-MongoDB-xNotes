@@ -1,3 +1,5 @@
+import FaqSection from "@/components/FaqSection/FaqSection";
+import FeatureSection from "@/components/FeatureSection/FeatureSection";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,7 +16,7 @@ export default function About() {
           className="object-cover w-full h-32 md:h-44"
         ></Image>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold md:text-4xl text-white text-center">
-          <h2>About</h2>
+          <h2>#About</h2>
         </div>
       </div>
 
@@ -63,6 +65,22 @@ export default function About() {
           for more updates.
         </p>
       </div>
+
+      {/* feature  */}
+      <div>
+        <h2 className="mt-12 font-bold md:text-3xl text-center border rounded-lg p-5">
+          Features
+        </h2>
+      </div>
+      <FeatureSection />
+
+      {/* faq section  */}
+      <div>
+        <h2 className="mt-12 font-bold md:text-3xl text-center border rounded-lg p-5">
+          Frequently Asked Questions
+        </h2>
+      </div>
+      <FaqSection />
     </div>
   );
 }

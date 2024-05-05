@@ -1,13 +1,11 @@
-import Image from "next/image";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { source_code_pro_font } from "@/utils/fonts";
 
-export default function FAQ() {
+export default function FaqSection() {
   const faqs = [
     {
       value: "item-1",
@@ -52,26 +50,8 @@ export default function FAQ() {
         "Yes, you can search your notes. We have a search feature. You can search your notes by title or content or keyword. For more information refer the Features page.",
     },
   ];
-
   return (
-    <div className="min-h-[85vh]">
-      {/* image div  */}
-      <div className="w-full relative">
-        <Image
-          src={`https://images.pexels.com/photos/640809/pexels-photo-640809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`}
-          alt="faq-image"
-          width={1200}
-          height={300}
-          priority
-          className="object-cover w-full h-32 md:h-44"
-        ></Image>
-        <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] font-bold md:text-4xl text-white text-center">
-          <h2>Frequently Asked Questions (FAQs)</h2>
-        </div>
-      </div>
-
-      {/* faq div */}
-
+    <>
       <div className={`mt-5`}>
         {faqs.map((faq, index) => {
           return (
@@ -90,11 +70,6 @@ export default function FAQ() {
           );
         })}
       </div>
-
-      {/* more info div */}
-      <div className="mt-5 font-bold md:text-xl">
-        <h2>For more information, you can refer the Features page.</h2>
-      </div>
-    </div>
+    </>
   );
 }
