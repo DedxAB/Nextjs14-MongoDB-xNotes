@@ -1,7 +1,14 @@
 import ProfileSection from "@/components/ProfileSection/ProfileSection";
 import UserFeed from "@/components/UserNotesFeed/UserNotesFeed";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { fetchUserById } from "@/services/userServices";
+import { BASE_URL } from "@/utils/constants";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -23,6 +30,17 @@ const page = async ({ params }) => {
 
   return (
     <div className="min-h-[85vh]">
+      <div className="mt-3">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <Link href={`${BASE_URL}`}>Home</Link>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>Admin Profile</BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       <ProfileSection user={user} />
       {/* <ShowAllUser /> */}
       <Link href={`/admin/${id}/details/all-user`}>

@@ -1,8 +1,17 @@
 import NoteDetailsById from "@/components/NoteDetailsById/NoteDetailsById";
 import UserCard from "@/components/UserCard/UserCard";
 import WelcomeBanner from "@/components/WelcomeBanner/WelcomeBanner";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { fetchNoteById } from "@/services/noteServices";
+import { BASE_URL } from "@/utils/constants";
 import { getServerSession } from "next-auth";
+import Link from "next/link";
 
 export const generateMetadata = async ({ params }) => {
   const { id } = params;
@@ -38,6 +47,21 @@ const NoteDetails = async ({ params }) => {
   ) {
     return (
       <div className="min-h-[85vh]">
+        <div className="mt-3">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href={`${BASE_URL}`}>Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href={`${BASE_URL}/note/${id}/details`}>
+                  Notes
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
         <WelcomeBanner
           title={`Note Details`}
           description={`This note is private and can only be viewed by the author. If you want
@@ -51,6 +75,17 @@ const NoteDetails = async ({ params }) => {
 
   return (
     <div className="min-h-[85vh]">
+      <div className="mt-3">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <Link href={`${BASE_URL}`}>Home</Link>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>Notes</BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       <NoteDetailsById note={note} />
     </div>
   );

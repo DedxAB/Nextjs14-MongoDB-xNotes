@@ -1,10 +1,29 @@
 import NotesFeed from "@/components/NotesFeed/NotesFeed";
 import SearchInput from "@/components/SearchInput/SearchInput";
 import UserBanner from "@/components/UserBanner/UserBanner";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { BASE_URL } from "@/utils/constants";
+import Link from "next/link";
 
 const Home = () => {
   return (
     <div className="min-h-[85vh]">
+      <div className="mt-3">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <Link href={`${BASE_URL}`}>Home</Link>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       {/* UserBanner Welcome */}
       <UserBanner />
       {/* Search Input */}

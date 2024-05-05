@@ -1,7 +1,15 @@
 import ProfileSection from "@/components/ProfileSection/ProfileSection";
 import UserFeed from "@/components/UserNotesFeed/UserNotesFeed";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { fetchUserById } from "@/services/userServices";
+import { BASE_URL } from "@/utils/constants";
 import { getServerSession } from "next-auth";
+import Link from "next/link";
 
 export const generateMetadata = async ({ params }) => {
   const { id } = params;
@@ -23,6 +31,17 @@ const Profile = async ({ params }) => {
 
   return (
     <div className="min-h-[85vh]">
+      <div className="mt-3">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <Link href={`${BASE_URL}`}>Home</Link>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>Profile</BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       <ProfileSection user={user} />
       <hr className="my-6" />
       <UserFeed notes={filteredNotes} user={user} />

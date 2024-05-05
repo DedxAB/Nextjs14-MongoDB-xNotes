@@ -1,6 +1,14 @@
 import EditProfileForm from "@/components/EditProfileForm/EditProfileForm";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { fetchUserById } from "@/services/userServices";
+import { BASE_URL } from "@/utils/constants";
 import { getServerSession } from "next-auth";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export const metadata = {
@@ -21,6 +29,23 @@ const page = async ({ params }) => {
 
   return (
     <div className="min-h-[85vh]">
+      <div className="mt-3">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <Link href={`${BASE_URL}`}>Home</Link>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <Link href={`${BASE_URL}/admin/${id}/details`}>
+                Admin Profile
+              </Link>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>Edit</BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       <EditProfileForm userId={userId} bio={bio} socialLinks={socialLinks} />
     </div>
   );

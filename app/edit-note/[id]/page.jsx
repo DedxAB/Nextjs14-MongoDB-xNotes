@@ -1,6 +1,14 @@
 import EditNote from "@/components/EditNote/EditNote";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { fetchNoteById } from "@/services/noteServices";
+import { BASE_URL } from "@/utils/constants";
 import { getServerSession } from "next-auth";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export const metadata = {
@@ -22,6 +30,17 @@ const page = async ({ params }) => {
   // if the current user is the author of the note, render the edit note page
   return (
     <div className="min-h-[85vh]">
+      <div className="mt-3">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <Link href={`${BASE_URL}`}>Home</Link>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>Edit Note</BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       <EditNote
         id={id}
         title={title}
