@@ -57,6 +57,7 @@ const RemoveButton = ({ id, title }) => {
             onClick={() => setConformationMessage(true)}
             variant="outline"
             size="icon"
+            className="rounded-full h-[2.35rem] w-[2.35rem]"
           >
             <Trash2 className="w-4 h-4 text-red-500" />
           </Button>

@@ -96,26 +96,24 @@ const NoteCard = ({ note, user }) => {
               <AvatarFallback>{shortName}</AvatarFallback>
             </Avatar>
           </Link>
-          <div className="block sm:hidden">
+          <>
             {(session?.user?.id === user?._id || session?.user?.isAdmin) &&
               (pathName === `/profile/${user?._id}/details` ||
                 pathName === `/admin/${user?._id}/details`) && (
-                <div className="flex flex-col gap-2">
+                <>
                   {/* Add the edit button */}
                   <Link href={`/edit-note/${updatedNote?._id}`}>
-                    <Button variant="outline" size="icon">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="rounded-full h-[2.35rem] w-[2.35rem]"
+                    >
                       <Pencil className="w-4 h-4" />
                     </Button>
                   </Link>
-
-                  {/* Add the remove button */}
-                  <RemoveButton
-                    id={updatedNote?._id}
-                    title={updatedNote?.title}
-                  />
-                </div>
+                </>
               )}
-          </div>
+          </>
         </div>
         <div className="w-full">
           <div className="flex justify-between items-center">
@@ -171,27 +169,6 @@ const NoteCard = ({ note, user }) => {
                 </div>
               </div>
             </Link>
-
-            {/* Show this in the Profile page only */}
-            {/* Show Edit and remove button based on user who created this note */}
-            {(session?.user?.id === user?._id || session?.user?.isAdmin) &&
-              (pathName === `/profile/${user?._id}/details` ||
-                pathName === `/admin/${user?._id}/details`) && (
-                <div className="min-w-20 hidden sm:block">
-                  {/* Add the edit button */}
-                  <Link href={`/edit-note/${updatedNote?._id}`}>
-                    <Button variant="outline" size="icon" className="mr-2">
-                      <Pencil className="w-4 h-4" />
-                    </Button>
-                  </Link>
-
-                  {/* Add the remove button */}
-                  <RemoveButton
-                    id={updatedNote?._id}
-                    title={updatedNote?.title}
-                  />
-                </div>
-              )}
           </div>
 
           {/* Show the description */}
@@ -216,7 +193,7 @@ const NoteCard = ({ note, user }) => {
           )}
 
           {/* Show the likes and comments and weblink share  */}
-          <div className={`flex gap-3 mt-2 pt-1 items-center`}>
+          <div className={`flex gap-[.63rem] md:gap-3 mt-2 pt-1 items-center`}>
             {/* Likes  */}
             {updatedNote?.likes && (
               <div className="flex gap-1 items-center transition-all duration-300 ease-in-out border hover:border-primary rounded-full p-2">
@@ -292,10 +269,21 @@ const NoteCard = ({ note, user }) => {
             {/* Share */}
             <div
               onClick={handleShare}
-              className="mr-1 cursor-pointer transition-all duration-300 ease-in-out border rounded-full p-[.63rem] hover:border-primary"
+              className="cursor-pointer transition-all duration-300 ease-in-out border rounded-full p-[.63rem] hover:border-primary"
             >
               <Share2 className="w-4 h-4 " />
             </div>
+
+            {(session?.user?.id === user?._id || session?.user?.isAdmin) &&
+              (pathName === `/profile/${user?._id}/details` ||
+                pathName === `/admin/${user?._id}/details`) && (
+                <>
+                  <RemoveButton
+                    id={updatedNote?._id}
+                    title={updatedNote?.title}
+                  />
+                </>
+              )}
             {isOpenShareModal && (
               <SharePopup updatedNote={updatedNote} handleShare={handleShare} />
             )}
