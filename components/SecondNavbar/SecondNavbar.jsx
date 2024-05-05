@@ -19,10 +19,10 @@ export default function SecondNavbar() {
             Features
           </Link>
           <Link
-            href={`${BASE_URL}/faq`}
+            href={`${BASE_URL}/faqs`}
             className="rounded-md border-primary p-2"
           >
-            FAQ
+            FAQs
           </Link>
         </div>
       </div>

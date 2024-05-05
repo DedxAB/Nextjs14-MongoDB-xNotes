@@ -159,7 +159,11 @@ const Navbar = () => {
                   <LogIn className="w-4" />
                 </Button>
               </Link>
-              <Button variant={`outline`} size="icon" onClick={() => signOut()}>
+              <Button
+                variant={`outline`}
+                size="icon"
+                onClick={() => signOut({ callbackUrl: "/" })}
+              >
                 <LogOut className="w-4 text-red-500" />
               </Button>
             </div>
