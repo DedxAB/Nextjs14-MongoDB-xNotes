@@ -33,7 +33,7 @@ export const PATCH = async (req, { params }) => {
   try {
     await connectDB();
     const { id } = params;
-    const { bio, socialLinks } = await req.json();
+    const { bio, socialLinks, name, username } = await req.json();
     const session = await getServerSession();
 
     // Find the user by ID and check if the session email matches the user's email
@@ -48,10 +48,18 @@ export const PATCH = async (req, { params }) => {
       );
     }
 
+    const isUsernameExist = await User.findOne({ username });
+    if (isUsernameExist) {
+      return NextResponse.json(
+        { message: "Username already exists. Try different one." },
+        { status: 400 }
+      );
+    }
+
     // Update the user's bio and social links
     const updatedUser = await User.findByIdAndUpdate(
       id,
-      { bio, socialLinks },
+      { bio, socialLinks, name, username },
       { new: true }
     );
     return NextResponse.json({ message: "Bio updated" }, { status: 200 });
