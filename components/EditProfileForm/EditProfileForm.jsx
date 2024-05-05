@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { Input } from "../ui/input";
 import { useSession } from "next-auth/react";
 import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
+import { Label } from "../ui/label";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -18,7 +19,9 @@ const isValidUrl = (url) => {
   return urlRegex.test(url);
 };
 
-const EditProfileForm = ({ userId, bio, socialLinks }) => {
+const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
+  const [newName, setNewName] = useState(name || "");
+  const [newUsername, setNewUsername] = useState(username || "");
   const [newBio, setNewBio] = useState(bio || "");
   const [socialLink, setSocialLink] = useState(socialLinks || {});
   const [charCount, setCharCount] = useState(0);
@@ -48,8 +51,13 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
 
   const handelOnSubmit = async (e) => {
     e.preventDefault();
-    if (!newBio) {
-      toast.warning("Bio is required");
+
+    if (!newName) {
+      toast.warning("Name is required");
+      return;
+    }
+    if (!newUsername) {
+      toast.warning("Username is required");
       return;
     }
 
@@ -65,7 +73,12 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
     try {
       const res = await fetch(`/api/user/${userId}`, {
         method: "PATCH",
-        body: JSON.stringify({ bio: newBio, socialLinks: socialLink }),
+        body: JSON.stringify({
+          bio: newBio,
+          socialLinks: socialLink,
+          name: newName,
+          username: newUsername,
+        }),
         headers: {
           "Content-Type": "application/json",
         },
@@ -96,20 +109,61 @@ const EditProfileForm = ({ userId, bio, socialLinks }) => {
 
       <section>
         <form onSubmit={handelOnSubmit} className="flex flex-col gap-3">
+          {/* Name input and Username input main div  */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {/* Name Input */}
+            <div className="flex flex-col justify-center gap-3">
+              <Label htmlFor={`name`} className={`font-bold text-base`}>
+                Name
+              </Label>
+              <Input
+                id={`name`}
+                placeholder="Name"
+                className={`font-bold py-5 px-4`}
+                value={newName}
+                onChange={(e) => setNewName(e.target.value)}
+              />
+            </div>
+
+            {/* Username Input */}
+            <div className="flex flex-col justify-center gap-3">
+              <Label htmlFor={`username`} className={`font-bold text-base`}>
+                Username
+              </Label>
+              <Input
+                id={`username`}
+                placeholder="@username"
+                className={`font-bold py-5 px-4`}
+                value={`${newUsername}`}
+                onChange={(e) => setNewUsername(e.target.value)}
+              />
+            </div>
+          </div>
           {/* Description text area */}
-          <Textarea
-            ref={textareaRef}
-            onChange={handleBioChange}
-            value={newBio}
-            placeholder={`Tell us about yourself...`}
-            className={`px-4 py-3 font-bold shadow overflow-hidden`}
-          />
+          <div className="flex flex-col justify-center gap-3">
+            <Label htmlFor={`bio`} className={`font-bold text-base`}>
+              Your Bio
+            </Label>
+            <Textarea
+              id={`bio`}
+              ref={textareaRef}
+              onChange={handleBioChange}
+              value={newBio}
+              placeholder={`Tell us about yourself...`}
+              className={`px-4 py-3 font-bold shadow overflow-hidden`}
+            />
+          </div>
           <p className="text-right font-bold text-sm text-gray-500">
             {charCount}/{maxCharCount}
           </p>
+
           {/* Social Links */}
-          <div className="flex flex-wrap gap-3">
+          <Label htmlFor={`social`} className={`font-bold text-base`}>
+            Social Links
+          </Label>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Input
+              id={`social`}
               placeholder="https://www.facebook.com/"
               className={`font-bold py-5 px-4`}
               value={socialLink?.facebook || ""}

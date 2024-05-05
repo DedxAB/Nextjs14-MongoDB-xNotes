@@ -102,14 +102,14 @@ const ProfileSection = ({ user }) => {
         {/* User Google Account  */}
         {session?.user?.id === user?._id && (
           <div
-            className={`${source_code_pro_font} text-gray-500 font-semibold text-lg my-4 flex items-center flex-wrap`}
+            className={`${josefin_sans_font} my-4 flex items-center flex-wrap`}
           >
             <div className="flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
                 y="0px"
-                className="w-6 h-6"
+                className="w-4 md:w-5 h-4 md:h-5"
                 viewBox="0 0 48 48"
               >
                 <path
@@ -129,9 +129,13 @@ const ProfileSection = ({ user }) => {
                   d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
                 ></path>
               </svg>
-              <span>&nbsp;</span>
+              <span className="text-md md:text-xl text-gray-500 font-bold pt-1">
+                oogle •
+              </span>
             </div>
-            <span>{user?.email}</span>
+            <span className="text-md md:text-xl text-gray-500 font-bold pt-1">
+              &nbsp;{user?.email}
+            </span>
           </div>
         )}
 
