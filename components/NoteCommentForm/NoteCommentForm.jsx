@@ -115,7 +115,7 @@ const NoteCommentForm = ({ note }) => {
             />
             <Button
               size="icon"
-              className={`h-8 w-10`}
+              className={`h-8 w-9 rounded-full`}
               disabled={!session || !comment}
               onClick={handleSubmitCommentForm}
             >

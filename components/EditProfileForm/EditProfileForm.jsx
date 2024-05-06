@@ -11,6 +11,7 @@ import { Input } from "../ui/input";
 import { useSession } from "next-auth/react";
 import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
 import { Label } from "../ui/label";
+import { source_code_pro_font } from "@/utils/fonts";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -113,8 +114,11 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {/* Name Input */}
             <div className="flex flex-col justify-center gap-3">
-              <Label htmlFor={`name`} className={`font-bold text-base`}>
-                Name
+              <Label
+                htmlFor={`name`}
+                className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
+              >
+                Name:
               </Label>
               <Input
                 id={`name`}
@@ -127,12 +131,15 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
 
             {/* Username Input */}
             <div className="flex flex-col justify-center gap-3">
-              <Label htmlFor={`username`} className={`font-bold text-base`}>
-                Username
+              <Label
+                htmlFor={`username`}
+                className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
+              >
+                Username:
               </Label>
               <Input
                 id={`username`}
-                placeholder="@username"
+                placeholder="username"
                 className={`font-bold py-5 px-4`}
                 value={`${newUsername}`}
                 onChange={(e) => setNewUsername(e.target.value)}
@@ -141,8 +148,11 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
           </div>
           {/* Description text area */}
           <div className="flex flex-col justify-center gap-3">
-            <Label htmlFor={`bio`} className={`font-bold text-base`}>
-              Your Bio
+            <Label
+              htmlFor={`bio`}
+              className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
+            >
+              Your Bio:
             </Label>
             <Textarea
               id={`bio`}
@@ -158,8 +168,11 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
           </p>
 
           {/* Social Links */}
-          <Label htmlFor={`social`} className={`font-bold text-base`}>
-            Social Links
+          <Label
+            htmlFor={`social`}
+            className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
+          >
+            Social Links:
           </Label>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Input
