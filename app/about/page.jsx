@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <div className={`min-h-[85vh]`}>
+    <div className={`min-h-full`}>
       <div className="w-full relative">
         <Image
           src={`https://images.pexels.com/photos/640809/pexels-photo-640809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`}

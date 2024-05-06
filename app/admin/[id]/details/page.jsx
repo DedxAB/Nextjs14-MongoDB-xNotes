@@ -29,7 +29,7 @@ const page = async ({ params }) => {
   }
 
   return (
-    <div className="min-h-[85vh]">
+    <div className="min-h-full">
       <div className="mt-3">
         <Breadcrumb>
           <BreadcrumbList>

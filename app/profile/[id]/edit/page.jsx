@@ -28,7 +28,7 @@ const ProfileEditPage = async ({ params }) => {
 
   if (session?.user?.email === user?.email) {
     return (
-      <div className="min-h-[85vh]">
+      <div className="min-h-full">
         {/* Breadcrumb */}
         <div className="mt-3">
           <Breadcrumb>

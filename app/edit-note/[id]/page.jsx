@@ -29,7 +29,7 @@ const page = async ({ params }) => {
 
   // if the current user is the author of the note, render the edit note page
   return (
-    <div className="min-h-[85vh]">
+    <div className="min-h-full">
       <div className="mt-3">
         <Breadcrumb>
           <BreadcrumbList>
