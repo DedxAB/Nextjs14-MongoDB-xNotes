@@ -307,7 +307,7 @@ const AddNote = () => {
         />
       )}
 
-      <div className="flex items-center justify-end md:justify-end gap-3 my-5">
+      <div className="flex items-center justify-end md:justify-end gap-3 mt-5 mb-32">
         {/* Share with public or private */}
         <div>
           <Select

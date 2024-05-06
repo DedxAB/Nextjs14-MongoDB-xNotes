@@ -203,7 +203,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
           </div>
 
           {/* Buttons */}
-          <div className="ml-auto">
+          <div className="ml-auto mb-20">
             {/* Cancel Button */}
             {session?.user?.isAdmin ? (
               <Link href={`/admin/${userId}/details`}>

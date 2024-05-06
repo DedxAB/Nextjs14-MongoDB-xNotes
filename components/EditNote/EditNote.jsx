@@ -284,7 +284,7 @@ const EditNote = ({
         />
       )}
 
-      <div className="flex items-center justify-end md:justify-end gap-3 my-5">
+      <div className="flex items-center justify-end md:justify-end gap-3 mt-5 mb-32">
         <div>
           <Select
             onValueChange={(newValue) => setSelectNewVisibility(newValue)}
