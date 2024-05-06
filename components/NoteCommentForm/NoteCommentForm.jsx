@@ -102,7 +102,7 @@ const NoteCommentForm = ({ note }) => {
           </div>
 
           {/* Show the user comment text*/}
-          <div className="text-sm font-bold flex justify-between items-center space-x-2">
+          <div className="text-sm font-bold flex justify-between items-center gap-2">
             <CustomInput
               type="text"
               placeholder="Add a comment here..."
@@ -115,7 +115,7 @@ const NoteCommentForm = ({ note }) => {
             />
             <Button
               size="icon"
-              className={`h-8 w-9 rounded-full`}
+              className={`h-8 w-10 md:w-9`}
               disabled={!session || !comment}
               onClick={handleSubmitCommentForm}
             >
