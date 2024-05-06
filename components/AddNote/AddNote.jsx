@@ -317,7 +317,7 @@ const AddNote = () => {
             <SelectTrigger className="w-[116px]">
               <SelectValue placeholder="Share with" />
             </SelectTrigger>
-            <SelectContent className="w-[124px]">
+            <SelectContent>
               <SelectGroup>
                 <SelectLabel>Visibility</SelectLabel>
                 <SelectItem value="private" className={`cursor-pointer`}>
