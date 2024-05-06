@@ -49,7 +49,7 @@ export const PATCH = async (req, { params }) => {
     }
 
     const isUsernameExist = await User.findOne({ username });
-    if (isUsernameExist) {
+    if (isUsernameExist && isUsernameExist?._id?.toString() !== id) {
       return NextResponse.json(
         { message: "Username already exists. Try different one." },
         { status: 400 }
