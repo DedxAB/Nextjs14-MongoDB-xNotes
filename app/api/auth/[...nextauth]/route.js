@@ -19,6 +19,7 @@ const authOptions = {
         session.user.id = user._id.toString();
         session.user.username = user.username;
         session.user.isAdmin = user.isAdmin;
+        session.user.name = user.name;
         return session;
       } catch (error) {
         return new Error("Failed to get session");

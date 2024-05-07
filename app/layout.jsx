@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
             </div>
 
             {/* main content */}
-            <main className="max-w-3xl mx-auto px-4 min-h-full">
+            <main className="max-w-3xl mx-auto px-4 min-h-[120vh]">
               {children}
             </main>
             <Toaster richColors position="top-right" closeButton />

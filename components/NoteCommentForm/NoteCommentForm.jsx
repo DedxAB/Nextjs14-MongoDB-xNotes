@@ -15,7 +15,6 @@ const NoteCommentForm = ({ note }) => {
 
   const router = useRouter();
   const { data: session } = useSession();
-  // console.log(session);
 
   const handleSubmitCommentForm = async () => {
     if (!session) {
