@@ -117,11 +117,11 @@ const EditNote = ({
         const errorData = await res.json();
         throw new Error(errorData.message || "Failed to Edit note.");
       }
+      route.back();
+      route.refresh();
       toast.success("Note Updated Successfully.", {
         id: toastId,
       });
-      route.back();
-      route.refresh();
     } catch (error) {
       toast.error(error.message, {
         id: toastId,

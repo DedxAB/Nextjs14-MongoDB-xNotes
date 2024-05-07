@@ -88,11 +88,11 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
         const errorData = await res.json();
         throw new Error(errorData.message || "Failed to update bio");
       }
+      route.back();
+      route.refresh();
       toast.success("Bio Updated Successfully.", {
         id: toastId,
       });
-      route.back();
-      route.refresh();
     } catch (error) {
       toast.error(error.message, {
         id: toastId,

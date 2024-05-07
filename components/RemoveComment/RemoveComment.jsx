@@ -42,8 +42,8 @@ const RemoveComment = ({ comment, note }) => {
         if (!res.ok) {
           throw new Error(errorData.message || "Falied to Delete Comment.");
         }
-        toast.success("Comment Deleted Successfully.", { id: toastId });
         router.refresh();
+        toast.success("Comment Deleted Successfully.", { id: toastId });
       } catch (e) {
         toast.error(e.message, { id: toastId });
         console.log(e.message);

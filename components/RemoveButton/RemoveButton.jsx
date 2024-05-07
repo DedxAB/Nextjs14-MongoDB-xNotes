@@ -35,10 +35,10 @@ const RemoveButton = ({ id, title }) => {
           const errorData = await res.json();
           throw new Error(errorData.message || "Error deleting note");
         }
+        router.refresh();
         toast.success("Note Deleted Successfully.", {
           id: toastId,
         });
-        router.refresh();
       } catch (e) {
         toast.error(e.message, {
           id: toastId,

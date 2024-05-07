@@ -44,10 +44,10 @@ const NoteCommentForm = ({ note, currentUser }) => {
         throw new Error(errorData.message || "Failed to add comment");
       }
 
+      router.refresh();
       toast.success("Comment added Successfully.", {
         id: toastId,
       });
-      router.refresh();
     } catch (error) {
       toast.error(error.message, { id: toastId });
       console.log(error);

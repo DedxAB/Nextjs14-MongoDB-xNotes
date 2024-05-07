@@ -6,7 +6,6 @@ import { toast } from "sonner";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { useSession } from "next-auth/react";
-import { ArrowUpToLine } from "lucide-react";
 import { Label } from "../ui/label";
 import { source_code_pro_font } from "@/utils/fonts";
 import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
@@ -131,11 +130,11 @@ const AddNote = () => {
         throw new Error(errorData.message || "Failed to save Note");
       }
 
+      router.back();
+      router.refresh();
       toast.success("Note Published Sucessfully.", {
         id: toastId,
       });
-      router.back();
-      router.refresh();
       localStorage.removeItem("title");
       localStorage.removeItem("description");
       localStorage.removeItem("tags");
