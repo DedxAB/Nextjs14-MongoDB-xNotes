@@ -1,7 +1,6 @@
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { CustomInput } from "../ui/custom-input";
 import { toast } from "sonner";
@@ -9,8 +8,9 @@ import { useRouter } from "next/navigation";
 import { inter_font, josefin_sans_font } from "@/utils/fonts";
 import { Button } from "../ui/button";
 import { SendHorizontal } from "lucide-react";
+import { useSession } from "next-auth/react";
 
-const NoteCommentForm = ({ note }) => {
+const NoteCommentForm = ({ note, currentUser }) => {
   const [comment, setComment] = useState("");
 
   const router = useRouter();
@@ -64,7 +64,9 @@ const NoteCommentForm = ({ note }) => {
     }
   };
 
-  const shortName = session?.user?.name
+  // console.log(currentUser);
+
+  const shortName = currentUser?.name
     .split(" ")
     .map((n) => n[0])
     .join("");
@@ -76,10 +78,10 @@ const NoteCommentForm = ({ note }) => {
         <div className="mr-2 py-1">
           <Avatar>
             <AvatarImage
-              src={session?.user?.image || "/logo.png"}
+              src={currentUser?.image || "/logo.png"}
               referrerPolicy="no-referrer"
             />
-            <AvatarFallback>{shortName}</AvatarFallback>
+            <AvatarFallback>{shortName || "DN"}</AvatarFallback>
           </Avatar>
         </div>
 
@@ -91,12 +93,12 @@ const NoteCommentForm = ({ note }) => {
           >
             {/* name  */}
             <p className={`font-bold  mr-1`}>
-              {session?.user?.name || <>DedxNotes</>}
+              {currentUser?.name || <>DedxNotes</>}
             </p>
 
             {/* username */}
             <p className={`text-[#6b6e6e]`}>
-              @{session?.user?.username || <>dedxnotes</>}
+              @{currentUser?.username || <>dedxnotes</>}
             </p>
           </div>
 

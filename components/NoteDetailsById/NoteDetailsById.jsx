@@ -1,11 +1,20 @@
+import { getServerSession } from "next-auth";
 import NoteCard from "../NoteCard/NoteCard";
 import NoteCommentCard from "../NoteCommentCard/NoteCommentCard";
 import NoteCommentForm from "../NoteCommentForm/NoteCommentForm";
 import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
+import { fetchUserByEmail } from "@/services/userServices";
 
-const NoteDetailsById = ({ note }) => {
+const NoteDetailsById = async ({ note }) => {
   const user = note?.author;
+  const session = await getServerSession();
 
+  let currentUser;
+  if (session) {
+    const currentUserEmail = session?.user?.email;
+    const data = await fetchUserByEmail(currentUserEmail);
+    currentUser = data?.user;
+  }
   return (
     <>
       {/* Create Note banner  */}
@@ -15,7 +24,7 @@ const NoteDetailsById = ({ note }) => {
       />
 
       <NoteCard note={note} user={user} />
-      <NoteCommentForm note={note} />
+      <NoteCommentForm note={note} currentUser={currentUser} />
 
       {note?.comments?.length > 0 ? (
         <>
