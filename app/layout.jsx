@@ -1,10 +1,10 @@
 import "./globals.css";
-import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { NextAuthProviders } from "./Providers";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import BottomNavbar from "@/components/BottomNavbar/BottomNavbar";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata = {
   title: {
