@@ -25,14 +25,12 @@ import { useRouter } from "next/navigation";
 import { playfair_font } from "@/utils/fonts";
 import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
-import { useTheme } from "next-themes";
 
 const Navbar = () => {
   const [openSearch, setOpenSearch] = useState(false);
   const [searchText, setSearchText] = useState("");
   const router = useRouter();
   const { status, data: session } = useSession();
-  const { theme } = useTheme();
 
   useEffect(() => {
     let timeoutId;
@@ -85,10 +83,11 @@ const Navbar = () => {
           </div>
         </>
       ) : (
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-2 sm:gap-4">
           <Button
             size="icon"
             variant="outline"
+            className={`hidden sm:flex`}
             onClick={() => setOpenSearch(!openSearch)}
           >
             <Search className="w-5 h-5" />
@@ -97,13 +96,13 @@ const Navbar = () => {
           <ThemeToggle />
           {status === "authenticated" && (
             <Link href={`/create-note`}>
-              <Button className="hidden md:font-bold md:flex md:gap-1 md:items-center">
+              <Button className="hidden sm:font-bold sm:flex sm:gap-1 md:items-center">
                 <NotebookPen className="w-4 h-4" />
                 <span>Write</span>
               </Button>
-              <Button className="font-bold md:hidden" size="icon">
+              {/* <Button className="font-bold md:hidden" size="icon">
                 <NotebookPen className="w-4 h-4" />
-              </Button>
+              </Button> */}
             </Link>
           )}
 

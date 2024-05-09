@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { NextAuthProviders } from "./Providers";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
+import BottomNavbar from "@/components/BottomNavbar/BottomNavbar";
 
 export const metadata = {
   title: {
@@ -46,8 +47,14 @@ export default function RootLayout({ children }) {
               {children}
             </main>
             <Toaster richColors position="top-right" closeButton />
+
+            {/* bottom navbar */}
+            <div className="fixed bottom-0 z-10 sm:hidden backdrop-filter backdrop-blur-lg bg-opacity-30 border-t w-full">
+              <BottomNavbar />
+            </div>
+
             {/* footer  */}
-            <div className="w-full border-t mt-16">
+            <div className="w-full border-t mt-16 hidden sm:block">
               <Footer />
             </div>
           </ThemeProvider>
