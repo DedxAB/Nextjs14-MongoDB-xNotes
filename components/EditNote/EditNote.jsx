@@ -20,6 +20,7 @@ import {
   SelectValue,
 } from "../ui/select";
 import PreviewNoteCard from "../PreviewNoteCard/PreviewNoteCard";
+import { cn } from "@/lib/utils";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -59,7 +60,7 @@ const EditNote = ({
   }, [newDescription]);
 
   // Max character count for description
-  const maxCharCount = 350;
+  const maxCharCount = 550;
   const handelDescriptionChange = (e) => {
     const text = e.target.value;
     if (text.length <= maxCharCount) {
@@ -171,9 +172,19 @@ const EditNote = ({
           placeholder={`Please fill the Details about the note`}
           className={`shadow px-4 py-3 font-bold min-h-32 overflow-hidden`}
         />
-        <p className="font-bold text-right text-sm text-[#444746]">
-          {charCount}/{maxCharCount}
-        </p>
+        <div className="flex items-center justify-between gap-1">
+          <p
+            className={cn(
+              "text-sm font-bold text-[#444746] pl-1",
+              source_code_pro_font
+            )}
+          >
+            Saved automatically as you type.
+          </p>
+          <p className="text-right font-bold text-sm text-[#444746]">
+            {charCount}/{maxCharCount}
+          </p>
+        </div>
         {/* Website Link input field */}
         <Input
           onChange={(e) => {
@@ -281,6 +292,7 @@ const EditNote = ({
           tags={newTags}
           websiteLink={newWebsiteLink}
           selectVisibility={selectNewVisibility}
+          noteId={id}
         />
       )}
 
