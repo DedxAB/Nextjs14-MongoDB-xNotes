@@ -11,6 +11,7 @@ export default function PreviewNoteCard({
   tags,
   websiteLink,
   selectVisibility,
+  noteId = "",
 }) {
   return (
     <>
@@ -60,7 +61,9 @@ export default function PreviewNoteCard({
           </div>
 
           {/* Show the description */}
-          {description && <NoteDescription description={description} />}
+          {description && (
+            <NoteDescription description={description} noteId={noteId} />
+          )}
 
           {/* Show the tags */}
           {tags && (
