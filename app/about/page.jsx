@@ -42,10 +42,35 @@ export default function About() {
             rel="noreferrer"
             className="text-primary"
           >
-            Arnab Bhoumik
+            Arnab Bhoumik,{" "}
           </Link>
-          . Connect with him on{" "}
+          {/* Other developers */}
           <Link
+            href="https://github.com/Ankit-Acharjee"
+            target="_blank"
+            rel="noreferrer"
+            className="text-primary"
+          >
+            Ankit Acharjee,{" "}
+          </Link>
+          <Link
+            href="https://github.com/piyasmax"
+            target="_blank"
+            rel="noreferrer"
+            className="text-primary"
+          >
+            Piyas Ghosh,{" "}
+          </Link>
+          <Link
+            href="https://github.com/Gourav078"
+            target="_blank"
+            rel="noreferrer"
+            className="text-primary"
+          >
+            Gourav Mitra.
+          </Link>
+          {/* . Connect with him on{" "} */}
+          {/* <Link
             href="https://www.linkedin.com/in/arnab-bhoumik/"
             target="_blank"
             rel="noreferrer"
@@ -62,7 +87,7 @@ export default function About() {
           >
             Instagram
           </Link>{" "}
-          for more updates.
+          for more updates. */}
         </p>
       </div>
 
