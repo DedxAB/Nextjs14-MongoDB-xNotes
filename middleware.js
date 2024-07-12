@@ -6,5 +6,6 @@ export const config = {
     "/edit-note/:path*",
     "/admin/:path*",
     "/profile/:path*",
+    "/notifications",
   ],
 };
