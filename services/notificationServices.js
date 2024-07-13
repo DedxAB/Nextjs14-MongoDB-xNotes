@@ -2,7 +2,7 @@ const { BASE_URL } = require("@/utils/constants");
 
 export const fetchNotificationsByUserId = async (userId) => {
   try {
-    const res = await fetch(`${BASE_URL}/api/notifications/${userId}/`, {
+    const res = await fetch(`${BASE_URL}/api/notifications/user/${userId}/`, {
       cache: "no-store",
     });
 
