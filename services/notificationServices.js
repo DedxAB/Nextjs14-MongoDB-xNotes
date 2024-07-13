@@ -2,13 +2,13 @@ const { BASE_URL } = require("@/utils/constants");
 
 export const fetchNotificationsByUserId = async (userId) => {
   try {
-    const res = await fetch(`${BASE_URL}/api/user/${userId}/notifications`, {
+    const res = await fetch(`${BASE_URL}/api/notifications/${userId}/`, {
       cache: "no-store",
     });
 
     if (!res.ok) {
       const errorData = await res.json();
-      throw new Error(errorData.message || "Failed to get all Users");
+      throw new Error(errorData.message || "Failed to get all notifications");
     }
     return await res.json();
   } catch (error) {
