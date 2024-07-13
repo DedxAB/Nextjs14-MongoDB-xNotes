@@ -25,6 +25,7 @@ import { useRouter } from "next/navigation";
 import { playfair_font } from "@/utils/fonts";
 import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
+import NotificationIcon from "../Notification/NotificationIcon";
 
 const Navbar = () => {
   const [openSearch, setOpenSearch] = useState(false);
@@ -84,6 +85,9 @@ const Navbar = () => {
         </>
       ) : (
         <div className="flex items-center justify-between gap-2 sm:gap-4">
+          {status === "authenticated" && (
+            <NotificationIcon />
+          )}
           <Button
             size="icon"
             variant="outline"
@@ -95,9 +99,12 @@ const Navbar = () => {
           {/* Theme changing component  */}
           <ThemeToggle />
           {status === "authenticated" && (
-            <Link href={`/create-note`}>
-              <Button className="hidden sm:font-bold sm:flex sm:gap-1 md:items-center">
-                <NotebookPen className="w-4 h-4" />
+            <Link
+              href={`/create-note`}
+              className="hidden sm:font-bold sm:flex sm:gap-1 md:items-center"
+            >
+              <Button>
+                <NotebookPen className="w-4 h-4 mr-1" />
                 <span>Write</span>
               </Button>
               {/* <Button className="font-bold md:hidden" size="icon">

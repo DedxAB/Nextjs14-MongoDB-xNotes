@@ -44,6 +44,20 @@ const NoteCommentForm = ({ note, currentUser }) => {
         throw new Error(errorData.message || "Failed to add comment");
       }
 
+      // comment notification
+      await fetch(`/api/notifications`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          type: "comment",
+          noteOwnerId: note?.author?._id,
+          senderId: session?.user?.id,
+          noteId: note?._id,
+        }),
+      });
+
       router.refresh();
       toast.success("Comment added Successfully.", {
         id: toastId,

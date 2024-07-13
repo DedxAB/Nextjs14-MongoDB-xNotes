@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, Pencil, Share2 } from "lucide-react";
+import { ExternalLink, Pencil } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -21,6 +21,9 @@ const NoteCard = ({ note, user }) => {
   const pathName = usePathname();
   const router = useRouter();
 
+  // console.log(note.author._id);
+  // console.log(session?.user);
+
   // Get the first letter of the name to show in the avatar
   const shortName = user?.name
     .split(" ")
@@ -28,8 +31,8 @@ const NoteCard = ({ note, user }) => {
     .join("");
 
   // Get the contentUpdatedAt and createdAt date for comparison the note is updated or not
-  const contentUpdatedAt = new Date(updatedNote?.contentUpdatedAt).getTime();
-  const createdAt = new Date(updatedNote?.createdAt).getTime();
+  // const contentUpdatedAt = new Date(updatedNote?.contentUpdatedAt).getTime();
+  // const createdAt = new Date(updatedNote?.createdAt).getTime();
 
   const handelLike = async (isLiked) => {
     if (!session) {
@@ -59,9 +62,24 @@ const NoteCard = ({ note, user }) => {
       }
 
       const { updatedNote } = await res.json();
-      // console.log(updatedNote);
       // Update the state with the server response
       setUpdatedNote(updatedNote);
+
+      // Notification feature
+      if (isLiked) {
+        await fetch(`/api/notifications`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            type: "like",
+            noteOwnerId: note?.author?._id,
+            senderId: session?.user?.id,
+            noteId: note?._id,
+          }),
+        });
+      }
       router.refresh();
     } catch (error) {
       toast.error(error.message);
