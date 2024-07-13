@@ -1,13 +1,36 @@
-"use clinet";
-
+"use client";
+import { fetchNotificationsByUserId } from "@/services/notificationServices";
+import { fetchUserByEmail } from "@/services/userServices";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function NotificationIcon() {
-  const [isNewNotification, setIsNewNotification] = useState(true);
+  const [notifications, setNotifications] = useState([]); // [1]
+  const [currentUser, setCurrentUser] = useState(null); // [2]
   const { data: session } = useSession();
-  // console.log(session);
+
+  useEffect(() => {
+    const fetchCurrentUserAndNotifications = async () => {
+      if (session?.user?.email) {
+        const user = await fetchUserByEmail(session.user.email);
+        setCurrentUser(user);
+      }
+    };
+
+    fetchCurrentUserAndNotifications();
+  }, [session?.user?.email]);
+
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      if (currentUser?.user?._id) {
+        const data = await fetchNotificationsByUserId(currentUser.user._id);
+        setNotifications(data?.data ? data?.data : []);
+      }
+    };
+
+    fetchNotifications();
+  }, [currentUser]);
 
   return (
     <Link
@@ -35,7 +58,7 @@ export default function NotificationIcon() {
           strokeLinejoin="round"
         />
       </svg>
-      {isNewNotification && (
+      {notifications.length > 0 && (
         <div className="absolute top-[.48rem] right-[.59rem] w-2 h-2 bg-primary rounded-full"></div>
       )}
     </Link>
