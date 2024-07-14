@@ -49,18 +49,24 @@ export default function AllNotification({ notifications }) {
           >
             {notification.type === "like" && (
               <div className="flex items-center gap-3">
-                <Avatar>
-                  <AvatarImage
-                    src={notification.senderId.image}
-                    alt={notification.senderId.username}
-                  />
-                  <AvatarFallback>
-                    {notification.senderId.name
-                      ?.split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </AvatarFallback>
-                </Avatar>
+                <div
+                  onClick={() =>
+                    router.push(`/profile/${notification.senderId._id}/details`)
+                  }
+                >
+                  <Avatar>
+                    <AvatarImage
+                      src={notification.senderId.image}
+                      alt={notification.senderId.username}
+                    />
+                    <AvatarFallback>
+                      {notification.senderId.name
+                        ?.split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </AvatarFallback>
+                  </Avatar>
+                </div>
                 <p onClick={() => handleNotificationClick(notification)}>
                   <span className="font-bold">
                     {notification.senderId.username}
@@ -72,18 +78,24 @@ export default function AllNotification({ notifications }) {
             )}
             {notification.type === "comment" && (
               <div className="flex items-center gap-3">
-                <Avatar>
-                  <AvatarImage
-                    src={notification.senderId.image}
-                    alt={notification.senderId.username}
-                  />
-                  <AvatarFallback>
-                    {notification.senderId.name
-                      ?.split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </AvatarFallback>
-                </Avatar>
+                <div
+                  onClick={() =>
+                    router.push(`/profile/${notification.senderId._id}/details`)
+                  }
+                >
+                  <Avatar>
+                    <AvatarImage
+                      src={notification.senderId.image}
+                      alt={notification.senderId.username}
+                    />
+                    <AvatarFallback>
+                      {notification.senderId.name
+                        ?.split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </AvatarFallback>
+                  </Avatar>
+                </div>
                 <p onClick={() => handleNotificationClick(notification)}>
                   <span className="font-bold">
                     {notification.senderId.username}
@@ -100,99 +112,9 @@ export default function AllNotification({ notifications }) {
         ))
       ) : (
         <div className="border px-3 md:px-4 py-3 my-2 rounded-lg text-sm md:text-base">
-          No notifications yet 
+          No notifications yet
         </div>
       )}
     </section>
   );
 }
-
-/*
-[
-  {
-    _id: '6691698d2e18ed2483a1875f',
-    type: 'comment',
-    noteOwnerId: {
-      _id: '661142d7299202d2bdee6366',
-      name: 'Arnab Bhoumik',
-      username: 'arnab.dedx09'
-    },
-    senderId: {
-      _id: '661142d7299202d2bdee6366',
-      name: 'Arnab Bhoumik',
-      username: 'arnab.dedx09'
-    },
-    noteId: {
-      _id: '668e94503f6a4579431c3df9',
-      title: 'Play ev.io - the play to earn blockchain FPS'
-    },
-    isRead: false,
-    createdAt: '2024-07-12T17:36:13.045Z',
-    updatedAt: '2024-07-12T17:36:13.045Z',
-    __v: 0
-  },
-  {
-    _id: '669169232e18ed2483a18752',
-    type: 'like',
-    noteOwnerId: {
-      _id: '661142d7299202d2bdee6366',
-      name: 'Arnab Bhoumik',
-      username: 'arnab.dedx09'
-    },
-    senderId: {
-      _id: '661142d7299202d2bdee6366',
-      name: 'Arnab Bhoumik',
-      username: 'arnab.dedx09'
-    },
-    noteId: {
-      _id: '668e94503f6a4579431c3df9',
-      title: 'Play ev.io - the play to earn blockchain FPS'
-    },
-    isRead: false,
-    createdAt: '2024-07-12T17:34:27.340Z',
-    updatedAt: '2024-07-12T17:34:27.340Z',
-    __v: 0
-  },
-  {
-    _id: '669166e12e18ed2483a186f9',
-    type: 'like',
-    noteOwnerId: {
-      _id: '661142d7299202d2bdee6366',
-      name: 'Arnab Bhoumik',
-      username: 'arnab.dedx09'
-    },
-    senderId: {
-      _id: '661142d7299202d2bdee6366',
-      name: 'Arnab Bhoumik',
-      username: 'arnab.dedx09'
-    },
-    noteId: {
-      _id: '668e94503f6a4579431c3df9',
-      title: 'Play ev.io - the play to earn blockchain FPS'
-    },
-    isRead: false,
-    createdAt: '2024-07-12T17:24:49.005Z',
-    updatedAt: '2024-07-12T17:24:49.005Z',
-    __v: 0
-  },
-  {
-    _id: '669166df2e18ed2483a186f3',
-    type: 'like',
-    noteOwnerId: {
-      _id: '661142d7299202d2bdee6366',
-      name: 'Arnab Bhoumik',
-      username: 'arnab.dedx09'
-    },
-    senderId: {
-      _id: '661142d7299202d2bdee6366',
-      name: 'Arnab Bhoumik',
-      username: 'arnab.dedx09'
-    },
-    noteId: { _id: '668e99c5b04811b9af60ee90', title: 'Super Logout' },
-    isRead: false,
-    createdAt: '2024-07-12T17:24:47.121Z',
-    updatedAt: '2024-07-12T17:24:47.121Z',
-    __v: 0
-  }
-]
-  */
