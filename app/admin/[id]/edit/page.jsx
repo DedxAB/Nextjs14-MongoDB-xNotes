@@ -21,7 +21,7 @@ const page = async ({ params }) => {
 
   const { user } = await fetchUserById(id);
 
-  const { bio, socialLinks, _id: userId } = user;
+  const { bio, socialLinks, _id: userId, name, username } = user;
 
   if (session?.user?.email !== user?.email) {
     redirect("/");
@@ -46,7 +46,13 @@ const page = async ({ params }) => {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-      <EditProfileForm userId={userId} bio={bio} socialLinks={socialLinks} />
+      <EditProfileForm
+        userId={userId}
+        bio={bio}
+        socialLinks={socialLinks}
+        name={name}
+        username={username}
+      />
     </div>
   );
 };
