@@ -43,7 +43,7 @@ export default function AllNotification({ notifications }) {
           <div
             key={notification._id}
             className={cn(
-              "text-sm md:text-base border mb-3 rounded-lg px-3 md:px-4 py-2 cursor-pointer transition duration-300 ease-in-out hover:bg-gray-100",
+              "text-sm md:text-base border mb-3 rounded-lg px-3 md:px-4 py-2 cursor-pointer",
               notification.isRead ? "opacity-50" : "opacity-100"
             )}
           >
@@ -99,8 +99,8 @@ export default function AllNotification({ notifications }) {
           </div>
         ))
       ) : (
-        <div className="bg-gray-100 p-4 my-2 rounded-md text-sm md:text-base">
-          No notifications yet
+        <div className="border px-3 md:px-4 py-3 my-2 rounded-lg text-sm md:text-base">
+          No notifications yet 
         </div>
       )}
     </section>
