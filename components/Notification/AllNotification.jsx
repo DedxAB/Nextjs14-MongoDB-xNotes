@@ -7,7 +7,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export default function AllNotification({ notifications }) {
   const router = useRouter();
-  // console.log(notifications);
 
   const handleNotificationClick = async (notification) => {
     try {
@@ -47,7 +46,6 @@ export default function AllNotification({ notifications }) {
               "text-sm md:text-base border mb-3 rounded-lg px-3 md:px-4 py-2 cursor-pointer transition duration-300 ease-in-out hover:bg-gray-100",
               notification.isRead ? "opacity-50" : "opacity-100"
             )}
-            onClick={() => handleNotificationClick(notification)}
           >
             {notification.type === "like" && (
               <div className="flex items-center gap-3">
@@ -63,7 +61,7 @@ export default function AllNotification({ notifications }) {
                       .join("")}
                   </AvatarFallback>
                 </Avatar>
-                <p>
+                <p onClick={() => handleNotificationClick(notification)}>
                   <span className="font-bold">
                     {notification.senderId.username}
                   </span>{" "}
@@ -86,7 +84,7 @@ export default function AllNotification({ notifications }) {
                       .join("")}
                   </AvatarFallback>
                 </Avatar>
-                <p>
+                <p onClick={() => handleNotificationClick(notification)}>
                   <span className="font-bold">
                     {notification.senderId.username}
                   </span>{" "}
