@@ -21,7 +21,9 @@ const UserNotesFeed = ({ notes, user }) => {
           All Notes ({filteredNotes?.length})
         </h1>
       ) : (
-        <h1 className="font-bold text-lg mb-3">No notes found</h1>
+          <h1 className="font-bold text-lg mb-3">
+            User hasn&apos;t shared any notes yet
+          </h1>
       )}
       {filteredNotes.length > 0 &&
         filteredNotes.map((note) => (
