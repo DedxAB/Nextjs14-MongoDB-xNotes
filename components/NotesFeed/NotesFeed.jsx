@@ -4,8 +4,9 @@ import { fetchAllNotes } from "@/services/noteServices";
 
 const NotesFeed = async () => {
   // Fetch the all notes
-  const { notes } = await fetchAllNotes();
-  const session = await getServerSession();
+  const notesData = await fetchAllNotes();
+  const notes = notesData?.notes ? notesData?.notes : [];
+  const session = await getServerSession(); 
 
   const currentUserEmail = session?.user?.email;
   const filteredNotes = notes?.filter((note) => {
@@ -13,6 +14,8 @@ const NotesFeed = async () => {
       currentUserEmail === note?.author?.email || note?.visibility === "public"
     );
   });
+
+  if (notes.length === 0) return <h1 className="text-2xl font-bold">No notes found!</h1>;
 
   return (
     <>
