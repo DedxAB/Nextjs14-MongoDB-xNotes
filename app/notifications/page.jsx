@@ -9,6 +9,7 @@ export default async function page() {
   const currentUser = await fetchUserByEmail(session?.user?.email);
   const data = await fetchNotificationsByUserId(currentUser?.user?._id);
   const notifications = data?.data ? data?.data : [];
+  // console.log(notifications);
   return (
     <>
       <section id="banner-notification">
