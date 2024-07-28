@@ -59,8 +59,15 @@ export default function NotificationIcon() {
         />
       </svg>
       {notifications.length > 0 && (
-        <div className="absolute top-[.48rem] right-[.59rem] w-2 h-2 bg-primary rounded-full"></div>
+        <span className="absolute flex h-2 w-2 top-[.48rem] right-[.59rem]">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+        </span>
       )}
     </Link>
   );
+}
+{
+  /* <div className="absolute top-[.48rem] right-[.59rem] w-1.5 h-1.5 bg-primary rounded-full animate-ping">
+</div> */
 }
