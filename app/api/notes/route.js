@@ -64,7 +64,7 @@ export async function GET(_req) {
     if (!notes) {
       return NextResponse.json({ message: "No notes found" }, { status: 404 });
     }
-    return NextResponse.json({ notes }, { status: 200 });
+    return NextResponse.json({ data: notes }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { message: "Failed to fetch notes" },
