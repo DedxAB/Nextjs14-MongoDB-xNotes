@@ -23,7 +23,7 @@ const NoteDetailsById = async ({ note }) => {
         description={`Feel free to comment.`}
       />
 
-      <NoteCard note={note} user={user} />
+      <NoteCard note={note} noteAuthor={user} />
       <NoteCommentForm note={note} currentUser={currentUser} />
 
       {note?.comments?.length > 0 ? (

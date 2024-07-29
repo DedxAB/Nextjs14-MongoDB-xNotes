@@ -14,7 +14,7 @@ import { josefin_sans_font } from "@/utils/fonts";
 import NoteDescription from "../NoteDescription/NoteDescription";
 import SharePopup from "../SharePopup/SharePopup";
 
-const NoteCard = ({ note, user }) => {
+const NoteCard = ({ note, noteAuthor: user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
   const [isOpenShareModal, setIsOpenShareModal] = useState(false);
   const { data: session } = useSession();
