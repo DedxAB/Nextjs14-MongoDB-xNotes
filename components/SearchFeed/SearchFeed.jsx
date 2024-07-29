@@ -12,7 +12,7 @@ const SearchFeed = ({ notes, users }) => {
       {notes &&
         notes.length > 0 &&
         notes.map((note) => (
-          <NoteCard key={note?._id} note={note} user={note?.author} />
+          <NoteCard key={note?._id} note={note} noteAuthor={note?.author} />
         ))}
       {users.length === 0 && notes.length === 0 && (
         <h1 className="font-bold text-base">
