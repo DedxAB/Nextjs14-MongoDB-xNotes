@@ -2,13 +2,13 @@ import EditNote from "@/components/EditNote/EditNote";
 import {
   Breadcrumb,
   BreadcrumbItem,
+  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { fetchNoteById } from "@/services/noteServices";
 import { BASE_URL } from "@/utils/constants";
 import { getServerSession } from "next-auth";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export const metadata = {
@@ -35,7 +35,7 @@ const page = async ({ params }) => {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <Link href={`${BASE_URL}`}>Home</Link>
+              <BreadcrumbLink href={`${BASE_URL}`}>Home</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>Edit Note</BreadcrumbItem>

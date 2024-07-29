@@ -1,18 +1,17 @@
 "use client";
 
-import { ExternalLink, Pencil } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
-import { Button } from "../ui/button";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
-import RemoveButton from "../RemoveButton/RemoveButton";
 import dayjs from "dayjs";
 import { toast } from "sonner";
 import { useState } from "react";
 import { josefin_sans_font } from "@/utils/fonts";
 import NoteDescription from "../NoteDescription/NoteDescription";
 import SharePopup from "../SharePopup/SharePopup";
+import MoreOptions from "../MoreOptions/MoreOptions";
 
 const NoteCard = ({ note, noteAuthor: user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
@@ -100,7 +99,6 @@ const NoteCard = ({ note, noteAuthor: user }) => {
 
   return (
     <>
-      {/* Note card 03notecard branch */}
       <div className="border-t border-x flex justify-start gap-1 mb-3 md:mb-4 rounded-tr-xl rounded-tl-xl px-3 md:px-4 py-[.85rem] relative">
         {/* Show the author image */}
         <div className="pt-[5px] mr-2 flex flex-col justify-between items-center">
@@ -114,24 +112,6 @@ const NoteCard = ({ note, noteAuthor: user }) => {
               <AvatarFallback>{shortName}</AvatarFallback>
             </Avatar>
           </Link>
-          <>
-            {(session?.user?.id === user?._id || session?.user?.isAdmin) &&
-              (pathName === `/profile/${user?._id}/details` ||
-                pathName === `/admin/${user?._id}/details`) && (
-                <>
-                  {/* Add the edit button */}
-                  <Link href={`/edit-note/${updatedNote?._id}`}>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="rounded-full h-[2.35rem] w-[2.35rem]"
-                    >
-                      <Pencil className="w-4 h-4" />
-                    </Button>
-                  </Link>
-                </>
-              )}
-          </>
         </div>
         <div className="w-full">
           <div className="flex justify-between items-center">
@@ -214,7 +194,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
           <div className={`flex gap-[.63rem] md:gap-3 mt-2 pt-1 items-center`}>
             {/* Likes  */}
             {updatedNote?.likes && (
-              <div className="flex gap-1 items-center transition-all duration-300 ease-in-out border hover:border-primary rounded-full p-2">
+              <div className="flex gap-1 cursor-pointer items-center transition-all duration-300 ease-in-out border hover:border-primary rounded-full p-2">
                 {updatedNote?.likes?.includes(session?.user?.id) ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -247,7 +227,6 @@ const NoteCard = ({ note, noteAuthor: user }) => {
                 </span>
               </div>
             )}
-
             {/* Comments */}
             <Link
               href={`/note/${updatedNote?._id}/details`}
@@ -271,7 +250,6 @@ const NoteCard = ({ note, noteAuthor: user }) => {
                 {note?.comments?.length}
               </span>
             </Link>
-
             {/* Website link */}
             {updatedNote?.websiteLink && (
               <Link
@@ -283,7 +261,6 @@ const NoteCard = ({ note, noteAuthor: user }) => {
                 <ExternalLink className="w-4 h-4 " />
               </Link>
             )}
-
             {/* Share */}
             <div
               onClick={handleShare}
@@ -307,16 +284,13 @@ const NoteCard = ({ note, noteAuthor: user }) => {
               </svg>
             </div>
 
+            {/* More options */}
             {(session?.user?.id === user?._id || session?.user?.isAdmin) &&
               (pathName === `/profile/${user?._id}/details` ||
                 pathName === `/admin/${user?._id}/details`) && (
-                <>
-                  <RemoveButton
-                    id={updatedNote?._id}
-                    title={updatedNote?.title}
-                  />
-                </>
+                <MoreOptions noteData={updatedNote} />
               )}
+
             {isOpenShareModal && (
               <SharePopup updatedNote={updatedNote} handleShare={handleShare} />
             )}

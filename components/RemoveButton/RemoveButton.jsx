@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { Trash2 } from "lucide-react";
-import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import {
@@ -53,13 +51,12 @@ const RemoveButton = ({ id, title }) => {
     <>
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button
+          <div
             onClick={() => setConformationMessage(true)}
             variant="outline"
             size="icon"
-            className="rounded-full h-[2.35rem] w-[2.35rem]"
+            className="flex items-center justify-start cursor-pointer gap-2"
           >
-            {/* <Trash2 className="w-4 h-4 text-red-500" /> */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -91,7 +88,8 @@ const RemoveButton = ({ id, title }) => {
                 strokeLinecap="round"
               />
             </svg>
-          </Button>
+            <span>Delete</span>
+          </div>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>

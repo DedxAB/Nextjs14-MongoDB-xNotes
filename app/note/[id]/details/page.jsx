@@ -15,7 +15,7 @@ import Link from "next/link";
 
 export const generateMetadata = async ({ params }) => {
   const { id } = params;
-  const { note } = await fetchNoteById(id);
+  const { data: note = {} } = (await fetchNoteById(id)) ?? {};
   const session = await getServerSession();
   const currentUserEmail = session?.user?.email;
 
@@ -38,7 +38,7 @@ const page = async ({ params }) => {
   const session = await getServerSession();
   const currentUserEmail = session?.user?.email;
 
-  const { data: note = {} } = await fetchNoteById(id);
+  const { data: note = {} } = (await fetchNoteById(id)) ?? {};
   // console.log(note);
 
   if (

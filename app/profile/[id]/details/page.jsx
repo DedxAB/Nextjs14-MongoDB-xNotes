@@ -13,7 +13,7 @@ import Link from "next/link";
 
 export const generateMetadata = async ({ params }) => {
   const { id } = params;
-  const { user } = await fetchUserById(id);
+  const { data: user = {} } = (await fetchUserById(id)) ?? {};
   return {
     title: `${user?.name || "Profile"}`,
   };
@@ -23,7 +23,7 @@ const Profile = async ({ params }) => {
   const { id } = params;
   const session = await getServerSession();
 
-  const { data: user = {} } = await fetchUserById(id);
+  const { data: user = {} } = (await fetchUserById(id)) ?? {};
 
   // console.log("user", user);
 

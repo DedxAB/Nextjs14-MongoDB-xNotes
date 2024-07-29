@@ -9,7 +9,6 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { BASE_URL } from "@/utils/constants";
-import Link from "next/link";
 
 const Home = () => {
   return (
@@ -18,7 +17,7 @@ const Home = () => {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <Link href={`${BASE_URL}`}>Home</Link>
+              <BreadcrumbLink href={`${BASE_URL}`}>Home</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
           </BreadcrumbList>
