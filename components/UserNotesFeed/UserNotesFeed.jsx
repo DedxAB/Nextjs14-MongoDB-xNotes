@@ -27,7 +27,7 @@ const UserNotesFeed = ({ notes, user }) => {
       )}
       {filteredNotes.length > 0 &&
         filteredNotes.map((note) => (
-          <NoteCard key={note?._id} note={note} user={user} />
+          <NoteCard key={note?._id} note={note} noteAuthor={user} />
         ))}
     </>
   );

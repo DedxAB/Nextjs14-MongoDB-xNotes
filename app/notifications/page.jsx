@@ -7,8 +7,10 @@ import { getServerSession } from "next-auth";
 export default async function page() {
   const session = await getServerSession();
   const currentUser = await fetchUserByEmail(session?.user?.email);
-  const data = await fetchNotificationsByUserId(currentUser?.user?._id);
-  const notifications = data?.data ? data?.data : [];
+  const { data: notifications = [] } = await fetchNotificationsByUserId(
+    currentUser?.user?._id
+  );
+
   // console.log(notifications);
   return (
     <>
