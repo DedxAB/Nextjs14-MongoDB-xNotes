@@ -20,13 +20,11 @@ const ProfileEditPage = async ({ params }) => {
   const session = await getServerSession();
   // console.log(id);
 
-  const { user } = await fetchUserById(id);
-  // console.log(user);
+  const { data: { bio, socialLinks, _id: userId, username, name, email } = {} } = await fetchUserById(id);
 
-  const { bio, socialLinks, _id: userId, username, name } = user;
   // console.log(bio);
 
-  if (session?.user?.email === user?.email) {
+  if (session?.user?.email === email) {
     return (
       <div className="min-h-full">
         {/* Breadcrumb */}
