@@ -17,10 +17,11 @@ export const metadata = {
 
 const page = async ({ params }) => {
   const { id } = params;
-  const { note } = await fetchNoteById(id);
   const session = await getServerSession();
-  // console.log(note);
-  const { title, description, author, tags, websiteLink, visibility } = note;
+
+  const {
+    data: { title, description, author, tags, websiteLink, visibility } = {},
+  } = await fetchNoteById(id);
 
   // Check if the current user is the author of the note, if not redirect to the home page
   if (session?.user?.email !== author?.email) {
