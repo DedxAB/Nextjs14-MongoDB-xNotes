@@ -85,9 +85,7 @@ const Navbar = () => {
         </>
       ) : (
         <div className="flex items-center justify-between gap-2 sm:gap-4">
-          {status === "authenticated" && (
-            <NotificationIcon />
-          )}
+          {status === "authenticated" && <NotificationIcon />}
           <Button
             size="icon"
             variant="outline"
