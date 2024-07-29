@@ -20,7 +20,9 @@ const ProfileEditPage = async ({ params }) => {
   const session = await getServerSession();
   // console.log(id);
 
-  const { data: { bio, socialLinks, _id: userId, username, name, email } = {} } = await fetchUserById(id);
+  const {
+    data: { bio, socialLinks, _id: userId, username, name, email } = {},
+  } = (await fetchUserById(id)) ?? {};
 
   // console.log(bio);
 
