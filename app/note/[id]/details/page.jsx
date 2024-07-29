@@ -33,12 +33,12 @@ export const generateMetadata = async ({ params }) => {
   };
 };
 
-const NoteDetails = async ({ params }) => {
+const page = async ({ params }) => {
   const { id } = params;
   const session = await getServerSession();
   const currentUserEmail = session?.user?.email;
 
-  const { note } = await fetchNoteById(id);
+  const { data: note = {} } = await fetchNoteById(id);
   // console.log(note);
 
   if (
@@ -91,7 +91,7 @@ const NoteDetails = async ({ params }) => {
   );
 };
 
-export default NoteDetails;
+export default page;
 
 /* 
 {
