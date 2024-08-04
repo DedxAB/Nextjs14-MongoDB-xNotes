@@ -11,9 +11,8 @@ export default function ShowSearch({
 }) {
   return (
     <>
-      {/* <div className="fixed inset-0 z-10 bg-black/80 overflow-hidden flex justify-center items-center"></div> */}
       {/* Modal content */}
-      <div className="fixed z-20 bottom-[3.8rem] left-0 w-full p-6 border bg-background">
+      <div className="fixed z-20 bottom-[4.7rem] left-0 w-full px-6 py-3 border bg-background">
         <div className="flex items-center justify-between gap-2">
           <div className="w-full flex items-center z-20">
             <form onSubmit={hadleSearchInput} className="w-full">
@@ -39,8 +38,6 @@ export default function ShowSearch({
             </Button>
           </div>
         </div>
-
-        {/* Close button */}
       </div>
     </>
   );

@@ -32,4 +32,19 @@ async function fetchAllNotes() {
   }
 }
 
-export { fetchNoteById, fetchAllNotes };
+async function fetchAllSavedNotesByUserId(userId) {
+  try {
+    const response = await fetch(`${BASE_URL}/api/saved-notes/${userId}`, {
+      cache: "no-store",
+    });
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Error fetching saved notes");
+    }
+    return await response.json();
+  } catch (error) {
+    console.log(`Error fetching saved notes: ${error.message}`);
+  }
+}
+
+export { fetchNoteById, fetchAllNotes, fetchAllSavedNotesByUserId };
