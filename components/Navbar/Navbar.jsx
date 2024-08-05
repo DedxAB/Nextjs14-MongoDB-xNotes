@@ -26,7 +26,7 @@ import { playfair_font } from "@/utils/fonts";
 import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
 import NotificationIcon from "../Notification/NotificationIcon";
-import { AboutIcon } from "@/app/assets/svgs/GeneralIcons";
+import { AboutIcon, BookmarkIcon } from "@/app/assets/svgs/GeneralIcons";
 
 const Navbar = () => {
   const [openSearch, setOpenSearch] = useState(false);
@@ -85,7 +85,7 @@ const Navbar = () => {
           </div>
         </>
       ) : (
-        <div className="flex items-center justify-between gap-2 sm:gap-4">
+        <div className="flex items-center justify-between gap-3 sm:gap-4">
           {status === "authenticated" && <NotificationIcon />}
           <Button
             size="icon"
@@ -148,6 +148,13 @@ const Navbar = () => {
                     <span>Profile</span>
                   </DropdownMenuItem>
                 )}
+                <DropdownMenuItem
+                  className={`cursor-pointer flex items-center space-x-2`}
+                  onClick={() => router.push(`/saved-notes`)}
+                >
+                  <BookmarkIcon className="w-4 h-4" />
+                  <span>Saved</span>
+                </DropdownMenuItem>
                 <DropdownMenuItem
                   className={`cursor-pointer flex items-center space-x-2`}
                   onClick={() => router.push(`/about`)}
