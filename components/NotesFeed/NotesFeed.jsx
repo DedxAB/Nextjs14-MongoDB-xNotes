@@ -7,7 +7,7 @@ const NotesFeed = async () => {
   const currentUserEmail = session?.user?.email;
 
   // Fetch the all notes
-  const { data: notes = [] } = await fetchAllNotes();
+  const { data: notes = [] } = (await fetchAllNotes()) ?? { data: [] };
 
   const filteredNotes = notes?.filter((note) => {
     return (
@@ -22,7 +22,9 @@ const NotesFeed = async () => {
     <>
       {/* Show the note card */}
       {filteredNotes?.map((note) => {
-        return <NoteCard key={note?._id} note={note} noteAuthor={note?.author} />;
+        return (
+          <NoteCard key={note?._id} note={note} noteAuthor={note?.author} />
+        );
       })}
     </>
   );
