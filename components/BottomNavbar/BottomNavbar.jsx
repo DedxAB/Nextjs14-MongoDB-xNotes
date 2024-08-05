@@ -97,7 +97,7 @@ export default function BottomNavbar() {
               className="flex flex-col items-center justify-center group py-1 px-3"
             >
               <div className="border p-1.5 rounded-full">
-                <NotebookPen className="w-[1.35rem] h-[1.35rem]" />
+                <NotebookPen className="w-[1.5rem] h-[1.5rem]" />
               </div>
               <span
                 className={cn(
