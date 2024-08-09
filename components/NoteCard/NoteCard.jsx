@@ -16,9 +16,9 @@ import {
   CommentIcon,
   EmptyHeartIcon,
   RedHeartIcon,
-  SaveIcon,
   ShareIcon,
 } from "@/app/assets/svgs/GeneralIcons";
+import SaveNotes from "../SaveNotes/SaveNotes";
 
 const NoteCard = ({ note, noteAuthor: user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
@@ -42,7 +42,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
 
   const handelLike = async (isLiked) => {
     if (!session) {
-      toast.error("Please Login to like Notes");
+      toast.error("You need to sign in to like notes");
       return;
     }
     // Optimistically update the state
@@ -251,8 +251,9 @@ const NoteCard = ({ note, noteAuthor: user }) => {
               <ShareIcon className={`w-4 h-4`} />
             </div>
 
+            {/* Save Notes */}
             <div className="cursor-pointer transition-all duration-300 ease-in-out border rounded-full p-[.63rem] hover:border-primary">
-              <SaveIcon className={`w-4 h-4 text-foreground`} />
+              <SaveNotes note={note} />
             </div>
 
             {/* More options */}
