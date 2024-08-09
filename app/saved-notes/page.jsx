@@ -16,19 +16,26 @@ export default async function page() {
         description={`Here are all the notes you have saved.`}
       />
 
-      {savedNotes.length > 0 ? (
+      {savedNotes.length < 1 ? (
+        <h1 className="font-bold text-base">
+          You have not saved any notes yet
+        </h1>
+      ) : (
+        <h1 className="font-bold text-base mb-3">
+          {savedNotes.length === 1
+            ? "You have 1 saved note"
+            : `You have ${savedNotes.length} saved notes`}
+        </h1>
+      )}
+
+      {savedNotes.length > 0 &&
         savedNotes.map((note) => (
           <NoteCard
             key={note._id}
             note={note.noteId}
             noteAuthor={note.noteId.author}
           />
-        ))
-      ) : (
-        <h1 className="font-bold text-base">
-          You have not saved any notes yet.
-        </h1>
-      )}
+        ))}
     </>
   );
 }
