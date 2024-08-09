@@ -34,6 +34,7 @@ export default function NotificationIcon() {
 
   return (
     <Link
+      title="Notifications"
       href="/notifications"
       className="p-[.63rem] border rounded-full cursor-pointer bg-background relative"
     >

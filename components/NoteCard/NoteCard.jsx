@@ -109,7 +109,10 @@ const NoteCard = ({ note, noteAuthor: user }) => {
       <div className="border-t border-x flex justify-start gap-1 mb-3 md:mb-4 rounded-tr-xl rounded-tl-xl px-3 md:px-4 py-[.85rem] relative">
         {/* Show the author image */}
         <div className="pt-[5px] mr-2 flex flex-col justify-between items-center">
-          <Link href={`/profile/${user?._id}/details`}>
+          <Link
+            title={`View Profile of ${user?.name}`}
+            href={`/profile/${user?._id}/details`}
+          >
             <Avatar>
               <AvatarImage
                 src={user?.image || "/logo.png"}
@@ -209,11 +212,11 @@ const NoteCard = ({ note, noteAuthor: user }) => {
             {updatedNote?.likes && (
               <div className="flex gap-1 cursor-pointer items-center transition-all duration-300 ease-in-out border hover:border-primary rounded-full p-2">
                 {updatedNote?.likes?.includes(session?.user?.id) ? (
-                  <div onClick={() => handelLike(false)}>
+                  <div title="Unlike Note" onClick={() => handelLike(false)}>
                     <RedHeartIcon className="w-5 h-5 cursor-pointer text-primary" />
                   </div>
                 ) : (
-                  <div onClick={() => handelLike(true)}>
+                  <div title="Like Note" onClick={() => handelLike(true)}>
                     <EmptyHeartIcon className="w-5 h-5 cursor-pointer" />
                   </div>
                 )}
@@ -224,6 +227,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
             )}
             {/* Comments */}
             <Link
+              title="View Comments"
               href={`/note/${updatedNote?._id}/details`}
               className="flex gap-1 items-center transition-all duration-300 ease-in-out border hover:border-primary rounded-full p-2"
             >
@@ -235,6 +239,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
             {/* Website link */}
             {updatedNote?.websiteLink && (
               <Link
+                title="Visit Website"
                 href={updatedNote?.websiteLink}
                 target="_blank"
                 rel="noopener"
@@ -245,6 +250,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
             )}
             {/* Share */}
             <div
+              title="Share Note"
               onClick={handleShare}
               className="cursor-pointer transition-all duration-300 ease-in-out border rounded-full p-[.63rem] hover:border-primary"
             >
@@ -252,7 +258,10 @@ const NoteCard = ({ note, noteAuthor: user }) => {
             </div>
 
             {/* Save Notes */}
-            <div className="cursor-pointer transition-all duration-300 ease-in-out border rounded-full p-[.63rem] hover:border-primary">
+            <div
+              title="Save Note"
+              className="cursor-pointer transition-all duration-300 ease-in-out border rounded-full p-[.63rem] hover:border-primary"
+            >
               <SaveNotes note={note} />
             </div>
 
