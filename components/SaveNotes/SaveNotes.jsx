@@ -58,7 +58,7 @@ export default function SaveNotes({ note }) {
     }
   };
   return (
-    <div onClick={handleSave} title="Save Note">
+    <div onClick={handleSave}>
       {!isSaved ? (
         <SaveIcon className={`w-4 h-4 text-foreground`} fill={"none"} />
       ) : (

@@ -88,6 +88,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between gap-3 sm:gap-4">
           {status === "authenticated" && <NotificationIcon />}
           <Button
+            title="Search"
             size="icon"
             variant="outline"
             className={`hidden sm:flex`}
@@ -99,6 +100,7 @@ const Navbar = () => {
           <ThemeToggle />
           {status === "authenticated" && (
             <Link
+              title="Write a note"
               href={`/create-note`}
               className="hidden sm:font-bold sm:flex sm:gap-1 md:items-center"
             >
