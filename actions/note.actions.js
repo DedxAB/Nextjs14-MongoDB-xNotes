@@ -1,10 +1,9 @@
 "use server";
 
-const { default: connectDB } = require("@/db/mongodb");
-const { default: SavedNote } = require("@/models/savedNote.model");
+import connectDB from "@/db/mongodb";
+import SavedNote from "@/models/savedNote.model";
 
 export const handleCheckSavedNote = async (userId, noteId) => {
-  "use server";
   try {
     await connectDB();
     const savedNote = await SavedNote.findOne({ userId, noteId });

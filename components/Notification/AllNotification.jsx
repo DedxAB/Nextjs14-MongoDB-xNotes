@@ -38,18 +38,18 @@ const NotificationItem = ({ notification, onClick }) => {
     >
       <div className="flex items-center gap-3">
         <div onClick={handleProfileClick}>
-          <UserAvatar user={notification.senderId} />
+          <UserAvatar user={notification?.senderId} />
         </div>
         {notification.type === "admin" ? (
-          <p>Admin: {notification.message}</p>
+          <p>Admin: {notification?.message}</p>
         ) : (
           <div onClick={onClick} className="flex items-start flex-col">
             <p>
               <span className="font-bold">
-                {notification.senderId.username}
+                {notification?.senderId?.username}
               </span>{" "}
               {notification.type === "like" ? "liked" : "commented on"} your
-              note {" "}
+              note{" "}
               <span className="font-bold">{notification.noteId.title}</span>
             </p>
             <span className={`${josefin_sans_font} text-xs`}>
@@ -78,13 +78,16 @@ export default function AllNotification({ notifications }) {
   return (
     <section id="notification-section">
       {notifications.length > 0 ? (
-        notifications.map((notification) => (
-          <NotificationItem
-            key={notification._id}
-            notification={notification}
-            onClick={() => handleNotificationClick(notification)}
-          />
-        ))
+        notifications.map(
+          (notification) =>
+            !!notification?.noteId && (
+              <NotificationItem
+                key={notification._id}
+                notification={notification}
+                onClick={() => handleNotificationClick(notification)}
+              />
+            )
+        )
       ) : (
         <div className="border px-3 md:px-4 py-3 my-2 rounded-lg text-sm md:text-base">
           No notifications yet
