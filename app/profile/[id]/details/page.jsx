@@ -25,8 +25,6 @@ const Profile = async ({ params }) => {
 
   const { data: user = {} } = (await fetchUserById(id)) ?? {};
 
-  // console.log("user", user);
-
   const isCurrentUserPrifile = session?.user?.email === user?.email;
   const filteredNotes = user?.notes.filter((note) => {
     return isCurrentUserPrifile || note?.visibility === "public";

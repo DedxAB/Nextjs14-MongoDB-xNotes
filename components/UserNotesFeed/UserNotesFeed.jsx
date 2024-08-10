@@ -36,16 +36,15 @@ const UserNotesFeed = ({ notes, user }) => {
         <ProfileSearchInput
           allNotes={notes}
           user={user}
+          activeTab={activeTab}
           setFilteredNotes={setFilteredNotes}
         />
       )}
 
-      {filteredNotes.length > 0 ? (
+      {notes.length > 0 ? (
         <div className="flex items-center justify-between">
           <h1 className="font-bold text-base my-5">
-            {`All ${
-              activeTab === "Private" || activeTab === "Public" ? activeTab : ""
-            } Notes (${filteredNotes?.length})`}
+            {`${activeTab} Notes (${filteredNotes?.length})`}
           </h1>
 
           {session?.user?.id === user?._id && (
@@ -53,18 +52,21 @@ const UserNotesFeed = ({ notes, user }) => {
               <Button
                 variant={cn(activeTab === "All" ? "default" : "secondary")}
                 onClick={() => handleTabSwitch("All")}
+                className="font-bold"
               >
                 All
               </Button>
               <Button
                 variant={cn(activeTab === "Public" ? "default" : "secondary")}
                 onClick={() => handleTabSwitch("Public")}
+                className="font-bold"
               >
                 Public
               </Button>
               <Button
                 variant={cn(activeTab === "Private" ? "default" : "secondary")}
                 onClick={() => handleTabSwitch("Private")}
+                className="font-bold"
               >
                 Private
               </Button>
@@ -73,8 +75,13 @@ const UserNotesFeed = ({ notes, user }) => {
         </div>
       ) : (
         <h1 className="font-bold text-lg mb-3">
-          User hasn&apos;t shared any notes yet
+          {session?.user?.id === user?._id
+            ? "You haven't created any notes yet."
+            : "User hasn't shared any notes yet."}
         </h1>
+      )}
+      {notes.length > 0 && filteredNotes.length < 1 && (
+        <h1 className="font-bold text-lg mb-3">No notes found.</h1>
       )}
       {filteredNotes.length > 0 &&
         filteredNotes.map((note) => (

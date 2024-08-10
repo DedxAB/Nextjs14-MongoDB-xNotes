@@ -6,24 +6,28 @@ export default function ProfileSearchInput({
   allNotes,
   setFilteredNotes,
   user,
+  activeTab,
 }) {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      // console.log("useEffect called");
-      if (searchText.trim() === "") {
-        setFilteredNotes(allNotes);
-      } else {
-        // Filter notes based on search text
-        const filtered = allNotes.filter((note) =>
+      const filtered = allNotes.filter((note) => {
+        const isInTab =
+          activeTab === "All"
+            ? true
+            : activeTab === "Public"
+            ? note?.visibility === "public"
+            : note?.visibility === "private";
+        return (
+          isInTab &&
           note?.title?.toLowerCase().includes(searchText.toLowerCase())
         );
-        setFilteredNotes(filtered);
-      }
+      });
+      setFilteredNotes(filtered);
     }, 500);
     return () => clearTimeout(timeoutId);
-  }, [allNotes, searchText, setFilteredNotes]);
+  }, [allNotes, searchText, setFilteredNotes, activeTab]);
 
   return (
     <>
