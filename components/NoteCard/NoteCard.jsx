@@ -27,18 +27,11 @@ const NoteCard = ({ note, noteAuthor: user }) => {
   const pathName = usePathname();
   const router = useRouter();
 
-  // console.log(note.author._id);
-  // console.log(session?.user);
-
   // Get the first letter of the name to show in the avatar
   const shortName = user?.name
     .split(" ")
     .map((n) => n[0])
     .join("");
-
-  // Get the contentUpdatedAt and createdAt date for comparison the note is updated or not
-  // const contentUpdatedAt = new Date(updatedNote?.contentUpdatedAt).getTime();
-  // const createdAt = new Date(updatedNote?.createdAt).getTime();
 
   const handelLike = async (isLiked) => {
     if (!session) {
@@ -265,13 +258,6 @@ const NoteCard = ({ note, noteAuthor: user }) => {
             >
               <SaveNotes note={note} />
             </div>
-
-            {/* More options */}
-            {/* {(session?.user?.id === user?._id || session?.user?.isAdmin) &&
-              (pathName === `/profile/${user?._id}/details` ||
-                pathName === `/admin/${user?._id}/details`) && (
-                <MoreOptions noteData={updatedNote} />
-              )} */}
 
             {isOpenShareModal && (
               <SharePopup updatedNote={updatedNote} handleShare={handleShare} />
