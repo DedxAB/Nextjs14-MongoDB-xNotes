@@ -1,6 +1,8 @@
 import connectDB from "@/db/mongodb";
 import Comment from "@/models/comment.model";
 import Note from "@/models/note.model";
+import Notification from "@/models/notification.model";
+import SavedNote from "@/models/savedNote.model";
 import User from "@/models/user.model";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
@@ -94,7 +96,7 @@ export async function DELETE(req) {
     if (!deletedNote) {
       return NextResponse.json(
         {
-          message: "Failed to delete note. Note not found",
+          message: "Note not found",
         },
         { status: 404 }
       );
@@ -111,6 +113,13 @@ export async function DELETE(req) {
 
     // remove the comments from Comment collection that are associated with the deleted note
     await Comment.deleteMany({ _id: { $in: deletedNote.comments } });
+
+    // remove the notes from SavedNote collection that are associated with the deleted note
+    await SavedNote.deleteMany({ noteId: deletedNote._id });
+
+    // remove the notifications from Notification collection that are associated with the deleted note
+    await Notification.deleteMany({ noteId: deletedNote._id });
+
     return NextResponse.json(
       { message: "Note deleted successfully" },
       { status: 200 }
