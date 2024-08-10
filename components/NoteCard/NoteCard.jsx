@@ -139,7 +139,8 @@ const NoteCard = ({ note, noteAuthor: user }) => {
             {/* More options */}
             {(session?.user?.id === user?._id || session?.user?.isAdmin) &&
               (pathName === `/profile/${user?._id}/details` ||
-                pathName === `/admin/${user?._id}/details`) && (
+                pathName === `/admin/${user?._id}/details` ||
+                pathName === `/note/${updatedNote?._id}/details`) && (
                 <MoreOptions noteData={updatedNote} />
               )}
           </div>
