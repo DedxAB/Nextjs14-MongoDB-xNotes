@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import {
   AlertDialog,
@@ -20,6 +20,9 @@ const RemoveButton = ({ id, title }) => {
   const [conformationMessage, setConformationMessage] = useState(false);
 
   const router = useRouter();
+  const pathName = usePathname();
+
+  // console.log("pathName", pathName);
 
   const removeNote = async () => {
     if (conformationMessage) {
@@ -33,7 +36,13 @@ const RemoveButton = ({ id, title }) => {
           const errorData = await res.json();
           throw new Error(errorData.message || "Error deleting note");
         }
-        router.refresh();
+
+        if (pathName === `/note/${id}/details`) {
+          router.push("/");
+        } else {
+          router.refresh();
+        }
+
         toast.success("Note Deleted Successfully.", {
           id: toastId,
         });
