@@ -23,8 +23,6 @@ const RemoveButton = ({ id, title }) => {
   const router = useRouter();
   const pathName = usePathname();
 
-  // console.log("pathName", pathName);
-
   const removeNote = async () => {
     if (conformationMessage) {
       const toastId = toast.loading("Deleting Note...");
