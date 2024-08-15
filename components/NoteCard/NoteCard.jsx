@@ -188,7 +188,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
           {/* Show the description */}
           <NoteDescription
             description={updatedNote?.description}
-            noteId={updatedNote?._id}
+            note={updatedNote}
           />
 
           {/* Show the tags */}

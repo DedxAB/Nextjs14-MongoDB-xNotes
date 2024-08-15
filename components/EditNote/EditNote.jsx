@@ -36,6 +36,7 @@ const EditNote = ({
   tags,
   websiteLink,
   visibility,
+  note
 }) => {
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
@@ -304,6 +305,7 @@ const EditNote = ({
           websiteLink={newWebsiteLink}
           selectVisibility={selectNewVisibility}
           noteId={id}
+          note={note}
         />
       )}
 
