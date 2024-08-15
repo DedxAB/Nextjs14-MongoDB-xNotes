@@ -12,7 +12,7 @@ const UserCard = ({ user }) => {
     <>
       <div className="border mb-3 rounded-lg px-3 md:px-4 py-2">
         <Link
-          href={`/profile/${user?._id}/details`}
+          href={`/user/${user?.username}/${user?._id}`}
           className="flex justify-start items-center gap-1"
         >
           {/* Show the author image */}
