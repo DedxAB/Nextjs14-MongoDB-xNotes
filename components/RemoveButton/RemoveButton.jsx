@@ -40,6 +40,7 @@ const RemoveButton = ({ id, title }) => {
 
         if (pathName === `/note/${generateSlug(title)}/${id}`) {
           router.push("/");
+          router.refresh();
         } else {
           router.refresh();
         }
