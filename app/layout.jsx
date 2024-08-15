@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import BottomNavbar from "@/components/BottomNavbar/BottomNavbar";
 import { Toaster } from "@/components/ui/sonner";
+import { SavedNotesProvider } from "@/context/SavedNotesContext";
 
 export const metadata = {
   title: {
@@ -37,26 +38,28 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
-            {/* navbar */}
-            <div className="w-full sticky top-0 left-0 backdrop-filter backdrop-blur-lg bg-opacity-30 border-b z-10">
-              <Navbar />
-            </div>
+            <SavedNotesProvider>
+              {/* navbar */}
+              <div className="w-full sticky top-0 left-0 backdrop-filter backdrop-blur-lg bg-opacity-30 border-b z-10">
+                <Navbar />
+              </div>
 
-            {/* main content */}
-            <main className="max-w-3xl mx-auto mb-44 sm:mb-0 px-4 min-h-full sm:min-h-[120vh]">
-              {children}
-            </main>
-            <Toaster richColors position="top-right" closeButton />
+              {/* main content */}
+              <main className="max-w-3xl mx-auto mb-44 sm:mb-0 px-4 min-h-full sm:min-h-[120vh]">
+                {children}
+              </main>
+              <Toaster richColors position="top-right" closeButton />
 
-            {/* bottom navbar */}
-            <div className="fixed bottom-0 z-10 sm:hidden backdrop-filter backdrop-blur-lg bg-opacity-30 border-t w-full">
-              <BottomNavbar />
-            </div>
+              {/* bottom navbar */}
+              <div className="fixed bottom-0 z-10 sm:hidden backdrop-filter backdrop-blur-lg bg-opacity-30 border-t w-full">
+                <BottomNavbar />
+              </div>
 
-            {/* footer  */}
-            <div className="w-full border-t mt-16 hidden sm:block">
-              <Footer />
-            </div>
+              {/* footer  */}
+              <div className="w-full border-t mt-16 hidden sm:block">
+                <Footer />
+              </div>
+            </SavedNotesProvider>
           </ThemeProvider>
         </NextAuthProviders>
       </body>
