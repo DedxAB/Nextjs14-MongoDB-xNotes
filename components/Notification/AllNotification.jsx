@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
 import { josefin_sans_font } from "@/utils/fonts";
+import { generateSlug } from "@/utils/slugGenerator";
 
 // Reusable Avatar Component
 const UserAvatar = ({ user }) => (
@@ -25,12 +26,13 @@ const NotificationItem = ({ notification, onClick }) => {
   const router = useRouter();
 
   const handleProfileClick = () => {
-    router.push(`/profile/${notification.senderId._id}/details`);
+    router.push(
+      `/user/${notification?.senderId?.username}/${notification?.senderId?._id}`
+    );
   };
 
   return (
     <div
-      key={notification._id}
       className={cn(
         "text-sm md:text-base border mb-3 rounded-lg px-3 md:px-4 py-2 cursor-pointer",
         notification.isRead ? "opacity-50" : "opacity-100"
@@ -65,10 +67,16 @@ const NotificationItem = ({ notification, onClick }) => {
 export default function AllNotification({ notifications }) {
   const router = useRouter();
 
-  const handleNotificationClick = async (notification) => {
+  const handleNotificationClick = (notification) => {
     try {
       if (notification.type === "like" || notification.type === "comment") {
-        router.push(`/note/${notification?.noteId?._id}/details`);
+        router.push(
+          `/note/${generateSlug(notification?.noteId?.title)}/${
+            notification?.noteId?._id
+          }`
+        );
+      } else {
+        return;
       }
     } catch (error) {
       toast.error(error.message);
