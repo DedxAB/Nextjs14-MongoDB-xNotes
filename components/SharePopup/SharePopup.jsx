@@ -12,6 +12,7 @@ import {
   WhatsappShareButton,
 } from "react-share";
 import { Button } from "../ui/button";
+import { generateSlug } from "@/utils/slugGenerator";
 
 export default function SharePopup({ handleShare, updatedNote }) {
   const [copied, setCopied] = useState(false);
@@ -25,7 +26,7 @@ export default function SharePopup({ handleShare, updatedNote }) {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(
-      `${BASE_URL}/note/${updatedNote?._id}/details`
+      `${BASE_URL}/note/${generateSlug(updatedNote?.title)}/${updatedNote?._id}`
     );
     setCopied(true);
     setTimeout(() => {
@@ -53,17 +54,23 @@ export default function SharePopup({ handleShare, updatedNote }) {
           {/* Social Share */}
           <div className="flex items-center gap-3">
             <FacebookShareButton
-              url={`${BASE_URL}/note/${updatedNote?._id}/details`}
+              url={`${BASE_URL}/note/${generateSlug(updatedNote?.title)}/${
+                updatedNote?._id
+              }`}
             >
               <FacebookIcon size={32} round />
             </FacebookShareButton>
             <WhatsappShareButton
-              url={`${BASE_URL}/note/${updatedNote?._id}/details`}
+              url={`${BASE_URL}/note/${generateSlug(updatedNote?.title)}/${
+                updatedNote?._id
+              }`}
             >
               <WhatsappIcon size={32} round />
             </WhatsappShareButton>
             <TwitterShareButton
-              url={`${BASE_URL}/note/${updatedNote?._id}/details`}
+              url={`${BASE_URL}/note/${generateSlug(updatedNote?.title)}/${
+                updatedNote?._id
+              }`}
             >
               <TwitterIcon size={32} round />
             </TwitterShareButton>
