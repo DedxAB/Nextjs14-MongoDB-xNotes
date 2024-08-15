@@ -17,7 +17,7 @@ export default async function page() {
       <section id="banner-notification">
         <WelcomeBanner
           title="Notifications"
-          description={`Here you will see all the notifications (${notifications.length})`}
+          description={`Here you will see all notifications (${notifications.length})`}
         />
       </section>
 
