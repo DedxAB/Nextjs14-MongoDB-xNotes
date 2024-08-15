@@ -1,12 +1,10 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import Link from "next/link";
-// import { MessageSquareX, Save } from "lucide-react";
 import { Label } from "../ui/label";
 import { source_code_pro_font } from "@/utils/fonts";
 import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
@@ -21,6 +19,7 @@ import {
 } from "../ui/select";
 import PreviewNoteCard from "../PreviewNoteCard/PreviewNoteCard";
 import { cn } from "@/lib/utils";
+import { generateSlug } from "@/utils/slugGenerator";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -49,6 +48,8 @@ const EditNote = ({
   );
 
   const route = useRouter();
+  const searchParams = useSearchParams();
+  const from = searchParams.get("from");
 
   // resize textarea
   const textareaRef = useRef(null);
@@ -114,12 +115,22 @@ const EditNote = ({
           selectNewVisibility,
         }),
       });
+
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(errorData.message || "Failed to Edit note.");
       }
-      route.back();
+
+      if (from === "details") {
+        route.push(`/note/${generateSlug(newTitle)}/${id}`);
+      } else if (from === "profile") {
+        route.push(`/user/${author?.username}/${author?._id}`);
+      } else {
+        route.push(`/`);
+      }
+
       route.refresh();
+
       toast.success("Note Updated Successfully.", {
         id: toastId,
       });

@@ -88,7 +88,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
         const errorData = await res.json();
         throw new Error(errorData.message || "Failed to update bio");
       }
-      route.back();
+      route.push(`/user/${newUsername}/${userId}`);
       route.refresh();
       toast.success("Bio Updated Successfully.", {
         id: toastId,
@@ -213,7 +213,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
                 </Button>
               </Link>
             ) : (
-              <Link href={`/profile/${userId}/details`}>
+              <Link href={`/user/${username}/${userId}`}>
                 <Button
                   variant={`outline`}
                   className="font-bold w-fit px-3 mr-3"

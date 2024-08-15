@@ -15,6 +15,7 @@ import {
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
 import { source_code_pro_font } from "@/utils/fonts";
+import { generateSlug } from "@/utils/slugGenerator";
 
 const RemoveButton = ({ id, title }) => {
   const [conformationMessage, setConformationMessage] = useState(false);
@@ -37,7 +38,7 @@ const RemoveButton = ({ id, title }) => {
           throw new Error(errorData.message || "Error deleting note");
         }
 
-        if (pathName === `/note/${id}/details`) {
+        if (pathName === `/note/${generateSlug(title)}/${id}`) {
           router.push("/");
         } else {
           router.refresh();

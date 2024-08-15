@@ -143,7 +143,7 @@ const Navbar = () => {
                   <DropdownMenuItem
                     className={`cursor-pointer flex items-center space-x-2`}
                     onClick={() =>
-                      router.push(`/profile/${session?.user?.id}/details`)
+                      router.push(`/user/${session?.user?.username}/${session?.user?.id}`)
                     }
                   >
                     <CircleUserRound className="w-4 h-4" />

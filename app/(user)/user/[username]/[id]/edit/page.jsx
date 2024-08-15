@@ -38,7 +38,7 @@ const ProfileEditPage = async ({ params }) => {
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <Link href={`${BASE_URL}/profile/${id}/details`}>Profile</Link>
+                <Link href={`${BASE_URL}/user/${username}/${id}`}>Profile</Link>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>Edit</BreadcrumbItem>

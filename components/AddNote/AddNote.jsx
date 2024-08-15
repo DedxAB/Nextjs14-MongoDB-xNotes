@@ -144,7 +144,6 @@ const AddNote = () => {
       toast.error(error.message, {
         id: toastId,
       });
-      console.log(error.message);
     }
   };
 
