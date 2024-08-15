@@ -7,6 +7,7 @@ import slugify from "slugify";
  * @returns {string} The generated slug.
  */
 export function generateSlug(title) {
+  if(!title) return "";
   const shortenedTitle = title.split(" ").slice(0, 3).join(" ");
   return slugify(shortenedTitle, { lower: true });
 }
