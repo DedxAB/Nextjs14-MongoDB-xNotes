@@ -19,6 +19,7 @@ import {
   ShareIcon,
 } from "@/app/assets/svgs/GeneralIcons";
 import SaveNotes from "../SaveNotes/SaveNotes";
+import { generateSlug } from "@/utils/slugGenerator";
 
 const NoteCard = ({ note, noteAuthor: user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
@@ -104,7 +105,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
         <div className="pt-[5px] mr-2 flex flex-col justify-between items-center">
           <Link
             title={`View Profile of ${user?.name}`}
-            href={`/profile/${user?._id}/details`}
+            href={`/user/${user?.username}/${user?._id}`}
           >
             <Avatar>
               <AvatarImage
@@ -120,7 +121,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
           <div className="flex items-center justify-between">
             {/* Show the author name, username */}
             <Link
-              href={`/profile/${user?._id}/details`}
+              href={`/user/${user?.username}/${user?._id}`}
               className={`flex flex-wrap items-center text-xs mr-2 py-1 ${josefin_sans_font}`}
             >
               {/* name  */}
@@ -131,17 +132,22 @@ const NoteCard = ({ note, noteAuthor: user }) => {
             </Link>
             {/* More options */}
             {(session?.user?.id === user?._id || session?.user?.isAdmin) &&
-              (pathName === `/profile/${user?._id}/details` ||
+              (pathName === `/user/${user?.username}/${user?._id}` ||
                 pathName === `/admin/${user?._id}/details` ||
-                pathName === `/note/${updatedNote?._id}/details`) && (
-                <MoreOptions noteData={updatedNote} />
-              )}
+                pathName ===
+                  `/note/${generateSlug(updatedNote?.title)}/${
+                    updatedNote?._id
+                  }`) && <MoreOptions noteData={updatedNote} />}
           </div>
 
           {/* Title and Date div  */}
           <div>
             {/* Show the title and date */}
-            <Link href={`/note/${updatedNote?._id}/details`}>
+            <Link
+              href={`/note/${generateSlug(updatedNote?.title)}/${
+                updatedNote?._id
+              }`}
+            >
               {/* title  */}
               <h2 className={`text-lg md:text-xl font-bold`}>
                 {updatedNote?.title}
@@ -222,7 +228,9 @@ const NoteCard = ({ note, noteAuthor: user }) => {
             {/* Comments */}
             <Link
               title="View Comments"
-              href={`/note/${updatedNote?._id}/details`}
+              href={`/note/${generateSlug(updatedNote?.title)}/${
+                updatedNote?._id
+              }`}
               className="flex gap-1 items-center transition-all duration-300 ease-in-out border hover:border-primary rounded-full p-2"
             >
               <CommentIcon className="w-5 h-5 cursor-pointer" />

@@ -24,7 +24,7 @@ const NoteCommentCard = ({ comment, note }) => {
         <Link
           href={
             comment?.author?._id
-              ? `/profile/${comment?.author?._id}/details`
+              ? `/user/${comment?.author?.username}/${comment?.author?._id}`
               : "#"
           }
           className=""

@@ -5,11 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
 import { useSession } from "next-auth/react";
 import { CalendarDays, Contact } from "lucide-react";
-import {
-  inter_font,
-  josefin_sans_font,
-  source_code_pro_font,
-} from "@/utils/fonts";
+import { inter_font, josefin_sans_font } from "@/utils/fonts";
 import {
   Dialog,
   DialogContent,
@@ -18,9 +14,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
+import { usePathname } from "next/navigation";
 
 const ProfileSection = ({ user }) => {
   const { data: session } = useSession();
+  const pathName = usePathname();
   let shortName = user?.name
     ?.split(" ")
     .map((n) => n[0])
@@ -238,9 +236,11 @@ const ProfileSection = ({ user }) => {
                 <Button className={`font-bold`}>Edit Admin Profile</Button>
               </Link>
             ) : (
-              <Link href={`/profile/${user?._id}/edit`}>
-                <Button className={`font-bold`}>Edit Profile</Button>
-              </Link>
+              pathName === `/user/${user?.username}/${user?._id}` && (
+                <Link href={`/user/${user?.username}/${user?._id}/edit`}>
+                  <Button className={`font-bold`}>Edit Profile</Button>
+                </Link>
+              )
             ))}
         </div>
       </div>
