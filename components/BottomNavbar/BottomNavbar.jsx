@@ -1,14 +1,17 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { Button } from "../ui/button";
 import { useSession } from "next-auth/react";
 import { NotebookPen, Search, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ShowSearch from "../ShowSearch/ShowSearch";
 import { cn } from "@/lib/utils";
-import { BookmarkIcon, HomeIcon } from "@/app/assets/svgs/GeneralIcons";
+import {
+  BookmarkIcon,
+  HomeIcon,
+  ProfileIcon,
+} from "@/app/assets/svgs/GeneralIcons";
 
 export default function BottomNavbar() {
   const [openSearch, setOpenSearch] = useState(false);
@@ -44,12 +47,10 @@ export default function BottomNavbar() {
 
   return (
     <div className="max-w-3xl py-0.5 px-4 bg-background">
-      <div className="flex justify-between items-center gap-3">
+      <div className="flex justify-between items-center gap-1">
         <Link
           href={`/`}
-          className={cn(
-            `flex flex-col items-center justify-center py-1 px-3 group`
-          )}
+          className={cn(`flex flex-col items-center justify-center py-1 group`)}
         >
           <div className="border p-1.5 rounded-full">
             <HomeIcon className="w-6 h-6" />
@@ -63,41 +64,44 @@ export default function BottomNavbar() {
             Home
           </span>
         </Link>
-        <div className="flex items-center justify-between gap-2">
-          {status === "authenticated" && (
-            <Link
-              className={`flex flex-col items-center justify-center py-1 px-3 cursor-pointer group`}
-              href={`/saved-notes`}
-            >
-              <div className="border rounded-full p-1.5">
-                <BookmarkIcon className="w-6 h-6" />
-              </div>
-              <span
-                className={cn(
-                  "group-hover:text-primary",
-                  pathName === "/saved-notes" && "text-primary"
-                )}
-              >
-                Saved
-              </span>
-            </Link>
-          )}
-          <div
-            className={`flex flex-col items-center justify-center py-1 px-3 cursor-pointer group`}
-            onClick={() => setOpenSearch(!openSearch)}
+        {status === "authenticated" && (
+          <Link
+            className={`flex flex-col items-center justify-center py-1 cursor-pointer group`}
+            href={`/saved-notes`}
           >
             <div className="border rounded-full p-1.5">
-              <Search className="w-6 h-6" />
+              <BookmarkIcon className="w-6 h-6" />
             </div>
-            <span className="group-hover:text-primary">Search</span>
+            <span
+              className={cn(
+                "group-hover:text-primary",
+                pathName === "/saved-notes" && "text-primary"
+              )}
+            >
+              Saved
+            </span>
+          </Link>
+        )}
+        <div
+          className={`flex flex-col items-center justify-center py-1 cursor-pointer group`}
+          onClick={() => setOpenSearch(!openSearch)}
+        >
+          <div className="border rounded-full p-1.5">
+            <Search strokeWidth={1.5} className="w-6 h-6" />
           </div>
-          {status === "authenticated" && (
+          <span className="group-hover:text-primary">Search</span>
+        </div>
+        {status === "authenticated" && (
+          <>
             <Link
               href={`/create-note`}
-              className="flex flex-col items-center justify-center group py-1 px-3"
+              className="flex flex-col items-center justify-center group py-1"
             >
               <div className="border p-1.5 rounded-full">
-                <NotebookPen className="w-[1.5rem] h-[1.5rem]" />
+                <NotebookPen
+                  strokeWidth={1.5}
+                  className="w-[1.5rem] h-[1.5rem]"
+                />
               </div>
               <span
                 className={cn(
@@ -108,8 +112,26 @@ export default function BottomNavbar() {
                 Write
               </span>
             </Link>
-          )}
-        </div>
+            <Link
+              href={`/user/${session?.user?.username}/${session?.user?.id}`}
+              className="flex flex-col items-center justify-center group py-1"
+            >
+              <div className="border p-1.5 rounded-full">
+                <ProfileIcon className="w-[1.5rem] h-[1.5rem]" />
+              </div>
+              <span
+                className={cn(
+                  pathName ===
+                    `/user/${session?.user?.username}/${session?.user?.id}` &&
+                    "text-primary",
+                  "group-hover:text-primary"
+                )}
+              >
+                Profile
+              </span>
+            </Link>
+          </>
+        )}
       </div>
       {/* Search bar component */}
       {openSearch && (
