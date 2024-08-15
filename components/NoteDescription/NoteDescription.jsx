@@ -1,10 +1,11 @@
 "use client";
 import { inter_font } from "@/utils/fonts";
+import { generateSlug } from "@/utils/slugGenerator";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ReactLinkify from "react-linkify";
 
-const NoteDescription = ({ description, noteId = "" }) => {
+const NoteDescription = ({ description, note = {} }) => {
   const pathName = usePathname();
 
   const truncateString = (str, num) => {
@@ -15,7 +16,7 @@ const NoteDescription = ({ description, noteId = "" }) => {
           <>
             <span>... </span>
             <Link
-              href={`/note/${noteId}/details`}
+              href={`/note/${generateSlug(note?.title)}/${note?._id}`}
               className="text-primary hover:underline"
             >
               see more
@@ -44,9 +45,9 @@ const NoteDescription = ({ description, noteId = "" }) => {
         className={`text-sm md:text-base mt-[0.28rem] py-1 whitespace-pre-line ${inter_font}`}
       >
         <ReactLinkify componentDecorator={customLink}>
-          {pathName === `/note/${noteId}/details` ||
+          {pathName === `/note/${generateSlug(note?.title)}/${note?._id}` ||
           pathName === "/create-note" ||
-          pathName === `/edit-note/${noteId}`
+          pathName === `/note/${generateSlug(note?.title)}/${note?._id}/edit`
             ? description
             : truncateString(description, 140)}
         </ReactLinkify>

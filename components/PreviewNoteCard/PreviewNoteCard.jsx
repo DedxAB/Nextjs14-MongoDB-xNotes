@@ -12,6 +12,7 @@ export default function PreviewNoteCard({
   websiteLink,
   selectVisibility,
   noteId = "",
+  note
 }) {
   return (
     <>
@@ -62,7 +63,7 @@ export default function PreviewNoteCard({
 
           {/* Show the description */}
           {description && (
-            <NoteDescription description={description} noteId={noteId} />
+            <NoteDescription description={description} noteId={noteId} note={note} />
           )}
 
           {/* Show the tags */}
