@@ -1,30 +1,17 @@
 "use client";
 
-import { handleCheckSavedNote } from "@/actions/note.actions";
+import { useSavedNotes } from "@/context/SavedNotesContext";
 import { SaveIcon } from "@/app/assets/svgs/GeneralIcons";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 export default function SaveNotes({ note }) {
   const { data: session } = useSession();
-  const [isSaved, setIsSaved] = useState(false);
+  const { savedNotesMap, setSavedNotesMap } = useSavedNotes();
   const router = useRouter();
 
-  useEffect(() => {
-    const checkSavedStatus = async () => {
-      const { isSaved } = await handleCheckSavedNote(
-        session?.user?.id,
-        note?._id
-      );
-      setIsSaved(isSaved);
-    };
-
-    if (session?.user?.id && note?._id) {
-      checkSavedStatus();
-    }
-  }, [note?._id, session?.user?.id]);
+  const isSaved = savedNotesMap[note?._id] || false;
 
   const handleSave = async () => {
     if (!session) {
@@ -48,21 +35,29 @@ export default function SaveNotes({ note }) {
         const { message } = await response.json();
         throw new Error(message);
       }
+
       toast.success(`${isSaved ? "Note unsaved" : "Note saved"} successfully`, {
         id: toastId,
       });
+
+      // Update context
+      setSavedNotesMap((prev) => ({
+        ...prev,
+        [note?._id]: !isSaved,
+      }));
+
       router.refresh();
-      setIsSaved(!isSaved);
     } catch (error) {
       toast.error(error.message, { id: toastId });
     }
   };
+
   return (
     <div onClick={handleSave}>
       {!isSaved ? (
-        <SaveIcon className={`w-4 h-4 text-foreground`} fill={"none"} />
+        <SaveIcon className="w-4 h-4 text-foreground" fill="none" />
       ) : (
-        <SaveIcon className={`w-4 h-4 text-primary`} fill={"#E11D48"} />
+        <SaveIcon className="w-4 h-4 text-primary" fill="#E11D48" />
       )}
     </div>
   );
