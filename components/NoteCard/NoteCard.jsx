@@ -264,7 +264,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
               title="Save Note"
               className="cursor-pointer transition-all duration-300 ease-in-out border rounded-full p-[.63rem] hover:border-primary"
             >
-              <SaveNotes note={note} />
+              <SaveNotes note={updatedNote} />
             </div>
 
             {isOpenShareModal && (
