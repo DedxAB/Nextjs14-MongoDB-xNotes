@@ -23,7 +23,7 @@ export const generateMetadata = async ({ params }) => {
     openGraph: {
       type: "profile",
       locale: "en_US",
-      url: `https://dedxnotes.vercel.app/user/${generateSlug(
+      url: `${BASE_URL}/user/${generateSlug(
         user?.username
       )}/${id}`,
       siteName: "DedxNotes",

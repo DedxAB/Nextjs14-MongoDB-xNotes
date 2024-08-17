@@ -17,7 +17,13 @@ export default async function page() {
       <section id="banner-notification">
         <WelcomeBanner
           title="Notifications"
-          description={`Here you will see all notifications (${notifications.length})`}
+          description={
+            notifications.length > 0
+              ? `You have ${notifications.length} new ${
+                  notifications.length === 1 ? "notification" : "notifications"
+                }. Check ${notifications.length === 1 ? "it" : "them"} out!`
+              : "You're all caught up! No new notifications at the moment."
+          }
         />
       </section>
 

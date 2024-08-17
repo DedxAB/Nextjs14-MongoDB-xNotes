@@ -11,15 +11,21 @@ export default async function page() {
   const { data: savedNotes = [] } = data ?? {};
   return (
     <>
-      <WelcomeBanner
-        title={`Your Saved Notes`}
-        description={`Here are all the notes you have saved (${savedNotes.length}).`}
-      />
+      <section id="savednote-banner">
+        <WelcomeBanner
+          title="Welcome Back!"
+          description={
+            savedNotes.length > 0
+              ? `You've saved ${savedNotes.length} ${
+                  savedNotes.length === 1 ? "note" : "notes"
+                }. Explore ${savedNotes.length === 1 ? "it" : "them"} below.`
+              : "You haven't saved any notes yet."
+          }
+        />
+      </section>
 
       {savedNotes.length < 1 && (
-        <h1 className="font-bold text-base">
-          You have not saved any notes yet
-        </h1>
+        <h1 className="font-bold text-base">Start by adding your first one!</h1>
       )}
 
       {savedNotes.length > 0 &&

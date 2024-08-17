@@ -6,6 +6,7 @@ import Footer from "@/components/Footer/Footer";
 import BottomNavbar from "@/components/BottomNavbar/BottomNavbar";
 import { Toaster } from "@/components/ui/sonner";
 import { SavedNotesProvider } from "@/context/SavedNotesContext";
+import { BASE_URL } from "@/utils/constants";
 
 export const metadata = {
   metadataBase: new URL("https://dedxnotes.vercel.app/"),
@@ -24,7 +25,7 @@ export const metadata = {
       "Create notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today!",
     type: "website",
     locale: "en_US",
-    url: "https://dedxnotes.vercel.app/",
+    url: `${BASE_URL}`,
     siteName: "DedxNotes",
   },
 };
