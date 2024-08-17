@@ -10,15 +10,26 @@ import { SavedNotesProvider } from "@/context/SavedNotesContext";
 export const metadata = {
   title: {
     default: "DedxNotes - Digital Sticky Notes",
-    template: "%s @xNotes",
+    template: "%s | DedxNotes",
   },
   description:
     "An interactive note-sharing platform! Create digital sticky notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today! 🌟",
   keywords:
     "notes, sticky notes, digital sticky note, recall notes, productivity, online platform, notes sharing, ideas, notes app, dedxnotes productivity, dedxnotes note-taking, dedxnotes note sharing, dedxnotes notes app",
   creator: "DedxAB - Arnab Bhoumik",
+  metadataBase: new URL("https://dedxnotes.vercel.app/"),
   image: "https://dedxnotes.vercel.app/dedxnotes-logo.png",
   url: "https://dedxnotes.vercel.app/",
+  openGraph: {
+    title: "DedxNotes - Digital Sticky Notes",
+    description:
+      "An interactive note-sharing platform! Create digital sticky notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today! 🌟",
+    type: "website",
+    locale: "en_US",
+    url: "https://dedxnotes.vercel.app/",
+    image: "https://dedxnotes.vercel.app/dedxnotes-logo.png",
+    siteName: "DedxNotes",
+  },
 };
 
 export default function RootLayout({ children }) {
