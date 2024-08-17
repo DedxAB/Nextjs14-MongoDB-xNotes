@@ -18,10 +18,13 @@ const UserCard = ({ user }) => {
           {/* Show the author image */}
           <div className="mr-2 py-1">
             <Avatar>
-              <AvatarImage src={user?.image} referrerPolicy="no-referrer" />
+              <AvatarImage
+                src={user?.image}
+                referrerPolicy="no-referrer"
+                alt={user?.name}
+              />
               <AvatarFallback>{shortName} </AvatarFallback>
             </Avatar>
-            {/* <MyImage src={user?.image} /> */}
           </div>
           <div className="w-full">
             {/* Show the author name, username */}

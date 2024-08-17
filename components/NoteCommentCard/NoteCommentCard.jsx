@@ -33,6 +33,7 @@ const NoteCommentCard = ({ comment, note }) => {
             <AvatarImage
               src={comment?.author?.image || "/logo.png"}
               referrerPolicy="no-referrer"
+              alt={comment?.author?.name || "DedxNotes"}
             />
             <AvatarFallback>{shortName || "DN"} </AvatarFallback>
           </Avatar>

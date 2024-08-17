@@ -111,7 +111,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
               <AvatarImage
                 src={user?.image || "/logo.png"}
                 referrerPolicy="no-referrer"
-                alt={`Profile Image of ${user?.name}`}
+                alt={`Profile Image of ${user?.name}` || "DedxNotes"}
               />
               <AvatarFallback>{shortName}</AvatarFallback>
             </Avatar>
