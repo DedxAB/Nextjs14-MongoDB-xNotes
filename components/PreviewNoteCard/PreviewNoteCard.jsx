@@ -12,7 +12,7 @@ export default function PreviewNoteCard({
   websiteLink,
   selectVisibility,
   noteId = "",
-  note
+  note,
 }) {
   return (
     <>
@@ -20,7 +20,11 @@ export default function PreviewNoteCard({
         {/* Show the author image */}
         <div className="mr-2 pt-[5px]">
           <Avatar>
-            <AvatarImage src={"/logo.png"} referrerPolicy="no-referrer" />
+            <AvatarImage
+              src={"/logo.png"}
+              referrerPolicy="no-referrer"
+              alt={"DedxNotes"}
+            />
           </Avatar>
         </div>
         <div className="w-full">
@@ -63,7 +67,11 @@ export default function PreviewNoteCard({
 
           {/* Show the description */}
           {description && (
-            <NoteDescription description={description} noteId={noteId} note={note} />
+            <NoteDescription
+              description={description}
+              noteId={noteId}
+              note={note}
+            />
           )}
 
           {/* Show the tags */}

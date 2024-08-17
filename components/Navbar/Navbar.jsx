@@ -121,7 +121,7 @@ const Navbar = () => {
                 <Avatar>
                   <AvatarImage
                     src={session?.user?.image || "/logo.png"}
-                    alt={`Profile image of ${session?.user?.name}`}
+                    alt={`Profile image of ${session?.user?.name}` || "DedxNotes"}
                   />
                   <AvatarFallback>{shortName}</AvatarFallback>
                 </Avatar>

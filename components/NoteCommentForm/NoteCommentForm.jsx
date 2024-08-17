@@ -94,6 +94,7 @@ const NoteCommentForm = ({ note, currentUser }) => {
             <AvatarImage
               src={currentUser?.image || "/logo.png"}
               referrerPolicy="no-referrer"
+              alt={currentUser?.name || "DedxNotes"}
             />
             <AvatarFallback>{shortName || "DN"}</AvatarFallback>
           </Avatar>
