@@ -21,13 +21,13 @@ export default function MoreOptions({ noteData }) {
   useEffect(() => {
     switch (true) {
       case pathName === notePath:
-        setCurrentPath("details");
+        setCurrentPath("01-n");
         break;
       case pathName === userPath:
-        setCurrentPath("profile");
+        setCurrentPath("02-u");
         break;
       default:
-        setCurrentPath("other");
+        setCurrentPath("03-o");
     }
   }, [pathName, notePath, userPath]);
 
