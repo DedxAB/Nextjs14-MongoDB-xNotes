@@ -7,7 +7,21 @@ import slugify from "slugify";
  * @returns {string} The generated slug.
  */
 export function generateSlug(title) {
-  if(!title) return "";
-  const shortenedTitle = title.split(" ").slice(0, 3).join(" ");
-  return slugify(shortenedTitle, { lower: true });
+  if (!title) return "dedxnotes-hello";
+
+  try {
+    const shortenedTitle = title.split(" ").slice(0, 5).join(" ");
+    const slug = slugify(shortenedTitle, {
+      lower: true,
+      strict: false,
+      remove: /[*+~.()'"!:@,]/g,
+      replacement: "-",
+      locale: "any",
+    });
+
+    return slug || "dedxnotes-hello"; // Fallback if slugify returns an empty string
+  } catch (error) {
+    console.error("Slug generation failed: ", error);
+    return "dedxnotes-hello"; // Fallback in case of an error
+  }
 }
