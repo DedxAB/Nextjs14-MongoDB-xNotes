@@ -1,10 +1,11 @@
 "use server";
 
 import connectDB from "@/db/mongodb";
+import Note from "@/models/note.model";
 import SavedNote from "@/models/savedNote.model";
 
 /*
- * 
+ *
  * The reduce function is used to transform the savedNotes array into an object     (savedNotesMap).
  * The noteId is used as the key, and the value is set to true to indicate that the note is saved.
  */

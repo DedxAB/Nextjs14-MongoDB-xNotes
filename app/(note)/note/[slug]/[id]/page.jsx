@@ -34,7 +34,7 @@ export const generateMetadata = async ({ params }) => {
     openGraph: {
       type: "article",
       locale: "en_US",
-      url: `https://dedxnotes.vercel.app/note/${generateSlug(
+      url: `${BASE_URL}/note/${generateSlug(
         note?.title
       )}/${id}`,
       siteName: "DedxNotes",
