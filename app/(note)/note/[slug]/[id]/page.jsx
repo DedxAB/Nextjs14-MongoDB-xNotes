@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { fetchNoteById } from "@/services/noteServices";
 import { BASE_URL } from "@/utils/constants";
+import { generateSlug } from "@/utils/slugGenerator";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 
@@ -27,9 +28,17 @@ export const generateMetadata = async ({ params }) => {
     }`,
     description: `${
       currentUserEmail !== note?.author?.email && note?.visibility !== "public"
-        ? "An interactive note-sharing platform! Create digital sticky notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today! 🌟"
+        ? "Create notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today!"
         : note?.description
     }`,
+    openGraph: {
+      type: "note",
+      locale: "en_US",
+      url: `https://dedxnotes.vercel.app/note/${generateSlug(
+        note?.title
+      )}/${id}`,
+      siteName: "DedxNotes",
+    },
   };
 };
 
