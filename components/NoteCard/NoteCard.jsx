@@ -140,50 +140,45 @@ const NoteCard = ({ note, noteAuthor: user }) => {
                   }`) && <MoreOptions noteData={updatedNote} />}
           </div>
 
-          {/* Title and Date div  */}
-          <div>
-            {/* Show the title and date */}
-            <Link
-              href={`/note/${generateSlug(updatedNote?.title)}/${
-                updatedNote?._id
-              }`}
+          {/* Show the title and date */}
+          <Link
+            href={`/note/${generateSlug(updatedNote?.title)}/${
+              updatedNote?._id
+            }`}
+          >
+            {/* title  */}
+            <h2 className={`text-lg md:text-xl font-bold`}>
+              {updatedNote?.title}
+            </h2>
+
+            {/* date */}
+            <div
+              className={`pt-[.19rem] md:pt-1 flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] ${josefin_sans_font}`}
             >
-              {/* title  */}
-              <h2 className={`text-lg md:text-xl font-bold`}>
-                {updatedNote?.title}
-              </h2>
+              <p className="mr-1">
+                {
+                  dayjs(updatedNote?.createdAt).format(
+                    "MMM D, YYYY • hh : mm A"
+                  ) // Mar 27, 2024
+                }
+              </p>
 
-              {/* date */}
-              <div
-                className={`pt-[.19rem] md:pt-1 flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] ${josefin_sans_font}`}
-              >
-                <p className="mr-1">
-                  {
-                    dayjs(updatedNote?.createdAt).format(
-                      "MMM D, YYYY • hh : mm A"
-                    ) // Mar 27, 2024
-                  }
-                </p>
-
-                {/* Show the edited date if updated */}
-                {/* {contentUpdatedAt - createdAt > 1000 && (
+              {/* Show the edited date if updated */}
+              {/* {contentUpdatedAt - createdAt > 1000 && (
                   <p className="flex justify-center items-center">
                     •&nbsp;
                     <PencilLine className="w-3 h-3 mr-1" />
                     <span>edited</span>
                   </p>
                 )} */}
-                <div>
-                  •&nbsp;
-                  <span>
-                    {updatedNote?.visibility === "private"
-                      ? "Only me"
-                      : "Public"}
-                  </span>
-                </div>
+              <div>
+                •&nbsp;
+                <span>
+                  {updatedNote?.visibility === "private" ? "Only me" : "Public"}
+                </span>
               </div>
-            </Link>
-          </div>
+            </div>
+          </Link>
 
           {/* Show the description */}
           <NoteDescription
