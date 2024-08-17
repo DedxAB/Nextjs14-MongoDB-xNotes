@@ -122,9 +122,10 @@ const EditNote = ({
         throw new Error(errorData.message || "Failed to Edit note.");
       }
 
-      if (from === "details") {
+      // Redirect to the correct page
+      if (from === "01-n") {
         route.push(`/note/${generateSlug(newTitle)}/${id}`);
-      } else if (from === "profile") {
+      } else if (from === "02-u") {
         route.push(`/user/${author?.username}/${author?._id}`);
       } else {
         route.push(`/`);
