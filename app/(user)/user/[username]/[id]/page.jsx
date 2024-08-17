@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { fetchUserById } from "@/services/userServices";
 import { BASE_URL } from "@/utils/constants";
+import { generateSlug } from "@/utils/slugGenerator";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 
@@ -15,7 +16,18 @@ export const generateMetadata = async ({ params }) => {
   const { id } = params;
   const { data: user = {} } = (await fetchUserById(id)) ?? {};
   return {
-    title: `${user?.name || "Profile"}`,
+    title: `${user?.name || "Profile"}${
+      user?.username && ` (@${user?.username})`
+    }`,
+    description: `Welcome to ${user?.name}'s profile.`,
+    openGraph: {
+      type: "profile",
+      locale: "en_US",
+      url: `https://dedxnotes.vercel.app/user/${generateSlug(
+        user?.username
+      )}/${id}`,
+      siteName: "DedxNotes",
+    },
   };
 };
 
