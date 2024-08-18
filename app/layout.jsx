@@ -9,7 +9,7 @@ import { SavedNotesProvider } from "@/context/SavedNotesContext";
 import { BASE_URL } from "@/utils/constants";
 
 export const metadata = {
-  metadataBase: new URL("https://dedxnotes.vercel.app/"),
+  metadataBase: new URL(BASE_URL),
   title: {
     default: "DedxNotes - Digital Sticky Notes",
     template: "%s | DedxNotes",
@@ -25,7 +25,7 @@ export const metadata = {
       "Create notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today!",
     type: "website",
     locale: "en_US",
-    url: `${BASE_URL}`,
+    url: `/`,
     siteName: "DedxNotes",
   },
 };

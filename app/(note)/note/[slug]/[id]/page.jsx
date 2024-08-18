@@ -34,9 +34,7 @@ export const generateMetadata = async ({ params }) => {
     openGraph: {
       type: "article",
       locale: "en_US",
-      url: `${BASE_URL}/note/${generateSlug(
-        note?.title
-      )}/${id}`,
+      url: `/note/${generateSlug(note?.title)}/${id}`,
       siteName: "DedxNotes",
     },
   };
@@ -48,7 +46,6 @@ const page = async ({ params }) => {
   const currentUserEmail = session?.user?.email;
 
   const { data: note = {} } = (await fetchNoteById(id)) ?? {};
-  // console.log(note);
 
   if (
     currentUserEmail !== note?.author?.email &&
