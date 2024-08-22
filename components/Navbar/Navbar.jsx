@@ -48,7 +48,7 @@ const Navbar = () => {
     return () => clearTimeout(timeoutId);
   }, [openSearch, searchText]);
 
-  const hadleSearchInput = (e) => {
+  const handleSearchInput = (e) => {
     e.preventDefault();
     if (searchText.length > 0) {
       router.push(`/result?q=${searchText}`);
@@ -195,9 +195,8 @@ const Navbar = () => {
       {/* Search bar component */}
       {openSearch && (
         <div className="w-full px-4 absolute top-[.83rem] left-0">
-          {/* Content */}
           <div className="w-full flex items-center z-20">
-            <form onSubmit={hadleSearchInput} className="w-full">
+            <form onSubmit={handleSearchInput} className="w-full">
               <Input
                 ref={(input) => input && input.focus()}
                 value={searchText}
