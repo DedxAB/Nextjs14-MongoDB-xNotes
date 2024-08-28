@@ -28,6 +28,7 @@ export const metadata = {
     url: `/`,
     siteName: "DedxNotes",
   },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({ children }) {
