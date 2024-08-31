@@ -39,7 +39,7 @@ export default function NotificationButton() {
       href="/notifications"
       className="p-[.63rem] border rounded-full cursor-pointer bg-background relative"
     >
-      <NotificationIcon className="w-5 h-5" />
+      <NotificationIcon className="w-4 h-4" />
       {notifications.length > 0 && (
         <span className="absolute flex h-2 w-2 top-[.48rem] right-[.59rem]">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
