@@ -11,7 +11,6 @@ export default async function page() {
     currentUser?.user?._id
   );
 
-  // console.log(notifications);
   return (
     <>
       <section id="banner-notification">

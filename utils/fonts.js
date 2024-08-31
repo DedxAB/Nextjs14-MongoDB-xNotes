@@ -9,8 +9,8 @@ import {
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight:["400", "500", "600", "700"]
-})
+  weight: ["400", "500", "600", "700"],
+});
 
 const opensans = Open_Sans({
   subsets: ["latin"],
@@ -40,11 +40,4 @@ const inter_font = inter.className;
 const source_code_pro_font = sourceCodePro.className;
 const poppins_font = poppins.className;
 
-export {
-  josefin_sans_font,
-  playfair_font,
-  opensans_font,
-  inter_font,
-  source_code_pro_font,
-  poppins_font,
-};
+export { josefin_sans_font, playfair_font, inter_font };

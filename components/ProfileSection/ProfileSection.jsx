@@ -15,6 +15,12 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import { usePathname } from "next/navigation";
+import {
+  FacebookIcon,
+  GoogleIcon,
+  InstagramIcon,
+  XIcon,
+} from "@/app/assets/svgs/GeneralIcons";
 
 const ProfileSection = ({ user }) => {
   const { data: session } = useSession();
@@ -23,6 +29,8 @@ const ProfileSection = ({ user }) => {
     ?.split(" ")
     .map((n) => n[0])
     .join("");
+
+  const highResImageSrc = user?.image.replace("s96-c", "s512-c");
 
   return (
     <section>
@@ -33,13 +41,31 @@ const ProfileSection = ({ user }) => {
         </p>
         <div className="flex items-center gap-3 mb-3">
           {/* User Avatar */}
-          <Avatar className={`w-16 h-16`}>
-            <AvatarImage
-              src={user?.image || "/logo.png"}
-              alt={user?.name || "DedxNotes"}
-            />
-            <AvatarFallback>{shortName}</AvatarFallback>
-          </Avatar>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Avatar className={`w-16 h-16 cursor-pointer`}>
+                <AvatarImage
+                  src={highResImageSrc || "/logo.png"}
+                  alt={user?.name || "DedxNotes"}
+                />
+                <AvatarFallback>{shortName}</AvatarFallback>
+              </Avatar>
+            </DialogTrigger>
+            <DialogContent className="grid place-items-center w-fit rounded-2xl p-2">
+              <DialogHeader>
+                <DialogDescription>
+                  <Avatar className={`w-52 h-52`}>
+                    <AvatarImage
+                      src={highResImageSrc || "/logo.png"}
+                      alt={user?.name || "DedxNotes"}
+                    />
+                    <AvatarFallback>{shortName}</AvatarFallback>
+                  </Avatar>
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
+
           <div className="flex flex-col gap-1">
             {/* User name and username */}
             <div
@@ -106,30 +132,7 @@ const ProfileSection = ({ user }) => {
             className={`${josefin_sans_font} my-4 flex items-center flex-wrap`}
           >
             <div className="flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                x="0px"
-                y="0px"
-                className="w-4 md:w-5 h-4 md:h-5"
-                viewBox="0 0 48 48"
-              >
-                <path
-                  fill="#FFC107"
-                  d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
-                ></path>
-                <path
-                  fill="#FF3D00"
-                  d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
-                ></path>
-                <path
-                  fill="#4CAF50"
-                  d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
-                ></path>
-                <path
-                  fill="#1976D2"
-                  d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
-                ></path>
-              </svg>
+              <GoogleIcon className="w-4 md:w-5 h-4 md:h-5" />
               <span className="text-md md:text-xl text-gray-500 font-bold pt-1">
                 oogle •
               </span>
@@ -155,20 +158,7 @@ const ProfileSection = ({ user }) => {
                 rel="noreferrer"
                 className="text-primary"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-facebook"
-                >
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                </svg>
+                <FacebookIcon className="w-5 h-5 text-primary" />
               </Link>
             )}
             {user?.socialLinks?.twitter && (
@@ -178,20 +168,7 @@ const ProfileSection = ({ user }) => {
                 rel="noreferrer"
                 className="text-primary"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  className="w-5 h-5 text-primary"
-                  fill={"none"}
-                >
-                  <path
-                    d="M3 21L10.5484 13.4516M21 3L13.4516 10.5484M13.4516 10.5484L8 3H3L10.5484 13.4516M13.4516 10.5484L21 21H16L10.5484 13.4516"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <XIcon className="w-5 h-5 text-primary" />
               </Link>
             )}
             {user?.socialLinks?.instagram && (
@@ -201,21 +178,7 @@ const ProfileSection = ({ user }) => {
                 rel="noreferrer"
                 className="text-primary"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5 text-primary"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  // className="lucide lucide-instagram"
-                >
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                </svg>
+                <InstagramIcon className="w-5 h-5 text-primary" />
               </Link>
             )}
           </div>

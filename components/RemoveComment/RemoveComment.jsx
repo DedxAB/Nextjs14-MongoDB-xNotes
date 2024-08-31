@@ -16,7 +16,8 @@ import {
 import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { source_code_pro_font } from "@/utils/fonts";
+import { josefin_sans_font } from "@/utils/fonts";
+import { DeleteIcon } from "@/app/assets/svgs/GeneralIcons";
 
 const RemoveComment = ({ comment, note }) => {
   const [conformationMessage, setConformationMessage] = useState(false);
@@ -67,7 +68,7 @@ const RemoveComment = ({ comment, note }) => {
               variant="outline"
               size="icon"
             >
-              <Trash2 className="w-4 h-4 text-red-500" />
+              <DeleteIcon className="w-4 h-4 text-primary" />
             </Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
@@ -76,7 +77,7 @@ const RemoveComment = ({ comment, note }) => {
               <AlertDialogDescription className={`font-bold`}>
                 This action cannot be undone. You are about to delete this
                 comment :{" "}
-                <span className={`text-primary ${source_code_pro_font}`}>
+                <span className={`text-primary ${josefin_sans_font}`}>
                   {comment?.text}
                 </span>
               </AlertDialogDescription>
