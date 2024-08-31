@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { fetchUserById } from "@/services/userServices";
 import { BASE_URL } from "@/utils/constants";
+import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -22,9 +23,15 @@ export const generateMetadata = async ({ params }) => {
 
 const page = async ({ params }) => {
   const { id } = params;
-  const { user } = await fetchUserById(id);
+  const userData = await fetchUserById(id);
+  const { data: user = {} } = userData ?? {};
 
-  if (!user?.isAdmin) {
+  const session = await getServerSession();
+  const userSession = session?.user;
+
+  const currentUserMail = userSession?.email;
+
+  if (user?.isAdmin && currentUserMail !== user?.email) {
     redirect("/");
   }
 
