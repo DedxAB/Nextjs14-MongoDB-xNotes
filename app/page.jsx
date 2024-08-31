@@ -4,11 +4,11 @@ import UserBanner from "@/components/UserBanner/UserBanner";
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { BASE_URL } from "@/utils/constants";
+import Link from "next/link";
 
 const Home = () => {
   return (
@@ -17,7 +17,7 @@ const Home = () => {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href={`${BASE_URL}`}>Home</BreadcrumbLink>
+              <Link href={`${BASE_URL}`}>Home</Link>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
           </BreadcrumbList>
