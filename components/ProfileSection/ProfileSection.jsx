@@ -7,13 +7,14 @@ import { useSession } from "next-auth/react";
 import { CalendarDays, Contact } from "lucide-react";
 import { inter_font, josefin_sans_font } from "@/utils/fonts";
 import {
+  CustomDialogContent,
   Dialog,
-  DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "../ui/custom-dialog";
+import { DialogContent } from "../ui/dialog";
 import { usePathname } from "next/navigation";
 import {
   FacebookIcon,
@@ -53,7 +54,7 @@ const ProfileSection = ({ user }) => {
                 </AvatarFallback>
               </Avatar>
             </DialogTrigger>
-            <DialogContent className="grid place-items-center w-fit rounded-2xl p-2">
+            <CustomDialogContent className="grid place-items-center w-fit sm:rounded-full p-0">
               <DialogHeader>
                 <DialogDescription>
                   <Avatar className={`w-52 h-52`}>
@@ -67,7 +68,7 @@ const ProfileSection = ({ user }) => {
                   </Avatar>
                 </DialogDescription>
               </DialogHeader>
-            </DialogContent>
+            </CustomDialogContent>
           </Dialog>
 
           <div className="flex flex-col gap-1">

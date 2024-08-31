@@ -19,7 +19,7 @@ const page = async ({ params }) => {
   const { id } = params;
   const session = await getServerSession();
 
-  const { user } = await fetchUserById(id);
+  const { data: user = {} } = (await fetchUserById(id)) ?? {};
 
   const { bio, socialLinks, _id: userId, name, username } = user;
 

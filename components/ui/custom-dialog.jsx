@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { Cross2Icon } from "@radix-ui/react-icons";
+// import { Cross2Icon } from "@radix-ui/react-icons";
 
 import { cn } from "@/lib/utils";
 
@@ -26,7 +26,7 @@ const DialogOverlay = React.forwardRef(({ className, ...props }, ref) => (
 ));
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
-const DialogContent = React.forwardRef(
+const CustomDialogContent = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <DialogPortal>
       <DialogOverlay />
@@ -47,7 +47,7 @@ const DialogContent = React.forwardRef(
     </DialogPortal>
   )
 );
-DialogContent.displayName = DialogPrimitive.Content.displayName;
+CustomDialogContent.displayName = DialogPrimitive.Content.displayName;
 
 const DialogHeader = ({ className, ...props }) => (
   <div
@@ -98,7 +98,7 @@ export {
   DialogOverlay,
   DialogTrigger,
   DialogClose,
-  DialogContent,
+  CustomDialogContent,
   DialogHeader,
   DialogFooter,
   DialogTitle,
