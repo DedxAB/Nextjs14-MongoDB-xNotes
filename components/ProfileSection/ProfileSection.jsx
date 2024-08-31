@@ -54,7 +54,7 @@ const ProfileSection = ({ user }) => {
                 </AvatarFallback>
               </Avatar>
             </DialogTrigger>
-            <CustomDialogContent className="grid place-items-center w-fit sm:rounded-full p-0">
+            <CustomDialogContent className="grid place-items-center w-fit rounded-full p-0">
               <DialogHeader>
                 <DialogDescription>
                   <Avatar className={`w-52 h-52`}>
