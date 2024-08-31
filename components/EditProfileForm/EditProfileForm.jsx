@@ -11,7 +11,7 @@ import { Input } from "../ui/input";
 import { useSession } from "next-auth/react";
 import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
 import { Label } from "../ui/label";
-import { source_code_pro_font } from "@/utils/fonts";
+import { josefin_sans_font } from "@/utils/fonts";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -50,7 +50,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
     }
   };
 
-  const handelOnSubmit = async (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
 
     if (!newName) {
@@ -109,14 +109,14 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
       />
 
       <section>
-        <form onSubmit={handelOnSubmit} className="flex flex-col gap-3">
+        <form onSubmit={handleOnSubmit} className="flex flex-col gap-3">
           {/* Name input and Username input main div  */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {/* Name Input */}
-            <div className="flex flex-col justify-center gap-3">
+            <div className="flex flex-col justify-center gap-2">
               <Label
                 htmlFor={`name`}
-                className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
+                className={`font-bold md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
               >
                 Name:
               </Label>
@@ -130,10 +130,10 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
             </div>
 
             {/* Username Input */}
-            <div className="flex flex-col justify-center gap-3">
+            <div className="flex flex-col justify-center gap-2">
               <Label
                 htmlFor={`username`}
-                className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
+                className={`font-bold md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
               >
                 Username:
               </Label>
@@ -147,10 +147,10 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
             </div>
           </div>
           {/* Description text area */}
-          <div className="flex flex-col justify-center gap-3">
+          <div className="flex flex-col justify-center gap-2">
             <Label
               htmlFor={`bio`}
-              className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
+              className={`font-bold md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
             >
               Your Bio:
             </Label>
@@ -170,7 +170,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
           {/* Social Links */}
           <Label
             htmlFor={`social`}
-            className={`font-bold md:text-base pl-1 text-[#444746] ${source_code_pro_font}`}
+            className={`font-bold md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
           >
             Social Links:
           </Label>
@@ -218,7 +218,6 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
                   variant={`outline`}
                   className="font-bold w-fit px-3 mr-3"
                 >
-                  {/* <MessageSquareX className="w-4 h-4 mr-1" /> */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     x="0px"

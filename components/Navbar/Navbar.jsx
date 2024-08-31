@@ -25,8 +25,8 @@ import { useRouter } from "next/navigation";
 import { playfair_font } from "@/utils/fonts";
 import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
-import NotificationIcon from "../Notification/NotificationIcon";
 import { AboutIcon, BookmarkIcon } from "@/app/assets/svgs/GeneralIcons";
+import NotificationButton from "../Notification/NotificationButton";
 
 const Navbar = () => {
   const [openSearch, setOpenSearch] = useState(false);
@@ -86,7 +86,7 @@ const Navbar = () => {
         </>
       ) : (
         <div className="flex items-center justify-between gap-3 sm:gap-4">
-          {status === "authenticated" && <NotificationIcon />}
+          {status === "authenticated" && <NotificationButton />}
           <Button
             title="Search"
             size="icon"

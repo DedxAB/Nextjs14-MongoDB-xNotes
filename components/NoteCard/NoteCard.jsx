@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink } from "lucide-react";
+import { Contact, ExternalLink } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
@@ -125,10 +125,17 @@ const NoteCard = ({ note, noteAuthor: user }) => {
               className={`flex flex-wrap items-center text-xs mr-2 py-1 ${josefin_sans_font}`}
             >
               {/* name  */}
-              <p className={`font-bold mr-1`}>{user?.name}</p>
+              <p className={`font-bold mr-1 flex items-center gap-[2px]`}>
+                <span>
+                  {user?.isAdmin && (
+                    <Contact className="w-3.5 md:w-3.5 h-3.5 md:h-3.5 pb-[.15rem]" />
+                  )}
+                </span>
+                {user?.name}
+              </p>
 
               {/* username */}
-              <p className={`text-[#6b6e6e] `}>@{user?.username}</p>
+              <p className={`text-[#6b6e6e]`}>@{user?.username}</p>
             </Link>
             {/* More options */}
             {(session?.user?.id === user?._id || session?.user?.isAdmin) &&
@@ -173,8 +180,12 @@ const NoteCard = ({ note, noteAuthor: user }) => {
                 )} */}
               <div>
                 •&nbsp;
-                <span>
-                  {updatedNote?.visibility === "private" ? "Only me" : "Public"}
+                <span
+                  title={
+                    updatedNote?.visibility === "private" ? "Private" : "Public"
+                  }
+                >
+                  {updatedNote?.visibility === "private" ? "👨‍🎤" : "🌏"}
                 </span>
               </div>
             </div>
