@@ -13,7 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
+} from "../ui/custom-dialog";
 import { usePathname } from "next/navigation";
 import {
   FacebookIcon,
@@ -42,13 +42,15 @@ const ProfileSection = ({ user }) => {
         <div className="flex items-center gap-3 mb-3">
           {/* User Avatar */}
           <Dialog>
-            <DialogTrigger asChild>
+            <DialogTrigger>
               <Avatar className={`w-16 h-16 cursor-pointer`}>
                 <AvatarImage
                   src={highResImageSrc || "/logo.png"}
                   alt={user?.name || "DedxNotes"}
                 />
-                <AvatarFallback>{shortName}</AvatarFallback>
+                <AvatarFallback className="text-lg">
+                  {shortName || "DN"}
+                </AvatarFallback>
               </Avatar>
             </DialogTrigger>
             <DialogContent className="grid place-items-center w-fit rounded-2xl p-2">
@@ -59,7 +61,9 @@ const ProfileSection = ({ user }) => {
                       src={highResImageSrc || "/logo.png"}
                       alt={user?.name || "DedxNotes"}
                     />
-                    <AvatarFallback>{shortName}</AvatarFallback>
+                    <AvatarFallback className="text-xl">
+                      {user?.name || "DedxNotes"}
+                    </AvatarFallback>
                   </Avatar>
                 </DialogDescription>
               </DialogHeader>
