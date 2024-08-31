@@ -41,7 +41,7 @@ const UserNotesFeed = ({ notes, user }) => {
         />
       )}
 
-      {notes.length > 0 ? (
+      {notes?.length > 0 ? (
         <div className="flex items-center justify-between">
           <h1 className="font-bold text-base my-5">
             {`${activeTab} Notes (${filteredNotes?.length})`}
@@ -80,10 +80,10 @@ const UserNotesFeed = ({ notes, user }) => {
             : "User hasn't shared any notes yet."}
         </h1>
       )}
-      {notes.length > 0 && filteredNotes.length < 1 && (
+      {notes?.length > 0 && filteredNotes?.length < 1 && (
         <h1 className="font-bold text-lg mb-3">No notes found.</h1>
       )}
-      {filteredNotes.length > 0 &&
+      {filteredNotes?.length > 0 &&
         filteredNotes.map((note) => (
           <NoteCard key={note?._id} note={note} noteAuthor={user} />
         ))}
