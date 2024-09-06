@@ -4,10 +4,10 @@ const Loading = () => {
   return (
     <>
       <NoteSkeleton showBannerSkeleton={true} />
-      <NoteSkeleton showBannerSkeleton={true} />
-      <NoteSkeleton showBannerSkeleton={true} />
-      <NoteSkeleton showBannerSkeleton={true} />
-      <NoteSkeleton showBannerSkeleton={true} />
+      <NoteSkeleton />
+      <NoteSkeleton />
+      <NoteSkeleton />
+      <NoteSkeleton />
     </>
   );
 };
