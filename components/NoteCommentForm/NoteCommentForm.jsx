@@ -9,6 +9,7 @@ import { inter_font, josefin_sans_font } from "@/utils/fonts";
 import { Button } from "../ui/button";
 import { SendHorizontal } from "lucide-react";
 import { useSession } from "next-auth/react";
+import { cn } from "@/lib/utils";
 
 const NoteCommentForm = ({ note, currentUser }) => {
   const [comment, setComment] = useState("");
@@ -104,7 +105,7 @@ const NoteCommentForm = ({ note, currentUser }) => {
         <div className="w-full flex flex-col gap-1 md:gap-2">
           {/* Show the author name, username */}
           <div
-            className={`flex flex-wrap items-center text-xs ${josefin_sans_font}`}
+            className={cn("flex flex-wrap items-center text-xs", josefin_sans_font)}
           >
             {/* name  */}
             <p className={`font-bold  mr-1`}>

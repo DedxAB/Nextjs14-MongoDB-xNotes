@@ -22,6 +22,7 @@ import {
   InstagramIcon,
   XIcon,
 } from "@/app/assets/svgs/GeneralIcons";
+import GradientText from "../GradientText";
 
 const ProfileSection = ({ user }) => {
   const { data: session } = useSession();
@@ -31,15 +32,15 @@ const ProfileSection = ({ user }) => {
     .map((n) => n[0])
     .join("");
 
-  const highResImageSrc = user?.image.replace("s96-c", "s512-c");
+  const highResImageSrc = user?.image?.replace("s96-c", "s512-c");
 
   return (
-    <section>
+    <section id="profile-section">
       <div className="mb-6 mt-8">
         {/* Profile Heading */}
-        <p className="text-4xl md:text-5xl mb-5 py-1 bg-gradient-to-r from-blue-500  via-red-500 to-pink-500 bg-clip-text text-transparent font-bold">
+        <GradientText className="text-4xl md:text-5xl mb-5 py-1">
           Profile
-        </p>
+        </GradientText>
         <div className="flex items-center gap-3 mb-3">
           {/* User Avatar */}
           <Dialog>
@@ -47,6 +48,7 @@ const ProfileSection = ({ user }) => {
               <Avatar className={`w-16 h-16 cursor-pointer`}>
                 <AvatarImage
                   src={highResImageSrc || "/logo.png"}
+                  referrerPolicy="no-referrer"
                   alt={user?.name || "DedxNotes"}
                 />
                 <AvatarFallback className="text-lg">
@@ -60,6 +62,7 @@ const ProfileSection = ({ user }) => {
                   <Avatar className={`w-52 h-52`}>
                     <AvatarImage
                       src={highResImageSrc || "/logo.png"}
+                      referrerPolicy="no-referrer"
                       alt={user?.name || "DedxNotes"}
                     />
                     <AvatarFallback className="text-xl">
@@ -111,22 +114,6 @@ const ProfileSection = ({ user }) => {
               >
                 @{user?.username}
               </p>
-              {/* {user?.notes.length === 0 ? (
-                <div className="flex gap-1 items-center">
-                  <Scroll className="w-4 h-4" />
-                  <span>No Notes Published Yet</span>
-                </div>
-              ) : user?.notes.length === 1 ? (
-                <div className="flex gap-1 items-center">
-                  <ScrollText className="w-4 h-4" />
-                  <span>1 Note published</span>
-                </div>
-              ) : (
-                <div className="flex gap-1 items-center">
-                  <ScrollText className="w-4 h-4" />
-                  <span>{user?.notes.length} Notes Published</span>
-                </div>
-              )} */}
             </div>
           </div>
         </div>

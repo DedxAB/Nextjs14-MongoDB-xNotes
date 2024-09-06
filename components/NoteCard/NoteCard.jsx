@@ -185,7 +185,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
                     updatedNote?.visibility === "private" ? "Private" : "Public"
                   }
                 >
-                  {updatedNote?.visibility === "private" ? "👨‍🎤" : "🌏"}
+                  {updatedNote?.visibility === "private" ? "🔒" : "🌎"}
                 </span>
               </div>
             </div>

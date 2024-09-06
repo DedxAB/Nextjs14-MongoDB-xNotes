@@ -2,7 +2,6 @@ import { getServerSession } from "next-auth";
 import NoteCard from "../NoteCard/NoteCard";
 import NoteCommentCard from "../NoteCommentCard/NoteCommentCard";
 import NoteCommentForm from "../NoteCommentForm/NoteCommentForm";
-import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
 import { fetchUserByEmail } from "@/services/userServices";
 
 const NoteDetailsById = async ({ note }) => {
@@ -17,12 +16,6 @@ const NoteDetailsById = async ({ note }) => {
   }
   return (
     <>
-      {/* Create Note banner  */}
-      <WelcomeBanner
-        title={`Note Details`}
-        description={`Feel free to comment.`}
-      />
-
       <NoteCard note={note} noteAuthor={user} />
       <NoteCommentForm note={note} currentUser={currentUser} />
 

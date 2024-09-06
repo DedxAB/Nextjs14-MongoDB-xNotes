@@ -293,10 +293,10 @@ const EditNote = ({
                 <SelectGroup>
                   <SelectLabel>Visibility</SelectLabel>
                   <SelectItem value="private" className={`cursor-pointer`}>
-                    👨‍🎤&nbsp;Only me
+                    🔒&nbsp;Only me
                   </SelectItem>
                   <SelectItem value="public" className={`cursor-pointer`}>
-                    🌏&nbsp;Public
+                    🌎&nbsp;Public
                   </SelectItem>
                 </SelectGroup>
               </SelectContent>
