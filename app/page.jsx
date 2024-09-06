@@ -1,3 +1,4 @@
+import NoteSkeletonWrapper from "@/components/Skeleton/NoteSkeletonWrapper";
 import NotesFeed from "@/components/NotesFeed/NotesFeed";
 import SearchInput from "@/components/SearchInput/SearchInput";
 import UserBanner from "@/components/UserBanner/UserBanner";
@@ -9,6 +10,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { BASE_URL } from "@/utils/constants";
 import Link from "next/link";
+import { Suspense } from "react";
 
 const Home = () => {
   return (
@@ -28,7 +30,9 @@ const Home = () => {
       {/* Search Input */}
       <SearchInput />
       {/* Notes Feed */}
-      <NotesFeed />
+      <Suspense fallback={<NoteSkeletonWrapper />}>
+        <NotesFeed />
+      </Suspense>
     </div>
   );
 };
