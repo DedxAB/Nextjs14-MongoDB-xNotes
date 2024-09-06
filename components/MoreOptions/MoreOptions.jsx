@@ -39,7 +39,7 @@ export default function MoreOptions({ noteData }) {
             <MoreOptionIcon className="w-4 h-4" />
           </div>
         </PopoverTrigger>
-        <PopoverContent className="transform -translate-x-[60%] -translate-y-5">
+        <PopoverContent className="transform -translate-x-[30%] md:-translate-x-[45%] -translate-y-5">
           <div className="flex flex-col gap-1">
             <Link
               href={`/note/${noteSlug}/${noteData?._id}/edit?from=${currentPath}`}

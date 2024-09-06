@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/lib/utils";
 import { inter_font } from "@/utils/fonts";
 import { generateSlug } from "@/utils/slugGenerator";
 import Link from "next/link";
@@ -42,7 +43,10 @@ const NoteDescription = ({ description, note = {} }) => {
   return (
     <>
       <div
-        className={`text-sm md:text-base mt-[0.28rem] py-1 whitespace-pre-line ${inter_font}`}
+        className={cn(
+          "text-sm md:text-base mt-[0.28rem] py-1 whitespace-pre-line break-words",
+          inter_font
+        )}
       >
         <ReactLinkify componentDecorator={customLink}>
           {pathName === `/note/${generateSlug(note?.title)}/${note?._id}` ||
