@@ -1,9 +1,9 @@
-import LoadingSkeleton from "@/components/Skeleton/LoadingSkeleton";
+import { LoadingIcon } from "./assets/svgs/GeneralIcons";
 
 export default function Loading() {
   return (
     <div className="h-[85vh] w-full flex justify-center items-center">
-      <LoadingSkeleton />
+      <LoadingIcon className="w-[13.5rem] h-[7.5rem]" />
     </div>
   );
 }
