@@ -123,10 +123,13 @@ const NoteCard = ({ note, noteAuthor: user }) => {
             {/* Show the author name, username */}
             <Link
               href={`/user/${user?.username}/${user?._id}`}
-              className={cn("flex flex-wrap items-center text-xs mr-2 py-1", josefin_sans_font)}
+              className={cn(
+                "flex flex-wrap items-center text-xs mr-2 py-1",
+                josefin_sans_font
+              )}
             >
               {/* name  */}
-              <p className={`font-bold mr-1 flex items-center gap-[2px]`}>
+              <p className="font-bold mr-1 flex items-center gap-[2px]">
                 <span>
                   {user?.isAdmin && (
                     <Contact className="w-3.5 md:w-3.5 h-3.5 md:h-3.5 pb-[.15rem]" />
@@ -161,7 +164,10 @@ const NoteCard = ({ note, noteAuthor: user }) => {
 
             {/* date */}
             <div
-              className={`pt-[.19rem] md:pt-1 flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] ${josefin_sans_font}`}
+              className={cn(
+                "pt-[.19rem] md:pt-1 flex text-xs flex-wrap justify-start items-center text-[#6b6e6e]",
+                josefin_sans_font
+              )}
             >
               <p className="mr-1">
                 {
@@ -214,7 +220,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
           )}
 
           {/* Show the likes and comments and weblink share  */}
-          <div className={`flex gap-[.63rem] md:gap-3 mt-2 pt-1 items-center`}>
+          <div className="flex gap-[.63rem] md:gap-3 mt-2 pt-1 items-center">
             {/* Likes  */}
             {updatedNote?.likes && (
               <div className="flex gap-1 cursor-pointer items-center transition-all duration-300 ease-in-out border hover:border-primary rounded-full p-2">
