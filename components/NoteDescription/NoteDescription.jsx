@@ -44,9 +44,10 @@ const NoteDescription = ({ description, note = {} }) => {
     <>
       <div
         className={cn(
-          "text-sm md:text-base mt-[0.28rem] py-1 whitespace-pre-line break-words",
+          "text-sm md:text-base mt-[0.28rem] py-1 whitespace-pre-line w-full",
           inter_font
         )}
+        style={{ overflowWrap: "anywhere" }}
       >
         <ReactLinkify componentDecorator={customLink}>
           {pathName === `/note/${generateSlug(note?.title)}/${note?._id}` ||

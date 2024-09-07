@@ -20,6 +20,7 @@ import {
 } from "@/app/assets/svgs/GeneralIcons";
 import SaveNotes from "../SaveNotes/SaveNotes";
 import { generateSlug } from "@/utils/slugGenerator";
+import { cn } from "@/lib/utils";
 
 const NoteCard = ({ note, noteAuthor: user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
@@ -122,7 +123,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
             {/* Show the author name, username */}
             <Link
               href={`/user/${user?.username}/${user?._id}`}
-              className={`flex flex-wrap items-center text-xs mr-2 py-1 ${josefin_sans_font}`}
+              className={cn("flex flex-wrap items-center text-xs mr-2 py-1", josefin_sans_font)}
             >
               {/* name  */}
               <p className={`font-bold mr-1 flex items-center gap-[2px]`}>
