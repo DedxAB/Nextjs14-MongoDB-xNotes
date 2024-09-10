@@ -7,14 +7,11 @@ export const fetchNotificationsByUserId = async (userId) => {
     });
 
     if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.message || "Failed to get all notifications");
+      const { error } = await res.json();
+      throw new Error(error || "Failed to get all notifications");
     }
     return await res.json();
   } catch (error) {
-    console.log(
-      "Failed to fetch notification, fetchNotificationsByUserId",
-      error.message
-    );
+    console.log(error.message);
   }
 };

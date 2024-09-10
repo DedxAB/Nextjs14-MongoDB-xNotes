@@ -7,12 +7,12 @@ async function fetchAllUser() {
     });
 
     if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.message || "Failed to get all Users");
+      const { error } = await res.json();
+      throw new Error(error || "Failed to get all Users");
     }
     return await res.json();
   } catch (error) {
-    console.log("Failed to fetch all user", error.message);
+    console.log(error.message);
   }
 }
 
@@ -23,8 +23,8 @@ async function fetchUserByEmail(email) {
       cache: "no-store",
     });
     if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.message || "Failed to get User");
+      const { error } = await res.json();
+      throw new Error(error || "Failed to get User");
     }
     return await res.json();
   } catch (error) {
@@ -38,8 +38,8 @@ async function fetchUserById(id) {
       cache: "no-store",
     });
     if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.message || "Failed to get User");
+      const { error } = await res.json();
+      throw new Error(error || "Failed to get User");
     }
     return await res.json();
   } catch (error) {

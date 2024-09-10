@@ -20,9 +20,7 @@ const fetchResultOfQuery = async (q) => {
       const errorNotesData = await dataNotes.json();
       const errorUsersData = await dataUsers.json();
       throw new Error(
-        errorNotesData.message ||
-          errorUsersData.message ||
-          "Something went wrong!"
+        errorNotesData.error || errorUsersData.error || "Something went wrong!"
       );
     }
 
@@ -31,7 +29,7 @@ const fetchResultOfQuery = async (q) => {
 
     return { notesArray, usersArray };
   } catch (error) {
-    console.error(error);
+    console.error(error.message);
   }
 };
 

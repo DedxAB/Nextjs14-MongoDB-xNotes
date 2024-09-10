@@ -17,14 +17,17 @@ async function fetchNoteById(id) {
 }
 
 // fetch all notes
-async function fetchAllNotes() {
+async function fetchAllNotes(page = 1, limit = 10) {
   try {
-    const res = await fetch(`${BASE_URL}/api/notes`, {
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `${BASE_URL}/api/notes?page=${page}&limit=${limit}`,
+      {
+        cache: "no-store",
+      }
+    );
     if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.message || "Error fetching Notes");
+      const { error } = await res.json();
+      throw new Error(error || "Error fetching Notes");
     }
     return await res.json();
   } catch (error) {
