@@ -20,22 +20,22 @@ export const POST = async (req) => {
         message,
       });
     } else {
-      return NextResponse.json({ message: "Invalid type" }, { status: 400 });
+      return NextResponse.json({ error: "Invalid type" }, { status: 400 });
     }
 
     if (!notification) {
       return NextResponse.json(
-        { message: "Failed to create notification" },
+        { error: "Failed to create notification" },
         { status: 400 }
       );
     }
     return NextResponse.json(
-      { data: Notification, message: "Notification created" },
+      { message: "Notification created", data: Notification },
       { status: 200 }
     );
   } catch (error) {
     return NextResponse.json(
-      { message: "Failed to connect to the database" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

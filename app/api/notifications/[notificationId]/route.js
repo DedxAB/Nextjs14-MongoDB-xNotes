@@ -14,7 +14,7 @@ export async function PATCH(req, { params }) {
     );
     if (!notification) {
       return NextResponse.json(
-        { message: "Notification not found" },
+        { error: "Notification not found" },
         { status: 404 }
       );
     }
@@ -24,7 +24,7 @@ export async function PATCH(req, { params }) {
     );
   } catch (error) {
     return NextResponse.json(
-      { message: "Failed to connect with the server" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

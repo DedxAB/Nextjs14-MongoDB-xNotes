@@ -16,10 +16,13 @@ export const GET = async (_req, { params }) => {
       .populate("notes")
       .sort({ createdAt: -1 });
     if (!users) {
-      return NextResponse.json({ message: "No users found" }, { status: 404 });
+      return NextResponse.json({ error: "No users found" }, { status: 404 });
     }
     return NextResponse.json(users);
   } catch (error) {
-    return NextResponse.json({ message: error.message }, 500);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
   }
 };

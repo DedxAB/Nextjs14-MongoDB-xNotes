@@ -18,12 +18,12 @@ export const GET = async (_req, { params }) => {
       },
     });
     if (!user) {
-      return NextResponse.json({ message: "User not found" }, { status: 404 });
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
     return NextResponse.json({ data: user }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
-      { message: "Failed to connect to the server" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -39,11 +39,11 @@ export const PATCH = async (req, { params }) => {
     // Find the user by ID and check if the session email matches the user's email
     const user = await User.findById(id);
     if (!user) {
-      return NextResponse.json({ message: "User not found" }, { status: 404 });
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
     if (user.email !== session?.user?.email) {
       return NextResponse.json(
-        { message: "You are not authorized to perform this action" },
+        { error: "You are not authorized to perform this action" },
         { status: 401 }
       );
     }
@@ -51,7 +51,7 @@ export const PATCH = async (req, { params }) => {
     const isUsernameExist = await User.findOne({ username });
     if (isUsernameExist && isUsernameExist?._id?.toString() !== id) {
       return NextResponse.json(
-        { message: "Username already exists. Try different one." },
+        { error: "Username already exists. Try different one." },
         { status: 400 }
       );
     }
@@ -65,7 +65,7 @@ export const PATCH = async (req, { params }) => {
     return NextResponse.json({ message: "Bio updated" }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
-      { message: "Failed to connect to the server" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

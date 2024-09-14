@@ -4,7 +4,7 @@ import { BASE_URL } from "@/utils/constants";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 
-const authOptions = {
+export const authOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -39,10 +39,13 @@ const authOptions = {
             },
             body: JSON.stringify({ email, name, image, username }),
           });
-          if (!res) throw new Error("Failed to register user");
+          if (!res) {
+            const { error } = await res.json();
+            throw new Error(error || "Failed to create user");
+          }
           return true;
         } catch (error) {
-          console.log(error);
+          console.log(error.message);
           return false;
         }
       }

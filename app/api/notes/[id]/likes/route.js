@@ -19,14 +19,14 @@ export const PATCH = async (req, { params }) => {
 
     // Check if the note exists
     if (!updatedNote) {
-      return NextResponse.json({ message: "Note not found" }, { status: 404 });
+      return NextResponse.json({ error: "Note not found" }, { status: 404 });
     }
 
     return NextResponse.json({ updatedNote }, { status: 200 });
   } catch (error) {
     // console.error(error); // Log the error for debugging
     return NextResponse.json(
-      { message: "Failed to update Like" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

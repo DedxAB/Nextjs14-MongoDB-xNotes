@@ -8,7 +8,6 @@ import { NextResponse } from "next/server";
 
 export const GET = async (_req, { params }) => {
   try {
-    await connectDB();
     const { userId } = params;
 
     // check if the user is the current logged in user or not
@@ -26,6 +25,7 @@ export const GET = async (_req, { params }) => {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    await connectDB();
     const notifications = await Notification.find({
       $or: [{ noteOwnerId: userId }, { type: "admin" }],
     })
@@ -46,7 +46,7 @@ export const GET = async (_req, { params }) => {
     );
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to connect to the database" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

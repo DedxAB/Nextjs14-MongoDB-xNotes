@@ -22,11 +22,11 @@ export async function PATCH(req, { params }) {
     // Ensure the note exists and the session user is the author
     const note = await Note.findById(id).populate("author");
     if (!note) {
-      return NextResponse.json({ message: "Note not found" }, { status: 404 });
+      return NextResponse.json({ error: "Note not found" }, { status: 404 });
     }
     if (session?.user?.email !== note.author.email) {
       return NextResponse.json(
-        { message: "You are not authorized to update this note" },
+        { error: "You are not authorized to update this note" },
         { status: 403 }
       );
     }
@@ -47,13 +47,13 @@ export async function PATCH(req, { params }) {
 
     // Check if the update was successful
     if (!updatedNote) {
-      return NextResponse.json({ message: "Update failed" }, { status: 400 });
+      return NextResponse.json({ error: "Update failed" }, { status: 400 });
     }
 
     return NextResponse.json({ message: "Note updated" }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
-      { message: "Failed to connect with the server" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -72,13 +72,13 @@ export const GET = async (_req, { params }) => {
       });
 
     if (!note) {
-      return NextResponse.json({ message: "Note not found" }, { status: 404 });
+      return NextResponse.json({ error: "Note not found" }, { status: 404 });
     }
     return NextResponse.json({ data: note }, { status: 200 });
   } catch (error) {
     // console.error(error);
     return NextResponse.json(
-      { message: "Failed to connect with the server" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

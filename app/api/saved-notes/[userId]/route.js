@@ -12,14 +12,14 @@ export const GET = async (_req, { params }) => {
 
     if (!userId) {
       return NextResponse.json(
-        { message: "User ID is required" },
+        { error: "User ID is required" },
         { status: 400 }
       );
     }
 
     const isExistUserId = await User.findById(userId);
     if (!isExistUserId) {
-      return NextResponse.json({ message: "User not found" }, { status: 404 });
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
     const savedNotes = await SavedNote.find({ userId })
@@ -33,7 +33,7 @@ export const GET = async (_req, { params }) => {
 
     if (savedNotes.length === 0) {
       return NextResponse.json(
-        { message: "No saved notes found" },
+        { error: "No saved notes found" },
         { status: 404 }
       );
     }
@@ -45,7 +45,7 @@ export const GET = async (_req, { params }) => {
   } catch (error) {
     console.error(error); // Log the error for debugging
     return NextResponse.json(
-      { message: "Error connecting to server" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

@@ -10,7 +10,7 @@ export const POST = async (req) => {
     const comment = await Comment.create({ text, author });
     if (!comment) {
       return NextResponse.json(
-        { message: "Failed to add comment" },
+        { error: "Failed to add comment" },
         { status: 400 }
       );
     }
@@ -27,7 +27,7 @@ export const POST = async (req) => {
     );
   } catch (error) {
     return NextResponse.json(
-      { message: "Failed to connect to the database" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -41,16 +41,13 @@ export const GET = async (_req) => {
       .sort({ createdAt: -1 });
 
     if (!comments) {
-      return NextResponse.json(
-        { message: "No comments found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: "No comments found" }, { status: 404 });
     }
     return NextResponse.json({ comments }, { status: 200 });
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { message: "Failed to connect to DB" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
