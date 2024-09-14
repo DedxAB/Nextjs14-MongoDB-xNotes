@@ -14,13 +14,13 @@ const NoteDetailsComponent = async ({ id }) => {
 
   if (isPrivateNote) {
     return (
-      <div>
+      <>
         <WelcomeBanner
           title="Note Details"
           description="This note is private and can only be viewed by the author."
         />
         <UserCard user={note?.author} />
-      </div>
+      </>
     );
   }
 

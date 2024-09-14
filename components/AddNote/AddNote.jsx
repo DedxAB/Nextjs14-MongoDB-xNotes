@@ -134,12 +134,12 @@ const AddNote = () => {
       if (!res.ok) {
         // Get the error message from the response
         const errorData = await res.json();
-        throw new Error(errorData.message || "Failed to save Note");
+        throw new Error(errorData.error || "Failed to save Note");
       }
 
       router.back();
       router.refresh();
-      toast.success("Note Published Sucessfully.", {
+      toast.success("Note Published Successfully.", {
         id: toastId,
       });
       localStorage.removeItem("title");

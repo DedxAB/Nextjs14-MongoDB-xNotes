@@ -1,4 +1,5 @@
 "use client";
+
 import { josefin_sans_font } from "@/utils/fonts";
 import AdminToggle from "../AdminToggle/AdminToggle";
 import UserCard from "../UserCard/UserCard";

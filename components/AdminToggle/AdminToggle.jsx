@@ -13,8 +13,8 @@ const AdminToggle = ({ user, currentUserEmail }) => {
   const { data: session } = useSession();
 
   const toggleAdminStatus = async () => {
+    const toastId = toast.loading("Updating user status...");
     try {
-      const toastId = toast.loading("Updating user status...");
       const res = await fetch(`/api/user/toggleAdminStatus/${user?._id}`, {
         method: "PATCH",
         headers: {
@@ -25,7 +25,7 @@ const AdminToggle = ({ user, currentUserEmail }) => {
 
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(errorData.message || "Failed to update user");
+        throw new Error(errorData.error || "Failed to update user");
       }
 
       const { updatedUser } = await res.json();

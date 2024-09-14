@@ -42,7 +42,7 @@ const NoteCommentForm = ({ note, currentUser }) => {
 
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(errorData.message || "Failed to add comment");
+        throw new Error(errorData.error || "Failed to add comment");
       }
 
       // comment notification

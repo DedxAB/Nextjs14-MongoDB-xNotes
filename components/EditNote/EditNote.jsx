@@ -125,7 +125,7 @@ const EditNote = ({
 
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(errorData.message || "Failed to Edit note.");
+        throw new Error(errorData.error || "Failed to Edit note.");
       }
 
       // Redirect to the correct page
@@ -155,7 +155,7 @@ const EditNote = ({
       <section id="edit-note-banner">
         <WelcomeBanner
           title="Any Changes?"
-          description={`Dont worry! You are at right place.`}
+          description={`Don't worry! You are at right place.`}
         />
       </section>
 

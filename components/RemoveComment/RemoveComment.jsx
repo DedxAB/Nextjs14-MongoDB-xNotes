@@ -1,5 +1,5 @@
 "use client";
-import { Trash2 } from "lucide-react";
+
 import { Button } from "../ui/button";
 import { useSession } from "next-auth/react";
 import {
@@ -41,7 +41,7 @@ const RemoveComment = ({ comment, note }) => {
         });
         const errorData = await res.json();
         if (!res.ok) {
-          throw new Error(errorData.message || "Falied to Delete Comment.");
+          throw new Error(errorData.error || "Failed to Delete Comment.");
         }
         router.refresh();
         toast.success("Comment Deleted Successfully.", { id: toastId });

@@ -1,3 +1,4 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Signin from "@/components/Signin/Signin";
 import {
   Breadcrumb,
@@ -11,7 +12,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 const SigninPage = async () => {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
 
   return (
     <>

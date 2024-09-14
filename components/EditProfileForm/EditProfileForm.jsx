@@ -88,7 +88,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
       });
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(errorData.message || "Failed to update bio");
+        throw new Error(errorData.error || "Failed to update bio");
       }
 
       if (pathName === `/admin/${userId}/edit`) {
