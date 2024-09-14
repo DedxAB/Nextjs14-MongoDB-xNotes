@@ -41,12 +41,12 @@ export default function SharePopup({ handleShare, updatedNote }) {
   return (
     <>
       <div
-        className="fixed inset-0 z-10 bg-black/80 overflow-hidden flex justify-center items-center"
+        className="fixed inset-0 z-20 bg-black/80 overflow-hidden flex justify-center items-center"
         onClick={handleShare}
       ></div>
 
       {/* Modal content */}
-      <div className="fixed z-20 top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] rounded-lg mt-15 min-w-72 max-w-lg p-6 border bg-background">
+      <div className="fixed z-50 top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] rounded-lg mt-15 min-w-72 max-w-lg p-6 border bg-background">
         <div className="mb-4">
           <h2 className="text-xl font-bold">Share Note</h2>
           <p className="mt-2">{updatedNote?.title}</p>
