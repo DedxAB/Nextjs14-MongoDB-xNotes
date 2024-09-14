@@ -7,7 +7,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
-import { fetchUserById } from "@/services/userServices";
+import { fetchUserById } from "@/services/user/server/user.service";
 import { BASE_URL } from "@/utils/constants";
 import { getServerSession } from "next-auth";
 import Link from "next/link";

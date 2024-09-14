@@ -1,20 +1,17 @@
-import NoteDetailsById from "@/components/NoteDetailsById/NoteDetailsById";
 import NoteSkeleton from "@/components/Skeleton/NoteSkeleton";
-import UserCard from "@/components/UserCard/UserCard";
-import WelcomeBanner from "@/components/WelcomeBanner/WelcomeBanner";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { fetchNoteById } from "@/services/noteServices";
 import { BASE_URL } from "@/utils/constants";
 import { generateSlug } from "@/utils/slugGenerator";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { Suspense } from "react";
 import NoteDetailsComponent from "./components/NoteDetailsComponent";
+import { fetchNoteById } from "@/services/note/server/note.service";
 
 export const generateMetadata = async ({ params }) => {
   const { id } = params;

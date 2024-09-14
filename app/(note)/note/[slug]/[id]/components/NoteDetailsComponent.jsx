@@ -1,7 +1,7 @@
 import NoteDetailsById from "@/components/NoteDetailsById/NoteDetailsById";
 import UserCard from "@/components/UserCard/UserCard";
 import WelcomeBanner from "@/components/WelcomeBanner/WelcomeBanner";
-import { fetchNoteById } from "@/services/noteServices";
+import { fetchNoteById } from "@/services/note/server/note.service";
 import { getServerSession } from "next-auth";
 
 const NoteDetailsComponent = async ({ id }) => {

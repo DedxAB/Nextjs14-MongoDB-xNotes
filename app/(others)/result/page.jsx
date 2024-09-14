@@ -6,7 +6,7 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { fetchResultOfQuery } from "@/services/resultServices";
+import { fetchResultOfQuery } from "@/services/result/server/result.service";
 import { BASE_URL } from "@/utils/constants";
 import { getServerSession } from "next-auth";
 import Link from "next/link";

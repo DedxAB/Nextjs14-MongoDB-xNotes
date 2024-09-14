@@ -1,7 +1,7 @@
 import NoteCard from "@/components/NoteCard/NoteCard";
 import WelcomeBanner from "@/components/WelcomeBanner/WelcomeBanner";
-import { fetchAllSavedNotesByUserId } from "@/services/noteServices";
-import { fetchUserByEmail } from "@/services/userServices";
+import { fetchAllSavedNotesByUserId } from "@/services/note/server/note.service";
+import { fetchUserByEmail } from "@/services/user/server/user.service";
 import { getServerSession } from "next-auth";
 
 export default async function page() {

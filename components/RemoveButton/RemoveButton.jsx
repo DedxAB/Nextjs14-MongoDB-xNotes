@@ -34,7 +34,7 @@ const RemoveButton = ({ id, title }) => {
 
         if (!res.ok) {
           const errorData = await res.json();
-          throw new Error(errorData.message || "Error deleting note");
+          throw new Error(errorData.error || "Error deleting note");
         }
 
         if (pathName === `/note/${generateSlug(title)}/${id}`) {

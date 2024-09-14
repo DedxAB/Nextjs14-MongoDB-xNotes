@@ -6,7 +6,7 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { fetchNoteById } from "@/services/noteServices";
+import { fetchNoteById } from "@/services/note/server/note.service";
 import { BASE_URL } from "@/utils/constants";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";

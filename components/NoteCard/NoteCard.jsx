@@ -31,7 +31,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
 
   // Get the first letter of the name to show in the avatar
   const shortName = user?.name
-    .split(" ")
+    ?.split(" ")
     .map((n) => n[0])
     .join("");
 
@@ -59,7 +59,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
 
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(errorData.message || "Failed to like the note");
+        throw new Error(errorData.error || "Failed to like the note");
       }
 
       const { updatedNote } = await res.json();
