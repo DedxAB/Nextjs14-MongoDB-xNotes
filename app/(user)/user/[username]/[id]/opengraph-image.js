@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "next/og";
 import { BASE_URL } from "@/utils/constants";
-import { fetchUserById } from "@/services/userServices";
+import { fetchUserById } from "@/services/user/server/user.service";
 
 export const runtime = "edge";
 
