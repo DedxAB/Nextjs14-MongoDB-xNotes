@@ -1,6 +1,11 @@
 import { getAuthCookies } from "./getAuthCookies";
 import { isServer } from "./isServer";
 
+/**
+ *
+ * @returns {Object} - Request options object
+ */
+
 // Helper function to prepare headers for server side and client side fetching
 export const getRequestOptions = () => {
   const options = { cache: "no-store" };

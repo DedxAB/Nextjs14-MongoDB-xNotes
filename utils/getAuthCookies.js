@@ -1,5 +1,10 @@
 import { cookies } from "next/headers";
 
+/**
+ *
+ * @returns {String} - Serialized auth cookies
+ */
+
 export function getAuthCookies() {
   // This utility only runs on the server side
   const cookieStore = cookies();
