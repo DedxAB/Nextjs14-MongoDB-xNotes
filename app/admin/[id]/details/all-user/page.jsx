@@ -1,19 +1,21 @@
-import AllUserDetails from "@/components/AllUserDetails/AllUserDetails";
-import WelcomeBanner from "@/components/WelcomeBanner/WelcomeBanner";
+import { getServerSession } from "next-auth";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import AllUserDetails from "@/components/AllUserDetails/AllUserDetails";
+import WelcomeBanner from "@/components/WelcomeBanner/WelcomeBanner";
+
 import {
   fetchAllUser,
   fetchUserByEmail,
 } from "@/services/user/server/user.service";
 import { BASE_URL } from "@/utils/constants";
-import { getServerSession } from "next-auth";
-import Link from "next/link";
-import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "All User",

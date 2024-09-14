@@ -1,7 +1,9 @@
+import { getServerSession } from "next-auth";
+
 import ProfileSection from "@/components/ProfileSection/ProfileSection";
 import UserFeed from "@/components/UserNotesFeed/UserNotesFeed";
+
 import { fetchUserById } from "@/services/user/server/user.service";
-import { getServerSession } from "next-auth";
 
 const ProfileComponent = async ({ id }) => {
   const session = await getServerSession();

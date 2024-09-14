@@ -1,5 +1,7 @@
-import ProfileSection from "@/components/ProfileSection/ProfileSection";
-import UserFeed from "@/components/UserNotesFeed/UserNotesFeed";
+import { getServerSession } from "next-auth";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,11 +9,11 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
-import { fetchUserById } from "@/services/user/server/user.service";
+import ProfileSection from "@/components/ProfileSection/ProfileSection";
+import UserFeed from "@/components/UserNotesFeed/UserNotesFeed";
+
 import { BASE_URL } from "@/utils/constants";
-import { getServerSession } from "next-auth";
-import Link from "next/link";
-import { redirect } from "next/navigation";
+import { fetchUserById } from "@/services/user/server/user.service";
 
 export const generateMetadata = async ({ params }) => {
   const { id } = params;

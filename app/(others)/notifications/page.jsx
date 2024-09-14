@@ -1,8 +1,9 @@
+import { getServerSession } from "next-auth";
+
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { fetchNotificationsByUserId } from "@/services/notification/server/notification.service";
 import AllNotification from "@/components/Notification/AllNotification";
 import WelcomeBanner from "@/components/WelcomeBanner/WelcomeBanner";
-import { fetchNotificationsByUserId } from "@/services/notification/server/notification.service";
-import { getServerSession } from "next-auth";
 
 export default async function page() {
   const session = await getServerSession(authOptions);

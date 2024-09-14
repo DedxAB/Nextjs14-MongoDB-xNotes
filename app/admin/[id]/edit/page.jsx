@@ -1,15 +1,17 @@
-import EditProfileForm from "@/components/EditProfileForm/EditProfileForm";
+import { getServerSession } from "next-auth";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { fetchUserById } from "@/services/user/server/user.service";
+import EditProfileForm from "@/components/EditProfileForm/EditProfileForm";
+
 import { BASE_URL } from "@/utils/constants";
-import { getServerSession } from "next-auth";
-import Link from "next/link";
-import { redirect } from "next/navigation";
+import { fetchUserById } from "@/services/user/server/user.service";
 
 export const metadata = {
   title: "Edit Profile",

@@ -1,8 +1,10 @@
-import { generateSlug } from "@/utils/slugGenerator";
-import ProfileComponent from "./components/ProfileComponent";
 import { Suspense } from "react";
-import UserProfileSkeleton from "@/components/Skeleton/UserProfileSkeleton";
+
 import { BreadcrumbComponent } from "./components/BreadcrumbComponent";
+import ProfileComponent from "./components/ProfileComponent";
+import UserProfileSkeleton from "@/components/Skeleton/UserProfileSkeleton";
+
+import { generateSlug } from "@/utils/slugGenerator";
 import { fetchUserById } from "@/services/user/server/user.service";
 
 export const generateMetadata = async ({ params }) => {
