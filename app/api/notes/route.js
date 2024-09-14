@@ -1,23 +1,27 @@
+import { getServerSession } from "next-auth";
+import { NextResponse } from "next/server";
+import { authOptions } from "../auth/[...nextauth]/route";
+import mongoose from "mongoose";
+
 import connectDB from "@/db/mongodb";
 import Comment from "@/models/comment.model";
 import Note from "@/models/note.model";
 import Notification from "@/models/notification.model";
 import SavedNote from "@/models/savedNote.model";
 import User from "@/models/user.model";
-import { getServerSession } from "next-auth";
-import { NextResponse } from "next/server";
 
 export async function POST(req) {
-  const { title, description, author, tags, websiteLink, visibility } =
-    await req.json();
   try {
+    const { title, description, author, tags, websiteLink, visibility } =
+      await req.json();
+
     await connectDB();
 
     // Check if a note with the same title already exists
     const existingNote = await Note.findOne({ title });
     if (existingNote) {
       return NextResponse.json(
-        { message: "Title already exists. Please try another Title" },
+        { error: "Title already exists. Please try another Title" },
         { status: 400 }
       );
     }
@@ -33,7 +37,7 @@ export async function POST(req) {
 
     if (!newNote) {
       return NextResponse.json(
-        { message: "Failed to create note" },
+        { error: "Failed to create note" },
         { status: 500 }
       );
     }
@@ -50,26 +54,61 @@ export async function POST(req) {
     return NextResponse.json({ message: "Note created" }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
-      {
-        message: "Failed to connect with server",
-      },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
 }
 
-export async function GET(_req) {
+export async function GET(req) {
   try {
+    const session = await getServerSession(authOptions);
+
+    const page = parseInt(req.nextUrl.searchParams.get("page"), 10) || 1;
+    const limit = parseInt(req.nextUrl.searchParams.get("limit"), 10) || 10;
+    const currentUserId = session?.user?.id;
+
+    // Validate page and limit
+    if (page < 1 || limit < 1) {
+      return NextResponse.json(
+        { status: false, error: "Page and limit must be positive integers." },
+        { status: 400 }
+      );
+    }
+
+    // Connect to the database
     await connectDB();
 
-    const notes = await Note.find().populate("author").sort({ createdAt: -1 });
-    if (!notes) {
-      return NextResponse.json({ message: "No notes found" }, { status: 404 });
+    // Prepare the query
+    const query = {
+      $or: [
+        { visibility: "public" },
+        ...(currentUserId && mongoose.Types.ObjectId.isValid(currentUserId)
+          ? [{ author: currentUserId }]
+          : []),
+      ],
+    };
+
+    // Fetch notes
+    const notes = await Note.find(query)
+      .populate("author")
+      .sort({ createdAt: -1 })
+      .skip((page - 1) * limit)
+      .limit(limit);
+
+    // Return notes or no notes found message
+    if (!notes.length) {
+      return NextResponse.json({ error: "No notes found" }, { status: 404 });
     }
-    return NextResponse.json({ data: notes }, { status: 200 });
-  } catch (error) {
+
     return NextResponse.json(
-      { message: "Failed to fetch notes" },
+      { status: "Success", data: notes },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error fetching notes:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
       { status: 500 }
     );
   }
@@ -80,26 +119,26 @@ export async function DELETE(req) {
     await connectDB();
     const id = req.nextUrl.searchParams.get("id");
 
-    const session = await getServerSession();
-    const currentUser = await User.findOne({ email: session?.user?.email });
+    const session = await getServerSession(authOptions);
+
+    // Check if the user is authenticated or not
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const note = await Note.findById(id).populate("author");
 
     // Check if the current user is the author of the note or an admin
-    if (session.user.email !== note?.author?.email && !currentUser.isAdmin) {
+    if (session.user.email !== note?.author?.email && !session.user.isAdmin) {
       return NextResponse.json(
-        { message: "You are not authorized to delete this note" },
+        { error: "You are not authorized to delete this note" },
         { status: 403 }
       );
     }
 
     const deletedNote = await Note.findByIdAndDelete(id);
     if (!deletedNote) {
-      return NextResponse.json(
-        {
-          message: "Note not found",
-        },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: "Note not found" }, { status: 404 });
     }
 
     // remove the note id from the user's notes array
@@ -126,9 +165,7 @@ export async function DELETE(req) {
     );
   } catch (error) {
     return NextResponse.json(
-      {
-        message: "Failed to connect with server. Please try again later",
-      },
+      { error: "Internal Server Error" },
       { status: 500 }
     );
   }

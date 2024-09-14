@@ -1,5 +1,7 @@
 "use client";
+
 import { useState, useEffect } from "react";
+
 import { Input } from "../ui/input";
 
 export default function ProfileSearchInput({

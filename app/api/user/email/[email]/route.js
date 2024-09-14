@@ -1,6 +1,7 @@
+import { NextResponse } from "next/server";
+
 import connectDB from "@/db/mongodb";
 import User from "@/models/user.model";
-import { NextResponse } from "next/server";
 
 export const GET = async (_req, { params }) => {
   const { email } = params;
@@ -8,12 +9,12 @@ export const GET = async (_req, { params }) => {
     await connectDB();
     const user = await User.findOne({ email });
     if (!user) {
-      return NextResponse.json({ message: "User not found" }, { status: 404 });
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
     return NextResponse.json({ user }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
-      { message: "Failed to connect to the server" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

@@ -1,7 +1,8 @@
+import { NextResponse } from "next/server";
+
 import connectDB from "@/db/mongodb";
 import Note from "@/models/note.model";
 import User from "@/models/user.model";
-import { NextResponse } from "next/server";
 
 export const GET = async (_req, { params }) => {
   const { q } = params;
@@ -18,11 +19,14 @@ export const GET = async (_req, { params }) => {
       .sort({ createdAt: -1 });
 
     if (!notes) {
-      return NextResponse.json({ message: "No notes found" }, { status: 404 });
+      return NextResponse.json({ error: "No notes found" }, { status: 404 });
     }
 
     return NextResponse.json(notes);
   } catch (error) {
-    return NextResponse.json({ message: error.message }, 500);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
   }
 };

@@ -1,11 +1,23 @@
 "use client";
+
+import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
+import dayjs from "dayjs";
+
+import { CalendarDays, Contact } from "lucide-react";
+
+import { inter_font, josefin_sans_font } from "@/utils/fonts";
+import {
+  FacebookIcon,
+  GoogleIcon,
+  InstagramIcon,
+  XIcon,
+} from "@/app/assets/svgs/GeneralIcons";
+
 import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import dayjs from "dayjs";
-import { useSession } from "next-auth/react";
-import { CalendarDays, Contact } from "lucide-react";
-import { inter_font, josefin_sans_font } from "@/utils/fonts";
+import { DialogContent } from "../ui/dialog";
 import {
   CustomDialogContent,
   Dialog,
@@ -14,14 +26,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/custom-dialog";
-import { DialogContent } from "../ui/dialog";
-import { usePathname } from "next/navigation";
-import {
-  FacebookIcon,
-  GoogleIcon,
-  InstagramIcon,
-  XIcon,
-} from "@/app/assets/svgs/GeneralIcons";
+
 import GradientText from "../GradientText";
 
 const ProfileSection = ({ user }) => {

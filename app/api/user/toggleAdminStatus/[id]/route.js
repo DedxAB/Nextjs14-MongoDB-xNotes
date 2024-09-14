@@ -1,6 +1,7 @@
+import { NextResponse } from "next/server";
+
 import connectDB from "@/db/mongodb";
 import User from "@/models/user.model";
-import { NextResponse } from "next/server";
 
 export const PATCH = async (req, { params }) => {
   const { id } = params;
@@ -14,14 +15,14 @@ export const PATCH = async (req, { params }) => {
     );
     if (!updatedUser) {
       return NextResponse.json(
-        { message: "Failed to update user" },
+        { error: "Failed to update user" },
         { status: 400 }
       );
     }
     return NextResponse.json({ updatedUser }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
-      { message: "Failed to connect to server" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

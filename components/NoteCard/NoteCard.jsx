@@ -1,26 +1,29 @@
 "use client";
 
-import { Contact, ExternalLink } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import Link from "next/link";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import dayjs from "dayjs";
 import { toast } from "sonner";
-import { useState } from "react";
+import Link from "next/link";
+
 import { josefin_sans_font } from "@/utils/fonts";
-import NoteDescription from "../NoteDescription/NoteDescription";
-import SharePopup from "../SharePopup/SharePopup";
-import MoreOptions from "../MoreOptions/MoreOptions";
+import { cn } from "@/lib/utils";
+import { generateSlug } from "@/utils/slugGenerator";
+
+import { Contact, ExternalLink } from "lucide-react";
 import {
   CommentIcon,
   EmptyHeartIcon,
   RedHeartIcon,
   ShareIcon,
 } from "@/app/assets/svgs/GeneralIcons";
+
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import NoteDescription from "../NoteDescription/NoteDescription";
+import SharePopup from "../SharePopup/SharePopup";
+import MoreOptions from "../MoreOptions/MoreOptions";
 import SaveNotes from "../SaveNotes/SaveNotes";
-import { generateSlug } from "@/utils/slugGenerator";
-import { cn } from "@/lib/utils";
 
 const NoteCard = ({ note, noteAuthor: user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
@@ -31,7 +34,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
 
   // Get the first letter of the name to show in the avatar
   const shortName = user?.name
-    .split(" ")
+    ?.split(" ")
     .map((n) => n[0])
     .join("");
 
@@ -59,7 +62,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
 
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(errorData.message || "Failed to like the note");
+        throw new Error(errorData.error || "Failed to like the note");
       }
 
       const { updatedNote } = await res.json();

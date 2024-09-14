@@ -1,7 +1,14 @@
 "use client";
-import { Trash2 } from "lucide-react";
-import { Button } from "../ui/button";
+
+import { useState } from "react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+
+import { josefin_sans_font } from "@/utils/fonts";
+import { DeleteIcon } from "@/app/assets/svgs/GeneralIcons";
+
+import { Button } from "../ui/button";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,11 +20,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
-import { useState } from "react";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { josefin_sans_font } from "@/utils/fonts";
-import { DeleteIcon } from "@/app/assets/svgs/GeneralIcons";
 
 const RemoveComment = ({ comment, note }) => {
   const [conformationMessage, setConformationMessage] = useState(false);
@@ -41,7 +43,7 @@ const RemoveComment = ({ comment, note }) => {
         });
         const errorData = await res.json();
         if (!res.ok) {
-          throw new Error(errorData.message || "Falied to Delete Comment.");
+          throw new Error(errorData.error || "Failed to Delete Comment.");
         }
         router.refresh();
         toast.success("Comment Deleted Successfully.", { id: toastId });

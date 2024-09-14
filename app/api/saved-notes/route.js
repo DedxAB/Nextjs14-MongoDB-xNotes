@@ -1,6 +1,7 @@
+import { NextResponse } from "next/server";
+
 import connectDB from "@/db/mongodb";
 import SavedNote from "@/models/savedNote.model";
-import { NextResponse } from "next/server";
 
 export const POST = async (req, _res) => {
   const { userId, noteId } = await req.json();
@@ -8,14 +9,14 @@ export const POST = async (req, _res) => {
     await connectDB();
     if (!userId || !noteId) {
       return NextResponse.json(
-        { message: "User ID and Note ID are required" },
+        { error: "User ID and Note ID are required" },
         { status: 400 }
       );
     }
     const isExistSavedNote = await SavedNote.findOne({ userId, noteId });
     if (isExistSavedNote) {
       return NextResponse.json(
-        { message: "Note already saved" },
+        { error: "Note already saved" },
         { status: 409 }
       );
     }
@@ -26,7 +27,7 @@ export const POST = async (req, _res) => {
     );
   } catch (error) {
     return NextResponse.json(
-      { message: "Error connecting to the server" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -38,13 +39,13 @@ export const DELETE = async (req, _res) => {
     await connectDB();
     if (!userId || !noteId) {
       return NextResponse.json(
-        { message: "User ID and Note ID are required" },
+        { error: "User ID and Note ID are required" },
         { status: 400 }
       );
     }
     const removedSavedNote = await SavedNote.deleteOne({ userId, noteId });
     if (removedSavedNote.deletedCount === 0) {
-      return NextResponse.json({ message: "Note not found" }, { status: 404 });
+      return NextResponse.json({ error: "Note not found" }, { status: 404 });
     }
     return NextResponse.json(
       { message: "Note removed successfully", data: removedSavedNote },
@@ -52,7 +53,7 @@ export const DELETE = async (req, _res) => {
     );
   } catch (error) {
     return NextResponse.json(
-      { message: "Error connecting to the server" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

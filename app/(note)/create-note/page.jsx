@@ -1,12 +1,14 @@
-import AddNote from "@/components/AddNote/AddNote";
+import Link from "next/link";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import AddNote from "@/components/AddNote/AddNote";
+
 import { BASE_URL } from "@/utils/constants";
-import Link from "next/link";
 
 export const metadata = {
   title: "Create Note",

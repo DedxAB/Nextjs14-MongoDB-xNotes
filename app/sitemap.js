@@ -1,5 +1,5 @@
-import { fetchAllNotes } from "@/services/noteServices";
-import { fetchAllUser } from "@/services/userServices";
+import { fetchAllNotes } from "@/services/note/server/note.service";
+import { fetchAllUser } from "@/services/user/server/user.service";
 import { BASE_URL } from "@/utils/constants";
 import { generateSlug } from "@/utils/slugGenerator";
 

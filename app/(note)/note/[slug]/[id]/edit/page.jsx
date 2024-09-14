@@ -1,4 +1,6 @@
-import EditNote from "@/components/EditNote/EditNote";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,10 +8,10 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { fetchNoteById } from "@/services/noteServices";
+import EditNote from "@/components/EditNote/EditNote";
+
 import { BASE_URL } from "@/utils/constants";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
+import { fetchNoteById } from "@/services/note/server/note.service";
 
 export const metadata = {
   title: "Edit Note",

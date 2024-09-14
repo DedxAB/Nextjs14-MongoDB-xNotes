@@ -1,37 +1,28 @@
 "use client";
-import { NotificationIcon } from "@/app/assets/svgs/GeneralIcons";
-import { fetchNotificationsByUserId } from "@/services/notificationServices";
-import { fetchUserByEmail } from "@/services/userServices";
+
+import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+
+import { NotificationIcon } from "@/app/assets/svgs/GeneralIcons";
+import { fetchNotificationsByUserIdForClient } from "@/services/notification/client/notification.service";
 
 export default function NotificationButton() {
   const [notifications, setNotifications] = useState([]); // [1]
-  const [currentUser, setCurrentUser] = useState(null); // [2]
   const { data: session } = useSession();
 
   useEffect(() => {
-    const fetchCurrentUserAndNotifications = async () => {
-      if (session?.user?.email) {
-        const user = await fetchUserByEmail(session.user.email);
-        setCurrentUser(user);
-      }
-    };
-
-    fetchCurrentUserAndNotifications();
-  }, [session?.user?.email]);
-
-  useEffect(() => {
     const fetchNotifications = async () => {
-      if (currentUser?.user?._id) {
-        const data = await fetchNotificationsByUserId(currentUser.user._id);
+      if (session?.user?.id) {
+        const data = await fetchNotificationsByUserIdForClient(
+          session?.user?.id
+        );
         setNotifications(data?.data ? data?.data : []);
       }
     };
 
     fetchNotifications();
-  }, [currentUser]);
+  }, [session?.user?.id]);
 
   return (
     <Link

@@ -3,6 +3,11 @@
 import React, { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
+
+import { josefin_sans_font } from "@/utils/fonts";
+import { generateSlug } from "@/utils/slugGenerator";
+import { DeleteIcon } from "@/app/assets/svgs/GeneralIcons";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -14,9 +19,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
-import { josefin_sans_font } from "@/utils/fonts";
-import { generateSlug } from "@/utils/slugGenerator";
-import { DeleteIcon } from "@/app/assets/svgs/GeneralIcons";
 
 const RemoveButton = ({ id, title }) => {
   const [conformationMessage, setConformationMessage] = useState(false);
@@ -34,7 +36,7 @@ const RemoveButton = ({ id, title }) => {
 
         if (!res.ok) {
           const errorData = await res.json();
-          throw new Error(errorData.message || "Error deleting note");
+          throw new Error(errorData.error || "Error deleting note");
         }
 
         if (pathName === `/note/${generateSlug(title)}/${id}`) {

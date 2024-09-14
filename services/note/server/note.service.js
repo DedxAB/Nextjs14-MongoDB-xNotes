@@ -1,4 +1,5 @@
 import { BASE_URL } from "@/utils/constants";
+import { getRequestOptions } from "@/utils/getRequestOptions";
 
 // fetch note by id
 async function fetchNoteById(id) {
@@ -8,7 +9,7 @@ async function fetchNoteById(id) {
     });
     if (!res.ok) {
       const errorData = await res.json();
-      throw new Error(errorData.message || "Failed to get Note");
+      throw new Error(errorData.error || "Failed to get Note");
     }
     return await res.json();
   } catch (error) {
@@ -17,14 +18,19 @@ async function fetchNoteById(id) {
 }
 
 // fetch all notes
-async function fetchAllNotes() {
+async function fetchAllNotes(page = 1, limit = 10) {
   try {
-    const res = await fetch(`${BASE_URL}/api/notes`, {
-      cache: "no-store",
-    });
+    const options = getRequestOptions();
+    if (!options) return null;
+
+    const res = await fetch(
+      `${BASE_URL}/api/notes?page=${page}&limit=${limit}`,
+      options
+    );
+
     if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.message || "Error fetching Notes");
+      const { error } = await res.json();
+      throw new Error(error || "Error fetching Notes");
     }
     return await res.json();
   } catch (error) {
@@ -39,7 +45,7 @@ async function fetchAllSavedNotesByUserId(userId) {
     });
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.message || "Error fetching saved notes");
+      throw new Error(errorData.error || "Error fetching saved notes");
     }
     return await response.json();
   } catch (error) {

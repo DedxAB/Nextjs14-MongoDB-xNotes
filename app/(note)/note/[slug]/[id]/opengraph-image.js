@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "next/og";
-import { fetchNoteById } from "@/services/noteServices";
 import { BASE_URL } from "@/utils/constants";
+import { fetchNoteById } from "@/services/note/server/note.service";
 
 export const runtime = "edge";
 

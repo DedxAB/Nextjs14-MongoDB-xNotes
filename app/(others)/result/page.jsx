@@ -1,15 +1,17 @@
-import SearchFeed from "@/components/SearchFeed/SearchFeed";
-import SearchResultBanner from "@/components/SearchResultBanner/SearchResultBanner";
+import { getServerSession } from "next-auth";
+import Link from "next/link";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { fetchResultOfQuery } from "@/services/resultServices";
+import SearchFeed from "@/components/SearchFeed/SearchFeed";
+import SearchResultBanner from "@/components/SearchResultBanner/SearchResultBanner";
+
 import { BASE_URL } from "@/utils/constants";
-import { getServerSession } from "next-auth";
-import Link from "next/link";
+import { fetchResultOfQuery } from "@/services/result/server/result.service";
 
 export const generateMetadata = async ({ searchParams }) => {
   const { q } = searchParams;

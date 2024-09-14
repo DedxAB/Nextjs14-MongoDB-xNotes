@@ -1,9 +1,11 @@
 "use client";
 
-import { AboutIcon, BookmarkIcon } from "@/app/assets/svgs/GeneralIcons";
-import NotificationButton from "../Notification/NotificationButton";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
+
+import { AboutIcon, BookmarkIcon } from "@/app/assets/svgs/GeneralIcons";
 import {
   CircleUserRound,
   LogIn,
@@ -12,9 +14,12 @@ import {
   Search,
   X,
 } from "lucide-react";
-import { ThemeToggle } from "../ThemeToggle";
-import { signOut, useSession } from "next-auth/react";
+
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import NotificationButton from "../Notification/NotificationButton";
+import { ThemeToggle } from "../ThemeToggle";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,9 +28,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/custom-dropdown-menu";
-import Link from "next/link";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 
 const RightNavLinks = () => {
   const [openSearch, setOpenSearch] = useState(false);

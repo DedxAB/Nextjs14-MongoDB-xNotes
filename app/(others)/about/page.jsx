@@ -1,7 +1,8 @@
-import FaqSection from "@/components/FaqSection/FaqSection";
-import FeatureSection from "@/components/FeatureSection/FeatureSection";
 import Image from "next/image";
 import Link from "next/link";
+
+import FaqSection from "@/components/FaqSection/FaqSection";
+import FeatureSection from "@/components/FeatureSection/FeatureSection";
 
 export default function About() {
   return (

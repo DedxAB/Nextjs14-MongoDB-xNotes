@@ -1,18 +1,20 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "../ui/button";
-import { MessageSquareX, Save } from "lucide-react";
-import { Textarea } from "../ui/textarea";
-import { useEffect, useRef, useState } from "react";
+import { Save } from "lucide-react";
 import { toast } from "sonner";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Input } from "../ui/input";
 import { useSession } from "next-auth/react";
-import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
+import Link from "next/link";
+
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { josefin_sans_font } from "@/utils/fonts";
+import { Textarea } from "../ui/textarea";
+
 import { CancelIcon } from "@/app/assets/svgs/GeneralIcons";
+import { josefin_sans_font } from "@/utils/fonts";
+import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -88,7 +90,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
       });
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(errorData.message || "Failed to update bio");
+        throw new Error(errorData.error || "Failed to update bio");
       }
 
       if (pathName === `/admin/${userId}/edit`) {
