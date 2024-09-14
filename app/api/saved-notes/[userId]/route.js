@@ -1,8 +1,9 @@
+import { NextResponse } from "next/server";
+
 import connectDB from "@/db/mongodb";
 import Note from "@/models/note.model";
 import SavedNote from "@/models/savedNote.model";
 import User from "@/models/user.model";
-import { NextResponse } from "next/server";
 
 export const GET = async (_req, { params }) => {
   const { userId } = params;

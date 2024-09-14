@@ -1,7 +1,8 @@
+import { NextResponse } from "next/server";
+
 import connectDB from "@/db/mongodb";
 import Note from "@/models/note.model";
 import User from "@/models/user.model";
-import { NextResponse } from "next/server";
 
 export async function POST(req) {
   const { email, name, image, username } = await req.json();

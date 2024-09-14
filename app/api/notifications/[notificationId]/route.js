@@ -1,6 +1,7 @@
+import { NextResponse } from "next/server";
+
 import connectDB from "@/db/mongodb";
 import Notification from "@/models/notification.model";
-import { NextResponse } from "next/server";
 
 export async function PATCH(req, { params }) {
   const { notificationId } = params;

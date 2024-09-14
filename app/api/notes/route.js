@@ -1,13 +1,14 @@
+import { getServerSession } from "next-auth";
+import { NextResponse } from "next/server";
+import { authOptions } from "../auth/[...nextauth]/route";
+import mongoose from "mongoose";
+
 import connectDB from "@/db/mongodb";
 import Comment from "@/models/comment.model";
 import Note from "@/models/note.model";
 import Notification from "@/models/notification.model";
 import SavedNote from "@/models/savedNote.model";
 import User from "@/models/user.model";
-import { getServerSession } from "next-auth";
-import { NextResponse } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/route";
-import mongoose from "mongoose";
 
 export async function POST(req) {
   try {

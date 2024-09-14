@@ -1,9 +1,10 @@
-import Note from "@/models/note.model";
-import connectDB from "@/db/mongodb";
+import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
+
+import Note from "@/models/note.model";
 import User from "@/models/user.model";
 import Comment from "@/models/comment.model";
-import { getServerSession } from "next-auth";
+import connectDB from "@/db/mongodb";
 
 export async function PATCH(req, { params }) {
   const { id } = params;

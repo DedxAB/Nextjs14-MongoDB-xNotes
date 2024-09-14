@@ -1,7 +1,8 @@
+import { NextResponse } from "next/server";
+
 import connectDB from "@/db/mongodb";
 import Comment from "@/models/comment.model";
 import Note from "@/models/note.model";
-import { NextResponse } from "next/server";
 
 export const DELETE = async (req, { params }) => {
   const { id: commentId } = params;

@@ -1,9 +1,9 @@
+import { getServerSession } from "next-auth";
+import { NextResponse } from "next/server";
+
 import connectDB from "@/db/mongodb";
 import Note from "@/models/note.model";
 import User from "@/models/user.model";
-import { getServerSession } from "next-auth";
-
-import { NextResponse } from "next/server";
 
 // Get a single user by id
 export const GET = async (_req, { params }) => {

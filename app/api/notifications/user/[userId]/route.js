@@ -1,10 +1,11 @@
+import { getServerSession } from "next-auth";
+import { NextResponse } from "next/server";
+
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import connectDB from "@/db/mongodb";
 import Note from "@/models/note.model";
 import Notification from "@/models/notification.model";
 import User from "@/models/user.model";
-import { getServerSession } from "next-auth";
-import { NextResponse } from "next/server";
 
 export const GET = async (_req, { params }) => {
   try {

@@ -1,6 +1,7 @@
+import { NextResponse } from "next/server";
+
 import connectDB from "@/db/mongodb";
 import SavedNote from "@/models/savedNote.model";
-import { NextResponse } from "next/server";
 
 export const POST = async (req, _res) => {
   const { userId, noteId } = await req.json();
