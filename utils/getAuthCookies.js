@@ -9,9 +9,30 @@ export function getAuthCookies() {
   // This utility only runs on the server side
   const cookieStore = cookies();
 
-  const callbackUrl = cookieStore.get("next-auth.callback-url")?.value;
-  const csrfToken = cookieStore.get("next-auth.csrf-token")?.value;
-  const sessionToken = cookieStore.get("next-auth.session-token")?.value;
+  // Determine cookie prefixes based on environment
+  const COOKIE_PREFIXES = {
+    development: {
+      callbackUrl: "next-auth.callback-url",
+      csrfToken: "next-auth.csrf-token",
+      sessionToken: "next-auth.session-token",
+    },
+    production: {
+      callbackUrl: "__Secure-next-auth.callback-url",
+      csrfToken: "__Host-next-auth.csrf-token",
+      sessionToken: "__Secure-next-auth.session-token",
+    },
+  };
+
+  // Determine environment
+  const isProduction = process.env.NODE_ENV === "production";
+  const cookieNames = isProduction
+    ? COOKIE_PREFIXES.production
+    : COOKIE_PREFIXES.development;
+
+  // Retrieve cookies
+  const callbackUrl = cookieStore.get(cookieNames.callbackUrl)?.value;
+  const csrfToken = cookieStore.get(cookieNames.csrfToken)?.value;
+  const sessionToken = cookieStore.get(cookieNames.sessionToken)?.value;
 
   if (!callbackUrl || !csrfToken || !sessionToken) {
     console.error("Missing one or more auth cookies");
@@ -19,5 +40,5 @@ export function getAuthCookies() {
   }
 
   // Return serialized cookies for headers
-  return `next-auth.callback-url=${callbackUrl}; next-auth.csrf-token=${csrfToken}; next-auth.session-token=${sessionToken}`;
+  return `${cookieNames.callbackUrl}=${callbackUrl}; ${cookieNames.csrfToken}=${csrfToken}; ${cookieNames.sessionToken}=${sessionToken}`;
 }
