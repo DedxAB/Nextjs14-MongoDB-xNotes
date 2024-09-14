@@ -7,8 +7,7 @@ import Note from "@/models/note.model";
 import Notification from "@/models/notification.model";
 import User from "@/models/user.model";
 
-export const GET = async (req, { params }) => {
-  console.log("GET /api/notifications/user/[userId] --> req: ", req.cookies);
+export const GET = async (_req, { params }) => {
   try {
     const { userId } = params;
 
