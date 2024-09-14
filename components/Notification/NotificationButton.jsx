@@ -1,9 +1,11 @@
 "use client";
-import { NotificationIcon } from "@/app/assets/svgs/GeneralIcons";
-import { fetchNotificationsByUserIdForClient } from "@/services/notification/client/notification.service";
+
+import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+
+import { NotificationIcon } from "@/app/assets/svgs/GeneralIcons";
+import { fetchNotificationsByUserIdForClient } from "@/services/notification/client/notification.service";
 
 export default function NotificationButton() {
   const [notifications, setNotifications] = useState([]); // [1]

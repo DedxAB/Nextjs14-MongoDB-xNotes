@@ -1,13 +1,16 @@
 "use client";
+
 import { useEffect, useRef, useState } from "react";
-import { Button } from "../ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
+import { cn } from "@/lib/utils";
+import { josefin_sans_font } from "@/utils/fonts";
+import { generateSlug } from "@/utils/slugGenerator";
+
+import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Label } from "../ui/label";
-import { josefin_sans_font } from "@/utils/fonts";
-import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
 import {
   Select,
   SelectContent,
@@ -17,9 +20,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+
+import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
 import PreviewNoteCard from "../PreviewNoteCard/PreviewNoteCard";
-import { cn } from "@/lib/utils";
-import { generateSlug } from "@/utils/slugGenerator";
 import {
   CancelIcon,
   HidePreviewIcon,

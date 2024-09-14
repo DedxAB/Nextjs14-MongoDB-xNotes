@@ -1,12 +1,14 @@
+import Link from "next/link";
+
+import { BASE_URL } from "@/utils/constants";
+import { cn } from "@/lib/utils";
+import { playfair_font } from "@/utils/fonts";
+
 import {
   GitHubIcon,
   InstagramIcon,
   XIcon,
 } from "@/app/assets/svgs/GeneralIcons";
-import { cn } from "@/lib/utils";
-import { BASE_URL } from "@/utils/constants";
-import { playfair_font } from "@/utils/fonts";
-import Link from "next/link";
 
 const Footer = () => {
   return (

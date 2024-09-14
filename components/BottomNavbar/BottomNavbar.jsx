@@ -1,17 +1,19 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { NotebookPen, Search, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import ShowSearch from "../ShowSearch/ShowSearch";
+import { NotebookPen, Search } from "lucide-react";
+
 import { cn } from "@/lib/utils";
 import {
   BookmarkIcon,
   HomeIcon,
   ProfileIcon,
 } from "@/app/assets/svgs/GeneralIcons";
+
+import ShowSearch from "../ShowSearch/ShowSearch";
 
 export default function BottomNavbar() {
   const [openSearch, setOpenSearch] = useState(false);

@@ -1,9 +1,11 @@
-import Link from "next/link";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import RemoveComment from "../RemoveComment/RemoveComment";
+import Link from "next/link";
+
 import { inter_font, josefin_sans_font } from "@/utils/fonts";
+
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import RemoveComment from "../RemoveComment/RemoveComment";
 
 dayjs.extend(relativeTime);
 

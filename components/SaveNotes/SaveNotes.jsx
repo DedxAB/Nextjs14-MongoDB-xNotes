@@ -1,10 +1,11 @@
 "use client";
 
-import { useSavedNotes } from "@/context/SavedNotesContext";
-import { SaveIcon } from "@/app/assets/svgs/GeneralIcons";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+
+import { useSavedNotes } from "@/context/SavedNotesContext";
+import { SaveIcon } from "@/app/assets/svgs/GeneralIcons";
 
 export default function SaveNotes({ note }) {
   const { data: session } = useSession();

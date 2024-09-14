@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import NoteCard from "../NoteCard/NoteCard";
 
 export const NotesFeedClient = ({ initialNotes }) => {

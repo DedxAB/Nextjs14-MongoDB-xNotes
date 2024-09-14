@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { Button } from "../ui/button";
 import { getServerSession } from "next-auth";
-import GradientText from "../GradientText";
+
 import { HeroBannerIcon } from "@/app/assets/svgs/GeneralIcons";
 import { fetchUserByEmail } from "@/services/user/server/user.service";
+
+import { Button } from "../ui/button";
+import GradientText from "../GradientText";
 
 const UserBanner = async () => {
   const session = await getServerSession();

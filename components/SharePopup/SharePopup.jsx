@@ -1,8 +1,11 @@
 "use client";
 
-import { BASE_URL } from "@/utils/constants";
-import { Check, Clipboard, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Check, Clipboard, X } from "lucide-react";
+
+import { BASE_URL } from "@/utils/constants";
+import { generateSlug } from "@/utils/slugGenerator";
+
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -11,8 +14,8 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
+
 import { Button } from "../ui/button";
-import { generateSlug } from "@/utils/slugGenerator";
 
 export default function SharePopup({ handleShare, updatedNote }) {
   const [copied, setCopied] = useState(false);

@@ -1,10 +1,13 @@
 "use client";
+
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+
+import { cn } from "@/lib/utils";
+
 import NoteCard from "../NoteCard/NoteCard";
 import ProfileSearchInput from "../ProfileSearchInput/ProfileSearchInput";
 import { Button } from "../ui/button";
-import { cn } from "@/lib/utils";
-import { useSession } from "next-auth/react";
 
 const UserNotesFeed = ({ notes, user }) => {
   const [filteredNotes, setFilteredNotes] = useState(notes || []);

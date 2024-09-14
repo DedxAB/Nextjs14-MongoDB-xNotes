@@ -1,4 +1,5 @@
 import { fetchAllNotes } from "@/services/note/server/note.service";
+
 import { NotesFeedClient } from "../NotesFeedClient/NotesFeedClient";
 
 const NotesFeed = async () => {

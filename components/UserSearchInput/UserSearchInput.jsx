@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { Input } from "../ui/input";
 
 export default function UserSearchInput({ allUsers, setFilteredUsers }) {

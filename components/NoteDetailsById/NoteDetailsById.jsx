@@ -1,8 +1,10 @@
 import { getServerSession } from "next-auth";
+
+import { fetchUserByEmail } from "@/services/user/server/user.service";
+
 import NoteCard from "../NoteCard/NoteCard";
 import NoteCommentCard from "../NoteCommentCard/NoteCommentCard";
 import NoteCommentForm from "../NoteCommentForm/NoteCommentForm";
-import { fetchUserByEmail } from "@/services/user/server/user.service";
 
 const NoteDetailsById = async ({ note }) => {
   const user = note?.author;

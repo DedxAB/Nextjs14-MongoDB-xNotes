@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Label } from "../ui/label";
-import { Switch } from "../ui/switch";
-import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { toast } from "sonner";
+
+import { Label } from "../ui/label";
+import { Switch } from "../ui/switch";
 
 const AdminToggle = ({ user, currentUserEmail }) => {
   const [isAdmin, setIsAdmin] = useState(user?.isAdmin || false);

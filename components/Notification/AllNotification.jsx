@@ -1,12 +1,14 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import dayjs from "dayjs";
+import { toast } from "sonner";
+
+import { cn } from "@/lib/utils";
 import { josefin_sans_font } from "@/utils/fonts";
 import { generateSlug } from "@/utils/slugGenerator";
+
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 // Reusable Avatar Component
 const UserAvatar = ({ user }) => (

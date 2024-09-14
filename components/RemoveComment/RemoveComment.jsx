@@ -1,7 +1,14 @@
 "use client";
 
-import { Button } from "../ui/button";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+
+import { josefin_sans_font } from "@/utils/fonts";
+import { DeleteIcon } from "@/app/assets/svgs/GeneralIcons";
+
+import { Button } from "../ui/button";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,11 +20,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
-import { useState } from "react";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { josefin_sans_font } from "@/utils/fonts";
-import { DeleteIcon } from "@/app/assets/svgs/GeneralIcons";
 
 const RemoveComment = ({ comment, note }) => {
   const [conformationMessage, setConformationMessage] = useState(false);

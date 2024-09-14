@@ -1,15 +1,17 @@
 "use client";
 
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useState } from "react";
-import { CustomInput } from "../ui/custom-input";
-import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { toast } from "sonner";
+
 import { inter_font, josefin_sans_font } from "@/utils/fonts";
+import { cn } from "@/lib/utils";
+
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { CustomInput } from "../ui/custom-input";
 import { Button } from "../ui/button";
 import { SendHorizontal } from "lucide-react";
-import { useSession } from "next-auth/react";
-import { cn } from "@/lib/utils";
 
 const NoteCommentForm = ({ note, currentUser }) => {
   const [comment, setComment] = useState("");
@@ -105,7 +107,10 @@ const NoteCommentForm = ({ note, currentUser }) => {
         <div className="w-full flex flex-col gap-1 md:gap-2">
           {/* Show the author name, username */}
           <div
-            className={cn("flex flex-wrap items-center text-xs", josefin_sans_font)}
+            className={cn(
+              "flex flex-wrap items-center text-xs",
+              josefin_sans_font
+            )}
           >
             {/* name  */}
             <p className={`font-bold  mr-1`}>

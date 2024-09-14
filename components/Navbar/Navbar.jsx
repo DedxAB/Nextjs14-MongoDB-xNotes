@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { playfair_font } from "@/utils/fonts";
-import RightNavLinks from "./RightNavLinks";
+
 import { cn } from "@/lib/utils";
+import { playfair_font } from "@/utils/fonts";
+
+import RightNavLinks from "./RightNavLinks";
 
 const Navbar = async () => {
   return (

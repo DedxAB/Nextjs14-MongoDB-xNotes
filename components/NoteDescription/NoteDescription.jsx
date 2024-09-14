@@ -1,10 +1,12 @@
 "use client";
+
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import ReactLinkify from "react-linkify";
+
 import { cn } from "@/lib/utils";
 import { inter_font } from "@/utils/fonts";
 import { generateSlug } from "@/utils/slugGenerator";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import ReactLinkify from "react-linkify";
 
 const NoteDescription = ({ description, note = {} }) => {
   const pathName = usePathname();

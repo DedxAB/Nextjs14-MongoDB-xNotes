@@ -1,10 +1,16 @@
-import { ExternalLink, Share2 } from "lucide-react";
-import Link from "next/link";
-import NoteDescription from "../NoteDescription/NoteDescription";
-import { Avatar, AvatarImage } from "../ui/avatar";
-import { josefin_sans_font } from "@/utils/fonts";
 import dayjs from "dayjs";
-import { CommentIcon, EmptyHeartIcon, ShareIcon } from "@/app/assets/svgs/GeneralIcons";
+import Link from "next/link";
+import { ExternalLink } from "lucide-react";
+
+import { josefin_sans_font } from "@/utils/fonts";
+import {
+  CommentIcon,
+  EmptyHeartIcon,
+  ShareIcon,
+} from "@/app/assets/svgs/GeneralIcons";
+
+import { Avatar, AvatarImage } from "../ui/avatar";
+import NoteDescription from "../NoteDescription/NoteDescription";
 
 export default function PreviewNoteCard({
   title,
