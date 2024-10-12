@@ -8,21 +8,22 @@ import { Toaster } from "@/components/ui/sonner";
 import { SavedNotesProvider } from "@/context/SavedNotesContext";
 import { BASE_URL } from "@/utils/constants";
 
+const DESCRIPTION = "Create notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today!";
+const TITLE = "DedxNotes - Digital Sticky Notes";
+const KEYWORDS = "notes, sticky notes, digital sticky note, recall notes, productivity, online platform, notes sharing, ideas, notes app, dedxnotes productivity, dedxnotes note-taking, dedxnotes note sharing, dedxnotes notes app";
+
 export const metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "DedxNotes - Digital Sticky Notes",
+    default: TITLE,
     template: "%s | DedxNotes",
   },
-  description:
-    "Create notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today!",
-  keywords:
-    "notes, sticky notes, digital sticky note, recall notes, productivity, online platform, notes sharing, ideas, notes app, dedxnotes productivity, dedxnotes note-taking, dedxnotes note sharing, dedxnotes notes app",
+  description: DESCRIPTION,
+  keywords: KEYWORDS,
   creator: "DedxAB - Arnab Bhoumik",
   openGraph: {
-    title: "DedxNotes - Digital Sticky Notes",
-    description:
-      "Create notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today!",
+    title: TITLE,
+    description: DESCRIPTION,
     type: "website",
     locale: "en_US",
     url: `/`,

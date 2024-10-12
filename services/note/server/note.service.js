@@ -18,6 +18,14 @@ async function fetchNoteById(id) {
 }
 
 // fetch all notes
+/**
+ * Fetches all notes with pagination.
+ *
+ * @param {number} [page=1] - The page number to fetch.
+ * @param {number} [limit=10] - The number of notes to fetch per page.
+ * @returns {Promise<Object|null>} The fetched notes data or null if options are not available.
+ * @throws {Error} If there is an error fetching the notes.
+ */
 async function fetchAllNotes(page = 1, limit = 10) {
   try {
     const options = getRequestOptions();
@@ -38,6 +46,21 @@ async function fetchAllNotes(page = 1, limit = 10) {
   }
 }
 
+/**
+ * 
+ * @param {String} userId 
+ * @returns 
+ */
+
+/**
+ * Fetches all saved notes for a given user ID.
+ *
+ * @async
+ * @function fetchAllSavedNotesByUserId
+ * @param {string} userId - The ID of the user whose saved notes are to be fetched.
+ * @returns {Promise<Object[]>} A promise that resolves to an array of saved notes.
+ * @throws {Error} Throws an error if the fetch operation fails.
+ */
 async function fetchAllSavedNotesByUserId(userId) {
   try {
     const response = await fetch(`${BASE_URL}/api/saved-notes/${userId}`, {

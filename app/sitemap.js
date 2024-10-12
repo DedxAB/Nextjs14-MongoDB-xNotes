@@ -5,12 +5,10 @@ import { generateSlug } from "@/utils/slugGenerator";
 
 export default async function sitemap() {
   const { data: notes = [] } = (await fetchAllNotes()) ?? { data: [] };
-  const allNotes = notes
-    .filter((note) => note?.visibility === "public")
-    .map((note) => ({
-      url: `${BASE_URL}/note/${generateSlug(note?.title)}/${note?._id}`,
-      lastModified: note?.contentUpdatedAt,
-    }));
+  const allNotes = notes.map((note) => ({
+    url: `${BASE_URL}/note/${generateSlug(note?.title)}/${note?._id}`,
+    lastModified: note?.contentUpdatedAt,
+  }));
 
   const { allUsers = [] } = await fetchAllUser();
   const allUsersUrl = allUsers.map((user) => ({
