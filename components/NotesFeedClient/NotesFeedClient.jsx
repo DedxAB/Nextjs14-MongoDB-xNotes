@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import useIntersectionObserver from "@/utils/hooks";
-import { fetchAllNotesForClient } from "@/services/note/client/note.service";
+import useIntersectionObserver from '@/utils/hooks';
+import { fetchAllNotesForClient } from '@/services/note/client/note.service';
 
-import NoteCard from "../NoteCard/NoteCard";
-import { CircularRing } from "../Skeleton/CircularRing";
+import NoteCard from '../NoteCard/NoteCard';
+import { CircularRing } from '../Skeleton/CircularRing';
 
 const MIN_LOADING_TIME = 1000;
 const NOTES_PER_PAGE = 10;
@@ -50,7 +50,7 @@ export const NotesFeedClient = ({ initialNotes }) => {
         setHasMore(false); // No more notes to fetch
       }
     } catch (error) {
-      console.error("Error fetching more notes:", error);
+      console.error('Error fetching more notes:', error);
     } finally {
       setLoading(false);
     }
