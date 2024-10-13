@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { createContext, useContext, useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
-import { handleCheckAllSavedNotes } from "@/actions/note.actions";
+import { createContext, useContext, useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { handleCheckAllSavedNotes } from '@/actions/note.actions';
 
 const SavedNotesContext = createContext();
 

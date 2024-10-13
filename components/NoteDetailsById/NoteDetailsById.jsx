@@ -1,29 +1,29 @@
-import { getServerSession } from "next-auth";
+import { getServerSession } from 'next-auth';
 
-import { fetchUserByEmail } from "@/services/user/server/user.service";
+import { fetchUserByEmail } from '@/services/user/server/user.service';
 
-import NoteCard from "../NoteCard/NoteCard";
-import NoteCommentCard from "../NoteCommentCard/NoteCommentCard";
-import NoteCommentForm from "../NoteCommentForm/NoteCommentForm";
+import NoteCard from '../NoteCard/NoteCard';
+import NoteCommentCard from '../NoteCommentCard/NoteCommentCard';
+import NoteCommentForm from '../NoteCommentForm/NoteCommentForm';
 
 const NoteDetailsById = async ({ note }) => {
   const user = note?.author;
   const session = await getServerSession();
-
   let currentUser;
+
   if (session) {
     const currentUserEmail = session?.user?.email;
     const data = await fetchUserByEmail(currentUserEmail);
     currentUser = data?.user;
   }
+
   return (
     <>
       <NoteCard note={note} noteAuthor={user} />
       <NoteCommentForm note={note} currentUser={currentUser} />
-
       {note?.comments?.length > 0 ? (
         <>
-          <h1 className="text-lg md:text-xl font-bold text-[#444746] my-5">
+          <h1 className="my-5 text-lg font-bold text-[#444746] md:text-xl">
             Comments
           </h1>
           {note?.comments?.map((comment) => (
@@ -32,7 +32,7 @@ const NoteDetailsById = async ({ note }) => {
         </>
       ) : (
         <div className="my-10">
-          <h1 className="text-base md:text-2xl font-bold text-[#444746]">
+          <h1 className="text-base font-bold text-[#444746] md:text-2xl">
             No comments yet. Be the first to comment.
           </h1>
         </div>
