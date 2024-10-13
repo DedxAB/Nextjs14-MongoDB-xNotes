@@ -1,13 +1,14 @@
 import './globals.css';
+
 import { ThemeProvider } from '@/components/theme-provider';
-import { NextAuthProviders } from './Providers';
+import { Toaster } from '@/components/ui/sonner';
+
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import BottomNavbar from '@/components/BottomNavbar/BottomNavbar';
-import { Toaster } from '@/components/ui/sonner';
-import { SavedNotesProvider } from '@/context/SavedNotesContext';
+import { NextAuthProviders } from './Providers';
 import { BASE_URL } from '@/utils/constants';
-import { NotesProvider } from '@/context/NotesContext';
+import AppProvider from '@/context/AppProvider';
 
 const DESCRIPTION =
   'Create notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today!';
@@ -52,30 +53,28 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
-            <NotesProvider>
-              <SavedNotesProvider>
-                {/* navbar */}
-                <div className="w-full sticky top-0 left-0 backdrop-filter backdrop-blur-lg bg-opacity-30 border-b z-10">
-                  <Navbar />
-                </div>
+            <AppProvider>
+              {/* navbar */}
+              <div className="sticky top-0 left-0 w-full border-b bg-opacity-30 backdrop-filter backdrop-blur-lg z-10">
+                <Navbar />
+              </div>
 
-                {/* main content */}
-                <main className="max-w-3xl mx-auto mb-48 sm:mb-0 px-4 min-h-full sm:min-h-screen">
-                  {children}
-                </main>
-                <Toaster richColors position="top-right" closeButton />
+              {/* main content */}
+              <main className="mx-auto max-w-3xl px-4 mb-48 sm:mb-0 min-h-full sm:min-h-screen">
+                {children}
+              </main>
+              <Toaster richColors position="top-right" closeButton />
 
-                {/* bottom navbar */}
-                <div className="fixed bottom-0 z-10 sm:hidden backdrop-filter backdrop-blur-lg bg-opacity-30 border-t w-full">
-                  <BottomNavbar />
-                </div>
+              {/* bottom navbar */}
+              <div className="fixed bottom-0 z-10 w-full sm:hidden border-t backdrop-filter backdrop-blur-lg bg-opacity-30">
+                <BottomNavbar />
+              </div>
 
-                {/* footer  */}
-                <div className="w-full border-t mt-16 hidden sm:block">
-                  <Footer />
-                </div>
-              </SavedNotesProvider>
-            </NotesProvider>
+              {/* footer  */}
+              <div className="hidden sm:block mt-16 w-full border-t">
+                <Footer />
+              </div>
+            </AppProvider>
           </ThemeProvider>
         </NextAuthProviders>
       </body>
