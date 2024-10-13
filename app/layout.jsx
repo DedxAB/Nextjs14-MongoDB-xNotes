@@ -7,6 +7,7 @@ import BottomNavbar from '@/components/BottomNavbar/BottomNavbar';
 import { Toaster } from '@/components/ui/sonner';
 import { SavedNotesProvider } from '@/context/SavedNotesContext';
 import { BASE_URL } from '@/utils/constants';
+import { NotesProvider } from '@/context/NotesContext';
 
 const DESCRIPTION =
   'Create notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today!';
@@ -51,28 +52,30 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
-            <SavedNotesProvider>
-              {/* navbar */}
-              <div className="w-full sticky top-0 left-0 backdrop-filter backdrop-blur-lg bg-opacity-30 border-b z-10">
-                <Navbar />
-              </div>
+            <NotesProvider>
+              <SavedNotesProvider>
+                {/* navbar */}
+                <div className="w-full sticky top-0 left-0 backdrop-filter backdrop-blur-lg bg-opacity-30 border-b z-10">
+                  <Navbar />
+                </div>
 
-              {/* main content */}
-              <main className="max-w-3xl mx-auto mb-48 sm:mb-0 px-4 min-h-full sm:min-h-screen">
-                {children}
-              </main>
-              <Toaster richColors position="top-right" closeButton />
+                {/* main content */}
+                <main className="max-w-3xl mx-auto mb-48 sm:mb-0 px-4 min-h-full sm:min-h-screen">
+                  {children}
+                </main>
+                <Toaster richColors position="top-right" closeButton />
 
-              {/* bottom navbar */}
-              <div className="fixed bottom-0 z-10 sm:hidden backdrop-filter backdrop-blur-lg bg-opacity-30 border-t w-full">
-                <BottomNavbar />
-              </div>
+                {/* bottom navbar */}
+                <div className="fixed bottom-0 z-10 sm:hidden backdrop-filter backdrop-blur-lg bg-opacity-30 border-t w-full">
+                  <BottomNavbar />
+                </div>
 
-              {/* footer  */}
-              <div className="w-full border-t mt-16 hidden sm:block">
-                <Footer />
-              </div>
-            </SavedNotesProvider>
+                {/* footer  */}
+                <div className="w-full border-t mt-16 hidden sm:block">
+                  <Footer />
+                </div>
+              </SavedNotesProvider>
+            </NotesProvider>
           </ThemeProvider>
         </NextAuthProviders>
       </body>
