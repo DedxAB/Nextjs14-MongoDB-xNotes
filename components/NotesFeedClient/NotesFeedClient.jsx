@@ -2,71 +2,73 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import useIntersectionObserver from '@/utils/hooks';
+import { useNotes } from '@/context/NotesContext';
 import { fetchAllNotesForClient } from '@/services/note/client/note.service';
+import useIntersectionObserver from '@/utils/hooks';
 
 import NoteCard from '../NoteCard/NoteCard';
 import { CircularRing } from '../Skeleton/CircularRing';
 
-const MIN_LOADING_TIME = 1000;
 const NOTES_PER_PAGE = 10;
+const DEBOUNCE_DELAY = 500;
 
 export const NotesFeedClient = ({ initialNotes }) => {
-  const [notes, setNotes] = useState(initialNotes);
-  const [page, setPage] = useState(2); // Start from page 2 as page 1 is already fetched
+  const { notes, setNotes, hasMoreNotes, setHasMoreNotes, page, setPage } =
+    useNotes();
   const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true); // Track if there are more notes
+  const [loaderRef, isIntersecting] = useIntersectionObserver({
+    threshold: 1.0,
+  });
+  const [debounced, setDebounced] = useState(false);
 
-  // Memoize loaderRef and threshold value
-  const [loaderRef, isIntersecting] = useIntersectionObserver(
-    useMemo(() => ({ threshold: 1.0 }), [])
-  );
+  useEffect(() => {
+    if (notes.length === 0 && initialNotes) {
+      setNotes(initialNotes);
+    }
+  }, [initialNotes, notes.length, setNotes]);
 
   const loadMoreNotes = useCallback(async () => {
-    if (loading || !hasMore) return; // Stop if already loading or no more notes
-    setLoading(true);
+    if (loading || debounced || !hasMoreNotes) return;
 
-    const startTime = Date.now();
+    setLoading(true);
+    setDebounced(true);
 
     try {
-      const { data: newNotes = [] } = (await fetchAllNotesForClient(
-        page,
-        NOTES_PER_PAGE
-      )) ?? { data: [] };
+      const { data: newNotes = [] } =
+        (await fetchAllNotesForClient(page + 1, NOTES_PER_PAGE)) || {};
 
-      // Ensure the loading spinner shows for at least MIN_LOADING_TIME
-      const elapsedTime = Date.now() - startTime;
-      if (elapsedTime < MIN_LOADING_TIME) {
-        await new Promise((resolve) =>
-          setTimeout(resolve, MIN_LOADING_TIME - elapsedTime)
-        );
-      }
-
-      // Update state after successful data fetch
       if (newNotes.length > 0) {
         setNotes((prevNotes) => [...prevNotes, ...newNotes]);
         setPage((prevPage) => prevPage + 1);
       } else {
-        setHasMore(false); // No more notes to fetch
+        setHasMoreNotes(false);
       }
     } catch (error) {
-      console.error('Error fetching more notes:', error);
+      console.error('Error loading more notes:', error);
     } finally {
       setLoading(false);
+      setTimeout(() => setDebounced(false), DEBOUNCE_DELAY);
     }
-  }, [loading, page, hasMore]);
+  }, [
+    loading,
+    debounced,
+    hasMoreNotes,
+    page,
+    setNotes,
+    setPage,
+    setHasMoreNotes,
+  ]);
 
-  // Trigger loadMoreNotes when the loader element is in view
   useEffect(() => {
-    if (isIntersecting) {
+    if (isIntersecting && !loading && hasMoreNotes) {
       loadMoreNotes();
     }
-  }, [isIntersecting, loadMoreNotes]);
+  }, [isIntersecting, loading, hasMoreNotes, loadMoreNotes]);
 
   const renderedNotes = useMemo(
     () =>
       notes.map((note) => (
-        <NoteCard key={note?._id} note={note} noteAuthor={note?.author} />
+        <NoteCard key={note._id} note={note} noteAuthor={note?.author} />
       )),
     [notes]
   );
@@ -74,12 +76,12 @@ export const NotesFeedClient = ({ initialNotes }) => {
   return (
     <>
       {renderedNotes}
-      {hasMore && (
+      {hasMoreNotes && (
         <div ref={loaderRef} className="loader grid place-items-center mb-40">
           {loading && <CircularRing />}
         </div>
       )}
-      {!hasMore && (
+      {!hasMoreNotes && (
         <p className="text-center mt-4 mb-40">No more notes available</p>
       )}
     </>
