@@ -27,7 +27,7 @@ const NoteSkeleton = ({
           <div className="h-6 w-3/4 bg-gray-300 rounded animate-pulse my-2"></div>
 
           {/* Date and visibility skeleton */}
-          <div className="pt-[.19rem] md:pt-1 flex text-xs flex-wrap justify-start items-center text-[#6b6e6e]">
+          <div className="pt-[.19rem] md:pt-1 flex text-xs flex-wrap justify-start items-center text-gray-secondary">
             <div className="h-3 w-24 bg-gray-300 rounded animate-pulse mr-1" />
             <div className="h-3 w-5 bg-gray-300 rounded animate-pulse" />
           </div>

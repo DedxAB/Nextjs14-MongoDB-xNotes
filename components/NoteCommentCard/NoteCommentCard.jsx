@@ -1,19 +1,19 @@
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-import Link from "next/link";
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import Link from 'next/link';
 
-import { inter_font, josefin_sans_font } from "@/utils/fonts";
+import { inter_font, josefin_sans_font } from '@/utils/fonts';
 
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import RemoveComment from "../RemoveComment/RemoveComment";
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import RemoveComment from '../RemoveComment/RemoveComment';
 
 dayjs.extend(relativeTime);
 
 const NoteCommentCard = ({ comment, note }) => {
   let shortName = comment?.author?.name
-    ?.split(" ")
+    ?.split(' ')
     .map((n) => n[0])
-    .join("");
+    .join('');
 
   const commentTime = dayjs(comment?.createdAt);
   const relativeTime = commentTime.fromNow();
@@ -27,17 +27,17 @@ const NoteCommentCard = ({ comment, note }) => {
           href={
             comment?.author?._id
               ? `/user/${comment?.author?.username}/${comment?.author?._id}`
-              : "#"
+              : '#'
           }
           className=""
         >
           <Avatar>
             <AvatarImage
-              src={comment?.author?.image || "/logo.png"}
+              src={comment?.author?.image || '/logo.png'}
               referrerPolicy="no-referrer"
-              alt={comment?.author?.name || "DedxNotes"}
+              alt={comment?.author?.name || 'DedxNotes'}
             />
-            <AvatarFallback>{shortName || "DN"} </AvatarFallback>
+            <AvatarFallback>{shortName || 'DN'} </AvatarFallback>
           </Avatar>
         </Link>
 
@@ -55,15 +55,15 @@ const NoteCommentCard = ({ comment, note }) => {
             >
               {/* name  */}
               <p className={`font-bold pt-[.10rem]`}>
-                {comment?.author?.name || "DedxNotes"}
+                {comment?.author?.name || 'DedxNotes'}
               </p>
 
               {/* username */}
-              {/* <p className={`text-[#6b6e6e]`}>@{comment?.author?.username}</p> */}
-              <p className={`text-[#6b6e6e]`}>
-                •{" "}
-                {dayjs().diff(commentTime, "day") > 1
-                  ? commentTime.format("MMM DD, YYYY")
+              {/* <p className={`text-gray-secondary`}>@{comment?.author?.username}</p> */}
+              <p className={`text-gray-secondary`}>
+                •{' '}
+                {dayjs().diff(commentTime, 'day') > 1
+                  ? commentTime.format('MMM DD, YYYY')
                   : relativeTime}
               </p>
             </Link>

@@ -1,17 +1,17 @@
-import { getServerSession } from "next-auth";
-import Link from "next/link";
+import { getServerSession } from 'next-auth';
+import Link from 'next/link';
 
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import SearchFeed from "@/components/SearchFeed/SearchFeed";
-import SearchResultBanner from "@/components/SearchResultBanner/SearchResultBanner";
+} from '@/components/ui/breadcrumb';
+import SearchFeed from '@/components/SearchFeed/SearchFeed';
+import SearchResultBanner from '@/components/SearchResultBanner/SearchResultBanner';
 
-import { BASE_URL } from "@/utils/constants";
-import { fetchResultOfQuery } from "@/services/result/server/result.service";
+import { BASE_URL } from '@/utils/constants';
+import { fetchResultOfQuery } from '@/services/result/server/result.service';
 
 export const generateMetadata = async ({ searchParams }) => {
   const { q } = searchParams;
@@ -25,14 +25,14 @@ const Result = async ({ searchParams }) => {
   const session = await getServerSession();
   const currentUserEmail = session?.user?.email;
 
-  const { notesArray, usersArray } = await fetchResultOfQuery(
-    encodeURIComponent(q)
-  );
+  const { notesArray = [], usersArray = [] } =
+    (await fetchResultOfQuery(encodeURIComponent(q))) || {};
+
   const notes = notesArray;
   //   console.log("notes", notes);
   const filteredNotes = notes?.filter((note) => {
     return (
-      currentUserEmail === note?.author?.email || note?.visibility === "public"
+      currentUserEmail === note?.author?.email || note?.visibility === 'public'
     );
   });
   const users = usersArray;

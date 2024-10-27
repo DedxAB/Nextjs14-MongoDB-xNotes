@@ -7,7 +7,7 @@ const NotFound = () => {
         </span>{' '}
         - Not Found.
       </h1>
-      <p className="text-lg font-bold text-[#444746]">
+      <p className="text-lg font-bold text-gray-primary">
         The page you are looking for does not exist.
       </p>
     </div>

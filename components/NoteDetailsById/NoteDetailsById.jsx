@@ -23,7 +23,7 @@ const NoteDetailsById = async ({ note }) => {
       <NoteCommentForm note={note} currentUser={currentUser} />
       {note?.comments?.length > 0 ? (
         <>
-          <h1 className="my-5 text-lg font-bold text-[#444746] md:text-xl">
+          <h1 className="my-5 text-lg font-bold text-gray-primary md:text-xl">
             Comments
           </h1>
           {note?.comments?.map((comment) => (
@@ -32,7 +32,7 @@ const NoteDetailsById = async ({ note }) => {
         </>
       ) : (
         <div className="my-10">
-          <h1 className="text-base font-bold text-[#444746] md:text-2xl">
+          <h1 className="text-base font-bold text-gray-primary md:text-2xl">
             No comments yet. Be the first to comment.
           </h1>
         </div>

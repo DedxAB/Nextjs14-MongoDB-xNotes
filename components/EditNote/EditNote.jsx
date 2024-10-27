@@ -167,7 +167,7 @@ const EditNote = ({
           {/* Title input field */}
           <Label
             htmlFor="title"
-            className={`font-bold md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
+            className={`font-bold md:text-base pl-1 text-gray-primary ${josefin_sans_font}`}
           >
             Title:
           </Label>
@@ -184,7 +184,7 @@ const EditNote = ({
           {/* Description text area */}
           <Label
             htmlFor="description"
-            className={`font-bold md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
+            className={`font-bold md:text-base pl-1 text-gray-primary ${josefin_sans_font}`}
           >
             Description:
           </Label>
@@ -199,13 +199,13 @@ const EditNote = ({
           <div className="flex items-center justify-between gap-1">
             <p
               className={cn(
-                "text-sm font-bold text-[#444746] pl-1",
+                "text-sm font-bold text-gray-primary pl-1",
                 josefin_sans_font
               )}
             >
               Saved automatically as you type.
             </p>
-            <p className="text-right font-bold text-sm text-[#444746]">
+            <p className="text-right font-bold text-sm text-gray-primary">
               {charCount}/{maxCharCount}
             </p>
           </div>
@@ -225,7 +225,7 @@ const EditNote = ({
           {/* Tags text area */}
           <Label
             htmlFor="tags"
-            className={`font-bold md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
+            className={`font-bold md:text-base pl-1 text-gray-primary ${josefin_sans_font}`}
           >
             Keyword: (for better search results)
           </Label>
@@ -244,7 +244,7 @@ const EditNote = ({
 
           <div className="flex justify-end md:justify-between items-center gap-1 mt-3">
             <div
-              className={`font-bold hidden md:block md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
+              className={`font-bold hidden md:block md:text-base pl-1 text-gray-primary ${josefin_sans_font}`}
             >
               Want to preview the note before publishing?
             </div>

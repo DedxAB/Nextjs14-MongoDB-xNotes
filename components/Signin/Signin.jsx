@@ -1,17 +1,18 @@
-"use client";
+'use client';
 
-import { signIn } from "next-auth/react";
-import { useSearchParams } from "next/navigation";
-import Image from "next/image";
+import { signIn } from 'next-auth/react';
+import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 
-import { playfair_font } from "@/utils/fonts";
-import { GoogleIcon } from "@/app/assets/svgs/GeneralIcons";
+import { playfair_font } from '@/utils/fonts';
+import { GoogleIcon } from '@/app/assets/svgs/GeneralIcons';
 
-import { Button } from "../ui/button";
+import { Button } from '../ui/button';
+import { cn } from '@/lib/utils';
 
 const Signin = () => {
   const searchParams = useSearchParams();
-  const callBackUrl = searchParams.get("callbackUrl");
+  const callBackUrl = searchParams.get('callbackUrl');
 
   return (
     <div className="flex items-center justify-center m-auto min-h-[85vh]">
@@ -28,8 +29,10 @@ const Signin = () => {
         <div className="w-full md:w-1/2 h-full">
           <div className="flex flex-col space-y-5 py-8 items-center justify-center">
             <div className="text-lg mb-4">
-              Welcome back to{" "}
-              <p className={`inline-block text-3xl font-bold ${playfair_font}`}>
+              Welcome back to{' '}
+              <p
+                className={cn('inline-block text-3xl font-bold', playfair_font)}
+              >
                 Dedx
                 <span
                   className={`bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent`}
@@ -46,7 +49,7 @@ const Signin = () => {
               variant={`outline`}
               className={`h-11 w-fit px-5 rounded-lg flex items-start justify-center space-x-1`}
               onClick={() =>
-                signIn("google", { callbackUrl: callBackUrl || "/" })
+                signIn('google', { callbackUrl: callBackUrl || '/' })
               }
             >
               {/* Google svg  */}

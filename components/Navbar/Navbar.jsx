@@ -1,19 +1,17 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { cn } from "@/lib/utils";
-import { playfair_font } from "@/utils/fonts";
+import { cn } from '@/lib/utils';
+import { playfair_font } from '@/utils/fonts';
 
-import RightNavLinks from "./RightNavLinks";
+import RightNavLinks from './RightNavLinks';
 
 const Navbar = async () => {
   return (
-    <nav className="max-w-3xl relative mx-auto px-4 flex justify-between items-center py-4">
+    <nav className="max-w-6xl relative mx-auto px-4 flex justify-between items-center py-4">
       <Link href={`/`}>
-        <h1 className={cn("font-bold text-2xl md:text-3xl", playfair_font)}>
+        <h1 className={cn('font-bold text-2xl md:text-3xl', playfair_font)}>
           Dedx
-          <span className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
-            Notes
-          </span>
+          <span className="text-gradient-primary">Notes</span>
         </h1>
       </Link>
 
