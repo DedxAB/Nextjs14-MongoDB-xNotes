@@ -4,7 +4,7 @@ import { NEWS_API_HOST, NEWS_API_KEY, NEWS_URL } from '@/utils/constants';
 import getRedisClient from '@/utils/redis';
 
 export const fetchNews = async () => {
-  const url = `${NEWS_URL}?country=us&language=en&topic=technology`;
+  const url = `${NEWS_URL}?country=in&language=en&topic=technology`;
   const options = {
     method: 'GET',
     headers: {
