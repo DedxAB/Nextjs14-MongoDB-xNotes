@@ -1,39 +1,39 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
-import { toast } from "sonner";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import { toast } from 'sonner';
 
-import { inter_font, josefin_sans_font } from "@/utils/fonts";
-import { cn } from "@/lib/utils";
+import { inter_font, josefin_sans_font } from '@/utils/fonts';
+import { cn } from '@/lib/utils';
 
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { CustomInput } from "../ui/custom-input";
-import { Button } from "../ui/button";
-import { SendHorizontal } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { CustomInput } from '../ui/custom-input';
+import { Button } from '../ui/button';
+import { SendHorizontal } from 'lucide-react';
 
 const NoteCommentForm = ({ note, currentUser }) => {
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState('');
 
   const router = useRouter();
   const { data: session } = useSession();
 
   const handleSubmitCommentForm = async () => {
     if (!session) {
-      toast.error("You must be logged in to add a comment");
+      toast.error('You must be logged in to add a comment');
       return;
     }
     if (!comment) {
-      toast.warning("Please add a comment before submitting");
+      toast.warning('Please add a comment before submitting');
       return;
     }
-    const toastId = toast.loading("Adding Comment...");
+    const toastId = toast.loading('Adding Comment...');
     try {
       const res = await fetch(`/api/comments`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           text: comment,
@@ -44,17 +44,17 @@ const NoteCommentForm = ({ note, currentUser }) => {
 
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(errorData.error || "Failed to add comment");
+        throw new Error(errorData.error || 'Failed to add comment');
       }
 
       // comment notification
       await fetch(`/api/notifications`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "content-type": "application/json",
+          'content-type': 'application/json',
         },
         body: JSON.stringify({
-          type: "comment",
+          type: 'comment',
           noteOwnerId: note?.author?._id,
           senderId: session?.user?.id,
           noteId: note?._id,
@@ -62,19 +62,19 @@ const NoteCommentForm = ({ note, currentUser }) => {
       });
 
       router.refresh();
-      toast.success("Comment added Successfully.", {
+      toast.success('Comment added Successfully.', {
         id: toastId,
       });
     } catch (error) {
       toast.error(error.message, { id: toastId });
       console.log(error);
     } finally {
-      setComment("");
+      setComment('');
     }
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       e.target.blur();
       handleSubmitCommentForm();
@@ -84,9 +84,9 @@ const NoteCommentForm = ({ note, currentUser }) => {
   // console.log(currentUser);
 
   const shortName = currentUser?.name
-    .split(" ")
+    .split(' ')
     .map((n) => n[0])
-    .join("");
+    .join('');
 
   return (
     <>
@@ -95,11 +95,11 @@ const NoteCommentForm = ({ note, currentUser }) => {
         <div className="mr-2 py-1">
           <Avatar>
             <AvatarImage
-              src={currentUser?.image || "/logo.png"}
+              src={currentUser?.image || '/logo.png'}
               referrerPolicy="no-referrer"
-              alt={currentUser?.name || "DedxNotes"}
+              alt={currentUser?.name || 'DedxNotes'}
             />
-            <AvatarFallback>{shortName || "DN"}</AvatarFallback>
+            <AvatarFallback>{shortName || 'DN'}</AvatarFallback>
           </Avatar>
         </div>
 
@@ -108,7 +108,7 @@ const NoteCommentForm = ({ note, currentUser }) => {
           {/* Show the author name, username */}
           <div
             className={cn(
-              "flex flex-wrap items-center text-xs",
+              'flex flex-wrap items-center text-xs',
               josefin_sans_font
             )}
           >
@@ -118,7 +118,7 @@ const NoteCommentForm = ({ note, currentUser }) => {
             </p>
 
             {/* username */}
-            <p className={`text-[#6b6e6e]`}>
+            <p className={`text-gray-secondary`}>
               @{currentUser?.username || <>dedxnotes</>}
             </p>
           </div>

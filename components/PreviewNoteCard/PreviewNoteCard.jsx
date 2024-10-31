@@ -1,16 +1,16 @@
-import dayjs from "dayjs";
-import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import dayjs from 'dayjs';
+import Link from 'next/link';
+import { ExternalLink } from 'lucide-react';
 
-import { josefin_sans_font } from "@/utils/fonts";
+import { josefin_sans_font } from '@/utils/fonts';
 import {
   CommentIcon,
   EmptyHeartIcon,
   ShareIcon,
-} from "@/app/assets/svgs/GeneralIcons";
+} from '@/app/assets/svgs/GeneralIcons';
 
-import { Avatar, AvatarImage } from "../ui/avatar";
-import NoteDescription from "../NoteDescription/NoteDescription";
+import { Avatar, AvatarImage } from '../ui/avatar';
+import NoteDescription from '../NoteDescription/NoteDescription';
 
 export default function PreviewNoteCard({
   title,
@@ -18,7 +18,7 @@ export default function PreviewNoteCard({
   tags,
   websiteLink,
   selectVisibility,
-  noteId = "",
+  noteId = '',
   note,
 }) {
   return (
@@ -28,9 +28,9 @@ export default function PreviewNoteCard({
         <div className="mr-2 pt-[5px]">
           <Avatar>
             <AvatarImage
-              src={"/logo.png"}
+              src={'/logo.png'}
               referrerPolicy="no-referrer"
-              alt={"DedxNotes"}
+              alt={'DedxNotes'}
             />
           </Avatar>
         </div>
@@ -43,7 +43,7 @@ export default function PreviewNoteCard({
             <p className={`font-bold mr-1`}>DedxNotes</p>
 
             {/* username */}
-            <p className={`text-[#6b6e6e]`}>@dedxnotes</p>
+            <p className={`text-gray-secondary`}>@dedxnotes</p>
           </div>
 
           {/* Title and Date div  */}
@@ -55,17 +55,17 @@ export default function PreviewNoteCard({
 
               {/* date */}
               <div
-                className={`pt-[.19rem] md:pt-1 flex text-xs flex-wrap justify-start items-center text-[#6b6e6e] ${josefin_sans_font}`}
+                className={`pt-[.19rem] md:pt-1 flex text-xs flex-wrap justify-start items-center text-gray-secondary ${josefin_sans_font}`}
               >
                 <p className="mr-1">
                   {
-                    dayjs(Date.now()).format("MMM D, YYYY • hh : mm A") // Mar 27, 2024
+                    dayjs(Date.now()).format('MMM D, YYYY • hh : mm A') // Mar 27, 2024
                   }
                 </p>
                 <div>
                   •&nbsp;
                   <span>
-                    {selectVisibility === "private" ? "Only me" : "Public"}
+                    {selectVisibility === 'private' ? 'Only me' : 'Public'}
                   </span>
                 </div>
               </div>

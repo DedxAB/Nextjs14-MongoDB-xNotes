@@ -59,10 +59,9 @@ export default function RootLayout({ children }) {
                 <Navbar />
               </div>
 
-              {/* main content */}
-              <main className="mx-auto max-w-3xl px-4 mb-48 sm:mb-0 min-h-full sm:min-h-screen">
-                {children}
-              </main>
+              <div>{children}</div>
+
+              {/* toaster */}
               <Toaster richColors position="top-right" closeButton />
 
               {/* bottom navbar */}

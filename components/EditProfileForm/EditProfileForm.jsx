@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { Save } from "lucide-react";
-import { toast } from "sonner";
-import { useEffect, useRef, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
-import Link from "next/link";
+import { Save } from 'lucide-react';
+import { toast } from 'sonner';
+import { useEffect, useRef, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
-import { Textarea } from "../ui/textarea";
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
+import { Textarea } from '../ui/textarea';
 
-import { CancelIcon } from "@/app/assets/svgs/GeneralIcons";
-import { josefin_sans_font } from "@/utils/fonts";
-import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
+import { CancelIcon } from '@/app/assets/svgs/GeneralIcons';
+import { josefin_sans_font } from '@/utils/fonts';
+import WelcomeBanner from '../WelcomeBanner/WelcomeBanner';
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -24,9 +24,9 @@ const isValidUrl = (url) => {
 };
 
 const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
-  const [newName, setNewName] = useState(name || "");
-  const [newUsername, setNewUsername] = useState(username || "");
-  const [newBio, setNewBio] = useState(bio || "");
+  const [newName, setNewName] = useState(name || '');
+  const [newUsername, setNewUsername] = useState(username || '');
+  const [newBio, setNewBio] = useState(bio || '');
   const [socialLink, setSocialLink] = useState(socialLinks || {});
   const [charCount, setCharCount] = useState(0);
   const { data: session } = useSession();
@@ -39,7 +39,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
   const textareaRef = useRef(null);
   useEffect(() => {
     if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
   }, [newBio]);
@@ -58,11 +58,11 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
     e.preventDefault();
 
     if (!newName) {
-      toast.warning("Name is required");
+      toast.warning('Name is required');
       return;
     }
     if (!newUsername) {
-      toast.warning("Username is required");
+      toast.warning('Username is required');
       return;
     }
 
@@ -74,10 +74,10 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
       }
     }
 
-    const toastId = toast.loading("Updating Bio...");
+    const toastId = toast.loading('Updating Bio...');
     try {
       const res = await fetch(`/api/user/${userId}`, {
-        method: "PATCH",
+        method: 'PATCH',
         body: JSON.stringify({
           bio: newBio,
           socialLinks: socialLink,
@@ -85,12 +85,12 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
           username: newUsername,
         }),
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(errorData.error || "Failed to update bio");
+        throw new Error(errorData.error || 'Failed to update bio');
       }
 
       if (pathName === `/admin/${userId}/edit`) {
@@ -100,7 +100,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
       }
 
       route.refresh();
-      toast.success("Bio Updated Successfully.", {
+      toast.success('Bio Updated Successfully.', {
         id: toastId,
       });
     } catch (error) {
@@ -126,7 +126,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
             <div className="flex flex-col justify-center gap-2">
               <Label
                 htmlFor={`name`}
-                className={`font-bold md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
+                className={`font-bold md:text-base pl-1 text-gray-primary ${josefin_sans_font}`}
               >
                 Name:
               </Label>
@@ -143,7 +143,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
             <div className="flex flex-col justify-center gap-2">
               <Label
                 htmlFor={`username`}
-                className={`font-bold md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
+                className={`font-bold md:text-base pl-1 text-gray-primary ${josefin_sans_font}`}
               >
                 Username:
               </Label>
@@ -160,7 +160,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
           <div className="flex flex-col justify-center gap-2">
             <Label
               htmlFor={`bio`}
-              className={`font-bold md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
+              className={`font-bold md:text-base pl-1 text-gray-primary ${josefin_sans_font}`}
             >
               Your Bio:
             </Label>
@@ -180,7 +180,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
           {/* Social Links */}
           <Label
             htmlFor={`social`}
-            className={`font-bold md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
+            className={`font-bold md:text-base pl-1 text-gray-primary ${josefin_sans_font}`}
           >
             Social Links:
           </Label>
@@ -189,7 +189,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
               id={`social`}
               placeholder="https://www.facebook.com/"
               className={`font-bold py-5 px-4`}
-              value={socialLink?.facebook || ""}
+              value={socialLink?.facebook || ''}
               onChange={(e) =>
                 setSocialLink({ ...socialLink, facebook: e.target.value })
               }
@@ -197,7 +197,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
             <Input
               placeholder="https://www.twitter.com/"
               className={`font-bold py-5 px-4`}
-              value={socialLink?.twitter || ""}
+              value={socialLink?.twitter || ''}
               onChange={(e) =>
                 setSocialLink({ ...socialLink, twitter: e.target.value })
               }
@@ -205,7 +205,7 @@ const EditProfileForm = ({ userId, bio, socialLinks, name, username }) => {
             <Input
               placeholder="https://www.instagram.com/"
               className={`font-bold py-5 px-4`}
-              value={socialLink?.instagram || ""}
+              value={socialLink?.instagram || ''}
               onChange={(e) =>
                 setSocialLink({ ...socialLink, instagram: e.target.value })
               }

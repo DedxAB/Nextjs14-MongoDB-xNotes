@@ -142,7 +142,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
               </p>
 
               {/* username */}
-              <p className={`text-[#6b6e6e]`}>@{user?.username}</p>
+              <p className="text-gray-secondary">@{user?.username}</p>
             </Link>
             {/* More options */}
             {(session?.user?.id === user?._id || session?.user?.isAdmin) &&
@@ -168,7 +168,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
             {/* date */}
             <div
               className={cn(
-                "pt-[.19rem] md:pt-1 flex text-xs flex-wrap justify-start items-center text-[#6b6e6e]",
+                "pt-[.19rem] md:pt-1 flex text-xs flex-wrap justify-start items-center text-gray-secondary",
                 josefin_sans_font
               )}
             >

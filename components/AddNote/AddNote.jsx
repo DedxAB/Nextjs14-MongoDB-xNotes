@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-import { useSession } from "next-auth/react";
-import { toast } from "sonner";
-import { cn } from "@/lib/utils";
-import { josefin_sans_font } from "@/utils/fonts";
+import { useRouter } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { toast } from 'sonner';
+import { cn } from '@/lib/utils';
+import { josefin_sans_font } from '@/utils/fonts';
 
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { Label } from "../ui/label";
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+import { Textarea } from '../ui/textarea';
+import { Label } from '../ui/label';
 import {
   Select,
   SelectContent,
@@ -19,16 +19,16 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
+} from '../ui/select';
 
-import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
-import PreviewNoteCard from "../PreviewNoteCard/PreviewNoteCard";
+import WelcomeBanner from '../WelcomeBanner/WelcomeBanner';
+import PreviewNoteCard from '../PreviewNoteCard/PreviewNoteCard';
 import {
   CancelIcon,
   HidePreviewIcon,
   PublishIcon,
   ShowPreviewIcon,
-} from "@/app/assets/svgs/GeneralIcons";
+} from '@/app/assets/svgs/GeneralIcons';
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -38,39 +38,39 @@ const isValidUrl = (url) => {
 };
 
 const AddNote = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [tags, setTags] = useState("");
-  const [websiteLink, setWebsiteLink] = useState("");
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [tags, setTags] = useState('');
+  const [websiteLink, setWebsiteLink] = useState('');
   const [charCount, setCharCount] = useState(0);
   const [preview, setPreview] = useState(false);
-  const [selectVisibility, setSelectVisibility] = useState("public");
+  const [selectVisibility, setSelectVisibility] = useState('public');
 
   const router = useRouter();
   const { data: session } = useSession();
 
   // Clear all the data from the form
   const clearAllData = () => {
-    setTitle("");
-    setDescription("");
-    setTags("");
-    setWebsiteLink("");
+    setTitle('');
+    setDescription('');
+    setTags('');
+    setWebsiteLink('');
   };
 
   const textareaRef = useRef(null);
   // Auto resize the textarea
   useEffect(() => {
     if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
   }, [description]);
 
   useEffect(() => {
-    const title = JSON.parse(localStorage.getItem("title"));
-    const description = JSON.parse(localStorage.getItem("description"));
-    const tags = JSON.parse(localStorage.getItem("tags"));
-    const websiteLink = JSON.parse(localStorage.getItem("websiteLink"));
+    const title = JSON.parse(localStorage.getItem('title'));
+    const description = JSON.parse(localStorage.getItem('description'));
+    const tags = JSON.parse(localStorage.getItem('tags'));
+    const websiteLink = JSON.parse(localStorage.getItem('websiteLink'));
 
     if (title) setTitle(title);
     if (description) setDescription(description);
@@ -79,10 +79,10 @@ const AddNote = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("title", JSON.stringify(title));
-    localStorage.setItem("description", JSON.stringify(description));
-    localStorage.setItem("tags", JSON.stringify(tags));
-    localStorage.setItem("websiteLink", JSON.stringify(websiteLink));
+    localStorage.setItem('title', JSON.stringify(title));
+    localStorage.setItem('description', JSON.stringify(description));
+    localStorage.setItem('tags', JSON.stringify(tags));
+    localStorage.setItem('websiteLink', JSON.stringify(websiteLink));
   }, [title, description, tags, websiteLink]);
 
   // Max character count for the description
@@ -98,30 +98,30 @@ const AddNote = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title || !description) {
-      toast.warning("Please fill all the fields");
+      toast.warning('Please fill all the fields');
       return;
     }
 
     // validate URL if provided
     if (websiteLink && !isValidUrl(websiteLink)) {
-      toast.warning("Please enter a valid website link (if provided).");
+      toast.warning('Please enter a valid website link (if provided).');
       return;
     }
 
     const tagArray =
-      tags && tags.trim() !== ""
+      tags && tags.trim() !== ''
         ? tags
             .trim()
             .split(/[\s,]+/)
             .filter(Boolean)
         : [];
 
-    const toastId = toast.loading("Publishing Note...");
+    const toastId = toast.loading('Publishing Note...');
     try {
-      const res = await fetch("/api/notes", {
-        method: "POST",
+      const res = await fetch('/api/notes', {
+        method: 'POST',
         headers: {
-          "content-type": "application/json",
+          'content-type': 'application/json',
         },
         body: JSON.stringify({
           title,
@@ -137,18 +137,18 @@ const AddNote = () => {
       if (!res.ok) {
         // Get the error message from the response
         const errorData = await res.json();
-        throw new Error(errorData.error || "Failed to save Note");
+        throw new Error(errorData.error || 'Failed to save Note');
       }
 
       router.back();
       router.refresh();
-      toast.success("Note Published Successfully.", {
+      toast.success('Note Published Successfully.', {
         id: toastId,
       });
-      localStorage.removeItem("title");
-      localStorage.removeItem("description");
-      localStorage.removeItem("tags");
-      localStorage.removeItem("websiteLink");
+      localStorage.removeItem('title');
+      localStorage.removeItem('description');
+      localStorage.removeItem('tags');
+      localStorage.removeItem('websiteLink');
     } catch (error) {
       toast.error(error.message, {
         id: toastId,
@@ -170,7 +170,7 @@ const AddNote = () => {
           {/* Title input field */}
           <Label
             htmlFor="title"
-            className={`font-bold md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
+            className={`font-bold md:text-base pl-1 text-gray-primary ${josefin_sans_font}`}
           >
             Title:
           </Label>
@@ -190,7 +190,7 @@ const AddNote = () => {
           {/* Description text area */}
           <Label
             htmlFor="description"
-            className={`font-bold md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
+            className={`font-bold md:text-base pl-1 text-gray-primary ${josefin_sans_font}`}
           >
             Description:
           </Label>
@@ -205,13 +205,13 @@ const AddNote = () => {
           <div className="flex items-center justify-between gap-1">
             <p
               className={cn(
-                "text-sm font-bold text-[#444746] pl-1",
+                'text-sm font-bold text-gray-primary pl-1',
                 josefin_sans_font
               )}
             >
               Saved automatically as you type.
             </p>
-            <p className="text-right font-bold text-sm text-[#444746]">
+            <p className="text-right font-bold text-sm text-gray-primary">
               {charCount}/{maxCharCount}
             </p>
           </div>
@@ -231,7 +231,7 @@ const AddNote = () => {
           {/* Tags text area */}
           <Label
             htmlFor="tags"
-            className={`font-bold md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
+            className={`font-bold md:text-base pl-1 text-gray-primary ${josefin_sans_font}`}
           >
             Keyword: (for better search results)
           </Label>
@@ -251,7 +251,7 @@ const AddNote = () => {
           {/* Buttons */}
           <div className="flex justify-end md:justify-between items-center gap-1 mt-3">
             <div
-              className={`font-bold hidden md:block md:text-base pl-1 text-[#444746] ${josefin_sans_font}`}
+              className={`font-bold hidden md:block md:text-base pl-1 text-gray-primary ${josefin_sans_font}`}
             >
               Want to preview the note before publishing?
             </div>
@@ -270,7 +270,7 @@ const AddNote = () => {
                     <ShowPreviewIcon className="w-4 h-4 mr-1 text-foreground" />
                   </>
                 )}
-                {preview ? "Hide Preview" : "Preview"}
+                {preview ? 'Hide Preview' : 'Preview'}
               </Button>
               <Button className={`font-bold`} onClick={clearAllData}>
                 Clear all

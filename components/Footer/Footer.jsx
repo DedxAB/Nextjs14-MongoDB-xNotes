@@ -1,25 +1,23 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { BASE_URL } from "@/utils/constants";
-import { cn } from "@/lib/utils";
-import { playfair_font } from "@/utils/fonts";
+import { BASE_URL } from '@/utils/constants';
+import { cn } from '@/lib/utils';
+import { playfair_font } from '@/utils/fonts';
 
 import {
   GitHubIcon,
   InstagramIcon,
   XIcon,
-} from "@/app/assets/svgs/GeneralIcons";
+} from '@/app/assets/svgs/GeneralIcons';
 
 const Footer = () => {
   return (
     <>
-      <div className="max-w-3xl mx-auto px-4 flex flex-col gap-1 md:flex-row md:justify-between items-center py-2 md:py-3">
+      <div className="max-w-6xl mx-auto px-4 flex flex-col gap-1 md:flex-row md:justify-between items-center py-2 md:py-3">
         <Link href={BASE_URL}>
-          <h1 className={cn("font-bold text-lg md:text-xl", playfair_font)}>
+          <h1 className={cn('font-bold text-lg md:text-xl', playfair_font)}>
             Dedx
-            <span className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
-              Notes
-            </span>
+            <span className="text-gradient-primary">Notes</span>
           </h1>
         </Link>
 

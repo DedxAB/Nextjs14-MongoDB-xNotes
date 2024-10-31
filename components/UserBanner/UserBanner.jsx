@@ -17,7 +17,7 @@ const UserBanner = async () => {
   const welcomeText = session ? "Welcome to xNotes" : "Want to create notes?";
 
   return (
-    <div className="font-bold text-[#444746] mb-6 mt-8 md:flex md:items-center md:gap-2 md:justify-between w-full">
+    <div className="font-bold text-gray-primary mb-6 mt-8 md:flex md:items-center md:gap-2 md:justify-between w-full">
       <div>
         <GradientText className="text-4xl md:text-5xl py-1">
           {greetingText}

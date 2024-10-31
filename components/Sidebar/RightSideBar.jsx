@@ -1,0 +1,91 @@
+import dayjs from 'dayjs';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { cn } from '@/lib/utils';
+import { inter_font, josefin_sans_font } from '@/utils/fonts';
+import { fetchLatestNews } from '@/services/news/news.service';
+
+export default async function RightSideBar() {
+  const data = await fetchLatestNews();
+
+  if (!data || !data.length) {
+    return (
+      <div className="grid place-items-center h-[20vh]">
+        Latest news is currently unavailable. Please check back later.
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <h1 className="mb-4 text-lg font-bold">Latest Tech News</h1>
+      {data.map((article, index) => (
+        <div
+          key={index}
+          className="flex flex-col border rounded-lg shadow-lg space-y-4 mb-4 overflow-hidden"
+        >
+          {/* Thumbnail */}
+          <Image
+            src={article.thumbnail}
+            alt={article.title}
+            className="w-full object-cover"
+            width={512}
+            height={512}
+          />
+
+          <div className="flex flex-col px-4 pb-4">
+            {/* Source and Publication Date */}
+            <div
+              className={cn(
+                'flex items-center text-xs space-x-2 mb-2',
+                josefin_sans_font
+              )}
+            >
+              <Image
+                src={article.source.favicon}
+                alt={`${article.source.name} favicon`}
+                className="w-4 h-4 mb-1"
+                width={512}
+                height={512}
+              />
+              <span>{article.source.name}</span>
+              <span>&bull;</span>
+              <span>{dayjs(article.published_at).format('MMM D, YYYY')}</span>
+            </div>
+
+            {/* Title */}
+            <h3 className="text-base font-semibold">{article.title}</h3>
+
+            {/* Description */}
+            <p className={cn('text-sm my-2', inter_font)}>
+              {article.description}
+            </p>
+
+            <div className="flex items-end justify-between">
+              {/* Author(s) */}
+              {article.authors?.length > 0 && (
+                <p className={cn('text-gray-500 text-xs', josefin_sans_font)}>
+                  By {article.authors.join(', ')}
+                </p>
+              )}
+
+              {/* Read More Link */}
+              <Link
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  'text-primary text-sm hover:underline',
+                  inter_font
+                )}
+              >
+                Read more
+              </Link>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
