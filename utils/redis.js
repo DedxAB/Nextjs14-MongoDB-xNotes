@@ -1,13 +1,9 @@
 import { createClient } from 'redis';
 
 let redisClient;
-let isConnected = false; // To track connection status
 
 const getRedisClient = async () => {
-  // Check if the client already exists and is connected
   if (!redisClient) {
-    console.log('Creating new Redis client');
-
     redisClient = createClient({
       password: process.env.REDIS_PASSWORD,
       socket: {
@@ -16,32 +12,33 @@ const getRedisClient = async () => {
       },
     });
 
-    // Handle errors
-    redisClient.on('error', (err) => console.error('Redis Client Error:', err));
+    redisClient.on('connect', () => console.log('Connected to Redis'));
+    redisClient.on('ready', () => console.log('Redis Client is ready'));
+    redisClient.on('error', (err) =>
+      console.error('Redis Client Error:', err.message)
+    );
+    redisClient.on('end', () => console.log('Disconnected from Redis'));
 
-    // Connect client if not already connected
     try {
       await redisClient.connect();
-      isConnected = true; // Mark as connected
-      console.log('Redis client connected');
     } catch (error) {
       console.error('Failed to connect to Redis:', error);
-      redisClient = null; // Reset client instance on failure
+      redisClient = null; // Reset client on failure
     }
-  } else if (!isConnected) {
-    // If client exists but is not connected, try to reconnect
-    try {
-      await redisClient.connect();
-      isConnected = true; // Mark as connected
-      console.log('Reconnected to Redis client');
-    } catch (error) {
-      console.error('Failed to reconnect to Redis:', error);
-    }
-  } else {
-    console.log('Reusing existing Redis client');
   }
 
   return redisClient;
 };
+
+// Close Redis client on application termination
+const closeRedisClient = async () => {
+  if (redisClient) {
+    await redisClient.quit();
+    redisClient = null; // Reset client reference
+  }
+};
+
+process.on('SIGINT', closeRedisClient);
+process.on('SIGTERM', closeRedisClient); // Handle SIGTERM for graceful shutdown
 
 export default getRedisClient;
