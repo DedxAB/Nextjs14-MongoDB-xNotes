@@ -1,73 +1,51 @@
-import { cache } from 'react';
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
-import { NEWS_API_HOST, NEWS_API_KEY, NEWS_URL } from '@/utils/constants';
 import { inter_font, josefin_sans_font } from '@/utils/fonts';
-
-const getData = cache(async () => {
-  const options = {
-    method: 'GET',
-    headers: {
-      'x-rapidapi-key': NEWS_API_KEY,
-      'x-rapidapi-host': NEWS_API_HOST,
-    },
-  };
-
-  const url = `${NEWS_URL}?country=us&language=en&topic=technology`;
-
-  try {
-    const response = await fetch(url, options);
-    if (!response.ok) {
-      console.error(`API request failed with status ${response.status}`);
-      return null;
-    }
-
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.error('Failed to fetch news data:', error);
-    return null;
-  }
-});
-
-// Revalidate the data every 3600 seconds
-export const revalidate = 3600;
+import { fetchLatestNews } from '@/services/news/news.service';
 
 export default async function RightSideBar() {
-  const data = await getData();
+  const data = await fetchLatestNews();
 
-  if (!data || !data.data?.length) {
+  if (!data || !data.length) {
     return (
-      <div className="grid place-items-center h-[20vh]">No news available</div>
+      <div className="grid place-items-center h-[20vh]">
+        Latest news is currently unavailable. Please check back later.
+      </div>
     );
   }
 
   return (
     <div>
-      {data?.data?.map((article, index) => (
+      <h1 className="mb-4 text-lg font-bold">Latest Tech News</h1>
+      {data.map((article, index) => (
         <div
           key={index}
-          className="flex border rounded-lg shadow-lg p-4 space-x-4 mb-4"
+          className="flex flex-col border rounded-lg shadow-lg space-y-4 mb-4 overflow-hidden"
         >
           {/* Thumbnail */}
           <Image
             src={article.thumbnail}
             alt={article.title}
-            className="w-24 h-24 object-cover rounded-md"
+            className="w-full object-cover"
             width={512}
             height={512}
           />
 
-          <div className="flex flex-col flex-1">
+          <div className="flex flex-col px-4 pb-4">
             {/* Source and Publication Date */}
-            <div className="flex items-center text-sm space-x-2 mb-2">
+            <div
+              className={cn(
+                'flex items-center text-xs space-x-2 mb-2',
+                josefin_sans_font
+              )}
+            >
               <Image
                 src={article.source.favicon}
                 alt={`${article.source.name} favicon`}
-                className="w-4 h-4"
+                className="w-4 h-4 mb-1"
                 width={512}
                 height={512}
               />
@@ -77,29 +55,34 @@ export default async function RightSideBar() {
             </div>
 
             {/* Title */}
-            <h3 className="text-lg font-semibold">{article.title}</h3>
+            <h3 className="text-base font-semibold">{article.title}</h3>
 
             {/* Description */}
             <p className={cn('text-sm my-2', inter_font)}>
               {article.description}
             </p>
 
-            {/* Author(s) */}
-            {article.authors?.length > 0 && (
-              <p className={cn('text-gray-500 text-xs', josefin_sans_font)}>
-                By {article.authors.join(', ')}
-              </p>
-            )}
+            <div className="flex items-end justify-between">
+              {/* Author(s) */}
+              {article.authors?.length > 0 && (
+                <p className={cn('text-gray-500 text-xs', josefin_sans_font)}>
+                  By {article.authors.join(', ')}
+                </p>
+              )}
 
-            {/* Read More Link */}
-            <Link
-              href={article.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 text-sm mt-2 hover:underline"
-            >
-              Read more
-            </Link>
+              {/* Read More Link */}
+              <Link
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  'text-primary text-sm hover:underline',
+                  inter_font
+                )}
+              >
+                Read more
+              </Link>
+            </div>
           </div>
         </div>
       ))}
