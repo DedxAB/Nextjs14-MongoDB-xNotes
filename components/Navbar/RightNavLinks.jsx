@@ -1,25 +1,26 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { signOut, useSession } from "next-auth/react";
-import Link from "next/link";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { signOut, useSession } from 'next-auth/react';
+import Link from 'next/link';
 
-import { AboutIcon, BookmarkIcon } from "@/app/assets/svgs/GeneralIcons";
+import { AboutIcon, BookmarkIcon } from '@/app/assets/svgs/GeneralIcons';
 import {
   CircleUserRound,
   LogIn,
   LogOut,
+  Newspaper,
   NotebookPen,
   Search,
   X,
-} from "lucide-react";
+} from 'lucide-react';
 
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import NotificationButton from "../Notification/NotificationButton";
-import { ThemeToggle } from "../ThemeToggle";
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+import NotificationButton from '../Notification/NotificationButton';
+import { ThemeToggle } from '../ThemeToggle';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,11 +28,11 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../ui/custom-dropdown-menu";
+} from '../ui/custom-dropdown-menu';
 
 const RightNavLinks = () => {
   const [openSearch, setOpenSearch] = useState(false);
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
   const router = useRouter();
   const { status, data: session } = useSession();
 
@@ -56,19 +57,19 @@ const RightNavLinks = () => {
     }
     setTimeout(() => {
       setOpenSearch(!openSearch);
-      setSearchText("");
+      setSearchText('');
     }, 300);
   };
 
   const name = session?.user?.name;
   let shortName = name
-    ?.split(" ")
+    ?.split(' ')
     .map((n) => n[0])
-    .join("");
+    .join('');
 
   return (
     <>
-      {status === "loading" ? (
+      {status === 'loading' ? (
         <>
           <div className="flex space-x-2 h-9 items-center mr-6">
             <div className="w-3 h-3 bg-pink-500 rounded-full animate-ping"></div>
@@ -79,7 +80,7 @@ const RightNavLinks = () => {
         </>
       ) : (
         <div className="flex items-center justify-between gap-3 sm:gap-4">
-          {status === "authenticated" && <NotificationButton />}
+          {status === 'authenticated' && <NotificationButton />}
           <Button
             title="Search"
             size="icon"
@@ -89,9 +90,10 @@ const RightNavLinks = () => {
           >
             <Search className="w-5 h-5" />
           </Button>
+
           {/* Theme changing component  */}
           <ThemeToggle />
-          {status === "authenticated" && (
+          {status === 'authenticated' && (
             <Link
               title="Write a note"
               href={`/create-note`}
@@ -101,21 +103,18 @@ const RightNavLinks = () => {
                 <NotebookPen className="w-4 h-4 mr-1" />
                 <span>Write</span>
               </Button>
-              {/* <Button className="font-bold md:hidden" size="icon">
-                <NotebookPen className="w-4 h-4" />
-              </Button> */}
             </Link>
           )}
 
           {/* Dropdown menu for user profile */}
-          {status === "authenticated" ? (
+          {status === 'authenticated' ? (
             <DropdownMenu>
               <DropdownMenuTrigger>
                 <Avatar>
                   <AvatarImage
-                    src={session?.user?.image || "/logo.png"}
+                    src={session?.user?.image || '/logo.png'}
                     alt={
-                      `Profile image of ${session?.user?.name}` || "DedxNotes"
+                      `Profile image of ${session?.user?.name}` || 'DedxNotes'
                     }
                   />
                   <AvatarFallback>{shortName}</AvatarFallback>
@@ -155,6 +154,13 @@ const RightNavLinks = () => {
                   <span>Saved</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem
+                  className="cursor-pointer flex items-center space-x-2 lg:hidden"
+                  onClick={() => router.push(`/news`)}
+                >
+                  <Newspaper className="w-4 h-4"/>
+                  <span>News</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem
                   className="cursor-pointer flex items-center space-x-2"
                   onClick={() => router.push(`/about`)}
                 >
@@ -163,7 +169,7 @@ const RightNavLinks = () => {
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   className="cursor-pointer flex items-center space-x-2"
-                  onClick={() => signOut({ callbackUrl: "/" })}
+                  onClick={() => signOut({ callbackUrl: '/' })}
                 >
                   <LogOut className="w-4 h-4 text-primary" />
                   <span className="text-primary">Sign Out</span>
@@ -180,7 +186,7 @@ const RightNavLinks = () => {
               <Button
                 variant={`outline`}
                 size="icon"
-                onClick={() => signOut({ callbackUrl: "/" })}
+                onClick={() => signOut({ callbackUrl: '/' })}
               >
                 <LogOut className="w-4 text-red-500" />
               </Button>
@@ -208,7 +214,7 @@ const RightNavLinks = () => {
               className={`h-[2.69rem] w-12 ml-2 rounded-lg`}
               onClick={() => {
                 setOpenSearch(!openSearch);
-                setSearchText("");
+                setSearchText('');
               }}
             >
               <X className="w-5 h-5" />

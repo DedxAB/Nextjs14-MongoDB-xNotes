@@ -30,6 +30,7 @@ export const fetchNews = async () => {
         JSON.stringify(result.data)
       );
       await storeCacheNewsToDb(result.data);
+      console.log('News data stored in cache and MongoDB');
 
       return result.data;
     } else {
@@ -69,6 +70,7 @@ export const fetchLatestNews = async () => {
     // 2. If Redis cache expired, attempt to fetch from API
     const apiNews = await fetchNews();
     if (apiNews) {
+      console.log('News data fetched from API', apiNews);
       return apiNews;
     }
 
