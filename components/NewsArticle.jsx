@@ -47,7 +47,7 @@ const NewsArticle = ({ article }) => {
               {article.source.name}
             </Link>
             <span>&bull;</span>
-            <span>{dayjs(article.published_at).format('MMM D, YYYY')}</span>
+            <span>{dayjs(article.date).format('MMM D, YYYY')}</span>
           </div>
 
           {/* Title */}
