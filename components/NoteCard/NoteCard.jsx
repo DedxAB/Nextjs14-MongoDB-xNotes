@@ -1,29 +1,29 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useSession } from "next-auth/react";
-import { usePathname, useRouter } from "next/navigation";
-import dayjs from "dayjs";
-import { toast } from "sonner";
-import Link from "next/link";
+import { useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { usePathname, useRouter } from 'next/navigation';
+import dayjs from 'dayjs';
+import { toast } from 'sonner';
+import Link from 'next/link';
 
-import { josefin_sans_font } from "@/utils/fonts";
-import { cn } from "@/lib/utils";
-import { generateSlug } from "@/utils/slugGenerator";
+import { Contact, ExternalLink } from 'lucide-react';
 
-import { Contact, ExternalLink } from "lucide-react";
+import { josefin_sans_font } from '@/utils/fonts';
+import { cn } from '@/lib/utils';
+import { generateSlug } from '@/utils/slugGenerator';
 import {
   CommentIcon,
   EmptyHeartIcon,
   RedHeartIcon,
   ShareIcon,
-} from "@/app/assets/svgs/GeneralIcons";
+} from '@/app/assets/svgs/GeneralIcons';
 
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import NoteDescription from "../NoteDescription/NoteDescription";
-import SharePopup from "../SharePopup/SharePopup";
-import MoreOptions from "../MoreOptions/MoreOptions";
-import SaveNotes from "../SaveNotes/SaveNotes";
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import NoteDescription from '../NoteDescription/NoteDescription';
+import SharePopup from '../SharePopup/SharePopup';
+import MoreOptions from '../MoreOptions/MoreOptions';
+import SaveNotes from '../SaveNotes/SaveNotes';
 
 const NoteCard = ({ note, noteAuthor: user }) => {
   const [updatedNote, setUpdatedNote] = useState(note);
@@ -34,13 +34,13 @@ const NoteCard = ({ note, noteAuthor: user }) => {
 
   // Get the first letter of the name to show in the avatar
   const shortName = user?.name
-    ?.split(" ")
+    ?.split(' ')
     .map((n) => n[0])
-    .join("");
+    .join('');
 
   const handelLike = async (isLiked) => {
     if (!session) {
-      toast.error("You need to sign in to like notes");
+      toast.error('You need to sign in to like notes');
       return;
     }
     // Optimistically update the state
@@ -53,16 +53,16 @@ const NoteCard = ({ note, noteAuthor: user }) => {
 
     try {
       const res = await fetch(`/api/notes/${note?._id}/likes`, {
-        method: "PATCH",
+        method: 'PATCH',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ userId: session?.user?.id, isLiked }),
       });
 
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(errorData.error || "Failed to like the note");
+        throw new Error(errorData.error || 'Failed to like the note');
       }
 
       const { updatedNote } = await res.json();
@@ -72,12 +72,12 @@ const NoteCard = ({ note, noteAuthor: user }) => {
       // Notification feature
       if (isLiked) {
         await fetch(`/api/notifications`, {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "content-type": "application/json",
+            'content-type': 'application/json',
           },
           body: JSON.stringify({
-            type: "like",
+            type: 'like',
             noteOwnerId: note?.author?._id,
             senderId: session?.user?.id,
             noteId: note?._id,
@@ -113,9 +113,9 @@ const NoteCard = ({ note, noteAuthor: user }) => {
           >
             <Avatar>
               <AvatarImage
-                src={user?.image || "/logo.png"}
+                src={user?.image || '/logo.png'}
                 referrerPolicy="no-referrer"
-                alt={`Profile Image of ${user?.name}` || "DedxNotes"}
+                alt={`Profile Image of ${user?.name}` || 'DedxNotes'}
               />
               <AvatarFallback>{shortName}</AvatarFallback>
             </Avatar>
@@ -127,7 +127,7 @@ const NoteCard = ({ note, noteAuthor: user }) => {
             <Link
               href={`/user/${user?.username}/${user?._id}`}
               className={cn(
-                "flex flex-wrap items-center text-xs mr-2 py-1",
+                'flex flex-wrap items-center text-xs mr-2 py-1',
                 josefin_sans_font
               )}
             >
@@ -168,14 +168,14 @@ const NoteCard = ({ note, noteAuthor: user }) => {
             {/* date */}
             <div
               className={cn(
-                "pt-[.19rem] md:pt-1 flex text-xs flex-wrap justify-start items-center text-gray-secondary",
+                'pt-[.19rem] md:pt-1 flex text-xs flex-wrap justify-start items-center text-gray-secondary',
                 josefin_sans_font
               )}
             >
               <p className="mr-1">
                 {
                   dayjs(updatedNote?.createdAt).format(
-                    "MMM D, YYYY • hh : mm A"
+                    'MMM D, YYYY • hh : mm A'
                   ) // Mar 27, 2024
                 }
               </p>
@@ -192,10 +192,10 @@ const NoteCard = ({ note, noteAuthor: user }) => {
                 •&nbsp;
                 <span
                   title={
-                    updatedNote?.visibility === "private" ? "Private" : "Public"
+                    updatedNote?.visibility === 'private' ? 'Private' : 'Public'
                   }
                 >
-                  {updatedNote?.visibility === "private" ? "🔒" : "🌎"}
+                  {updatedNote?.visibility === 'private' ? '🔒' : '🌎'}
                 </span>
               </div>
             </div>

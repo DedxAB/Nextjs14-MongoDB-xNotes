@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import ReactLinkify from "react-linkify";
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import ReactLinkify from 'react-linkify';
 
-import { cn } from "@/lib/utils";
-import { inter_font } from "@/utils/fonts";
-import { generateSlug } from "@/utils/slugGenerator";
+import { cn } from '@/lib/utils';
+import { inter_font } from '@/utils/fonts';
+import { generateSlug } from '@/utils/slugGenerator';
 
 const NoteDescription = ({ description, note = {} }) => {
   const pathName = usePathname();
@@ -46,14 +46,14 @@ const NoteDescription = ({ description, note = {} }) => {
     <>
       <div
         className={cn(
-          "text-sm md:text-base mt-[0.28rem] py-1 whitespace-pre-line w-full",
+          'text-sm md:text-base mt-[0.28rem] py-1 whitespace-pre-line w-full',
           inter_font
         )}
-        style={{ overflowWrap: "anywhere" }}
+        style={{ overflowWrap: 'anywhere' }}
       >
         <ReactLinkify componentDecorator={customLink}>
           {pathName === `/note/${generateSlug(note?.title)}/${note?._id}` ||
-          pathName === "/create-note" ||
+          pathName === '/create-note' ||
           pathName === `/note/${generateSlug(note?.title)}/${note?._id}/edit`
             ? description
             : truncateString(description, 140)}

@@ -4,8 +4,15 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { toast } from 'sonner';
+
 import { cn } from '@/lib/utils';
 import { josefin_sans_font } from '@/utils/fonts';
+import {
+  CancelIcon,
+  HidePreviewIcon,
+  PublishIcon,
+  ShowPreviewIcon,
+} from '@/app/assets/svgs/GeneralIcons';
 
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -23,12 +30,6 @@ import {
 
 import WelcomeBanner from '../WelcomeBanner/WelcomeBanner';
 import PreviewNoteCard from '../PreviewNoteCard/PreviewNoteCard';
-import {
-  CancelIcon,
-  HidePreviewIcon,
-  PublishIcon,
-  ShowPreviewIcon,
-} from '@/app/assets/svgs/GeneralIcons';
 
 // Validate URL function
 const isValidUrl = (url) => {

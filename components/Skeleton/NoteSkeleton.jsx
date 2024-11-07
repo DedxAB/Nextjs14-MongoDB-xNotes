@@ -1,5 +1,5 @@
-import CommentSkeleton from "./CommentSkeleton";
-import WelcomeBannerSkeleton from "./WelcomeBannerSkeleton";
+import CommentSkeleton from './CommentSkeleton';
+import WelcomeBannerSkeleton from './WelcomeBannerSkeleton';
 
 const NoteSkeleton = ({
   showCommentSkeleton = false,

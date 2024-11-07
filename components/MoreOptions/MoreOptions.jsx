@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import { Pencil } from "lucide-react";
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { Pencil } from 'lucide-react';
 
-import { MoreOptionIcon } from "@/app/assets/svgs/GeneralIcons";
-import { generateSlug } from "@/utils/slugGenerator";
+import { MoreOptionIcon } from '@/app/assets/svgs/GeneralIcons';
+import { generateSlug } from '@/utils/slugGenerator';
 
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import RemoveButton from "../RemoveButton/RemoveButton";
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+import RemoveButton from '../RemoveButton/RemoveButton';
 
 export default function MoreOptions({ noteData }) {
-  const [currentPath, setCurrentPath] = useState("");
+  const [currentPath, setCurrentPath] = useState('');
   const pathName = usePathname();
 
   // Memoize the slug and paths to avoid recalculating them on every render
@@ -23,13 +23,13 @@ export default function MoreOptions({ noteData }) {
   useEffect(() => {
     switch (true) {
       case pathName === notePath:
-        setCurrentPath("01-n");
+        setCurrentPath('01-n');
         break;
       case pathName === userPath:
-        setCurrentPath("02-u");
+        setCurrentPath('02-u');
         break;
       default:
-        setCurrentPath("03-o");
+        setCurrentPath('03-o');
     }
   }, [pathName, notePath, userPath]);
 

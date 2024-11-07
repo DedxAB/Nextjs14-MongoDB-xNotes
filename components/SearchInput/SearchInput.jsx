@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-import { Input } from "../ui/input";
+import { Input } from '../ui/input';
 
 const SearchInput = () => {
-  const [search, setSearch] = useState("");
-  const [placeholder, setPlaceholder] = useState("Search notes...");
+  const [search, setSearch] = useState('');
+  const [placeholder, setPlaceholder] = useState('Search notes...');
 
   useEffect(() => {
     const searchTerms = [
-      "Search notes...",
-      "Search keyword...",
-      "Search user...",
-      "Search username...",
+      'Search notes...',
+      'Search keyword...',
+      'Search user...',
+      'Search username...',
     ];
     const intervalId = setInterval(() => {
       const randomIndex = Math.floor(Math.random() * searchTerms.length);

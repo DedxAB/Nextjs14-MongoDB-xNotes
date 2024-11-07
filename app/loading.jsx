@@ -1,4 +1,4 @@
-import { LoadingIcon } from "./assets/svgs/GeneralIcons";
+import { LoadingIcon } from './assets/svgs/GeneralIcons';
 
 export default function Loading() {
   return (

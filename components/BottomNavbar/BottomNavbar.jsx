@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
-import Link from "next/link";
-import { NotebookPen, Search } from "lucide-react";
+import { useEffect, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
+import { NotebookPen, Search } from 'lucide-react';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 import {
   BookmarkIcon,
   HomeIcon,
   ProfileIcon,
-} from "@/app/assets/svgs/GeneralIcons";
+} from '@/app/assets/svgs/GeneralIcons';
 
-import ShowSearch from "../ShowSearch/ShowSearch";
+import ShowSearch from '../ShowSearch/ShowSearch';
 
 export default function BottomNavbar() {
   const [openSearch, setOpenSearch] = useState(false);
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
   const router = useRouter();
   const { status, data: session } = useSession();
   const pathName = usePathname();
@@ -43,7 +43,7 @@ export default function BottomNavbar() {
     }
     setTimeout(() => {
       setOpenSearch(!openSearch);
-      setSearchText("");
+      setSearchText('');
     }, 300);
   };
 
@@ -59,14 +59,14 @@ export default function BottomNavbar() {
           </div>
           <span
             className={cn(
-              pathName === "/" && "text-primary",
-              "group-hover:text-primary"
+              pathName === '/' && 'text-primary',
+              'group-hover:text-primary'
             )}
           >
             Home
           </span>
         </Link>
-        {status === "authenticated" && (
+        {status === 'authenticated' && (
           <Link
             className={`flex flex-col items-center justify-center py-1 cursor-pointer group`}
             href={`/saved-notes`}
@@ -76,8 +76,8 @@ export default function BottomNavbar() {
             </div>
             <span
               className={cn(
-                "group-hover:text-primary",
-                pathName === "/saved-notes" && "text-primary"
+                'group-hover:text-primary',
+                pathName === '/saved-notes' && 'text-primary'
               )}
             >
               Saved
@@ -93,7 +93,7 @@ export default function BottomNavbar() {
           </div>
           <span className="group-hover:text-primary">Search</span>
         </div>
-        {status === "authenticated" && (
+        {status === 'authenticated' && (
           <>
             <Link
               href={`/create-note`}
@@ -107,8 +107,8 @@ export default function BottomNavbar() {
               </div>
               <span
                 className={cn(
-                  pathName === "/create-note" && "text-primary",
-                  "group-hover:text-primary"
+                  pathName === '/create-note' && 'text-primary',
+                  'group-hover:text-primary'
                 )}
               >
                 Write
@@ -125,8 +125,8 @@ export default function BottomNavbar() {
                 className={cn(
                   pathName ===
                     `/user/${session?.user?.username}/${session?.user?.id}` &&
-                    "text-primary",
-                  "group-hover:text-primary"
+                    'text-primary',
+                  'group-hover:text-primary'
                 )}
               >
                 Profile

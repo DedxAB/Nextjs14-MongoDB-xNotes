@@ -9,12 +9,11 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import NoteSkeleton from '@/components/Skeleton/NoteSkeleton';
-import NoteDetailsComponent from './components/NoteDetailsComponent';
-
 import { BASE_URL } from '@/utils/constants';
 import { generateSlug } from '@/utils/slugGenerator';
-
 import { fetchNoteById } from '@/services/note/server/note.service';
+
+import NoteDetailsComponent from './components/NoteDetailsComponent';
 
 const Page = ({ params }) => {
   const { id } = params;

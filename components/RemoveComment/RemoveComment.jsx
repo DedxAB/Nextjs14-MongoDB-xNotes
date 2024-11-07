@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import { useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
-import { josefin_sans_font } from "@/utils/fonts";
-import { DeleteIcon } from "@/app/assets/svgs/GeneralIcons";
+import { josefin_sans_font } from '@/utils/fonts';
+import { DeleteIcon } from '@/app/assets/svgs/GeneralIcons';
 
-import { Button } from "../ui/button";
+import { Button } from '../ui/button';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,7 +19,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "../ui/alert-dialog";
+} from '../ui/alert-dialog';
 
 const RemoveComment = ({ comment, note }) => {
   const [conformationMessage, setConformationMessage] = useState(false);
@@ -30,23 +30,23 @@ const RemoveComment = ({ comment, note }) => {
   const deleteComment = async (id) => {
     if (conformationMessage) {
       if (!session) {
-        return toast.error("You need to login to delete a comment.");
+        return toast.error('You need to login to delete a comment.');
       }
-      const toastId = toast.loading("Deleting Comment...");
+      const toastId = toast.loading('Deleting Comment...');
       try {
         const res = await fetch(`/api/comments/delete/${id}`, {
-          method: "DELETE",
+          method: 'DELETE',
           headers: {
-            "content-type": "application/json",
+            'content-type': 'application/json',
           },
           body: JSON.stringify({ noteId: note._id }),
         });
         const errorData = await res.json();
         if (!res.ok) {
-          throw new Error(errorData.error || "Failed to Delete Comment.");
+          throw new Error(errorData.error || 'Failed to Delete Comment.');
         }
         router.refresh();
-        toast.success("Comment Deleted Successfully.", { id: toastId });
+        toast.success('Comment Deleted Successfully.', { id: toastId });
       } catch (e) {
         toast.error(e.message, { id: toastId });
         console.log(e.message);
@@ -78,7 +78,7 @@ const RemoveComment = ({ comment, note }) => {
               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
               <AlertDialogDescription className={`font-bold`}>
                 This action cannot be undone. You are about to delete this
-                comment :{" "}
+                comment :{' '}
                 <span className={`text-primary ${josefin_sans_font}`}>
                   {comment?.text}
                 </span>

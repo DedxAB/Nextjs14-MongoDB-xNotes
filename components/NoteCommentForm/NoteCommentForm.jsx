@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { toast } from 'sonner';
+import { SendHorizontal } from 'lucide-react';
 
 import { inter_font, josefin_sans_font } from '@/utils/fonts';
 import { cn } from '@/lib/utils';
@@ -11,7 +12,6 @@ import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { CustomInput } from '../ui/custom-input';
 import { Button } from '../ui/button';
-import { SendHorizontal } from 'lucide-react';
 
 const NoteCommentForm = ({ note, currentUser }) => {
   const [comment, setComment] = useState('');

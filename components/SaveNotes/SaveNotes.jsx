@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
-import { useSavedNotes } from "@/context/SavedNotesContext";
-import { SaveIcon } from "@/app/assets/svgs/GeneralIcons";
+import { useSavedNotes } from '@/context/SavedNotesContext';
+import { SaveIcon } from '@/app/assets/svgs/GeneralIcons';
 
 export default function SaveNotes({ note }) {
   const { data: session } = useSession();
@@ -16,15 +16,15 @@ export default function SaveNotes({ note }) {
 
   const handleSave = async () => {
     if (!session) {
-      toast.error("You need to sign in to save notes");
+      toast.error('You need to sign in to save notes');
       return;
     }
-    const toastId = toast.loading(`${isSaved ? "Removing" : "Saving"} note...`);
+    const toastId = toast.loading(`${isSaved ? 'Removing' : 'Saving'} note...`);
     try {
       const response = await fetch(`/api/saved-notes`, {
-        method: isSaved ? "DELETE" : "POST",
+        method: isSaved ? 'DELETE' : 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           userId: session?.user?.id,
@@ -37,7 +37,7 @@ export default function SaveNotes({ note }) {
         throw new Error(error);
       }
 
-      toast.success(`${isSaved ? "Note unsaved" : "Note saved"} successfully`, {
+      toast.success(`${isSaved ? 'Note unsaved' : 'Note saved'} successfully`, {
         id: toastId,
       });
 

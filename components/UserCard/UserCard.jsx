@@ -1,14 +1,14 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { josefin_sans_font } from "@/utils/fonts";
+import { josefin_sans_font } from '@/utils/fonts';
 
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
 const UserCard = ({ user }) => {
   let shortName = user?.name
-    ?.split(" ")
+    ?.split(' ')
     .map((n) => n[0])
-    .join("");
+    .join('');
 
   return (
     <>

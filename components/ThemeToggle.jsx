@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
-import { useTheme } from "next-themes";
+import * as React from 'react';
+import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
+import { useTheme } from 'next-themes';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu';
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -26,20 +26,20 @@ export function ThemeToggle() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className={`font-bold`}>
         <DropdownMenuItem
-          onClick={() => setTheme("light")}
-          className={`cursor-pointer ${theme === "light" && "bg-accent"}`}
+          onClick={() => setTheme('light')}
+          className={`cursor-pointer ${theme === 'light' && 'bg-accent'}`}
         >
           ☀️&nbsp;&nbsp;Light
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => setTheme("dark")}
-          className={`cursor-pointer ${theme === "dark" && "bg-accent"}`}
+          onClick={() => setTheme('dark')}
+          className={`cursor-pointer ${theme === 'dark' && 'bg-accent'}`}
         >
           🌚&nbsp;&nbsp;Dark
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => setTheme("system")}
-          className={`cursor-pointer ${theme === "system" && "bg-accent"}`}
+          onClick={() => setTheme('system')}
+          className={`cursor-pointer ${theme === 'system' && 'bg-accent'}`}
         >
           🌗&nbsp;&nbsp;System
         </DropdownMenuItem>

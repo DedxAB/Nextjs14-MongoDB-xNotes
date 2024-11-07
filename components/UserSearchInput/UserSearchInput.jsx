@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { Input } from "../ui/input";
+import { Input } from '../ui/input';
 
 export default function UserSearchInput({ allUsers, setFilteredUsers }) {
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (searchText.trim() === "") {
+      if (searchText.trim() === '') {
         setFilteredUsers(allUsers);
       } else {
         const filtered = allUsers.filter(

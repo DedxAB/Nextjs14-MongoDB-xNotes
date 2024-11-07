@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { toast } from "sonner";
+import React, { useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
-import { josefin_sans_font } from "@/utils/fonts";
-import { generateSlug } from "@/utils/slugGenerator";
-import { DeleteIcon } from "@/app/assets/svgs/GeneralIcons";
+import { josefin_sans_font } from '@/utils/fonts';
+import { generateSlug } from '@/utils/slugGenerator';
+import { DeleteIcon } from '@/app/assets/svgs/GeneralIcons';
 
 import {
   AlertDialog,
@@ -18,7 +18,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "../ui/alert-dialog";
+} from '../ui/alert-dialog';
 
 const RemoveButton = ({ id, title }) => {
   const [conformationMessage, setConformationMessage] = useState(false);
@@ -28,25 +28,25 @@ const RemoveButton = ({ id, title }) => {
 
   const removeNote = async () => {
     if (conformationMessage) {
-      const toastId = toast.loading("Deleting Note...");
+      const toastId = toast.loading('Deleting Note...');
       try {
         const res = await fetch(`/api/notes?id=${id}`, {
-          method: "DELETE",
+          method: 'DELETE',
         });
 
         if (!res.ok) {
           const errorData = await res.json();
-          throw new Error(errorData.error || "Error deleting note");
+          throw new Error(errorData.error || 'Error deleting note');
         }
 
         if (pathName === `/note/${generateSlug(title)}/${id}`) {
-          router.push("/");
+          router.push('/');
           router.refresh();
         } else {
           router.refresh();
         }
 
-        toast.success("Note Deleted Successfully.", {
+        toast.success('Note Deleted Successfully.', {
           id: toastId,
         });
       } catch (e) {
@@ -75,7 +75,7 @@ const RemoveButton = ({ id, title }) => {
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             <AlertDialogDescription className={`font-bold`}>
-              This action cannot be undone. You are about to delete this note :{" "}
+              This action cannot be undone. You are about to delete this note :{' '}
               <span className={`text-primary ${josefin_sans_font}`}>
                 {title}
               </span>
