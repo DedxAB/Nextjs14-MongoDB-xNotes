@@ -1,20 +1,20 @@
-import Link from "next/link";
-import { getServerSession } from "next-auth";
+import Link from 'next/link';
+import { getServerSession } from 'next-auth';
 
-import { HeroBannerIcon } from "@/app/assets/svgs/GeneralIcons";
-import { fetchUserByEmail } from "@/services/user/server/user.service";
+import { HeroBannerIcon } from '@/app/assets/svgs/GeneralIcons';
+import { fetchUserByEmail } from '@/services/user/server/user.service';
 
-import { Button } from "../ui/button";
-import GradientText from "../GradientText";
+import { Button } from '../ui/button';
+import GradientText from '../GradientText';
 
 const UserBanner = async () => {
   const session = await getServerSession();
   const user = session
     ? (await fetchUserByEmail(session?.user?.email))?.user
     : null;
-  const userName = user?.name?.split(" ")[0] || "Guest";
-  const greetingText = session ? `Hello, ${userName}` : "Hello, Guest";
-  const welcomeText = session ? "Welcome to xNotes" : "Want to create notes?";
+  const userName = user?.name?.split(' ')[0] || 'Guest';
+  const greetingText = session ? `Hello, ${userName}` : 'Hello, Guest';
+  const welcomeText = session ? 'Welcome to xNotes' : 'Want to create notes?';
 
   return (
     <div className="font-bold text-gray-primary mb-6 mt-8 md:flex md:items-center md:gap-2 md:justify-between w-full">

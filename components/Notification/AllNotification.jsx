@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import dayjs from "dayjs";
-import { toast } from "sonner";
+import { useRouter } from 'next/navigation';
+import dayjs from 'dayjs';
+import { toast } from 'sonner';
 
-import { cn } from "@/lib/utils";
-import { josefin_sans_font } from "@/utils/fonts";
-import { generateSlug } from "@/utils/slugGenerator";
+import { cn } from '@/lib/utils';
+import { josefin_sans_font } from '@/utils/fonts';
+import { generateSlug } from '@/utils/slugGenerator';
 
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
 // Reusable Avatar Component
 const UserAvatar = ({ user }) => (
@@ -16,9 +16,9 @@ const UserAvatar = ({ user }) => (
     <AvatarImage src={user.image} alt={user.username} />
     <AvatarFallback>
       {user.name
-        ?.split(" ")
+        ?.split(' ')
         .map((n) => n[0])
-        .join("")}
+        .join('')}
     </AvatarFallback>
   </Avatar>
 );
@@ -36,28 +36,28 @@ const NotificationItem = ({ notification, onClick }) => {
   return (
     <div
       className={cn(
-        "text-sm md:text-base border mb-3 rounded-lg px-3 md:px-4 py-2 cursor-pointer",
-        notification.isRead ? "opacity-50" : "opacity-100"
+        'text-sm md:text-base border mb-3 rounded-lg px-3 md:px-4 py-2 cursor-pointer',
+        notification.isRead ? 'opacity-50' : 'opacity-100'
       )}
     >
       <div className="flex items-center gap-3">
         <div onClick={handleProfileClick}>
           <UserAvatar user={notification?.senderId} />
         </div>
-        {notification.type === "admin" ? (
+        {notification.type === 'admin' ? (
           <p>Admin: {notification?.message}</p>
         ) : (
           <div onClick={onClick} className="flex items-start flex-col">
             <p>
               <span className="font-bold">
                 {notification?.senderId?.username}
-              </span>{" "}
-              {notification.type === "like" ? "liked" : "commented on"} your
-              note{" "}
+              </span>{' '}
+              {notification.type === 'like' ? 'liked' : 'commented on'} your
+              note{' '}
               <span className="font-bold">{notification.noteId.title}</span>
             </p>
             <span className={`${josefin_sans_font} text-xs`}>
-              {dayjs(notification?.createdAt).format("MMM D, YYYY • hh : mm A")}
+              {dayjs(notification?.createdAt).format('MMM D, YYYY • hh : mm A')}
             </span>
           </div>
         )}
@@ -71,7 +71,7 @@ export default function AllNotification({ notifications }) {
 
   const handleNotificationClick = (notification) => {
     try {
-      if (notification.type === "like" || notification.type === "comment") {
+      if (notification.type === 'like' || notification.type === 'comment') {
         router.push(
           `/note/${generateSlug(notification?.noteId?.title)}/${
             notification?.noteId?._id

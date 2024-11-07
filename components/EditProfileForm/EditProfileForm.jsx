@@ -7,13 +7,14 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 
+import { CancelIcon } from '@/app/assets/svgs/GeneralIcons';
+import { josefin_sans_font } from '@/utils/fonts';
+
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
 
-import { CancelIcon } from '@/app/assets/svgs/GeneralIcons';
-import { josefin_sans_font } from '@/utils/fonts';
 import WelcomeBanner from '../WelcomeBanner/WelcomeBanner';
 
 // Validate URL function

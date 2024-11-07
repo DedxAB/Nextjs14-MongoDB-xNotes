@@ -1,16 +1,23 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { toast } from "sonner";
-import { cn } from "@/lib/utils";
-import { josefin_sans_font } from "@/utils/fonts";
-import { generateSlug } from "@/utils/slugGenerator";
+import { useEffect, useRef, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { toast } from 'sonner';
 
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { Label } from "../ui/label";
+import { cn } from '@/lib/utils';
+import { josefin_sans_font } from '@/utils/fonts';
+import { generateSlug } from '@/utils/slugGenerator';
+import {
+  CancelIcon,
+  HidePreviewIcon,
+  PublishIcon,
+  ShowPreviewIcon,
+} from '@/app/assets/svgs/GeneralIcons';
+
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+import { Textarea } from '../ui/textarea';
+import { Label } from '../ui/label';
 import {
   Select,
   SelectContent,
@@ -19,16 +26,10 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
+} from '../ui/select';
 
-import WelcomeBanner from "../WelcomeBanner/WelcomeBanner";
-import PreviewNoteCard from "../PreviewNoteCard/PreviewNoteCard";
-import {
-  CancelIcon,
-  HidePreviewIcon,
-  PublishIcon,
-  ShowPreviewIcon,
-} from "@/app/assets/svgs/GeneralIcons";
+import WelcomeBanner from '../WelcomeBanner/WelcomeBanner';
+import PreviewNoteCard from '../PreviewNoteCard/PreviewNoteCard';
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -49,23 +50,23 @@ const EditNote = ({
 }) => {
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
-  const [newTags, setNewTags] = useState(tags.join(", "));
+  const [newTags, setNewTags] = useState(tags.join(', '));
   const [newWebsiteLink, setNewWebsiteLink] = useState(websiteLink);
   const [charCount, setCharCount] = useState(0);
   const [preview, setPreview] = useState(false);
   const [selectNewVisibility, setSelectNewVisibility] = useState(
-    visibility || "public"
+    visibility || 'public'
   );
 
   const route = useRouter();
   const searchParams = useSearchParams();
-  const from = searchParams.get("from");
+  const from = searchParams.get('from');
 
   // resize textarea
   const textareaRef = useRef(null);
   useEffect(() => {
     if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
   }, [newDescription]);
@@ -82,40 +83,40 @@ const EditNote = ({
 
   // Clear all data function
   const clearAllData = () => {
-    setNewTitle("");
-    setNewDescription("");
-    setNewTags("");
-    setNewWebsiteLink("");
-    setSelectNewVisibility("public");
+    setNewTitle('');
+    setNewDescription('');
+    setNewTags('');
+    setNewWebsiteLink('');
+    setSelectNewVisibility('public');
   };
 
   const handelOnSubmit = async (e) => {
     e.preventDefault();
     if (!newTitle || !newDescription) {
-      toast.warning("Please fill all the fields");
+      toast.warning('Please fill all the fields');
       return;
     }
 
     // validate URL if provided
     if (newWebsiteLink && !isValidUrl(newWebsiteLink)) {
-      toast.warning("Please enter a valid website link (if provided).");
+      toast.warning('Please enter a valid website link (if provided).');
       return;
     }
 
     const tagArray =
-      newTags && newTags.trim() !== ""
+      newTags && newTags.trim() !== ''
         ? newTags
             .trim()
             .split(/[\s,]+/)
             .filter(Boolean)
         : [];
 
-    const toastId = toast.loading("Updating Note...");
+    const toastId = toast.loading('Updating Note...');
     try {
       const res = await fetch(`/api/notes/${id}`, {
-        method: "PATCH",
+        method: 'PATCH',
         headers: {
-          "content-type": "application/json",
+          'content-type': 'application/json',
         },
         body: JSON.stringify({
           newTitle,
@@ -128,13 +129,13 @@ const EditNote = ({
 
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(errorData.error || "Failed to Edit note.");
+        throw new Error(errorData.error || 'Failed to Edit note.');
       }
 
       // Redirect to the correct page
-      if (from === "01-n") {
+      if (from === '01-n') {
         route.push(`/note/${generateSlug(newTitle)}/${id}`);
-      } else if (from === "02-u") {
+      } else if (from === '02-u') {
         route.push(`/user/${author?.username}/${author?._id}`);
       } else {
         route.push(`/`);
@@ -142,7 +143,7 @@ const EditNote = ({
 
       route.refresh();
 
-      toast.success("Note Updated Successfully.", {
+      toast.success('Note Updated Successfully.', {
         id: toastId,
       });
     } catch (error) {
@@ -199,7 +200,7 @@ const EditNote = ({
           <div className="flex items-center justify-between gap-1">
             <p
               className={cn(
-                "text-sm font-bold text-gray-primary pl-1",
+                'text-sm font-bold text-gray-primary pl-1',
                 josefin_sans_font
               )}
             >
@@ -259,7 +260,7 @@ const EditNote = ({
                 ) : (
                   <ShowPreviewIcon className="w-4 h-4 mr-1" />
                 )}
-                {preview ? "Hide Preview" : "Preview"}
+                {preview ? 'Hide Preview' : 'Preview'}
               </Button>
               <Button className={`font-bold`} onClick={clearAllData}>
                 Clear all

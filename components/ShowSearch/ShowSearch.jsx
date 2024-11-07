@@ -1,7 +1,7 @@
-import { X } from "lucide-react";
+import { X } from 'lucide-react';
 
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
 
 export default function ShowSearch({
   searchText,
@@ -32,7 +32,7 @@ export default function ShowSearch({
               className={`h-[2.69rem] w-12 ml-2 rounded-lg`}
               onClick={() => {
                 setOpenSearch(!openSearch);
-                setSearchText("");
+                setSearchText('');
               }}
             >
               <X className="w-5 h-5" />

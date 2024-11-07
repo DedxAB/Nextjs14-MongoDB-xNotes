@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { getGreeting } from "@/utils/getGreeting";
+import { getGreeting } from '@/utils/getGreeting';
 
 export const Greet = () => {
   const [greeting, setGreeting] = useState(getGreeting());

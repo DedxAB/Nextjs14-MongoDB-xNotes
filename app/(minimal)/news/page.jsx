@@ -1,5 +1,5 @@
-import { fetchLatestNews } from '@/services/news/news.service';
 import NewsArticle from '@/components/NewsArticle';
+import { fetchLatestNews } from '@/services/news/news.service';
 
 export default async function NewsPage() {
   const data = await fetchLatestNews();

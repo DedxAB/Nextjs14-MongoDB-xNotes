@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { josefin_sans_font } from "@/utils/fonts";
+import { josefin_sans_font } from '@/utils/fonts';
 
-import AdminToggle from "../AdminToggle/AdminToggle";
-import UserCard from "../UserCard/UserCard";
-import UserSearchInput from "../UserSearchInput/UserSearchInput";
+import AdminToggle from '../AdminToggle/AdminToggle';
+import UserCard from '../UserCard/UserCard';
+import UserSearchInput from '../UserSearchInput/UserSearchInput';
 
 export default function AllUserDetails({ allUsers, session }) {
   const [filteredUsers, setFilteredUsers] = useState(allUsers || []);

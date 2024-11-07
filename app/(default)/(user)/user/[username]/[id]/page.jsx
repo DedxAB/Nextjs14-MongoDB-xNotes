@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 
-import { BreadcrumbComponent } from "./components/BreadcrumbComponent";
-import ProfileComponent from "./components/ProfileComponent";
 import UserProfileSkeleton from "@/components/Skeleton/UserProfileSkeleton";
-
 import { generateSlug } from "@/utils/slugGenerator";
 import { fetchUserById } from "@/services/user/server/user.service";
+
+import { BreadcrumbComponent } from "./components/BreadcrumbComponent";
+import ProfileComponent from "./components/ProfileComponent";
 
 export const generateMetadata = async ({ params }) => {
   const { id } = params;

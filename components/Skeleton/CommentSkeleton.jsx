@@ -1,4 +1,4 @@
-import CommentCardSkeleton from "./CommentCardSkeleton";
+import CommentCardSkeleton from './CommentCardSkeleton';
 
 const CommentSkeleton = () => {
   return (

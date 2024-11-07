@@ -1,4 +1,4 @@
-import NoteSkeleton from "./NoteSkeleton";
+import NoteSkeleton from './NoteSkeleton';
 
 const NoteSkeletonWrapper = () => {
   return (

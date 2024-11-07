@@ -7,8 +7,8 @@ import Image from 'next/image';
 import { playfair_font } from '@/utils/fonts';
 import { GoogleIcon } from '@/app/assets/svgs/GeneralIcons';
 
-import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
+import { Button } from '../ui/button';
 
 const Signin = () => {
   const searchParams = useSearchParams();

@@ -1,4 +1,4 @@
-import NoteSkeleton from "./NoteSkeleton";
+import NoteSkeleton from './NoteSkeleton';
 
 export default function UserProfileSkeleton() {
   return (

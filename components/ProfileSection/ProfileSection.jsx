@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import dayjs from "dayjs";
+import { useSession } from 'next-auth/react';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import dayjs from 'dayjs';
 
-import { CalendarDays, Contact } from "lucide-react";
+import { CalendarDays, Contact } from 'lucide-react';
 
-import { inter_font, josefin_sans_font } from "@/utils/fonts";
+import { inter_font, josefin_sans_font } from '@/utils/fonts';
 import {
   FacebookIcon,
   GoogleIcon,
   InstagramIcon,
   XIcon,
-} from "@/app/assets/svgs/GeneralIcons";
+} from '@/app/assets/svgs/GeneralIcons';
 
-import { Button } from "../ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { DialogContent } from "../ui/dialog";
+import { Button } from '../ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { DialogContent } from '../ui/dialog';
 import {
   CustomDialogContent,
   Dialog,
@@ -25,19 +25,19 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/custom-dialog";
+} from '../ui/custom-dialog';
 
-import GradientText from "../GradientText";
+import GradientText from '../GradientText';
 
 const ProfileSection = ({ user }) => {
   const { data: session } = useSession();
   const pathName = usePathname();
   let shortName = user?.name
-    ?.split(" ")
+    ?.split(' ')
     .map((n) => n[0])
-    .join("");
+    .join('');
 
-  const highResImageSrc = user?.image?.replace("s96-c", "s512-c");
+  const highResImageSrc = user?.image?.replace('s96-c', 's512-c');
 
   return (
     <section id="profile-section">
@@ -52,12 +52,12 @@ const ProfileSection = ({ user }) => {
             <DialogTrigger>
               <Avatar className={`w-16 h-16 cursor-pointer`}>
                 <AvatarImage
-                  src={highResImageSrc || "/logo.png"}
+                  src={highResImageSrc || '/logo.png'}
                   referrerPolicy="no-referrer"
-                  alt={user?.name || "DedxNotes"}
+                  alt={user?.name || 'DedxNotes'}
                 />
                 <AvatarFallback className="text-lg">
-                  {shortName || "DN"}
+                  {shortName || 'DN'}
                 </AvatarFallback>
               </Avatar>
             </DialogTrigger>
@@ -66,12 +66,12 @@ const ProfileSection = ({ user }) => {
                 <DialogDescription>
                   <Avatar className={`w-52 h-52`}>
                     <AvatarImage
-                      src={highResImageSrc || "/logo.png"}
+                      src={highResImageSrc || '/logo.png'}
                       referrerPolicy="no-referrer"
-                      alt={user?.name || "DedxNotes"}
+                      alt={user?.name || 'DedxNotes'}
                     />
                     <AvatarFallback className="text-xl">
-                      {user?.name || "DedxNotes"}
+                      {user?.name || 'DedxNotes'}
                     </AvatarFallback>
                   </Avatar>
                 </DialogDescription>
@@ -142,7 +142,7 @@ const ProfileSection = ({ user }) => {
 
         {/* User Bio */}
         <div className="whitespace-pre-line font-bold my-4">
-          {user?.bio ? user?.bio : "No bio available"}
+          {user?.bio ? user?.bio : 'No bio available'}
         </div>
 
         {/* User Social Links */}
@@ -188,7 +188,7 @@ const ProfileSection = ({ user }) => {
           >
             <CalendarDays className="w-4 h-4" />
             <p className="text-sm font-bold">
-              Joined on {dayjs(user?.createdAt).format("DD MMM YYYY")}
+              Joined on {dayjs(user?.createdAt).format('DD MMM YYYY')}
             </p>
           </div>
 

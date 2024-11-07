@@ -6,9 +6,9 @@ import { Toaster } from '@/components/ui/sonner';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import BottomNavbar from '@/components/BottomNavbar/BottomNavbar';
-import { NextAuthProviders } from './Providers';
 import { BASE_URL } from '@/utils/constants';
 import AppProvider from '@/context/AppProvider';
+import { NextAuthProviders } from './Providers';
 
 const DESCRIPTION =
   'Create notes for quick recall and reference. Share your notes globally, making note-taking and idea sharing a breeze. Start organizing your thoughts today!';

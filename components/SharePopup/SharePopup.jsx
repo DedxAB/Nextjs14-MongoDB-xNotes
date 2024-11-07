@@ -1,10 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { Check, Clipboard, X } from "lucide-react";
-
-import { BASE_URL } from "@/utils/constants";
-import { generateSlug } from "@/utils/slugGenerator";
+import { useEffect, useState } from 'react';
+import { Check, Clipboard, X } from 'lucide-react';
 
 import {
   FacebookIcon,
@@ -13,17 +10,20 @@ import {
   TwitterShareButton,
   WhatsappIcon,
   WhatsappShareButton,
-} from "react-share";
+} from 'react-share';
 
-import { Button } from "../ui/button";
+import { BASE_URL } from '@/utils/constants';
+import { generateSlug } from '@/utils/slugGenerator';
+
+import { Button } from '../ui/button';
 
 export default function SharePopup({ handleShare, updatedNote }) {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflowY = "hidden";
+    document.body.style.overflowY = 'hidden';
     return () => {
-      document.body.style.overflowY = "scroll";
+      document.body.style.overflowY = 'scroll';
     };
   }, []);
 

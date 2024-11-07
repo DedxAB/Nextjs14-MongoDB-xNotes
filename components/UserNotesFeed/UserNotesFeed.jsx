@@ -1,26 +1,26 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
+import { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
-import NoteCard from "../NoteCard/NoteCard";
-import ProfileSearchInput from "../ProfileSearchInput/ProfileSearchInput";
-import { Button } from "../ui/button";
+import NoteCard from '../NoteCard/NoteCard';
+import ProfileSearchInput from '../ProfileSearchInput/ProfileSearchInput';
+import { Button } from '../ui/button';
 
 const UserNotesFeed = ({ notes, user }) => {
   const [filteredNotes, setFilteredNotes] = useState(notes || []);
-  const [activeTab, setActiveTab] = useState("All");
+  const [activeTab, setActiveTab] = useState('All');
   const { data: session } = useSession();
 
   useEffect(() => {
     const handleTabChange = () => {
-      if (activeTab === "Public") {
-        setFilteredNotes(notes.filter((note) => note?.visibility === "public"));
-      } else if (activeTab === "Private") {
+      if (activeTab === 'Public') {
+        setFilteredNotes(notes.filter((note) => note?.visibility === 'public'));
+      } else if (activeTab === 'Private') {
         setFilteredNotes(
-          notes.filter((note) => note?.visibility === "private")
+          notes.filter((note) => note?.visibility === 'private')
         );
       } else {
         setFilteredNotes(notes);
@@ -53,22 +53,22 @@ const UserNotesFeed = ({ notes, user }) => {
           {session?.user?.id === user?._id && (
             <div className="space-x-2">
               <Button
-                variant={cn(activeTab === "All" ? "default" : "secondary")}
-                onClick={() => handleTabSwitch("All")}
+                variant={cn(activeTab === 'All' ? 'default' : 'secondary')}
+                onClick={() => handleTabSwitch('All')}
                 className="font-bold"
               >
                 All
               </Button>
               <Button
-                variant={cn(activeTab === "Public" ? "default" : "secondary")}
-                onClick={() => handleTabSwitch("Public")}
+                variant={cn(activeTab === 'Public' ? 'default' : 'secondary')}
+                onClick={() => handleTabSwitch('Public')}
                 className="font-bold"
               >
                 Public
               </Button>
               <Button
-                variant={cn(activeTab === "Private" ? "default" : "secondary")}
-                onClick={() => handleTabSwitch("Private")}
+                variant={cn(activeTab === 'Private' ? 'default' : 'secondary')}
+                onClick={() => handleTabSwitch('Private')}
                 className="font-bold"
               >
                 Private

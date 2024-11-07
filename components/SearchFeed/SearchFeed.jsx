@@ -1,5 +1,5 @@
-import NoteCard from "../NoteCard/NoteCard";
-import UserCard from "../UserCard/UserCard";
+import NoteCard from '../NoteCard/NoteCard';
+import UserCard from '../UserCard/UserCard';
 
 const SearchFeed = ({ notes, users }) => {
   // console.log("notes", notes);
