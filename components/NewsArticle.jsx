@@ -31,14 +31,19 @@ const NewsArticle = ({ article }) => {
             )}
           >
             {article.source?.favicon && (
-              <Image
-                src={article.source.favicon}
-                alt={`${article.source.name} favicon`}
-                className="w-4 h-4 mb-1"
-                width={512}
-                height={512}
-                priority
-              />
+              <Link
+                href={article.source?.url ? article.source?.url : ''}
+                target="_blank"
+              >
+                <Image
+                  src={article.source.favicon}
+                  alt={`${article.source.name} favicon`}
+                  className="w-4 h-4 mb-1"
+                  width={512}
+                  height={512}
+                  priority
+                />
+              </Link>
             )}
             <Link
               href={article.source?.url ? article.source?.url : ''}
