@@ -1,6 +1,8 @@
 import NewsArticle from '@/components/NewsArticle';
 import { fetchLatestNews } from '@/services/news/news.service';
 
+export const dynamic = 'force-dynamic';
+
 export default async function NewsPage() {
   const data = await fetchLatestNews();
 
