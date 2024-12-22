@@ -16,7 +16,6 @@ import {
 
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
-import { Textarea } from '../ui/textarea';
 import { Label } from '../ui/label';
 import {
   Select,
@@ -27,9 +26,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../ui/select';
+import { Textarea } from '../ui/textarea';
 
-import WelcomeBanner from '../WelcomeBanner/WelcomeBanner';
 import PreviewNoteCard from '../PreviewNoteCard/PreviewNoteCard';
+import TextToSpeech from '../TextToSpeech';
+import VoiceToText from '../VoiceToText';
+import WelcomeBanner from '../WelcomeBanner/WelcomeBanner';
 
 // Validate URL function
 const isValidUrl = (url) => {
@@ -96,10 +98,20 @@ const AddNote = () => {
     }
   };
 
+  useEffect(() => {
+    const letterCount = description.length;
+    setCharCount(letterCount);
+  }, [description]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title || !description) {
       toast.warning('Please fill all the fields');
+      return;
+    }
+
+    if (description.length > maxCharCount) {
+      toast.warning('Character limit exceeded.');
       return;
     }
 
@@ -141,7 +153,7 @@ const AddNote = () => {
         throw new Error(errorData.error || 'Failed to save Note');
       }
 
-      router.back();
+      router.push('/');
       router.refresh();
       toast.success('Note Published Successfully.', {
         id: toastId,
@@ -189,12 +201,36 @@ const AddNote = () => {
           />
 
           {/* Description text area */}
-          <Label
-            htmlFor="description"
-            className={`font-bold md:text-base pl-1 text-gray-primary ${josefin_sans_font}`}
-          >
-            Description:
-          </Label>
+          <div className="flex items-center justify-between">
+            <Label
+              htmlFor="description"
+              className={`font-bold md:text-base pl-1 text-gray-primary ${josefin_sans_font}`}
+            >
+              Description:
+            </Label>
+
+            <div className="flex items-center gap-2">
+              {/* Speak here */}
+              <div
+                title="Start voice to text"
+                className="cursor-pointer transition-all duration-300 ease-in-out border rounded-full p-[.63rem] hover:border-primary"
+              >
+                <VoiceToText
+                  setDescription={setDescription}
+                  description={description}
+                  maxCharCount={maxCharCount}
+                />
+              </div>
+
+              {/* Text to Speech */}
+              <div
+                title="Start listening"
+                className="cursor-pointer transition-all duration-300 ease-in-out border rounded-full p-[.63rem] hover:border-primary"
+              >
+                <TextToSpeech text={description} />
+              </div>
+            </div>
+          </div>
           <Textarea
             id="description"
             ref={textareaRef}
