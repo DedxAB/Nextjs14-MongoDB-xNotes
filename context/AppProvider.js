@@ -1,10 +1,13 @@
 import { NotesProvider } from './NotesContext';
+import { NotificationProvider } from './NotificationContext';
 import { SavedNotesProvider } from './SavedNotesContext';
 
 export default function AppProvider({ children }) {
   return (
     <NotesProvider>
-      <SavedNotesProvider>{children}</SavedNotesProvider>
+      <NotificationProvider>
+        <SavedNotesProvider>{children}</SavedNotesProvider>
+      </NotificationProvider>
     </NotesProvider>
   );
 }
