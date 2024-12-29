@@ -35,7 +35,7 @@ export default async function page() {
       </section>
 
       <section id="all-notification">
-        <AllNotification notifications={notifications} />
+        <AllNotification />
       </section>
     </>
   );

@@ -1,14 +1,17 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { toast } from 'sonner';
 
 import { cn } from '@/lib/utils';
 import { josefin_sans_font } from '@/utils/fonts';
 import { generateSlug } from '@/utils/slugGenerator';
+import { useNotifications } from '@/context/NotificationContext';
 
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import NotificationItemSkeleton from '../Skeleton/NotificationSkeleton';
 
 // Reusable Avatar Component
 const UserAvatar = ({ user }) => (
@@ -66,8 +69,10 @@ const NotificationItem = ({ notification, onClick }) => {
   );
 };
 
-export default function AllNotification({ notifications }) {
+export default function AllNotification() {
   const router = useRouter();
+  const { notifications, isLoading } = useNotifications();
+  const [initialLoading, setInitialLoading] = useState(true);
 
   const handleNotificationClick = async (notification) => {
     try {
@@ -102,6 +107,24 @@ export default function AllNotification({ notifications }) {
       toast.error(error.message);
     }
   };
+
+  useEffect(() => {
+    if (!isLoading) {
+      setInitialLoading(false);
+    }
+  }, [isLoading]);
+
+  if (isLoading && initialLoading) {
+    return (
+      <>
+        {[1, 2, 3, 4, 5, 6, 7].map((_, index) => (
+          <div key={index}>
+            <NotificationItemSkeleton />
+          </div>
+        ))}
+      </>
+    );
+  }
 
   return (
     <section id="notification-section">

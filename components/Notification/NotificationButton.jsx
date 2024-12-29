@@ -1,28 +1,19 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 
 import { NotificationIcon } from '@/app/assets/svgs/GeneralIcons';
-import { fetchNotificationsByUserIdForClient } from '@/services/notification/client/notification.service';
+import { useNotifications } from '@/context/NotificationContext';
+import { cn } from '@/lib/utils';
 
 export default function NotificationButton() {
-  const [notifications, setNotifications] = useState([]); // [1]
-  const { data: session } = useSession();
+  const { notifications } = useNotifications();
 
-  useEffect(() => {
-    const fetchNotifications = async () => {
-      if (session?.user?.id) {
-        const data = await fetchNotificationsByUserIdForClient(
-          session?.user?.id
-        );
-        setNotifications(data?.data ? data?.data : []);
-      }
-    };
+  const unreadNotificationsCount = notifications.filter(
+    (notification) => !notification.isRead
+  ).length;
 
-    fetchNotifications();
-  }, [session?.user?.id]);
+  const noOfDigits = unreadNotificationsCount.toString().length;
 
   return (
     <Link
@@ -31,10 +22,17 @@ export default function NotificationButton() {
       className="p-[.63rem] border rounded-full cursor-pointer bg-background relative"
     >
       <NotificationIcon className="w-4 h-4" />
-      {notifications.length > 0 && (
-        <span className="absolute flex h-2 w-2 top-[.48rem] right-[.59rem]">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+
+      {unreadNotificationsCount > 0 && (
+        <span
+          className={cn(
+            'absolute min-h-4 min-w-4 flex rounded-full items-center justify-center bg-primary top-[-0.3rem] right-0',
+            noOfDigits > 1 ? 'px-[2px]' : ''
+          )}
+        >
+          <span className="relative inline-flex text-white text-xs font-bold">
+            {unreadNotificationsCount}
+          </span>
         </span>
       )}
     </Link>
