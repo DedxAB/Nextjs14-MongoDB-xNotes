@@ -69,29 +69,33 @@ const NotificationItem = ({ notification, onClick }) => {
 export default function AllNotification({ notifications }) {
   const router = useRouter();
 
-  const handleNotificationClick = (notification) => {
+  const handleNotificationClick = async (notification) => {
     try {
       if (notification.type === 'like' || notification.type === 'comment') {
-        // First navigate immediately
-        router.push(
+        const navigationPromise = router.push(
           `/note/${generateSlug(notification?.noteId?.title)}/${
             notification?.noteId?._id
           }`
         );
 
-        // Then update read status in background
         if (!notification.isRead) {
-          Promise.resolve().then(() => {
+          // Handle API call separately to not block navigation
+          Promise.all([
+            navigationPromise,
             fetch(`/api/notifications/${notification._id}`, {
               method: 'PATCH',
               headers: {
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({ isRead: true }),
-            }).then(() => {
-              router.refresh();
-            });
-          });
+            })
+              .then(() => router.refresh())
+              .catch((err) =>
+                console.error('Failed to update notification:', err)
+              ),
+          ]);
+        } else {
+          await navigationPromise;
         }
       }
     } catch (error) {
