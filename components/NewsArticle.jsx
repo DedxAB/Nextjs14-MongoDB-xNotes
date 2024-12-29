@@ -12,14 +12,16 @@ const NewsArticle = ({ article }) => {
       <div className="flex flex-col border rounded-lg shadow-lg space-y-4 mb-4 overflow-hidden">
         {/* Thumbnail */}
         {article.thumbnail && (
-          <Image
-            src={article.thumbnail}
-            alt={article.title}
-            className="w-full object-cover"
-            width={512}
-            height={512}
-            priority
-          />
+          <div className="overflow-hidden">
+            <Image
+              src={article.thumbnail}
+              alt={article.title}
+              className="w-full object-cover hover:scale-110 transition-all duration-300 ease-in-out"
+              width={512}
+              height={512}
+              priority
+            />
+          </div>
         )}
 
         <div className="flex flex-col px-4 pb-4">
