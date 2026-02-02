@@ -1,10 +1,10 @@
-import NextAuth from "next-auth/next";
-import GoogleProvider from "next-auth/providers/google";
+import NextAuth from 'next-auth/next';
+import GoogleProvider from 'next-auth/providers/google';
 
-import connectDB from "@/db/mongodb";
-import User from "@/models/user.model";
+import connectDB from '@/db/mongodb';
+import User from '@/models/user.model';
 
-import { BASE_URL } from "@/utils/constants";
+import { BASE_URL } from '@/utils/constants';
 
 export const authOptions = {
   providers: [
@@ -16,34 +16,41 @@ export const authOptions = {
   callbacks: {
     async session({ session }) {
       try {
+        if (!session?.user?.email) return session;
+
         await connectDB();
         const user = await User.findOne({ email: session.user.email });
+
+        if (!user) return session;
+
         session.user.id = user._id.toString();
         session.user.username = user.username;
         session.user.isAdmin = user.isAdmin;
         session.user.name = user.name;
+
         return session;
       } catch (error) {
-        return new Error("Failed to get session");
+        console.error('Session callback error:', error);
+        return session;
       }
     },
 
     async signIn({ user, account }) {
-      if (account.provider === "google") {
+      if (account.provider === 'google') {
         const { email, name, image } = user;
-        const username = email.split("@")[0];
+        const username = email.split('@')[0];
         try {
           await connectDB();
           const res = await fetch(`${BASE_URL}/api/user`, {
-            method: "POST",
+            method: 'POST',
             headers: {
-              "content-type": "application/json",
+              'content-type': 'application/json',
             },
             body: JSON.stringify({ email, name, image, username }),
           });
           if (!res) {
             const { error } = await res.json();
-            throw new Error(error || "Failed to create user");
+            throw new Error(error || 'Failed to create user');
           }
           return true;
         } catch (error) {
@@ -54,7 +61,7 @@ export const authOptions = {
     },
   },
   pages: {
-    signIn: "/signin",
+    signIn: '/signin',
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
